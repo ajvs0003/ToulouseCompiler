@@ -13,11 +13,11 @@ ToulouseCompiler::ToulouseCompiler(QWidget *parent)
 	// Para cambiar la versión de OpenGL cambiar aquí y en la clase OpenGLFunctions
 	format.setVersion(4, 5);
 
-	//OpenGLWidget* openGLWindow = new OpenGLWidget();
-	OpenGLWidget::getInstance()->setFormat(format);
+	OpenGLWidget* openGLWindow = new OpenGLWidget();
+	openGLWindow->setFormat(format);
 
 	// Let's do the magic my dear TFG students :)
-	QWidget* openglwidget = QWidget::createWindowContainer(OpenGLWidget::getInstance());
+	QWidget* openglwidget = QWidget::createWindowContainer(openGLWindow);
 	ui.opengl_layout->addWidget(openglwidget);
 	openglwidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }

@@ -44,11 +44,7 @@ OpenGLWidget::OpenGLWidget(QWindow *parent)
 	qDebug() << "MyOpenGLWidget constructor";
 
 
-	glm::vec3 T(0.0f, 0.0f, 0.0f);
 	
-		glm::vec3 a(0.0f, 10.0f, 10.0f);
-		camera = new PagCamera(a, T, 110);
-		
 	
 
 
@@ -98,14 +94,7 @@ void OpenGLWidget::initialize()
 	qDebug() << "Fabricante    : " << (const char*)glGetString(GL_VENDOR);
 	qDebug() << "Version OpenGL: " << (const char*)glGetString(GL_VERSION);
 	qDebug() << "Version GLSL  : " << (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION);
-	
 
-
-	prepareOpenGL();
-	
-
-
-	//DESACOPLAR
 	shaderProgram = new PagShaderProgram();
 	shaderProgram->setGLFunctions(m_context);
 	shaderProgram->createShaderProgram("./Shaders/pointShader");//"Resources/points-1"
@@ -115,7 +104,7 @@ void OpenGLWidget::initialize()
 	glm::vec3 a(0.0f, 10.0f, 10.0f);
 	camera = new PagCamera(a, T, 110);
 
-
+	prepareOpenGL();
 
 	/*aspect = float(this->width()) / this->height();
 	viewMatrix = glm::lookAt(
@@ -137,8 +126,22 @@ void OpenGLWidget::render()
 	m_device->setDevicePixelRatio(devicePixelRatio());
 
 	qDebug() << "Rendering";
-	createObjects();
-	/*
+	PagVAO ob;
+
+	
+	
+	GLfloat vertices[] = { -1.0, -1.0,  1.0,
+						   1.0, -1.0,  1.0,
+						   1.0,  1.0,  1.0,
+						  -1.0,  1.0,  1.0,
+						  -1.0, -1.0,  -1.0,
+						   1.0, -1.0,  -1.0,
+						   1.0,  1.0,  -1.0,
+						  -1.0,  1.0,  -1.0 };
+
+	GLuint indices[] = { 0,1,2,3,4,5,6,7 };
+
+	ob.generateVao();
 
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
@@ -164,17 +167,17 @@ void OpenGLWidget::render()
 
 	glBindVertexArray(vao);
 
-	glm::mat4 modelMatrix(1);*/
+	glm::mat4 modelMatrix(1);
 
 	
 
 
-	/*shaderProgram->use();
+	shaderProgram->use();
 	shaderProgram->setUniform("vColor", { 0.1, 0.5, 0.9 });
 	shaderProgram->setUniform("mModelViewProj", projMatrix * viewMatrix * modelMatrix);
 	shaderProgram->setUniform("pointSize", 100.0f);
 
-	glDrawElements(GL_POINTS, sizeof(indices) / sizeof(GLuint), GL_UNSIGNED_INT, NULL);*/
+	glDrawElements(GL_POINTS, sizeof(indices) / sizeof(GLuint), GL_UNSIGNED_INT, NULL);
 }
 
 void OpenGLWidget::resize(int w, int h)
@@ -218,10 +221,11 @@ void OpenGLWidget::exposeEvent(QExposeEvent *event)
 
 void OpenGLWidget::typePaint()
 {
+	
 	glDisable(GL_BLEND);
 	shaderProgram->use();
-	
 	paintObjects(*shaderProgram, 0);
+	
 }
 
 
@@ -233,18 +237,21 @@ void OpenGLWidget::createObjects()
 	std::vector <glm::vec2> dataTxt;
 	
 
-	Pag3DGroup* ob;
-	ob = new Pag3DGroup();
-
+	
 	
 
 
 
 	dataTxt = Metodos_especiales::lecturaFichero(dataTxt, "./Objects/peon.txt");
-	PagRevolutionObject* peon;
-	peon = new PagRevolutionObject(dataTxt, 2, 60);
-	ob->insertObject(peon);
-	objetos.push_back(*ob);
+	/*PagRevolutionObject* peon;*/
+
+	/*peon = new PagRevolutionObject(dataTxt, 2, 60);*/
+	
+
+
+
+	/*ob->insertObject(peon);
+	objetos.push_back(*ob);*/
 	//GLfloat vertices[] = { -1.0, -1.0,  1.0,
 	//					   1.0, -1.0,  1.0,
 	//					   1.0,  1.0,  1.0,

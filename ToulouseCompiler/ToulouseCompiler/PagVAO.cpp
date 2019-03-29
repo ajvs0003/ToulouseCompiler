@@ -1,12 +1,22 @@
 #include "PagVAO.h"
-#include <QOpenGLFunctions>
+
+#include <QtCore/QCoreApplication>
+
+#include <QtGui/QOpenGLContext>
+#include <QtGui/QOpenGLPaintDevice>
+#include <QtGui/QPainter>
+
+#include <QWidget>
+#include <QDebug>
+
+#include <gtc/matrix_transform.hpp>
 const int salto = 0xFFFFFFFF;
 PagVAO::PagVAO()
 {
 
 
 	
-	glGenVertexArrays(1, &vao);//generacion del id del vao
+	
 }
 
 
@@ -30,7 +40,8 @@ void PagVAO::iniciar(std::vector<PagPosNorm> PositionsAndNormals, std::vector<gl
 	this->Indices4PointCloud = Indices4PointCloud;
 	this->Indices4TrianglesMesh = Indices4TrianglesMesh;
 	this->Indices4Lines = Indices4Lines;
-
+	
+	
 	glBindVertexArray(vao);
 	glGenBuffers(1, &ID_vbo0);
 	// - Siempre que se quiere usar un VAO, hay que activarlo con esta orden.

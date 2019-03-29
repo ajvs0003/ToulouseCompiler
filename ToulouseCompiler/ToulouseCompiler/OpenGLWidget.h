@@ -58,7 +58,7 @@ protected:
 	void exposeEvent(QExposeEvent *event) override;
 
 private:
-
+	bool needsInitialize = false;
 	static OpenGLWidget *instance;
 
 	bool m_animating;
