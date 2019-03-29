@@ -29,7 +29,7 @@ void OpenGLWidget::refreshCallback()
 
 
 	Log::getInstancia()->escribir("Refresh callback called by Renderer");
-	typePaint();
+	/*typePaint();*/
 }
 
 
@@ -252,18 +252,7 @@ void OpenGLWidget::createObjects()
 
 	/*ob->insertObject(peon);
 	objetos.push_back(*ob);*/
-	//GLfloat vertices[] = { -1.0, -1.0,  1.0,
-	//					   1.0, -1.0,  1.0,
-	//					   1.0,  1.0,  1.0,
-	//					  -1.0,  1.0,  1.0,
-	//					  -1.0, -1.0,  -1.0,
-	//					   1.0, -1.0,  -1.0,
-	//					   1.0,  1.0,  -1.0,
-	//					  -1.0,  1.0,  -1.0 };
-
-	//GLuint indices[] = { 0,1,2,3,4,5,6,7 };
-
-
+	
 
 
 
