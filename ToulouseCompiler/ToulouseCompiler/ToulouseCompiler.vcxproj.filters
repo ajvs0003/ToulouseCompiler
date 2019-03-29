@@ -28,27 +28,84 @@
       <Extensions>moc;h;cpp</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Header Files\Renderer">
+      <UniqueIdentifier>{f9445018-c203-45d9-8cd0-281d3b1adb4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderer">
+      <UniqueIdentifier>{654cb5a8-6eb8-454b-a076-954fe20e7499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Geometry">
+      <UniqueIdentifier>{916dd3f5-e862-486e-9abb-18206d2c0f43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Geometry">
+      <UniqueIdentifier>{95cf4d93-f6dc-49fe-b292-c24a9c5847e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\QTConfiguration">
+      <UniqueIdentifier>{50302364-7897-45cb-a752-9f9378210717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\QTConfiguration">
+      <UniqueIdentifier>{181be5d1-4ec4-4ca1-a49f-cb8101b41e5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Helpers">
+      <UniqueIdentifier>{10a386da-23dc-4bed-81c3-263e6c10f0c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helpers">
+      <UniqueIdentifier>{a61c3e6b-2bef-4bc9-b649-ac091f86c450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Materials&amp;Textures">
+      <UniqueIdentifier>{0384b7d0-0ffa-4d15-b866-595d0b751944}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Materials&amp;Textures">
+      <UniqueIdentifier>{257caa85-dd06-4beb-a0d5-c85b4e31463c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shaders">
+      <UniqueIdentifier>{5dff7a3b-9ccb-454c-9fe3-4be0a690215b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shaders">
+      <UniqueIdentifier>{be9ef89d-c001-4a35-b921-52ca593b204b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ToulouseCompiler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="OpenGLWidget.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="ToulouseCompiler.cpp">
+      <Filter>Source Files\QTConfiguration</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="PagRevolutionObject.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="PagSubdivisionProfile.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="PagVAO.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Pag3DGroup.cpp">
+      <Filter>Source Files\Geometry</Filter>
     </ClCompile>
     <ClCompile Include="PagShaderProgram.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Metodos_especiales.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="PagCamera.cpp">
+      <Filter>Source Files\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="ToulouseCompiler.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="OpenGLWidget.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Renderer</Filter>
+    </QtMoc>
+    <QtMoc Include="ToulouseCompiler.h">
+      <Filter>Header Files\QTConfiguration</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -63,13 +120,40 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OpenGLFunctions.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="PagRevolutionObject.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="PagSubdivisionProfile.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="PagVAO.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="PagStructures.h">
+      <Filter>Header Files\Geometry</Filter>
     </ClInclude>
     <ClInclude Include="PagEnumerations.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Pag3DElement.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Pag3DGroup.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Metodos_especiales.h">
+      <Filter>Header Files\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="PagShaderProgram.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="PagCamera.h">
+      <Filter>Header Files\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -113,9 +113,16 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Metodos_especiales.cpp" />
     <ClCompile Include="OpenGLWidget.cpp" />
+    <ClCompile Include="Pag3DGroup.cpp" />
+    <ClCompile Include="PagCamera.cpp" />
+    <ClCompile Include="PagRevolutionObject.cpp" />
     <ClCompile Include="PagShaderProgram.cpp" />
+    <ClCompile Include="PagSubdivisionProfile.cpp" />
+    <ClCompile Include="PagVAO.cpp" />
     <ClCompile Include="ToulouseCompiler.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -128,9 +135,18 @@
     <QtRcc Include="ToulouseCompiler.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="Metodos_especiales.h" />
     <ClInclude Include="OpenGLFunctions.h" />
+    <ClInclude Include="Pag3DElement.h" />
+    <ClInclude Include="Pag3DGroup.h" />
+    <ClInclude Include="PagCamera.h" />
     <ClInclude Include="PagEnumerations.h" />
+    <ClInclude Include="PagRevolutionObject.h" />
     <ClInclude Include="PagShaderProgram.h" />
+    <ClInclude Include="PagStructures.h" />
+    <ClInclude Include="PagSubdivisionProfile.h" />
+    <ClInclude Include="PagVAO.h" />
     <QtMoc Include="OpenGLWidget.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets</IncludePath>

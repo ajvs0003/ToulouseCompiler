@@ -11,6 +11,28 @@
 
 #include <gtc/matrix_transform.hpp>
 
+
+OpenGLWidget * OpenGLWidget::instance = nullptr;
+
+
+OpenGLWidget * OpenGLWidget::getInstance()
+{
+	if (!instance) {
+		instance = new OpenGLWidget();
+	}
+	return instance;
+}
+
+void OpenGLWidget::refreshCallback()
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
+	Log::getInstancia()->escribir("Refresh callback called by Renderer");
+	typePaint();
+}
+
+
 OpenGLWidget::OpenGLWidget(QWindow *parent)
 	: QWindow(parent)
 	, m_animating(false)
@@ -20,6 +42,16 @@ OpenGLWidget::OpenGLWidget(QWindow *parent)
 	setSurfaceType(QWindow::OpenGLSurface);
 
 	qDebug() << "MyOpenGLWidget constructor";
+
+
+	glm::vec3 T(0.0f, 0.0f, 0.0f);
+	
+		glm::vec3 a(0.0f, 10.0f, 10.0f);
+		camera = new PagCamera(a, T, 110);
+		
+	
+
+
 }
 
 OpenGLWidget::~OpenGLWidget()
@@ -32,6 +64,33 @@ void OpenGLWidget::render(QPainter *painter)
 	Q_UNUSED(painter);
 }
 
+void  OpenGLWidget::prepareOpenGL()
+{
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL);
+
+
+	glPrimitiveRestartIndex(0xFFFFFFFF);
+	glEnable(GL_PRIMITIVE_RESTART);
+
+
+	glEnable(GL_PROGRAM_POINT_SIZE);
+	glEnable(GL_MULTISAMPLE);
+
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+
+
+
+	/*createLights();*/
+
+
+
+	createObjects();
+
+
+}
+
 void OpenGLWidget::initialize()
 {
 	qDebug() << "Inicializando OpenGL" << endl;
@@ -39,18 +98,32 @@ void OpenGLWidget::initialize()
 	qDebug() << "Fabricante    : " << (const char*)glGetString(GL_VENDOR);
 	qDebug() << "Version OpenGL: " << (const char*)glGetString(GL_VERSION);
 	qDebug() << "Version GLSL  : " << (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION);
+	
 
+
+	prepareOpenGL();
+	
+
+
+	//DESACOPLAR
 	shaderProgram = new PagShaderProgram();
 	shaderProgram->setGLFunctions(m_context);
-	shaderProgram->createShaderProgram("Resources/points-1");
+	shaderProgram->createShaderProgram("./Shaders/pointShader");//"Resources/points-1"
 
-	aspect = float(this->width()) / this->height();
+	glm::vec3 T(0.0f, 0.0f, 0.0f);
+
+	glm::vec3 a(0.0f, 10.0f, 10.0f);
+	camera = new PagCamera(a, T, 110);
+
+
+
+	/*aspect = float(this->width()) / this->height();
 	viewMatrix = glm::lookAt(
 		glm::vec3(5, 5, 5), 
 		glm::vec3(0, 0, 0), 
 		glm::vec3(0, 1, 0)
 	);
-	projMatrix = glm::perspective(95.0f, aspect, 1.0f, 100.0f);
+	projMatrix = glm::perspective(95.0f, aspect, 1.0f, 100.0f);*/
 }
 
 void OpenGLWidget::render()
@@ -58,23 +131,14 @@ void OpenGLWidget::render()
 	if (!m_device)
 		m_device = new QOpenGLPaintDevice;
 
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+	refreshCallback();
 
 	m_device->setSize(size() * devicePixelRatio());
 	m_device->setDevicePixelRatio(devicePixelRatio());
 
 	qDebug() << "Rendering";
-
-	GLfloat vertices[] = { -1.0, -1.0,  1.0,
-						   1.0, -1.0,  1.0,
-						   1.0,  1.0,  1.0,
-						  -1.0,  1.0,  1.0,
-						  -1.0, -1.0,  -1.0,
-						   1.0, -1.0,  -1.0,
-						   1.0,  1.0,  -1.0,
-						  -1.0,  1.0,  -1.0 };
-
-	GLuint indices[] = { 0,1,2,3,4,5,6,7 };
+	createObjects();
+	/*
 
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
@@ -100,14 +164,17 @@ void OpenGLWidget::render()
 
 	glBindVertexArray(vao);
 
-	glm::mat4 modelMatrix(1);
+	glm::mat4 modelMatrix(1);*/
 
-	shaderProgram->use();
+	
+
+
+	/*shaderProgram->use();
 	shaderProgram->setUniform("vColor", { 0.1, 0.5, 0.9 });
 	shaderProgram->setUniform("mModelViewProj", projMatrix * viewMatrix * modelMatrix);
 	shaderProgram->setUniform("pointSize", 100.0f);
 
-	glDrawElements(GL_POINTS, sizeof(indices) / sizeof(GLuint), GL_UNSIGNED_INT, NULL);
+	glDrawElements(GL_POINTS, sizeof(indices) / sizeof(GLuint), GL_UNSIGNED_INT, NULL);*/
 }
 
 void OpenGLWidget::resize(int w, int h)
@@ -147,6 +214,152 @@ void OpenGLWidget::exposeEvent(QExposeEvent *event)
 		renderNow();
 }
 
+
+
+void OpenGLWidget::typePaint()
+{
+	glDisable(GL_BLEND);
+	shaderProgram->use();
+	
+	paintObjects(*shaderProgram, 0);
+}
+
+
+
+
+
+void OpenGLWidget::createObjects()
+{
+	std::vector <glm::vec2> dataTxt;
+	
+
+	Pag3DGroup* ob;
+	ob = new Pag3DGroup();
+
+	
+
+
+
+	dataTxt = Metodos_especiales::lecturaFichero(dataTxt, "./Objects/peon.txt");
+	PagRevolutionObject* peon;
+	peon = new PagRevolutionObject(dataTxt, 2, 60);
+	ob->insertObject(peon);
+	objetos.push_back(*ob);
+	//GLfloat vertices[] = { -1.0, -1.0,  1.0,
+	//					   1.0, -1.0,  1.0,
+	//					   1.0,  1.0,  1.0,
+	//					  -1.0,  1.0,  1.0,
+	//					  -1.0, -1.0,  -1.0,
+	//					   1.0, -1.0,  -1.0,
+	//					   1.0,  1.0,  -1.0,
+	//					  -1.0,  1.0,  -1.0 };
+
+	//GLuint indices[] = { 0,1,2,3,4,5,6,7 };
+
+
+
+
+
+}
+
+
+
+
+void OpenGLWidget::paintObjects(PagShaderProgram &shader, int mode) {
+	switch (mode)
+	{
+	case 0://Modo puntos
+		for (unsigned int i = 0; i < objetos.size(); i++) {
+			objetos.at(i).DrawAsPoints(shader, objetos.at(i).getModelMatrix(), camera->getWorldToViewMatrix(),
+				camera->getWorldToProjecMatrix(width(), height()));
+		}
+		break;
+
+	case 1://Modo lineas
+		for (unsigned int i = 0; i < objetos.size(); i++) {
+			objetos.at(i).DrawAsLines(shader, glm::mat4(1), camera->getWorldToViewMatrix(),
+				camera->getWorldToProjecMatrix(width(), height()));
+		}
+
+
+		break;
+
+	case 2://Modo triangulos ver orden indices
+		for (unsigned int i = 0; i < objetos.size(); i++) {
+			objetos.at(i).DrawAsTriangles(shader, glm::mat4(1), camera->getWorldToViewMatrix(),
+				camera->getWorldToProjecMatrix(width(), height()), "triangles");
+		}
+
+		break;
+
+
+	case 3://Modo triangulos para shader magic
+		for (unsigned int i = 0; i < objetos.size(); i++) {
+			objetos.at(i).DrawAsTriangles(shader, glm::mat4(1), camera->getWorldToViewMatrix(),
+				camera->getWorldToProjecMatrix(width(), height()), "magic");
+		}
+
+
+		break;
+
+
+	case 4://Modo triangulos para shader luces y materiales
+		for (unsigned int i = 0; i < objetos.size(); i++) {
+			objetos.at(i).DrawAsTriangles(shader, objetos.at(i).getModelMatrix(), camera->getWorldToViewMatrix(),
+				camera->getWorldToProjecMatrix(width(), height()), "luces");
+		}
+
+		break;
+	case 5://Modo triangulos para shader luces y materiales
+		for (unsigned int i = 0; i < objetos.size(); i++) {
+			if (i == 0) {
+				//Render all opaque objects
+				glDepthMask(false); //disable z-testing
+
+			}
+			else {
+				//Render all transparent objects*
+				glDepthMask(true); //enable z-testing (for the next frame)
+
+			}
+
+			objetos.at(i).DrawAsTriangles(shader, objetos.at(i).getModelMatrix(), camera->getWorldToViewMatrix(),
+				camera->getWorldToProjecMatrix(width(), height()), "textures");
+
+
+
+		}
+
+		break;
+	case 6:
+		for (unsigned int i = 0; i < objetos.size(); i++) {
+			if (i == 0) {
+				//Render all opaque objects
+				glDepthMask(false); //disable z-testing
+
+			}
+			else {
+				//Render all transparent objects*
+				glDepthMask(true); //enable z-testing (for the next frame)
+
+			}
+			objetos.at(i).DrawFog(shader, objetos.at(i).getModelMatrix(), camera->getWorldToViewMatrix(),
+				camera->getWorldToProjecMatrix(width(), height()));
+		}
+
+		break;
+
+	default:
+		break;
+	}
+
+
+
+
+}
+
+
+
 void OpenGLWidget::renderNow()
 {
 	if (!isExposed())
@@ -160,9 +373,11 @@ void OpenGLWidget::renderNow()
 		m_context->create();
 
 		needsInitialize = true;
+		
 	}
-
+	
 	m_context->makeCurrent(this);
+
 
 	if (needsInitialize) {
 		initializeOpenGLFunctions();

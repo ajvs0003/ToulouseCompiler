@@ -4,7 +4,8 @@ enum PagRevObjParts : int {
 	PAG_BODY = 0,
 	PAG_TOP_FAN = 1,
 	PAG_BOTTOM_FAN = 2,
-	PAG_ALL_PARTS = 3
+	PAG_ALL_PARTS = 3,
+	test = 99,//Ha sido añadido para poder escribir el perfil de subdivision para meshlab
 };
 
 enum PagShaderDebugOption : int {
@@ -41,7 +42,29 @@ enum PagMaterialName : int {
 	PAG_ROCK_MAT = 11,
 	PAG_WOOD_MAT = 12
 };
-
+enum NameMaterial : int {
+	WOOD_LIGHT = 0,
+	WOOD_DARK = 1,
+	BLUE_DARK = 2,
+	MATERIAL_GLASS = 3,
+	MATERIAL_WALL = 4,
+};
+enum NameTexture : int {//para las texturas
+	PAWN = 0,
+	TABLE = 1,
+	TEXT = 2,
+	TEXT2 = 3,
+	TEXT3 = 4,
+	PLASTIC = 5,
+	PLASTIC1 = 6,
+	FCONDE = 7,
+	GLASS = 8,
+	JOY = 9,
+	BLACK = 10,
+	GRAY = 11,
+	COPYRIGHT = 12,
+	NCOPYRIGHT = 13,
+};
 #define PAG_PRIMITIVE_RESTART 0xFFFFFFFF
 #define PAG_TEXTURE_FOLDER (std::string) "Textures/"
 #define PAG_COVERS_FOLDER (std::string) "Covers/"

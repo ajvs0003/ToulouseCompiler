@@ -1,0 +1,5 @@
+LogFile de la practica_(tiempo ejecucion 15:02:20).
+---------------------------------- 
+15:02:20 [SUCCESSFUL] Leyendo fichero./Objects/peon.txt
+15:02:22 [SUCCESSFUL] Profile  accepted
+15:02:26 [SUCCESSFUL] Iniciating Vao

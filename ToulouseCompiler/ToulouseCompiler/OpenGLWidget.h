@@ -5,7 +5,9 @@
 
 #include "PagShaderProgram.h"
 #include "OpenGLFunctions.h"
-
+#include "Metodos_especiales.h"
+#include "Pag3DGroup.h"
+#include "PagCamera.h"
 class QPainter;
 class QOpenGLContext;
 class QOpenGLPaintDevice;
@@ -19,6 +21,11 @@ class OpenGLWidget : public QWindow, protected OpenGLFunctions
 {
 	Q_OBJECT
 public:
+	
+
+
+
+
 	explicit OpenGLWidget(QWindow *parent = 0);
 	~OpenGLWidget();
 
@@ -31,6 +38,16 @@ public:
 
 	void setAnimating(bool animating);
 
+	static OpenGLWidget *getInstance();
+
+	/**
+		* @brief  Esta función callback será llamada cada vez que el área de dibujo OpenGL deba ser redibujada.
+	*/
+	void refreshCallback();
+
+	//La misión de este método es preparar la escena para su visualización
+	void prepareOpenGL();
+
 public slots:
 	void renderLater();
 	void renderNow();
@@ -41,6 +58,9 @@ protected:
 	void exposeEvent(QExposeEvent *event) override;
 
 private:
+
+	static OpenGLWidget *instance;
+
 	bool m_animating;
 
 	QOpenGLContext *m_context;
@@ -53,4 +73,34 @@ private:
 	GLuint vbo;
 	GLuint ibo;
 	float aspect;
+
+
+	//CAMERA SETTINGS
+	PagCamera *camera;
+	glm::mat4 view;
+	glm::mat4 mvp;
+
+
+	void typePaint();
+
+
+
+	//TESTING
+	vector< Pag3DGroup> objetos;
+
+	PagVAO dibujoPrueba;
+
+
+	/**
+		* @brief metodo que encapsula la creacion de los objetos de la escena
+	*/
+	void createObjects();
+
+
+	/**
+	* @brief  Esta función gestiona el tipo de pintado que decirle al group que haga
+	* @param  shader a usar
+	* @param mode ,para diferenciar los shaders
+*/
+	void paintObjects(PagShaderProgram &shader, int mode);
 };

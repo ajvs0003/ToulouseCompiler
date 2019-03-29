@@ -2,7 +2,7 @@
 
 #include <glm.hpp>
 #include <string>
-
+#include "Log.h"
 #include "OpenGLFunctions.h"
 
 class PagShaderProgram
