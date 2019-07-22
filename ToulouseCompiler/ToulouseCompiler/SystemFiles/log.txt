@@ -1,4 +1,5 @@
-LogFile de la practica_(tiempo ejecucion 16:50:17).
+LogFile de la practica_(tiempo ejecucion 09:28:11).
 ---------------------------------- 
-16:50:17 [SUCCESSFUL] Leyendo fichero./Objects/peon.txt
-16:50:21 Refresh callback called by Renderer
+09:28:11 [SUCCESSFUL] Leyendo fichero./Objects/peon.txt
+09:28:11 Refresh callback called by Renderer
+09:28:11 Refresh callback called by Renderer

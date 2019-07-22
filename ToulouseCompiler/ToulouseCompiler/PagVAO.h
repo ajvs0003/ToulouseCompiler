@@ -16,7 +16,9 @@ private:
 	GLuint ID_ibo0;
 	GLuint ID_ibo1;
 	GLuint ID_ibo2;
-	QOpenGLFunctions* gl;
+
+	OpenGLFunctions* gl; 
+
 public:
 	std::vector<PagPosNorm> PositionsAndNormals;//posiciones y normales
 	std::vector<glm::vec2> TextureCoords;//texturas
@@ -32,10 +34,13 @@ public:
 	void iniciar(std::vector<PagPosNorm> PositionsAndNormals, std::vector<glm::vec2>  TextureCoords, std::vector<glm::vec3> Tangents,
 		std::vector<GLuint> Indices4PointCloud, std::vector<GLuint> Indices4Lines, std::vector<GLuint> Indices4TrianglesMesh);
 
-	void generateVao() {
-		glGenVertexArrays(1, &vao);//generacion del id del vao
+
+	GLuint getVao() {
+		return vao;
 	}
 
+
+	void setGLFunctions(OpenGLFunctions *_gl);
 
 	/**
 		* @brief solo se crea el indice del vao a usar

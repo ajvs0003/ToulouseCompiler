@@ -128,7 +128,7 @@ void OpenGLWidget::render()
 	qDebug() << "Rendering";
 	PagVAO ob;
 
-	
+	ob.setGLFunctions(this);
 	
 	GLfloat vertices[] = { -1.0, -1.0,  1.0,
 						   1.0, -1.0,  1.0,
@@ -141,10 +141,10 @@ void OpenGLWidget::render()
 
 	GLuint indices[] = { 0,1,2,3,4,5,6,7 };
 
-	ob.generateVao();
 
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
+
+	/*glGenVertexArrays(1, &vao);*/
+	glBindVertexArray(ob.getVao());
 
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);

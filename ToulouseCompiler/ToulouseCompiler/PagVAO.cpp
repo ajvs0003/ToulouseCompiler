@@ -11,9 +11,22 @@
 
 #include <gtc/matrix_transform.hpp>
 const int salto = 0xFFFFFFFF;
+
+
+
+
+
+
+void PagVAO::setGLFunctions(OpenGLFunctions * _gl)
+{
+	gl = _gl;
+	gl->glGenVertexArrays(1, &vao);//generacion del id del vao
+}
+
 PagVAO::PagVAO()
 {
-
+	
+		
 
 	
 	
