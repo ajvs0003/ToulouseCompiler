@@ -110,7 +110,7 @@ void PagLightSource::aplicateLuz(PagShaderProgram &adsShader,glm::mat4 View, vec
 	switch (typeLight) {
 
 	case 0:
-		adsShader.activateSubrutines(GL_FRAGMENT_SHADER, 1, &subrutinas.at(typeLight));
+		/*adsShader.activateSubrutines(GL_FRAGMENT_SHADER, 1, &subrutinas.at(typeLight));*/
 		
 		adsShader.setUniform("Ia", getIa());
 
@@ -121,7 +121,7 @@ void PagLightSource::aplicateLuz(PagShaderProgram &adsShader,glm::mat4 View, vec
 		
 		posicionN = glm::vec3(View*(glm::vec4(lightPosition, 1.0f)));
 
-		adsShader.activateSubrutines(GL_FRAGMENT_SHADER, 1, &subrutinas.at(typeLight));
+		/*adsShader.activateSubrutines(GL_FRAGMENT_SHADER, 1, &subrutinas.at(typeLight));*/
 		adsShader.setUniform("Id", getId());
 		adsShader.setUniform("Is", getIs());
 		adsShader.setUniform("lightPosition", posicionN);
@@ -133,7 +133,7 @@ void PagLightSource::aplicateLuz(PagShaderProgram &adsShader,glm::mat4 View, vec
 		
 		directionN = glm::vec3(View*(glm::vec4(getLightDirection(), 0.0f)));
 		
-		adsShader.activateSubrutines(GL_FRAGMENT_SHADER, 1, &subrutinas.at(typeLight));
+		/*adsShader.activateSubrutines(GL_FRAGMENT_SHADER, 1, &subrutinas.at(typeLight));*/
 		
 		adsShader.setUniform("Id", getId());
 		adsShader.setUniform("Is", getIs());
@@ -147,7 +147,7 @@ void PagLightSource::aplicateLuz(PagShaderProgram &adsShader,glm::mat4 View, vec
 		posicionN = glm::vec3(View*(glm::vec4(lightPosition, 1.0f)));
 		directionN = glm::vec3(View*(glm::vec4(getLightDirection(), 0.0f)));
 		
-		adsShader.activateSubrutines(GL_FRAGMENT_SHADER, 1, &subrutinas.at(typeLight));
+		/*adsShader.activateSubrutines(GL_FRAGMENT_SHADER, 1, &subrutinas.at(typeLight));*/
 		
 		adsShader.setUniform("Id", getId());
 		adsShader.setUniform("Is", getIs());

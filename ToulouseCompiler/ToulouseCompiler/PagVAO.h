@@ -34,18 +34,20 @@ public:
 	void iniciar(std::vector<PagPosNorm> PositionsAndNormals, std::vector<glm::vec2>  TextureCoords, std::vector<glm::vec3> Tangents,
 		std::vector<GLuint> Indices4PointCloud, std::vector<GLuint> Indices4Lines, std::vector<GLuint> Indices4TrianglesMesh);
 
-
+	//TEMPORAL
 	GLuint getVao() {
 		return vao;
 	}
 
 
-	void setGLFunctions(OpenGLFunctions *_gl);
 
 	/**
 		* @brief solo se crea el indice del vao a usar
+		* @ param OpenGLFunctions
 	*/
 	PagVAO();
+
+	PagVAO(OpenGLFunctions *_gl);
 	~PagVAO();
 	
 	/**

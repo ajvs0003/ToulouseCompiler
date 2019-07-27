@@ -30,12 +30,13 @@ private:
 	Part planeData;
 	PagVAO* VaoPlane;
 
+	OpenGLFunctions* gl;
 
 
 
 public:
 	//el constructor que se encarga de todo para el plano
-	PagPlane(unsigned int tam, unsigned int tam2, unsigned int divisiones);
+	PagPlane(OpenGLFunctions *_gl,unsigned int tam, unsigned int tam2, unsigned int divisiones);
 	~PagPlane();
 
 	/**

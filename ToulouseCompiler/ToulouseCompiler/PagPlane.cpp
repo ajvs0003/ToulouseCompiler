@@ -4,8 +4,10 @@
 #include <gtx\euler_angles.hpp>
 
 
-PagPlane::PagPlane(unsigned int tam, unsigned int tam2, unsigned int divisiones)
+PagPlane::PagPlane(OpenGLFunctions *_gl,unsigned int tam, unsigned int tam2, unsigned int divisiones)
 {
+	gl = _gl;
+
 	 PlaneTam=tam;
 	 PlaneTam2=tam2;
 	 PlaneDivisiones= divisiones;
@@ -92,7 +94,7 @@ PagPlane::PagPlane(unsigned int tam, unsigned int tam2, unsigned int divisiones)
 	
 
 
-	VaoPlane = new PagVAO();
+	VaoPlane = new PagVAO(gl);
 	VaoPlane->iniciar(planeData.PositionsAndNormals, planeData.TextureCoords, planeData.Tangents,
 		planeData.Indices4PointCloud, planeData.Indices4Lines, planeData.Indices4TrianglesMesh);
 
@@ -106,7 +108,7 @@ PagPlane::~PagPlane()
 
 void PagPlane::Aplicate(PagShaderProgram &shader, bool textures) {
 	
-	
+	/*
 	material->aplicateMaterial(shader, textures);
 	
 
@@ -133,7 +135,7 @@ void PagPlane::Aplicate(PagShaderProgram &shader, bool textures) {
 	Log::getInstancia()->error("pagrevolution:aplicate texture BotFace");
 
 
-
+*/
 
 
 	
@@ -145,20 +147,20 @@ void PagPlane::Aplicate(PagShaderProgram &shader, bool textures) {
 
 void PagPlane::setMat(NameMaterial name)
 {
-	nameMaterial = name;
+	/*nameMaterial = name;
 	PagMaterial* aux;
 	aux = MaterialLibrary::getInstance()->find(nameMaterial);
 	if (aux == nullptr)Log::getInstancia()->error("pagplane: this material dont exists");
 	else {
 		material = aux;
 
-	}
+	}*/
 
 }
 
 void PagPlane::setTex(NameTexture nuevo, std::string type)
 {
-	if(type != "") {
+	/*if(type != "") {
 
 		PagTexture* aux;
 		aux = TextureLibrary::getInstance()->find(nuevo);
@@ -172,7 +174,7 @@ void PagPlane::setTex(NameTexture nuevo, std::string type)
 	}
 	else {
 	Log::getInstancia()->error("not type texture choosed");
-	}
+	}*/
 
 
 

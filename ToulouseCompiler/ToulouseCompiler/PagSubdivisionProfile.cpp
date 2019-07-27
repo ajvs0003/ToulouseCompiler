@@ -85,8 +85,9 @@ bool PagSubdivisionProfile::CheckPoints(){
 
 }
 
-PagSubdivisionProfile::PagSubdivisionProfile(std::vector<glm::vec2> points)
+PagSubdivisionProfile::PagSubdivisionProfile( std::vector<glm::vec2> points)
 {
+	
 	this->topFace = false;
 	this->bottomFace = false;
 	this->Body = false;

@@ -64,6 +64,18 @@
     <Filter Include="Source Files\Shaders">
       <UniqueIdentifier>{be9ef89d-c001-4a35-b921-52ca593b204b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Camera">
+      <UniqueIdentifier>{de413971-99ed-45ac-86ee-49dfc5f59034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Ligths">
+      <UniqueIdentifier>{8596091c-5c1c-46b8-af4e-b6db589e49e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Camera">
+      <UniqueIdentifier>{81852c78-e420-48c3-beba-79700d71ece7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Ligths">
+      <UniqueIdentifier>{21ab4096-dabe-4463-855e-c5cc20c9d12a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -97,7 +109,13 @@
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="PagCamera.cpp">
-      <Filter>Source Files\Renderer</Filter>
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="PagLightSource.cpp">
+      <Filter>Source Files\Ligths</Filter>
+    </ClCompile>
+    <ClCompile Include="PagPlane.cpp">
+      <Filter>Source Files\Geometry</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,8 +170,14 @@
     <ClInclude Include="PagShaderProgram.h">
       <Filter>Header Files\Shaders</Filter>
     </ClInclude>
+    <ClInclude Include="PagLightSource.h">
+      <Filter>Header Files\Ligths</Filter>
+    </ClInclude>
     <ClInclude Include="PagCamera.h">
-      <Filter>Header Files\Renderer</Filter>
+      <Filter>Header Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="PagPlane.h">
+      <Filter>Header Files\Geometry</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

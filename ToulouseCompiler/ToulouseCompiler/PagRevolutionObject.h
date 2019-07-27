@@ -29,11 +29,11 @@ struct part {
 class PagRevolutionObject:public Pag3DElement{
 
 private:
-	/*std::map <PagRevObjParts, PagMaterial* > material;
+	std::map <PagRevObjParts, PagMaterial* > material;
 
 	std::map<string,PagTexture*> textureTopFace;
 	std::map<string, PagTexture*> textureBotFace;
-	std::map<string, PagTexture*> textureBody;*/
+	std::map<string, PagTexture*> textureBody;
 
 	NameMaterial MatBody;
 	NameMaterial MatTopFace;
@@ -54,7 +54,7 @@ private:
 	part Body;
 	part BotFace;
 
-	
+	OpenGLFunctions* gl;
 
 	/**
 		* @brief  Esta Metodo calcula el vector de los dos puntos y la normal
@@ -153,7 +153,7 @@ public:
 
 	
 
-	PagRevolutionObject(std::vector<glm::vec2> points, unsigned int subdivisions, unsigned int slices);
+	PagRevolutionObject(OpenGLFunctions *_gl,std::vector<glm::vec2> points, unsigned int subdivisions, unsigned int slices);
 
 	~PagRevolutionObject();
 

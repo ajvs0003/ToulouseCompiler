@@ -36,8 +36,7 @@ void PagCamera::updateCameraAxis()
 	v = glm::normalize(glm::cross(n, u));
 
 }
-PagCamera::PagCamera( glm::vec3 position, glm::vec3 position2, float fov):
-	cameralookAt(0.0f, 0.0f, 0.0f){
+PagCamera::PagCamera( glm::vec3 position, glm::vec3 position2, float fov){
 
 	this->cameraPos= position;
 	this->FoV = fov;

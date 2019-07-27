@@ -486,7 +486,10 @@ void PagRevolutionObject::Revolution(PagRevObjParts part, unsigned int slices) {
 
 
 
-PagRevolutionObject::PagRevolutionObject(std::vector<glm::vec2> points, unsigned int subdivisions, unsigned int slices) {
+PagRevolutionObject::PagRevolutionObject(OpenGLFunctions *_gl,std::vector<glm::vec2> points, unsigned int subdivisions, unsigned int slices) {
+
+	gl = _gl;
+
 	modelMatrix = glm::mat4(1);
 
 
@@ -509,7 +512,7 @@ PagRevolutionObject::PagRevolutionObject(std::vector<glm::vec2> points, unsigned
 		//revolucionar y crear vaos,ibos y mas cosas
 		if (has(PAG_BOTTOM_FAN)) {
 			this->Revolution(PAG_BOTTOM_FAN, slices);
-			this->VaoBotFace = new PagVAO();
+			this->VaoBotFace = new PagVAO(gl);
 			this->VaoBotFace->iniciar(BotFace.PositionsAndNormals,BotFace.TextureCoords,BotFace.Tangents, 
 				BotFace.Indices4PointCloud, BotFace.Indices4Lines, BotFace.Indices4TrianglesMesh);
 
@@ -526,7 +529,7 @@ PagRevolutionObject::PagRevolutionObject(std::vector<glm::vec2> points, unsigned
 			
 
 			this->Revolution(PAG_BODY, slices);
-			/*this->VaoBody = new PagVAO();*/
+			this->VaoBody = new PagVAO(gl);
 			this->VaoBody->iniciar(Body.PositionsAndNormals, Body.TextureCoords, Body.Tangents,
 				Body.Indices4PointCloud, Body.Indices4Lines, Body.Indices4TrianglesMesh);
 
@@ -539,7 +542,7 @@ PagRevolutionObject::PagRevolutionObject(std::vector<glm::vec2> points, unsigned
 		if (has(PAG_TOP_FAN)) {
 
 			this->Revolution(PAG_TOP_FAN, slices);
-			/*this->VaoTopFace = new PagVAO();*/
+			this->VaoTopFace = new PagVAO(gl);
 			this->VaoTopFace->iniciar(TopFace.PositionsAndNormals, TopFace.TextureCoords, TopFace.Tangents,
 				TopFace.Indices4PointCloud, TopFace.Indices4Lines, TopFace.Indices4TrianglesMesh);
 
@@ -663,8 +666,8 @@ unsigned int PagRevolutionObject::getNPoints(PagRevObjParts part)
 }
 
 
-//void PagRevolutionObject::setMatBody(NameMaterial nuevo)
-//{
+void PagRevolutionObject::setMatBody(NameMaterial nuevo)
+{
 //	MatBody = nuevo;
 //	PagMaterial* aux;
 //	aux = MaterialLibrary::getInstance()->find(nuevo);
@@ -676,10 +679,10 @@ unsigned int PagRevolutionObject::getNPoints(PagRevObjParts part)
 //
 //	}
 //
-//}
+}
 //
-//void PagRevolutionObject::setMatTopFace(NameMaterial nuevo)
-//{
+void PagRevolutionObject::setMatTopFace(NameMaterial nuevo)
+{
 //	MatTopFace = nuevo;
 //	PagMaterial* aux;
 //	aux = MaterialLibrary::getInstance()->find(nuevo);
@@ -691,10 +694,12 @@ unsigned int PagRevolutionObject::getNPoints(PagRevObjParts part)
 //
 //	}
 //
-//}
-//
-//void PagRevolutionObject::setMatBotFace(NameMaterial nuevo)
-//{
+}
+
+
+
+void PagRevolutionObject::setMatBotFace(NameMaterial nuevo)
+{
 //	MatBotFace = nuevo;
 //	PagMaterial* aux;
 //	aux = MaterialLibrary::getInstance()->find(nuevo);
@@ -706,9 +711,10 @@ unsigned int PagRevolutionObject::getNPoints(PagRevObjParts part)
 //
 //	}
 //
-//}
-//
-//void PagRevolutionObject::setTexBody(NameTexture nuevo, std::string type) {
+}
+
+
+void PagRevolutionObject::setTexBody(NameTexture nuevo, std::string type) {
 //
 //
 //	if (type != "") {
@@ -724,9 +730,9 @@ unsigned int PagRevolutionObject::getNPoints(PagRevObjParts part)
 //	}else {
 //		Log::getInstancia()->error("not type texture choosed");
 //	}
-//}
-//
-//void PagRevolutionObject::setTexTopFace(NameTexture nuevo, std::string type) {
+}
+
+void PagRevolutionObject::setTexTopFace(NameTexture nuevo, std::string type) {
 //
 //
 //
@@ -744,9 +750,9 @@ unsigned int PagRevolutionObject::getNPoints(PagRevObjParts part)
 //	}
 //
 //
-//}
-//
-//void PagRevolutionObject::setTexBotFace(NameTexture nuevo, std::string type) {
+}
+
+void PagRevolutionObject::setTexBotFace(NameTexture nuevo, std::string type) {
 //
 //	if (type != "") {
 //
@@ -763,103 +769,101 @@ unsigned int PagRevolutionObject::getNPoints(PagRevObjParts part)
 //	else {
 //		Log::getInstancia()->error("not type texture choosed");
 //	}
-//}
-//
-//
+}
 
 
 void PagRevolutionObject::Aplicate(PagShaderProgram &shader,PagRevObjParts part,bool textures) {
-
-	/*if ( part== PAG_BOTTOM_FAN) {
-		std::map<PagRevObjParts, PagMaterial* >::iterator it;
-		it = material.find(PAG_BOTTOM_FAN);
-		if (it != material.end())
-			 it->second->aplicateMaterial(shader, textures);
-		else
-			Log::getInstancia()->error("pagrevolution:aplicate material BotFace");
-			
-		if (textures) {
-			
-			std::map<string, PagTexture*>::iterator texture;
-			std::map<string, PagTexture*>::iterator bumpMapping;
-			std::map<string, PagTexture*>::iterator displacement;
-
-			texture = textureBotFace.find("texture");
-			bumpMapping = textureBotFace.find("bumpMapping");
-			displacement = textureBotFace.find("displacement");
-
-			if (texture != textureBotFace.end())texture->second->aplicateTexture(shader,"texture");
-			if (bumpMapping != textureBotFace.end())bumpMapping->second->aplicateTexture(shader, "bumpMapping");
-			if (displacement != textureBotFace.end())displacement->second->aplicateTexture(shader, "displacement");
-			
-				
-				
-				
-				
-			}else
-				Log::getInstancia()->error("pagrevolution:aplicate texture BotFace");
-
-		}
-			
-
-	if ( part == PAG_TOP_FAN) {
-		std::map<PagRevObjParts, PagMaterial*>::iterator it;
-		it = material.find(PAG_TOP_FAN);
-		if (it != material.end())
-			 it->second->aplicateMaterial(shader, textures);
-		else
-			Log::getInstancia()->error("pagrevolution:aplicate material TopFace");
-		
-		if (textures) {
-			std::map<string, PagTexture*>::iterator texture;
-			std::map<string, PagTexture*>::iterator bumpMapping;
-			std::map<string, PagTexture*>::iterator displacement;
-
-			texture = textureTopFace.find("texture");
-			bumpMapping = textureTopFace.find("bumpMapping");
-			displacement = textureTopFace.find("displacement");
-
-			if (texture != textureTopFace.end())texture->second->aplicateTexture(shader, "texture");
-			if (bumpMapping != textureTopFace.end())bumpMapping->second->aplicateTexture(shader, "bumpMapping");
-			if (displacement != textureTopFace.end())displacement->second->aplicateTexture(shader, "displacement");
-
-		}
-		else
-			Log::getInstancia()->error("pagrevolution:aplicate texture BotFace");
-
-		}
-
-	
-	if ( part == PAG_BODY) {
-		std::map<PagRevObjParts, PagMaterial*>::iterator it;
-		it = material.find(PAG_BODY);
-		if (it != material.end())
-			 it->second->aplicateMaterial(shader, textures);
-		else
-			Log::getInstancia()->error("pagrevolution:aplicate material Body");
-		
-		if (textures) {
-			std::map<string, PagTexture*>::iterator texture;
-			std::map<string, PagTexture*>::iterator bumpMapping;
-			std::map<string, PagTexture*>::iterator displacement;
-
-			texture = textureBody.find("texture");
-			bumpMapping = textureBody.find("bumpMapping");
-			displacement = textureBody.find("displacement");
-
-			if (texture != textureBody.end())texture->second->aplicateTexture(shader, "texture");
-			if (bumpMapping != textureBody.end())bumpMapping->second->aplicateTexture(shader, "bumpMapping");
-			if (displacement != textureBody.end())displacement->second->aplicateTexture(shader, "displacement");
-
-		}
-
-	}
-*/
-
-
-
-
-	
+//
+//	if ( part== PAG_BOTTOM_FAN) {
+//		std::map<PagRevObjParts, PagMaterial* >::iterator it;
+//		it = material.find(PAG_BOTTOM_FAN);
+//		if (it != material.end())
+//			 it->second->aplicateMaterial(shader, textures);
+//		else
+//			Log::getInstancia()->error("pagrevolution:aplicate material BotFace");
+//			
+//		if (textures) {
+//			
+//			std::map<string, PagTexture*>::iterator texture;
+//			std::map<string, PagTexture*>::iterator bumpMapping;
+//			std::map<string, PagTexture*>::iterator displacement;
+//
+//			texture = textureBotFace.find("texture");
+//			bumpMapping = textureBotFace.find("bumpMapping");
+//			displacement = textureBotFace.find("displacement");
+//
+//			if (texture != textureBotFace.end())texture->second->aplicateTexture(shader,"texture");
+//			if (bumpMapping != textureBotFace.end())bumpMapping->second->aplicateTexture(shader, "bumpMapping");
+//			if (displacement != textureBotFace.end())displacement->second->aplicateTexture(shader, "displacement");
+//			
+//				
+//				
+//				
+//				
+//			}else
+//				Log::getInstancia()->error("pagrevolution:aplicate texture BotFace");
+//
+//		}
+//			
+//
+//	if ( part == PAG_TOP_FAN) {
+//		std::map<PagRevObjParts, PagMaterial*>::iterator it;
+//		it = material.find(PAG_TOP_FAN);
+//		if (it != material.end())
+//			 it->second->aplicateMaterial(shader, textures);
+//		else
+//			Log::getInstancia()->error("pagrevolution:aplicate material TopFace");
+//		
+//		if (textures) {
+//			std::map<string, PagTexture*>::iterator texture;
+//			std::map<string, PagTexture*>::iterator bumpMapping;
+//			std::map<string, PagTexture*>::iterator displacement;
+//
+//			texture = textureTopFace.find("texture");
+//			bumpMapping = textureTopFace.find("bumpMapping");
+//			displacement = textureTopFace.find("displacement");
+//
+//			if (texture != textureTopFace.end())texture->second->aplicateTexture(shader, "texture");
+//			if (bumpMapping != textureTopFace.end())bumpMapping->second->aplicateTexture(shader, "bumpMapping");
+//			if (displacement != textureTopFace.end())displacement->second->aplicateTexture(shader, "displacement");
+//
+//		}
+//		else
+//			Log::getInstancia()->error("pagrevolution:aplicate texture BotFace");
+//
+//		}
+//
+//	
+//	if ( part == PAG_BODY) {
+//		std::map<PagRevObjParts, PagMaterial*>::iterator it;
+//		it = material.find(PAG_BODY);
+//		if (it != material.end())
+//			 it->second->aplicateMaterial(shader, textures);
+//		else
+//			Log::getInstancia()->error("pagrevolution:aplicate material Body");
+//		
+//		if (textures) {
+//			std::map<string, PagTexture*>::iterator texture;
+//			std::map<string, PagTexture*>::iterator bumpMapping;
+//			std::map<string, PagTexture*>::iterator displacement;
+//
+//			texture = textureBody.find("texture");
+//			bumpMapping = textureBody.find("bumpMapping");
+//			displacement = textureBody.find("displacement");
+//
+//			if (texture != textureBody.end())texture->second->aplicateTexture(shader, "texture");
+//			if (bumpMapping != textureBody.end())bumpMapping->second->aplicateTexture(shader, "bumpMapping");
+//			if (displacement != textureBody.end())displacement->second->aplicateTexture(shader, "displacement");
+//
+//		}
+//
+//	}
+//
+//
+//
+//
+//
+//	
 }
 
 
@@ -868,7 +872,7 @@ void PagRevolutionObject::Aplicate(PagShaderProgram &shader,PagRevObjParts part,
 void PagRevolutionObject::DrawAsPoints(PagShaderProgram &shader, glm::mat4 model, glm::mat4 view, glm::mat4 projection)
 {
 	//// - Activamos el shader program que se va a usar.
-	//shader.use();
+	/*shader.use();*/
 	// - Asignamos los parámetros de tipo uniform del shader program.
 	// Cada shader program tiene su propio conjunto de parámetros.
 	shader.setUniform("pointSize", 7.0f);
@@ -877,7 +881,7 @@ void PagRevolutionObject::DrawAsPoints(PagShaderProgram &shader, glm::mat4 model
 
 	shader.setUniform("mModelViewProj", projection*view*matriz);
 
-
+	cout << "Ha llegado a la parte de pintar en rtevolution" << endl;
 
 
 
@@ -937,6 +941,7 @@ void PagRevolutionObject::DrawAsTriangles(PagShaderProgram &shader, glm::mat4 mo
 
 	}
 	else {
+
 
 		glm::mat4 matriz = this->modelMatrix * model;
 		//mModelViewProj

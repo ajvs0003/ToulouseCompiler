@@ -14,7 +14,7 @@ PagShaderProgram::PagShaderProgram()
 
 PagShaderProgram::~PagShaderProgram()
 {
-	gl->glDeleteProgram(handler);
+	/*gl->glDeleteProgram(handler);*/
 	linked = false;
 	logString = "";
 }
@@ -69,6 +69,9 @@ GLuint PagShaderProgram::createShaderProgram(const std::string& filename)
 			logString.assign(cLogString);
 
 			delete[] cLogString;
+
+
+			//aqui detectamos los posibles errores del shader
 			std::cout << "Cannot link shader " << filename << std::endl
 				<< logString << std::endl;
 		}
@@ -93,7 +96,7 @@ bool PagShaderProgram::use()
 	}
 	else 
 	{
-		std::cout << "Cannot use shader program";
+		std::cout << "Cannot use shader program"<<endl;
 		return false;
 	}
 }

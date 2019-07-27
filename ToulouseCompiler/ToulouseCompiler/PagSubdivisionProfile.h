@@ -22,7 +22,7 @@ private:
 	*/
 	bool line(std::vector<glm::vec2> points);
 
-
+	
 
 
 public:

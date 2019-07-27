@@ -33,6 +33,9 @@ public:
 	 */
 	GLuint createShaderProgram(const std::string& filename);
 
+	GLuint getHandler() {
+		return handler;
+	}
 	/**
 	 * Activa el shader program
 	 */

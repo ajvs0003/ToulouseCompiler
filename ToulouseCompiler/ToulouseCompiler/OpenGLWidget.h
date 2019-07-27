@@ -8,6 +8,9 @@
 #include "Metodos_especiales.h"
 #include "Pag3DGroup.h"
 #include "PagCamera.h"
+#include "PagLightSource.h"
+
+
 class QPainter;
 class QOpenGLContext;
 class QOpenGLPaintDevice;
@@ -21,15 +24,13 @@ class OpenGLWidget : public QWindow, protected OpenGLFunctions
 {
 	Q_OBJECT
 public:
-	
-
-
 
 
 	explicit OpenGLWidget(QWindow *parent = 0);
 	~OpenGLWidget();
 
 	virtual void render(QPainter *painter);
+
 	virtual void render();
 
 	void resize(int w, int h);
@@ -58,21 +59,51 @@ protected:
 	void exposeEvent(QExposeEvent *event) override;
 
 private:
+
+
+	//QT DATA
+
 	bool needsInitialize = false;
 	static OpenGLWidget *instance;
 
 	bool m_animating;
-
 	QOpenGLContext *m_context;
 	QOpenGLPaintDevice *m_device;
 
-	PagShaderProgram* shaderProgram;
+
+	//OpenGL DATA
+	
+	
 	glm::mat4 viewMatrix, projMatrix;
 
 	GLuint vao;
 	GLuint vbo;
 	GLuint ibo;
 	float aspect;
+
+	//LIGHTS
+	/*vector< PagLightSource> luces;*/
+
+
+	//REVOLUTION OBJECTS(GRAPH SCENE)
+	vector< Pag3DGroup> objetos;
+	vector< PagLightSource> luces;
+
+
+
+	//SHADERS
+	// - Shaders program that we will use for paint the geometry
+
+	PagShaderProgram shaderProgram ;
+
+	PagShaderProgram pointShader;
+	PagShaderProgram TriangleShader;
+	PagShaderProgram WireShader;
+	PagShaderProgram magicShader;
+	PagShaderProgram adsShader;
+	PagShaderProgram textureShader;
+	PagShaderProgram bumpMapping;
+	PagShaderProgram fogShader;
 
 
 	//CAMERA SETTINGS
@@ -81,15 +112,40 @@ private:
 	glm::mat4 mvp;
 
 
-	void typePaint();
+
+	//MANAGEMENT FOR INPUT KEYS
+	int cont = 0;
+	int fog = 0;
+	string _typePaint;
+
+
+	bool modeTrial = true;
+
+	int typeTrial = 0;
+
+	bool lightsOn = false;
+
+	
 
 
 
 	//TESTING
-	vector< Pag3DGroup> objetos;
+	
 
 	PagVAO dibujoPrueba;
+	
+	string rutaShaderUsuario;
 
+
+	//PRIVATE METHODS
+
+
+
+	void typePaint(string type);
+	
+	void chargeShader();
+
+	
 
 	/**
 		* @brief metodo que encapsula la creacion de los objetos de la escena

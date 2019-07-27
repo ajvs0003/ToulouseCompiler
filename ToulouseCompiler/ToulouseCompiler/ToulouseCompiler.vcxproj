@@ -60,7 +60,7 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -91,7 +91,7 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -119,6 +119,8 @@
     <ClCompile Include="OpenGLWidget.cpp" />
     <ClCompile Include="Pag3DGroup.cpp" />
     <ClCompile Include="PagCamera.cpp" />
+    <ClCompile Include="PagLightSource.cpp" />
+    <ClCompile Include="PagPlane.cpp" />
     <ClCompile Include="PagRevolutionObject.cpp" />
     <ClCompile Include="PagShaderProgram.cpp" />
     <ClCompile Include="PagSubdivisionProfile.cpp" />
@@ -142,6 +144,8 @@
     <ClInclude Include="Pag3DGroup.h" />
     <ClInclude Include="PagCamera.h" />
     <ClInclude Include="PagEnumerations.h" />
+    <ClInclude Include="PagLightSource.h" />
+    <ClInclude Include="PagPlane.h" />
     <ClInclude Include="PagRevolutionObject.h" />
     <ClInclude Include="PagShaderProgram.h" />
     <ClInclude Include="PagStructures.h" />
