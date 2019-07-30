@@ -130,9 +130,9 @@ void OpenGLWidget::initialize()
 
 
 
-	glm::vec3 look(35.0f, 0.0f, -40.0f);
+	glm::vec3 look(10.0f, 0.0f, -20.0f);
 
-	glm::vec3 pos(25.0f, 20.f, 50.0f);
+	glm::vec3 pos(0.0f, 20.f, 50.0f);
 	camera = new PagCamera(pos, look, 90);
 
 	prepareOpenGL();

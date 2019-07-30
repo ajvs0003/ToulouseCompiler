@@ -113,6 +113,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CodeEditor.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Metodos_especiales.cpp" />
@@ -137,6 +138,10 @@
     <QtRcc Include="ToulouseCompiler.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="CodeEditor.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets;.\%userprofile%\Desktop\glwrappers\glm-0.9.9.0\glm\glm</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets;.\%userprofile%\Desktop\glwrappers\glm-0.9.9.0\glm\glm</IncludePath>
+    </QtMoc>
     <ClInclude Include="Log.h" />
     <ClInclude Include="Metodos_especiales.h" />
     <ClInclude Include="OpenGLFunctions.h" />
