@@ -21,13 +21,17 @@ private:
 	//Pointer to the widget for code editor
 	QStackedWidget* editor;
 
+
+	QPlainTextEdit* OutPut;
+
+
 	int index = 0;
 
 
 
 
 	void configuration_changePage();
-
+	void configuration_OutPut();
 
 
 private slots:

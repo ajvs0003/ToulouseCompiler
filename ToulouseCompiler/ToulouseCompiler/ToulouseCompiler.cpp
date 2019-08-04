@@ -12,13 +12,16 @@ ToulouseCompiler::ToulouseCompiler(QWidget *parent)
 
 
 	this->configuration_changePage();
+	this->configuration_OutPut();
+
+
 
 
 	//I take the stakedWidget and assign to a pointer for can manage later all the stuff that i will need
 	editor = ui.stackedWidget;
 	editor->setCurrentIndex(index);
 	
-
+	
 
 
 
@@ -29,11 +32,16 @@ ToulouseCompiler::ToulouseCompiler(QWidget *parent)
 	format.setVersion(4, 5);
 
 	
-
-	/*CodeEditor *editor=new CodeEditor(ui.VertexShader);*/
-
+	//CodeEditor *editor=new CodeEditor(ui.VertexShader);
+	//editor->setGeometry(0, 0, 541, 587);
+	//editor->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	CodeEditor *editor = new CodeEditor();
 	
-	
+	ui.vertexLayout->addWidget(editor);
+	editor->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+
+
 
 	OpenGLWidget* openGLWindow = new OpenGLWidget();
 	openGLWindow->setFormat(format);
@@ -70,4 +78,9 @@ void ToulouseCompiler::configuration_changePage()
 
 	
 	changePage->setText("Fragment Shader");
+}
+
+void ToulouseCompiler::configuration_OutPut()
+{
+	OutPut = ui.OutPut;
 }

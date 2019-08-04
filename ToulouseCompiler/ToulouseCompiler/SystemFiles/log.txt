@@ -1,10 +1,94 @@
-LogFile de la practica_(tiempo ejecucion 10:33:03).
+LogFile de la practica_(tiempo ejecucion 11:23:51).
 ---------------------------------- 
-10:33:03 [SUCCESSFUL] Iniciating Vao
-10:33:03 [SUCCESSFUL] Leyendo fichero./Objects/peon.txt
-10:33:03 [SUCCESSFUL] Profile  accepted
-10:33:03 [SUCCESSFUL] Iniciating Vao
-10:33:03 [SUCCESSFUL] Iniciating Vao
-10:33:03 [SUCCESSFUL] Iniciating Vao
-10:33:03 Refresh callback called by Renderer
-10:33:03 Refresh callback called by Renderer
+11:23:51 [SUCCESSFUL] Iniciating Vao
+11:23:51 [SUCCESSFUL] Leyendo fichero./Objects/peon.txt
+11:23:51 [SUCCESSFUL] Profile  accepted
+11:23:51 [SUCCESSFUL] Iniciating Vao
+11:23:51 [SUCCESSFUL] Iniciating Vao
+11:23:51 [SUCCESSFUL] Iniciating Vao
+11:23:51 Refresh callback called by Renderer
+11:23:51 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:53 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:54 Refresh callback called by Renderer
+11:23:55 Refresh callback called by Renderer
+11:23:55 Refresh callback called by Renderer
+11:23:57 Refresh callback called by Renderer
+11:24:00 Refresh callback called by Renderer
+11:24:00 Refresh callback called by Renderer
+11:24:01 Refresh callback called by Renderer
+11:24:05 Refresh callback called by Renderer
+11:24:05 Refresh callback called by Renderer
+11:24:13 Refresh callback called by Renderer
+11:24:21 Refresh callback called by Renderer
+11:24:21 Refresh callback called by Renderer

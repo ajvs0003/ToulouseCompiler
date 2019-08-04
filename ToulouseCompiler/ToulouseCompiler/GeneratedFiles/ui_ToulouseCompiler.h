@@ -12,17 +12,17 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QColumnView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTableView>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -38,21 +38,25 @@ public:
     QAction *actionSave_As;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
-    QVBoxLayout *layoutVerticalOpengl;
-    QHBoxLayout *horizontalLayout;
-    QVBoxLayout *verticalLayout;
-    QWidget *openglwidget;
-    QHBoxLayout *opengl_layout;
-    QTableView *tableView;
-    QPushButton *pushButton;
     QVBoxLayout *verticalLayout_4;
     QPushButton *changePage;
     QHBoxLayout *horizontalLayout_4;
     QStackedWidget *stackedWidget;
     QWidget *VertexShader;
-    QPushButton *pushButton_2;
+    QVBoxLayout *verticalLayout_8;
+    QHBoxLayout *vertexLayout;
     QWidget *FragmentShader;
+    QVBoxLayout *verticalLayout_9;
     QRadioButton *radioButton;
+    QVBoxLayout *layoutVerticalOpengl;
+    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *verticalLayout;
+    QWidget *openglwidget;
+    QHBoxLayout *opengl_layout;
+    QHBoxLayout *uniformLayouts;
+    QColumnView *columnView;
+    QVBoxLayout *verticalLayout_7;
+    QPlainTextEdit *OutPut;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QToolBar *mainToolBar;
@@ -62,7 +66,7 @@ public:
     {
         if (MainWindowClass->objectName().isEmpty())
             MainWindowClass->setObjectName(QString::fromUtf8("MainWindowClass"));
-        MainWindowClass->resize(1071, 697);
+        MainWindowClass->resize(1113, 891);
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -82,67 +86,16 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        layoutVerticalOpengl = new QVBoxLayout();
-        layoutVerticalOpengl->setSpacing(6);
-        layoutVerticalOpengl->setObjectName(QString::fromUtf8("layoutVerticalOpengl"));
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        openglwidget = new QWidget(centralWidget);
-        openglwidget->setObjectName(QString::fromUtf8("openglwidget"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(openglwidget->sizePolicy().hasHeightForWidth());
-        openglwidget->setSizePolicy(sizePolicy1);
-        openglwidget->setMaximumSize(QSize(600, 480));
-        opengl_layout = new QHBoxLayout(openglwidget);
-        opengl_layout->setSpacing(0);
-        opengl_layout->setContentsMargins(11, 11, 11, 11);
-        opengl_layout->setObjectName(QString::fromUtf8("opengl_layout"));
-        opengl_layout->setContentsMargins(0, 0, 0, 0);
-
-        verticalLayout->addWidget(openglwidget);
-
-        tableView = new QTableView(centralWidget);
-        tableView->setObjectName(QString::fromUtf8("tableView"));
-
-        verticalLayout->addWidget(tableView);
-
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        QSizePolicy sizePolicy2(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy2);
-        pushButton->setMinimumSize(QSize(100, 10));
-        pushButton->setMaximumSize(QSize(100, 20));
-
-        verticalLayout->addWidget(pushButton, 0, Qt::AlignHCenter);
-
-
-        horizontalLayout->addLayout(verticalLayout);
-
-
-        layoutVerticalOpengl->addLayout(horizontalLayout);
-
-
-        gridLayout->addLayout(layoutVerticalOpengl, 0, 2, 1, 1);
-
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         changePage = new QPushButton(centralWidget);
         changePage->setObjectName(QString::fromUtf8("changePage"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(changePage->sizePolicy().hasHeightForWidth());
-        changePage->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(changePage->sizePolicy().hasHeightForWidth());
+        changePage->setSizePolicy(sizePolicy1);
         changePage->setMinimumSize(QSize(0, 23));
         changePage->setStyleSheet(QString::fromUtf8("QPushButton#evilButton {\n"
 "    background-color: red;\n"
@@ -156,7 +109,7 @@ public:
 "}"));
         changePage->setAutoDefault(false);
 
-        verticalLayout_4->addWidget(changePage, 0, Qt::AlignRight|Qt::AlignVCenter);
+        verticalLayout_4->addWidget(changePage, 0, Qt::AlignRight);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
@@ -165,15 +118,33 @@ public:
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
         VertexShader = new QWidget();
         VertexShader->setObjectName(QString::fromUtf8("VertexShader"));
-        pushButton_2 = new QPushButton(VertexShader);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(360, 230, 75, 23));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(VertexShader->sizePolicy().hasHeightForWidth());
+        VertexShader->setSizePolicy(sizePolicy2);
+        verticalLayout_8 = new QVBoxLayout(VertexShader);
+        verticalLayout_8->setSpacing(6);
+        verticalLayout_8->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
+        vertexLayout = new QHBoxLayout();
+        vertexLayout->setSpacing(6);
+        vertexLayout->setObjectName(QString::fromUtf8("vertexLayout"));
+
+        verticalLayout_8->addLayout(vertexLayout);
+
         stackedWidget->addWidget(VertexShader);
         FragmentShader = new QWidget();
         FragmentShader->setObjectName(QString::fromUtf8("FragmentShader"));
+        verticalLayout_9 = new QVBoxLayout(FragmentShader);
+        verticalLayout_9->setSpacing(6);
+        verticalLayout_9->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
         radioButton = new QRadioButton(FragmentShader);
         radioButton->setObjectName(QString::fromUtf8("radioButton"));
-        radioButton->setGeometry(QRect(230, 190, 82, 17));
+
+        verticalLayout_9->addWidget(radioButton);
+
         stackedWidget->addWidget(FragmentShader);
 
         horizontalLayout_4->addWidget(stackedWidget);
@@ -184,10 +155,67 @@ public:
 
         gridLayout->addLayout(verticalLayout_4, 0, 0, 1, 1);
 
+        layoutVerticalOpengl = new QVBoxLayout();
+        layoutVerticalOpengl->setSpacing(6);
+        layoutVerticalOpengl->setObjectName(QString::fromUtf8("layoutVerticalOpengl"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        openglwidget = new QWidget(centralWidget);
+        openglwidget->setObjectName(QString::fromUtf8("openglwidget"));
+        sizePolicy2.setHeightForWidth(openglwidget->sizePolicy().hasHeightForWidth());
+        openglwidget->setSizePolicy(sizePolicy2);
+        openglwidget->setMaximumSize(QSize(16777215, 16777215));
+        opengl_layout = new QHBoxLayout(openglwidget);
+        opengl_layout->setSpacing(0);
+        opengl_layout->setContentsMargins(11, 11, 11, 11);
+        opengl_layout->setObjectName(QString::fromUtf8("opengl_layout"));
+        opengl_layout->setContentsMargins(0, 0, 0, 0);
+
+        verticalLayout->addWidget(openglwidget);
+
+        uniformLayouts = new QHBoxLayout();
+        uniformLayouts->setSpacing(6);
+        uniformLayouts->setObjectName(QString::fromUtf8("uniformLayouts"));
+        columnView = new QColumnView(centralWidget);
+        columnView->setObjectName(QString::fromUtf8("columnView"));
+        sizePolicy2.setHeightForWidth(columnView->sizePolicy().hasHeightForWidth());
+        columnView->setSizePolicy(sizePolicy2);
+
+        uniformLayouts->addWidget(columnView);
+
+
+        verticalLayout->addLayout(uniformLayouts);
+
+
+        horizontalLayout->addLayout(verticalLayout);
+
+
+        layoutVerticalOpengl->addLayout(horizontalLayout);
+
+
+        gridLayout->addLayout(layoutVerticalOpengl, 0, 1, 1, 1);
+
+        verticalLayout_7 = new QVBoxLayout();
+        verticalLayout_7->setSpacing(6);
+        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
+        OutPut = new QPlainTextEdit(centralWidget);
+        OutPut->setObjectName(QString::fromUtf8("OutPut"));
+        sizePolicy1.setHeightForWidth(OutPut->sizePolicy().hasHeightForWidth());
+        OutPut->setSizePolicy(sizePolicy1);
+
+        verticalLayout_7->addWidget(OutPut);
+
+
+        gridLayout->addLayout(verticalLayout_7, 2, 0, 1, 2);
+
         MainWindowClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindowClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1071, 21));
+        menuBar->setGeometry(QRect(0, 0, 1113, 21));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         MainWindowClass->setMenuBar(menuBar);
@@ -219,10 +247,9 @@ public:
         actionLoad->setText(QApplication::translate("MainWindowClass", "Open", nullptr));
         actionSave_2->setText(QApplication::translate("MainWindowClass", "Save", nullptr));
         actionSave_As->setText(QApplication::translate("MainWindowClass", "Save As", nullptr));
-        pushButton->setText(QApplication::translate("MainWindowClass", "Render", nullptr));
         changePage->setText(QApplication::translate("MainWindowClass", "Fragment Shader", nullptr));
-        pushButton_2->setText(QApplication::translate("MainWindowClass", "PushButton", nullptr));
         radioButton->setText(QApplication::translate("MainWindowClass", "RadioButton", nullptr));
+        OutPut->setPlainText(QApplication::translate("MainWindowClass", "OutPut:", nullptr));
         menuFile->setTitle(QApplication::translate("MainWindowClass", "File", nullptr));
     } // retranslateUi
 
