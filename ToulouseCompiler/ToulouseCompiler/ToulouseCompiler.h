@@ -11,5 +11,27 @@ public:
 	ToulouseCompiler(QWidget *parent = Q_NULLPTR);
 
 private:
+
+
 	Ui::MainWindowClass ui;
+
+	//Pointer to the button for change pages
+	QPushButton *changePage;
+
+	//Pointer to the widget for code editor
+	QStackedWidget* editor;
+
+	int index = 0;
+
+
+
+
+	void configuration_changePage();
+
+
+
+private slots:
+	void handleButton();
+
+
 };

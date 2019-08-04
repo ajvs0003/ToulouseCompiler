@@ -9,7 +9,18 @@ ToulouseCompiler::ToulouseCompiler(QWidget *parent)
 {
 	ui.setupUi(this);
 
+
+
+	this->configuration_changePage();
+
+
+	//I take the stakedWidget and assign to a pointer for can manage later all the stuff that i will need
+	editor = ui.stackedWidget;
+	editor->setCurrentIndex(index);
 	
+
+
+
 
 	QSurfaceFormat format;
 	format.setSamples(16);
@@ -19,7 +30,7 @@ ToulouseCompiler::ToulouseCompiler(QWidget *parent)
 
 	
 
-	CodeEditor *editor=new CodeEditor(ui.VertexShader);
+	/*CodeEditor *editor=new CodeEditor(ui.VertexShader);*/
 
 	
 	
@@ -35,4 +46,28 @@ ToulouseCompiler::ToulouseCompiler(QWidget *parent)
 	ui.opengl_layout->addWidget(openglwidget);
 
 	openglwidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+}
+
+void ToulouseCompiler::handleButton() {
+
+	if (index == 0) {
+		index = 1;
+		changePage->setText("Vertex Shader");
+	}
+	else {
+		index = 0;
+		changePage->setText("Fragment Shader");
+	}
+
+	editor->setCurrentIndex(index);
+}
+
+void ToulouseCompiler::configuration_changePage()
+{
+	//Take the button that i design in de editor and conect the signal for can handle the click event, and change the page in the stakec view
+	changePage = ui.changePage;
+	connect(changePage, SIGNAL(released()), this, SLOT(handleButton()));
+
+	
+	changePage->setText("Fragment Shader");
 }

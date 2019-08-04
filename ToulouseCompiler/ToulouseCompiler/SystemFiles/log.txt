@@ -1,10 +1,10 @@
-LogFile de la practica_(tiempo ejecucion 20:48:07).
+LogFile de la practica_(tiempo ejecucion 10:33:03).
 ---------------------------------- 
-20:48:07 [SUCCESSFUL] Iniciating Vao
-20:48:07 [SUCCESSFUL] Leyendo fichero./Objects/peon.txt
-20:48:07 [SUCCESSFUL] Profile  accepted
-20:48:07 [SUCCESSFUL] Iniciating Vao
-20:48:07 [SUCCESSFUL] Iniciating Vao
-20:48:07 [SUCCESSFUL] Iniciating Vao
-20:48:07 Refresh callback called by Renderer
-20:48:07 Refresh callback called by Renderer
+10:33:03 [SUCCESSFUL] Iniciating Vao
+10:33:03 [SUCCESSFUL] Leyendo fichero./Objects/peon.txt
+10:33:03 [SUCCESSFUL] Profile  accepted
+10:33:03 [SUCCESSFUL] Iniciating Vao
+10:33:03 [SUCCESSFUL] Iniciating Vao
+10:33:03 [SUCCESSFUL] Iniciating Vao
+10:33:03 Refresh callback called by Renderer
+10:33:03 Refresh callback called by Renderer

@@ -56,6 +56,7 @@
 
 CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
 {
+
 	lineNumberArea = new LineNumberArea(this);
 
 	connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));
