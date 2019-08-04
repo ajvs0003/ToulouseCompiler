@@ -32,11 +32,10 @@ ToulouseCompiler::ToulouseCompiler(QWidget *parent)
 	format.setVersion(4, 5);
 
 	
-	//CodeEditor *editor=new CodeEditor(ui.VertexShader);
-	//editor->setGeometry(0, 0, 541, 587);
-	//editor->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
 	CodeEditor *editor = new CodeEditor();
 	
+	//Para que funcionara el resize hay que tener en cuenta que los valores de maximumSize en qt designer esten en el "maximo" (16777215) 
 	ui.vertexLayout->addWidget(editor);
 	editor->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
@@ -70,10 +69,16 @@ void ToulouseCompiler::handleButton() {
 	editor->setCurrentIndex(index);
 }
 
+void ToulouseCompiler::configurate()
+{
+}
+
 void ToulouseCompiler::configuration_changePage()
 {
-	//Take the button that i design in de editor and conect the signal for can handle the click event, and change the page in the stakec view
+	//Take the button that i design in de editor and conect the signal for can handle the click event, and change the page in the stakeck view
 	changePage = ui.changePage;
+
+	//gestiona los conect del boton
 	connect(changePage, SIGNAL(released()), this, SLOT(handleButton()));
 
 	
@@ -83,7 +88,9 @@ void ToulouseCompiler::configuration_changePage()
 void ToulouseCompiler::configuration_OutPut()
 {
 	OutPut = ui.OutPut;
-	OutPut->setReadOnly(true);
+	OutPut->setReadOnly(true);// lo pongo en solo modo lectura
+
+	//Gestiono que el log reciba el output para que otras clases puedan trabajar con el
 	Log::getInstancia()->setOutPut(OutPut);
 
 

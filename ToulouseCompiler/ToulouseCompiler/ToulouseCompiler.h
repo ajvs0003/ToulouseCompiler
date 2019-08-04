@@ -30,8 +30,8 @@ private:
 
 	int index = 0;
 
-
-
+	//metodo que hara que se llamen a todos los configurate de la aplicacion
+	void configurate();
 
 	void configuration_changePage();
 	void configuration_OutPut();
