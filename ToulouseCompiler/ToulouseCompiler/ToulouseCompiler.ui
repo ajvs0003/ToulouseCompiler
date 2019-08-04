@@ -164,7 +164,7 @@
          </sizepolicy>
         </property>
         <property name="plainText">
-         <string>OutPut:</string>
+         <string/>
         </property>
        </widget>
       </item>

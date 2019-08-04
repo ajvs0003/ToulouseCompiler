@@ -1,94 +1,15 @@
-LogFile de la practica_(tiempo ejecucion 11:23:51).
+LogFile de la practica_(tiempo ejecucion 11:55:16).
 ---------------------------------- 
-11:23:51 [SUCCESSFUL] Iniciating Vao
-11:23:51 [SUCCESSFUL] Leyendo fichero./Objects/peon.txt
-11:23:51 [SUCCESSFUL] Profile  accepted
-11:23:51 [SUCCESSFUL] Iniciating Vao
-11:23:51 [SUCCESSFUL] Iniciating Vao
-11:23:51 [SUCCESSFUL] Iniciating Vao
-11:23:51 Refresh callback called by Renderer
-11:23:51 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:53 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:54 Refresh callback called by Renderer
-11:23:55 Refresh callback called by Renderer
-11:23:55 Refresh callback called by Renderer
-11:23:57 Refresh callback called by Renderer
-11:24:00 Refresh callback called by Renderer
-11:24:00 Refresh callback called by Renderer
-11:24:01 Refresh callback called by Renderer
-11:24:05 Refresh callback called by Renderer
-11:24:05 Refresh callback called by Renderer
-11:24:13 Refresh callback called by Renderer
-11:24:21 Refresh callback called by Renderer
-11:24:21 Refresh callback called by Renderer
+11:55:17 Inicializando OpenGL
+11:55:17 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
+11:55:17 Fabricante    : NVIDIA Corporation
+11:55:17 Version OpenGL: 4.5.0 NVIDIA 430.86
+11:55:17 Version GLSL  : 4.50 NVIDIA
+11:55:17 [SUCCESSFUL] Iniciating Vao
+11:55:17 [SUCCESSFUL] Leyendo fichero./Objects/peon.txt
+11:55:17 [SUCCESSFUL] Profile  accepted
+11:55:17 [SUCCESSFUL] Iniciating Vao
+11:55:17 [SUCCESSFUL] Iniciating Vao
+11:55:17 [SUCCESSFUL] Iniciating Vao
+11:55:17 Refresh callback called by Renderer
+11:55:17 Refresh callback called by Renderer

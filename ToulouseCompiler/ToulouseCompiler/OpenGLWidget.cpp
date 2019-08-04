@@ -115,6 +115,13 @@ void OpenGLWidget::initialize()
 
 	_typePaint = "wire";
 
+	Log::getInstancia()->escribir("Inicializando OpenGL");
+
+	Log::getInstancia()->escribir("Nombre GPU    : " + (string)(const char*)glGetString(GL_RENDERER));
+	Log::getInstancia()->escribir("Fabricante    : " + (string)(const char*)glGetString(GL_VENDOR));
+	Log::getInstancia()->escribir("Version OpenGL: " + (string)(const char*)glGetString(GL_VERSION));
+	Log::getInstancia()->escribir("Version GLSL  : " + (string)(const char*)glGetString(GL_SHADING_LANGUAGE_VERSION));
+
 
 
 	qDebug() << "Inicializando OpenGL" << endl;
@@ -163,7 +170,7 @@ void OpenGLWidget::render()
 	m_device->setDevicePixelRatio(devicePixelRatio());
 
 	qDebug() << "Rendering";
-
+	
 
 }
 

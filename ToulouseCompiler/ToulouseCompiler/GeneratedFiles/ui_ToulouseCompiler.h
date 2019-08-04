@@ -249,7 +249,7 @@ public:
         actionSave_As->setText(QApplication::translate("MainWindowClass", "Save As", nullptr));
         changePage->setText(QApplication::translate("MainWindowClass", "Fragment Shader", nullptr));
         radioButton->setText(QApplication::translate("MainWindowClass", "RadioButton", nullptr));
-        OutPut->setPlainText(QApplication::translate("MainWindowClass", "OutPut:", nullptr));
+        OutPut->setPlainText(QString());
         menuFile->setTitle(QApplication::translate("MainWindowClass", "File", nullptr));
     } // retranslateUi
 

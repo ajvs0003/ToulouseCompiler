@@ -11,7 +11,7 @@
 #include <string>
 #include <fstream>
 #include <time.h>
-
+#include <QPlainTextEdit>
 using namespace std;
 class Log{
 private:
@@ -24,6 +24,8 @@ private:
 	unsigned long int warnings;
 	string name;
 
+	QPlainTextEdit* OutPut;
+
 
 	/**
 	* @brief Construccion y creacion del log.txt
@@ -32,6 +34,12 @@ private:
 
 public:
 	
+	void setOutPut(QPlainTextEdit* nuevo) {
+		OutPut = nuevo;
+	}
+
+
+
 	/**
 	* @brief permite acceder al log desde cualquier sitio
 	*/

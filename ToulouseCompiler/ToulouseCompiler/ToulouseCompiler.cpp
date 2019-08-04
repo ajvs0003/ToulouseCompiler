@@ -45,7 +45,7 @@ ToulouseCompiler::ToulouseCompiler(QWidget *parent)
 
 	OpenGLWidget* openGLWindow = new OpenGLWidget();
 	openGLWindow->setFormat(format);
-
+	
 	
 	// Let's do the magic my dear TFG students :)
 	QWidget* openglwidget = QWidget::createWindowContainer(openGLWindow);
@@ -83,4 +83,8 @@ void ToulouseCompiler::configuration_changePage()
 void ToulouseCompiler::configuration_OutPut()
 {
 	OutPut = ui.OutPut;
+	OutPut->setReadOnly(true);
+	Log::getInstancia()->setOutPut(OutPut);
+
+
 }

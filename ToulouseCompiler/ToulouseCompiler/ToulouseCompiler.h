@@ -3,6 +3,9 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_ToulouseCompiler.h"
 
+#include "Log.h"
+
+
 class ToulouseCompiler : public QMainWindow
 {
 	Q_OBJECT

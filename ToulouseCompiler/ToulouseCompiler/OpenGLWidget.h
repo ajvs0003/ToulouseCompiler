@@ -2,13 +2,14 @@
 
 #include <QtGui/QWindow>
 #include <QtGui/QOpenGLFunctions>
-
 #include "PagShaderProgram.h"
 #include "OpenGLFunctions.h"
 #include "Metodos_especiales.h"
 #include "Pag3DGroup.h"
 #include "PagCamera.h"
 #include "PagLightSource.h"
+#include <string>
+
 
 
 class QPainter;
@@ -49,6 +50,10 @@ public:
 	//La misión de este método es preparar la escena para su visualización
 	void prepareOpenGL();
 
+
+
+	
+
 public slots:
 	void renderLater();
 	void renderNow();
@@ -69,6 +74,9 @@ private:
 	bool m_animating;
 	QOpenGLContext *m_context;
 	QOpenGLPaintDevice *m_device;
+
+
+	QPlainTextEdit* OutPut;
 
 
 	//OpenGL DATA

@@ -54,15 +54,22 @@ void Log::escribir(string mensaje)
 	// Escribimos en el log
 	this->log << currentDateTime()+" "<< mensaje << endl;
 	
+	std::string str = currentDateTime() + " : "+ mensaje + "\n";
+
+
+	QString qstr = QString::fromStdString(str);
+	OutPut->insertPlainText(qstr);
 
 }
 void Log::error(string mensaje){
 	// Escribimos en el log
-	cout << currentDateTime() + " [ERROR [ " << to_string(errors) + "]" << mensaje << endl;
+	
 	this->log << currentDateTime() + " [ERROR [ " << to_string(errors) + "]" << mensaje << endl;
 	this->errors++;
 
-
+	std::string str = currentDateTime() + "[ERROR["+ to_string(errors) + "]" + mensaje + "\n";
+	QString qstr = QString::fromStdString(str);
+	OutPut->insertPlainText(qstr);
 }
 void Log::warning(string mensaje){
 
@@ -71,12 +78,25 @@ void Log::warning(string mensaje){
 	this->log << currentDateTime() + " [WARNING]" << mensaje << endl;
 
 
+
+	std::string str = currentDateTime() + " [WARNING]" + mensaje + "\n";
+	QString qstr = QString::fromStdString(str);
+	OutPut->insertPlainText(qstr);
+
 }
 void Log::success(string mensaje)
 {
 	// Escribimos en el log
 	cout << currentDateTime() + " [SUCCESSFUL] " << mensaje << endl;
 	this->log << currentDateTime() + " [SUCCESSFUL] " << mensaje << endl;
+
+
+
+
+	std::string str = currentDateTime() + " [SUCCESSFUL] " + mensaje + "\n";
+	QString qstr = QString::fromStdString(str);
+	OutPut->insertPlainText(qstr);
+
 }
 void Log::close()
 {
