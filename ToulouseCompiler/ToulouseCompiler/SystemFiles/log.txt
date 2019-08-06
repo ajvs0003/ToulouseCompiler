@@ -1,13 +1,13 @@
-LogFile de la practica_(tiempo ejecucion 19:07:10).
+LogFile de la practica_(tiempo ejecucion 19:12:28).
 ---------------------------------- 
-19:07:11 Inicializando OpenGL
-19:07:11 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
-19:07:11 Fabricante    : NVIDIA Corporation
-19:07:11 Version OpenGL: 4.5.0 NVIDIA 430.86
-19:07:11 Version GLSL  : 4.50 NVIDIA
-19:07:11 [SUCCESSFUL] Iniciating Vao
-19:07:11 [SUCCESSFUL] Leyendo fichero./Objects/peon.txt
-19:07:11 [SUCCESSFUL] Profile  accepted
-19:07:11 [SUCCESSFUL] Iniciating Vao
-19:07:11 [SUCCESSFUL] Iniciating Vao
-19:07:11 [SUCCESSFUL] Iniciating Vao
+19:12:30 Inicializando OpenGL
+19:12:30 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
+19:12:30 Fabricante    : NVIDIA Corporation
+19:12:30 Version OpenGL: 4.5.0 NVIDIA 430.86
+19:12:30 Version GLSL  : 4.50 NVIDIA
+19:12:30 [SUCCESSFUL] Iniciating Vao
+19:12:30 [SUCCESSFUL] Leyendo fichero./Objects/peon.txt
+19:12:30 [SUCCESSFUL] Profile  accepted
+19:12:30 [SUCCESSFUL] Iniciating Vao
+19:12:30 [SUCCESSFUL] Iniciating Vao
+19:12:30 [SUCCESSFUL] Iniciating Vao

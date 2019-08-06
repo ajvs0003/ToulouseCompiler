@@ -51,6 +51,7 @@ void ToulouseCompiler::configuration_changePage()
 
 	//Take the button that i design in de editor and conect the signal for can handle the click event, and change the page in the stakeck view
 	changePage = ui.changePage;
+	changePage->setStyleSheet("QPushButton{background: transparent;}");
 	//gestiona los conect del boton
 	connect(changePage, SIGNAL(released()), this, SLOT(handleButton()));
 

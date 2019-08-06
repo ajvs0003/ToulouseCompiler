@@ -144,17 +144,11 @@
                 <family>Arial</family>
                </font>
               </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
               <property name="styleSheet">
-               <string notr="true">QPushButton#evilButton {
-    background-color: red;
-    border-style: outset;
-    border-width: 2px;
-    border-radius: 10px;
-    border-color: beige;
-    font: bold 14px;
-    min-width: 10em;
-    padding: 6px;
-}</string>
+               <string notr="true"/>
               </property>
               <property name="text">
                <string/>
