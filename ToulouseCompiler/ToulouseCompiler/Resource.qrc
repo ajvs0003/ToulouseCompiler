@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>Resources/img/next.png</file>
+        <file>Resources/img/save.png</file>
+        <file>Resources/img/triangle.png</file>
+        <file>Resources/img/line.png</file>
+        <file>Resources/img/points.png</file>
+    </qresource>
+</RCC>

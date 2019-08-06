@@ -144,7 +144,7 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="ToulouseCompiler.qrc">
+    <QtRcc Include="Resource.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
   </ItemGroup>

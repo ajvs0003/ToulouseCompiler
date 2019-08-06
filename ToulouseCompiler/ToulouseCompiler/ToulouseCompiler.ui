@@ -20,25 +20,132 @@
    <string>ToulouseCompiler</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <item alignment="Qt::AlignRight">
-       <widget class="QPushButton" name="changePage">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+   <layout class="QVBoxLayout" name="verticalLayout_5">
+    <item>
+     <layout class="QHBoxLayout" name="barraHerramientas">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="central">
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="verticalSpacing">
+         <number>6</number>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>23</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton#evilButton {
+        <item row="1" column="1">
+         <layout class="QVBoxLayout" name="OpenglLayout">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <item>
+               <layout class="QHBoxLayout" name="widgetLayout">
+                <item>
+                 <widget class="QWidget" name="openglwidget" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <layout class="QHBoxLayout" name="opengl_layout">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="uniformLayouts">
+                <item>
+                 <widget class="QColumnView" name="columnView">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QVBoxLayout" name="EditorLayout">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="vistaActivada">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Vertex Shader</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignRight|Qt::AlignVCenter">
+             <widget class="QPushButton" name="changePage">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>23</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton#evilButton {
     background-color: red;
     border-style: outset;
     border-width: 2px;
@@ -48,102 +155,45 @@
     min-width: 10em;
     padding: 6px;
 }</string>
-        </property>
-        <property name="text">
-         <string>Fragment Shader</string>
-        </property>
-        <property name="autoDefault">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <item>
-         <widget class="QStackedWidget" name="stackedWidget">
-          <property name="currentIndex">
-           <number>0</number>
-          </property>
-          <widget class="QWidget" name="VertexShader">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_8">
-            <item>
-             <layout class="QHBoxLayout" name="vertexLayout"/>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="FragmentShader">
-           <layout class="QVBoxLayout" name="verticalLayout_9">
-            <item>
-             <widget class="QRadioButton" name="radioButton">
+              </property>
               <property name="text">
-               <string>RadioButton</string>
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="Resource.qrc">
+                <normaloff>:/img/Resources/img/next.png</normaloff>:/img/Resources/img/next.png</iconset>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
            </layout>
-          </widget>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </item>
-    <item row="0" column="1">
-     <layout class="QVBoxLayout" name="layoutVerticalOpengl">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <widget class="QWidget" name="openglwidget" native="true">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <layout class="QHBoxLayout" name="opengl_layout">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-            </layout>
-           </widget>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="uniformLayouts">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
-             <widget class="QColumnView" name="columnView">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QStackedWidget" name="stackedWidget">
+                <property name="currentIndex">
+                 <number>0</number>
+                </property>
+                <widget class="QWidget" name="VertexShader">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <layout class="QVBoxLayout" name="vertexLayout"/>
+                </widget>
+                <widget class="QWidget" name="FragmentShader">
+                 <layout class="QVBoxLayout" name="FragmentLayout"/>
+                </widget>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>
@@ -153,8 +203,27 @@
       </item>
      </layout>
     </item>
-    <item row="2" column="0" colspan="2">
-     <layout class="QVBoxLayout" name="verticalLayout_7">
+    <item>
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Preferred</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>10</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="OutPutLayout">
+      <property name="spacing">
+       <number>6</number>
+      </property>
       <item>
        <widget class="QPlainTextEdit" name="OutPut">
         <property name="sizePolicy">
@@ -185,8 +254,8 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionSave"/>
     <addaction name="actionLoad"/>
+    <addaction name="actionSave"/>
     <addaction name="actionSave_2"/>
     <addaction name="actionSave_As"/>
    </widget>
@@ -199,6 +268,11 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionSave_2"/>
+   <addaction name="separator"/>
+   <addaction name="actionPoints"/>
+   <addaction name="actionLines"/>
+   <addaction name="actiontriangles"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionSave">
@@ -212,6 +286,10 @@
    </property>
   </action>
   <action name="actionSave_2">
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/save.png</normaloff>:/img/Resources/img/save.png</iconset>
+   </property>
    <property name="text">
     <string>Save</string>
    </property>
@@ -221,10 +299,47 @@
     <string>Save As</string>
    </property>
   </action>
+  <action name="actionPoints">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/points.png</normaloff>:/img/Resources/img/points.png</iconset>
+   </property>
+   <property name="text">
+    <string>Points</string>
+   </property>
+  </action>
+  <action name="actionLines">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/line.png</normaloff>:/img/Resources/img/line.png</iconset>
+   </property>
+   <property name="text">
+    <string>Lines</string>
+   </property>
+  </action>
+  <action name="actiontriangles">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/triangle.png</normaloff>:/img/Resources/img/triangle.png</iconset>
+   </property>
+   <property name="text">
+    <string>triangles</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="ToulouseCompiler.qrc"/>
+  <include location="Resource.qrc"/>
  </resources>
  <connections/>
 </ui>

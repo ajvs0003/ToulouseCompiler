@@ -135,7 +135,7 @@
     <QtUic Include="ToulouseCompiler.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="ToulouseCompiler.qrc" />
+    <QtRcc Include="Resource.qrc" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CodeEditor.h">

@@ -28,7 +28,7 @@ void OpenGLWidget::refreshCallback()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-	Log::getInstancia()->escribir("Refresh callback called by Renderer");
+	qDebug() << "Refresh callback called by Renderer";
 
 	//CAMBIAR ESTO
 	this->typePaint(_typePaint);
