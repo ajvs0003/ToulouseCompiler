@@ -47,7 +47,7 @@ OpenGLWidget::OpenGLWidget(QWindow *parent)
 	qDebug() << "MyOpenGLWidget constructor";
 
 
-
+	shaderProgram = new PagShaderProgram();
 
 
 
@@ -55,7 +55,7 @@ OpenGLWidget::OpenGLWidget(QWindow *parent)
 
 OpenGLWidget::~OpenGLWidget()
 {
-	this->glDeleteProgram(shaderProgram.getHandler());
+	this->glDeleteProgram(shaderProgram->getHandler());
 	delete m_device;
 }
 
@@ -91,14 +91,46 @@ void  OpenGLWidget::prepareOpenGL()
 
 }
 
+void OpenGLWidget::compile()
+{
+	this->glDeleteProgram(shaderProgram->getHandler());
+
+	shaderProgram = new PagShaderProgram();
+	chargeShader();
+
+	renderNow();
+	
+}
+
+
+
+
+
 void OpenGLWidget::chargeShader()
 {
 	
-	shaderProgram.setGLFunctions(m_context);
+	shaderProgram->setGLFunctions(m_context);
 
 	if (modeTrial) {
-		//We want to try the shaders for poitns
-		shaderProgram.createShaderProgram("./Shaders/wireShader");//"Resources/points-1"
+		switch (typeTrial) {
+		case 0:
+			_typePaint = "points";
+			//We want to try the shaders for poitns
+			shaderProgram->createShaderProgram("./Shaders/pointShader");//"Resources/points-1"
+			break;
+
+		case 1:
+			_typePaint = "wire";
+			//We want to try the shaders for poitns
+			shaderProgram->createShaderProgram("./Shaders/wireShader");//"Resources/points-1"
+			break;
+		case 2:
+			_typePaint = "triangle";
+			//We want to try the shaders for poitns
+			shaderProgram->createShaderProgram("./Shaders/triangleShader");//"Resources/points-1"
+			break;
+		}
+		
 	}
 	else {
 		//Here we use the shader that the user wrote
@@ -113,7 +145,7 @@ void OpenGLWidget::chargeShader()
 void OpenGLWidget::initialize()
 {
 
-	_typePaint = "wire";
+	
 
 	Log::getInstancia()->escribir("Inicializando OpenGL");
 
@@ -169,7 +201,7 @@ void OpenGLWidget::render()
 	m_device->setSize(size() * devicePixelRatio());
 	m_device->setDevicePixelRatio(devicePixelRatio());
 
-	qDebug() << "Rendering";
+	Log::getInstancia()->success("Rendering");
 	
 
 }
@@ -227,23 +259,23 @@ void OpenGLWidget::typePaint(string type)
 		if (_typePaint == "points") {
 
 			glDisable(GL_BLEND);
-			shaderProgram.use();
-			paintObjects(shaderProgram, 0);
+			shaderProgram->use();
+			paintObjects(*shaderProgram, 0);
 
 		}
 		else if (_typePaint == "wire") {
 
 			glDisable(GL_BLEND);
-			shaderProgram.use();
-			paintObjects(shaderProgram, 1);
+			shaderProgram->use();
+			paintObjects(*shaderProgram, 1);
 
 		}
 		else if (_typePaint == "triangle") {
 
 			
 			glDisable(GL_BLEND);
-			shaderProgram.use();
-			paintObjects(shaderProgram, 2);
+			shaderProgram->use();
+			paintObjects(*shaderProgram, 2);
 
 
 
@@ -430,6 +462,8 @@ void OpenGLWidget::typePaint(string type)
 	}
 
 
+
+	
 
 	void OpenGLWidget::renderNow()
 	{

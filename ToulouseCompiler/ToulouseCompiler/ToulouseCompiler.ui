@@ -248,9 +248,9 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionLoad"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionNew"/>
     <addaction name="actionSave"/>
-    <addaction name="actionSave_2"/>
     <addaction name="actionSave_As"/>
    </widget>
    <addaction name="menuFile"/>
@@ -262,24 +262,34 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionSave_2"/>
+   <addaction name="actionSave"/>
    <addaction name="separator"/>
    <addaction name="actionPoints"/>
    <addaction name="actionLines"/>
    <addaction name="actiontriangles"/>
+   <addaction name="separator"/>
+   <addaction name="actionRender"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionSave">
+  <action name="actionNew">
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/new.png</normaloff>:/img/Resources/img/new.png</iconset>
+   </property>
    <property name="text">
     <string>New</string>
    </property>
   </action>
-  <action name="actionLoad">
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/open.png</normaloff>:/img/Resources/img/open.png</iconset>
+   </property>
    <property name="text">
     <string>Open</string>
    </property>
   </action>
-  <action name="actionSave_2">
+  <action name="actionSave">
    <property name="icon">
     <iconset resource="Resource.qrc">
      <normaloff>:/img/Resources/img/save.png</normaloff>:/img/Resources/img/save.png</iconset>
@@ -289,6 +299,10 @@
    </property>
   </action>
   <action name="actionSave_As">
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/saveAs.png</normaloff>:/img/Resources/img/saveAs.png</iconset>
+   </property>
    <property name="text">
     <string>Save As</string>
    </property>
@@ -299,10 +313,11 @@
    </property>
    <property name="icon">
     <iconset resource="Resource.qrc">
-     <normaloff>:/img/Resources/img/points.png</normaloff>:/img/Resources/img/points.png</iconset>
+     <normaloff>:/img/Resources/img/points.png</normaloff>
+     <normalon>:/img/Resources/img/points_activate.png</normalon>:/img/Resources/img/points.png</iconset>
    </property>
    <property name="text">
-    <string>Points</string>
+    <string>Mode Points</string>
    </property>
   </action>
   <action name="actionLines">
@@ -311,10 +326,11 @@
    </property>
    <property name="icon">
     <iconset resource="Resource.qrc">
-     <normaloff>:/img/Resources/img/line.png</normaloff>:/img/Resources/img/line.png</iconset>
+     <normaloff>:/img/Resources/img/line.png</normaloff>
+     <normalon>:/img/Resources/img/line_activate.png</normalon>:/img/Resources/img/line.png</iconset>
    </property>
    <property name="text">
-    <string>Lines</string>
+    <string>Mode Lines</string>
    </property>
   </action>
   <action name="actiontriangles">
@@ -323,10 +339,23 @@
    </property>
    <property name="icon">
     <iconset resource="Resource.qrc">
-     <normaloff>:/img/Resources/img/triangle.png</normaloff>:/img/Resources/img/triangle.png</iconset>
+     <normaloff>:/img/Resources/img/triangle.png</normaloff>
+     <normalon>:/img/Resources/img/triangle_activate.png</normalon>:/img/Resources/img/triangle.png</iconset>
    </property>
    <property name="text">
-    <string>triangles</string>
+    <string>Mode triangles</string>
+   </property>
+  </action>
+  <action name="actionRender">
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/play.png</normaloff>:/img/Resources/img/play.png</iconset>
+   </property>
+   <property name="text">
+    <string>Render</string>
+   </property>
+   <property name="toolTip">
+    <string>for render the shader programs</string>
    </property>
   </action>
  </widget>

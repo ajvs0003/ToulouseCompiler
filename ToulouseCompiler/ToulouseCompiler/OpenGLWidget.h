@@ -51,12 +51,19 @@ public:
 	void prepareOpenGL();
 
 
-
+	void changeTrial(int nuevo) {
+		
+		typeTrial = nuevo;
+	}
 	
+	void compile();
 
 public slots:
 	void renderLater();
 	void renderNow();
+
+
+
 
 protected:
 	bool event(QEvent *event) override;
@@ -76,7 +83,7 @@ private:
 	QOpenGLPaintDevice *m_device;
 
 
-	QPlainTextEdit* OutPut;
+
 
 
 	//OpenGL DATA
@@ -102,7 +109,7 @@ private:
 	//SHADERS
 	// - Shaders program that we will use for paint the geometry
 
-	PagShaderProgram shaderProgram ;
+	PagShaderProgram* shaderProgram ;
 
 	PagShaderProgram pointShader;
 	PagShaderProgram TriangleShader;
@@ -134,7 +141,7 @@ private:
 	bool lightsOn = false;
 
 	
-
+	
 
 
 	//TESTING

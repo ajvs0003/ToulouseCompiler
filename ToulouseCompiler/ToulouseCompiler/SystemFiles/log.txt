@@ -1,13 +1,28 @@
-LogFile de la practica_(tiempo ejecucion 10:09:12).
+LogFile de la practica_(tiempo ejecucion 12:29:00).
 ---------------------------------- 
-10:09:13 Inicializando OpenGL
-10:09:13 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
-10:09:13 Fabricante    : NVIDIA Corporation
-10:09:13 Version OpenGL: 4.5.0 NVIDIA 430.86
-10:09:13 Version GLSL  : 4.50 NVIDIA
-10:09:13 [SUCCESSFUL] Iniciating Vao
-10:09:13 [SUCCESSFUL] Opening file...
-10:09:13 [SUCCESSFUL] Profile  accepted
-10:09:13 [SUCCESSFUL] Iniciating Vao
-10:09:13 [SUCCESSFUL] Iniciating Vao
-10:09:13 [SUCCESSFUL] Iniciating Vao
+12:29:02 Inicializando OpenGL
+12:29:02 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
+12:29:02 Fabricante    : NVIDIA Corporation
+12:29:02 Version OpenGL: 4.5.0 NVIDIA 430.86
+12:29:02 Version GLSL  : 4.50 NVIDIA
+12:29:02 [SUCCESSFUL] Iniciating Vao
+12:29:02 [SUCCESSFUL] Opening file...
+12:29:02 [SUCCESSFUL] Profile  accepted
+12:29:02 [SUCCESSFUL] Iniciating Vao
+12:29:02 [SUCCESSFUL] Iniciating Vao
+12:29:02 [SUCCESSFUL] Iniciating Vao
+12:29:02 [SUCCESSFUL] Rendering
+12:29:02 [SUCCESSFUL] Rendering
+12:29:03 [WARNING]activado el modo puntos
+12:29:03 [WARNING]activado el modo lineas
+12:29:04 [SUCCESSFUL] Rendering
+12:29:07 [WARNING]activado el modo lineas
+12:29:07 [WARNING]activado el modo triangulos
+12:29:07 [SUCCESSFUL] Rendering
+12:29:12 [WARNING]activado el modo triangulos
+12:29:12 [WARNING]activado el modo puntos
+12:29:13 [SUCCESSFUL] Rendering
+12:29:15 [WARNING]activado el modo puntos
+12:29:15 [WARNING]activado el modo lineas
+12:29:15 [SUCCESSFUL] Rendering
+12:29:16 [WARNING]activado el modo lineas

@@ -6,6 +6,7 @@ uniform vec3 vColor;
 out vec4 destinationColor;
 void main()
 {
+	
 	destinationColor = vec4(vColor, 1.0);
 	gl_Position = mModelViewProj * vec4(vPosition, 1.0);
 }

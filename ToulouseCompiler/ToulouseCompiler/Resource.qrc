@@ -5,6 +5,13 @@
         <file>Resources/img/triangle.png</file>
         <file>Resources/img/line.png</file>
         <file>Resources/img/points.png</file>
+        <file>Resources/img/open.png</file>
+        <file>Resources/img/new.png</file>
+        <file>Resources/img/saveAs.png</file>
+        <file>Resources/img/play.png</file>
+        <file>Resources/img/line_activate.png</file>
+        <file>Resources/img/points_activate.png</file>
+        <file>Resources/img/triangle_activate.png</file>
     </qresource>
     <qresource prefix="/obj">
         <file>Resources/Objects/peon.txt</file>

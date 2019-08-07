@@ -34,13 +34,14 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindowClass
 {
 public:
+    QAction *actionNew;
+    QAction *actionOpen;
     QAction *actionSave;
-    QAction *actionLoad;
-    QAction *actionSave_2;
     QAction *actionSave_As;
     QAction *actionPoints;
     QAction *actionLines;
     QAction *actiontriangles;
+    QAction *actionRender;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *barraHerramientas;
@@ -84,35 +85,52 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(MainWindowClass->sizePolicy().hasHeightForWidth());
         MainWindowClass->setSizePolicy(sizePolicy);
+        actionNew = new QAction(MainWindowClass);
+        actionNew->setObjectName(QString::fromUtf8("actionNew"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/img/Resources/img/new.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionNew->setIcon(icon);
+        actionOpen = new QAction(MainWindowClass);
+        actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/img/Resources/img/open.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionOpen->setIcon(icon1);
         actionSave = new QAction(MainWindowClass);
         actionSave->setObjectName(QString::fromUtf8("actionSave"));
-        actionLoad = new QAction(MainWindowClass);
-        actionLoad->setObjectName(QString::fromUtf8("actionLoad"));
-        actionSave_2 = new QAction(MainWindowClass);
-        actionSave_2->setObjectName(QString::fromUtf8("actionSave_2"));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/img/Resources/img/save.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionSave_2->setIcon(icon);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/img/Resources/img/save.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionSave->setIcon(icon2);
         actionSave_As = new QAction(MainWindowClass);
         actionSave_As->setObjectName(QString::fromUtf8("actionSave_As"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/img/Resources/img/saveAs.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionSave_As->setIcon(icon3);
         actionPoints = new QAction(MainWindowClass);
         actionPoints->setObjectName(QString::fromUtf8("actionPoints"));
         actionPoints->setCheckable(true);
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/img/Resources/img/points.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionPoints->setIcon(icon1);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/img/Resources/img/points.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon4.addFile(QString::fromUtf8(":/img/Resources/img/points_activate.png"), QSize(), QIcon::Normal, QIcon::On);
+        actionPoints->setIcon(icon4);
         actionLines = new QAction(MainWindowClass);
         actionLines->setObjectName(QString::fromUtf8("actionLines"));
         actionLines->setCheckable(true);
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/img/Resources/img/line.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionLines->setIcon(icon2);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/img/Resources/img/line.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon5.addFile(QString::fromUtf8(":/img/Resources/img/line_activate.png"), QSize(), QIcon::Normal, QIcon::On);
+        actionLines->setIcon(icon5);
         actiontriangles = new QAction(MainWindowClass);
         actiontriangles->setObjectName(QString::fromUtf8("actiontriangles"));
         actiontriangles->setCheckable(true);
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/img/Resources/img/triangle.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actiontriangles->setIcon(icon3);
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/img/Resources/img/triangle.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon6.addFile(QString::fromUtf8(":/img/Resources/img/triangle_activate.png"), QSize(), QIcon::Normal, QIcon::On);
+        actiontriangles->setIcon(icon6);
+        actionRender = new QAction(MainWindowClass);
+        actionRender->setObjectName(QString::fromUtf8("actionRender"));
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/img/Resources/img/play.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionRender->setIcon(icon7);
         centralWidget = new QWidget(MainWindowClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout_5 = new QVBoxLayout(centralWidget);
@@ -221,9 +239,9 @@ public:
         changePage->setFont(font1);
         changePage->setAutoFillBackground(false);
         changePage->setStyleSheet(QString::fromUtf8(""));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/img/Resources/img/next.png"), QSize(), QIcon::Normal, QIcon::Off);
-        changePage->setIcon(icon4);
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/img/Resources/img/next.png"), QSize(), QIcon::Normal, QIcon::Off);
+        changePage->setIcon(icon8);
         changePage->setAutoDefault(false);
 
         horizontalLayout_2->addWidget(changePage, 0, Qt::AlignRight|Qt::AlignVCenter);
@@ -305,15 +323,17 @@ public:
         MainWindowClass->setStatusBar(statusBar);
 
         menuBar->addAction(menuFile->menuAction());
-        menuFile->addAction(actionLoad);
+        menuFile->addAction(actionOpen);
+        menuFile->addAction(actionNew);
         menuFile->addAction(actionSave);
-        menuFile->addAction(actionSave_2);
         menuFile->addAction(actionSave_As);
-        mainToolBar->addAction(actionSave_2);
+        mainToolBar->addAction(actionSave);
         mainToolBar->addSeparator();
         mainToolBar->addAction(actionPoints);
         mainToolBar->addAction(actionLines);
         mainToolBar->addAction(actiontriangles);
+        mainToolBar->addSeparator();
+        mainToolBar->addAction(actionRender);
 
         retranslateUi(MainWindowClass);
 
@@ -326,13 +346,17 @@ public:
     void retranslateUi(QMainWindow *MainWindowClass)
     {
         MainWindowClass->setWindowTitle(QApplication::translate("MainWindowClass", "ToulouseCompiler", nullptr));
-        actionSave->setText(QApplication::translate("MainWindowClass", "New", nullptr));
-        actionLoad->setText(QApplication::translate("MainWindowClass", "Open", nullptr));
-        actionSave_2->setText(QApplication::translate("MainWindowClass", "Save", nullptr));
+        actionNew->setText(QApplication::translate("MainWindowClass", "New", nullptr));
+        actionOpen->setText(QApplication::translate("MainWindowClass", "Open", nullptr));
+        actionSave->setText(QApplication::translate("MainWindowClass", "Save", nullptr));
         actionSave_As->setText(QApplication::translate("MainWindowClass", "Save As", nullptr));
-        actionPoints->setText(QApplication::translate("MainWindowClass", "Points", nullptr));
-        actionLines->setText(QApplication::translate("MainWindowClass", "Lines", nullptr));
-        actiontriangles->setText(QApplication::translate("MainWindowClass", "triangles", nullptr));
+        actionPoints->setText(QApplication::translate("MainWindowClass", "Mode Points", nullptr));
+        actionLines->setText(QApplication::translate("MainWindowClass", "Mode Lines", nullptr));
+        actiontriangles->setText(QApplication::translate("MainWindowClass", "Mode triangles", nullptr));
+        actionRender->setText(QApplication::translate("MainWindowClass", "Render", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionRender->setToolTip(QApplication::translate("MainWindowClass", "for render the shader programs", nullptr));
+#endif // QT_NO_TOOLTIP
         vistaActivada->setText(QApplication::translate("MainWindowClass", "Vertex Shader", nullptr));
         changePage->setText(QString());
         OutPut->setPlainText(QString());

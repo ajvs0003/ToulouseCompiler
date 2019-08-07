@@ -27,7 +27,7 @@ GLuint PagShaderProgram::createShaderProgram(const std::string& filename)
 		handler = gl->glCreateProgram();
 		if (handler == 0) 
 		{
-			std::cerr << "Cannot create shader program: " << filename << std::endl;
+			Log::getInstancia()->error("Cannot create shader program: "+ filename);
 			return 0;
 		}
 	}
@@ -49,7 +49,7 @@ GLuint PagShaderProgram::createShaderProgram(const std::string& filename)
 	gl->glAttachShader(handler, fragmentShaderObject);
 	if (geometryShaderObject != 0)
 	{
-		std::cout << "Habemus geometry shader! (" << filename << "-geom.glsl)" << std::endl;
+		Log::getInstancia()->success("Found geometry shader! (" + filename + "-geom.glsl)");
 		gl->glAttachShader(handler, geometryShaderObject);
 	}
 
@@ -72,8 +72,8 @@ GLuint PagShaderProgram::createShaderProgram(const std::string& filename)
 
 
 			//aqui detectamos los posibles errores del shader
-			std::cout << "Cannot link shader " << filename << std::endl
-				<< logString << std::endl;
+			Log::getInstancia()->error("Cannot link shader " + filename+ logString);
+				
 		}
 		return 0;
 	}
@@ -96,7 +96,7 @@ bool PagShaderProgram::use()
 	}
 	else 
 	{
-		std::cout << "Cannot use shader program"<<endl;
+		Log::getInstancia()->error("Cannot use shader program");
 		return false;
 	}
 }
@@ -118,7 +118,7 @@ bool PagShaderProgram::setUniform(std::string name, GLint value)
 	else 
 	{
 		if (showUniformDebugMessages)
-			std::cout << "Cannot find localization for: " << name << std::endl;
+			Log::getInstancia()->error("Cannot find localization for: " + name );
 		return false;
 	}
 }
@@ -136,7 +136,7 @@ bool PagShaderProgram::setUniform(std::string name, GLfloat value)
 	else 
 	{
 		if (showUniformDebugMessages)
-			std::cout << "Cannot find localization for: " << name << std::endl;
+			Log::getInstancia()->error("Cannot find localization for: " +name );
 		return false;
 	}
 }
@@ -154,7 +154,7 @@ bool PagShaderProgram::setUniform(std::string name, glm::mat4 value)
 	else 
 	{
 		if (showUniformDebugMessages)
-			std::cout << "Cannot find localization for: " << name << std::endl;
+			Log::getInstancia()->error("Cannot find localization for: " + name );
 		return false;
 	}
 }
@@ -171,7 +171,7 @@ bool PagShaderProgram::setUniform(std::string name, glm::vec3 value)
 	else 
 	{
 		if (showUniformDebugMessages)
-			std::cout << "Cannot find localization for: " << name << std::endl;
+			Log::getInstancia()->error("Cannot find localization for: " + name );
 		return false;
 	}
 }
@@ -193,7 +193,7 @@ bool PagShaderProgram::setUniform(std::string name, bool value)
 	else 
 	{
 		if (showUniformDebugMessages)
-			std::cout << "Cannot find localization for: " << name << std::endl;
+			Log::getInstancia()->error("Cannot find localization for: " + name );
 		return false;
 	}
 }
@@ -211,7 +211,7 @@ GLuint PagShaderProgram::compileShader(const std::string& filename, GLenum shade
 			return 0; // Para no ensuciar la consola con shaders opcionales
 		}
 
-		std::cout << "Cannot open shader source file: " << filename << std::endl;
+		Log::getInstancia()->error("Cannot open shader source file: " + filename );
 		return 0;
 	}
 
@@ -223,7 +223,7 @@ GLuint PagShaderProgram::compileShader(const std::string& filename, GLenum shade
 	GLuint shaderHandler = gl->glCreateShader(shaderType);
 	if (shaderHandler == 0) 
 	{
-		std::cout << "Cannot create shader object" << std::endl;
+		Log::getInstancia()->error("Cannot create shader object" );
 		return 0;
 	}
 	// - Le asignamos el código fuente leído y lo compilamos
@@ -245,8 +245,7 @@ GLuint PagShaderProgram::compileShader(const std::string& filename, GLenum shade
 			gl->glGetShaderInfoLog(shaderHandler, logLen, &written, cLogString);
 			logString.assign(cLogString);
 			delete[] cLogString;
-			std::cout << "Cannot compile shader " << shaderType << std::endl
-				<< logString << std::endl;
+			Log::getInstancia()->error("Cannot compile shader " + shaderType + logString);
 		}
 	}
 	return shaderHandler;
