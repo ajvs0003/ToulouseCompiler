@@ -3,6 +3,10 @@
 #include <vector>
 #include "PagRevolutionObject.h"
 #include "Log.h"
+#include <qstring.h>
+#include <qfile.h>
+#include <qtextstream.h>
+
 
 using namespace std;
 
@@ -10,7 +14,7 @@ using namespace std;
 namespace Metodos_especiales {
 
 
-	std::vector <glm::vec2>  lecturaFichero(std::vector <glm::vec2> test, string fichero);//Para leer el fichero de puntos
+	std::vector <glm::vec2>  lecturaFichero(std::vector <glm::vec2> test, std::string fichero);//Para leer el fichero de puntos
 
 	//Para la creacion de semicirculos
 	//glm::vec2 a(1,12);

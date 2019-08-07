@@ -1,16 +1,54 @@
 #include "Metodos_especiales.h"
 
-
 //Para leer los puntos del perfil desde un txt ej:(0,1)
-std::vector <glm::vec2>  Metodos_especiales::lecturaFichero(std::vector <glm::vec2> test, string fichero) {
+std::vector <glm::vec2>  Metodos_especiales::lecturaFichero(std::vector <glm::vec2> test, std::string fichero) {
 	
-	fstream  file;
+	/*fstream  file;*/
 	string  tipo;
 	string linea;
 	glm::vec2 punto;
 	int cont;
 
-	file.open(fichero.c_str());
+	QFile inputFile(fichero.c_str());
+	if (inputFile.open(QIODevice::ReadOnly))
+	{
+
+		Log::getInstancia()->success("Opening file...");
+		QTextStream in(&inputFile);
+		while (!in.atEnd())
+		{
+			QString line = in.readLine();
+			
+			std::string text = line.toUtf8().constData();
+			std::stringstream   stream(text);
+			std::string         valor;
+			cont = 0;
+
+			while (std::getline(stream, valor, ','))
+			{
+				if (cont == 0) {
+					punto.x = stof(valor.c_str());
+					cont++;
+				}
+				else {
+					punto.y = stof(valor.c_str());
+				}
+
+			}
+			test.push_back(punto);
+
+
+
+
+		}
+		inputFile.close();
+	}
+	else {
+		Log::getInstancia()->success("Can't open file: "+ fichero);
+	}
+
+	//MODE C++
+	/*file.open(fichero.c_str());
 	if (file.is_open()) {
 		Log::getInstancia()->success("Leyendo fichero" + fichero);
 		while (!file.eof()) {
@@ -42,7 +80,7 @@ std::vector <glm::vec2>  Metodos_especiales::lecturaFichero(std::vector <glm::ve
 	else {
 		
 		Log::getInstancia()->error("Error leyendo fichero" + fichero);
-	}
+	}*/
 	return test;
 }
 

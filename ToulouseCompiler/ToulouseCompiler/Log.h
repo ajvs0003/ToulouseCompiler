@@ -12,6 +12,8 @@
 #include <fstream>
 #include <time.h>
 #include <QPlainTextEdit>
+#include <QTextCharFormat>
+#include <QColor>
 using namespace std;
 class Log{
 private:
@@ -26,12 +28,20 @@ private:
 
 	QPlainTextEdit* OutPut;
 
+	const std::map<QString, QColor> m_colours{ {"red", QColor(Qt::darkRed)},
+										   {"green", QColor(Qt::darkGreen)},
+										   {"black", QColor(Qt::black)},
+										{"yellow", QColor(Qt::darkYellow)},
+										{"cyan", QColor(Qt::darkCyan)}
+	};
 
 	/**
 	* @brief Construccion y creacion del log.txt
 	*/
 	Log();
 
+
+	void appendText(const QString & text);
 public:
 	
 	void setOutPut(QPlainTextEdit* nuevo) {

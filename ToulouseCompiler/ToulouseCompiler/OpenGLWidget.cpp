@@ -314,7 +314,7 @@ void OpenGLWidget::typePaint(string type)
 		ob->insertObject(mesa);
 
 
-		dataTxt = Metodos_especiales::lecturaFichero(dataTxt, "./Objects/peon.txt");
+		dataTxt = Metodos_especiales::lecturaFichero(dataTxt, ":/obj/Resources/Objects/peon.txt");
 		PagRevolutionObject* peon;
 
 		peon = new PagRevolutionObject(this, dataTxt, 2, 60);

@@ -48,17 +48,47 @@ Log *Log::getInstancia()
 	}
 	return instancia;
 }
+void Log::appendText(const QString & text) {
+	QString html{ text };
+	int j = 0;
+	bool start = true;
+	QString textColor;
+
+	while ((j = html.indexOf(QChar('\033'), j)) != -1) {
+		html.remove(j, 1);
+		QColor color;
+		for (auto & pair : m_colours) {
+			if (html.mid(j).startsWith(pair.first)) {
+				color = pair.second;
+				html.remove(j, pair.first.length());
+			}
+		}
+		if (start) {
+			textColor = QString("<font color=\"%1\">").arg(color.name());
+			start = false;
+		}
+		else
+			textColor = QString("</font><font color=\"%1\">").arg(color.name());
+		html.insert(j, textColor);
+		j += 1 + textColor.length();
+	}
+	html.append("</font>");
+	OutPut->appendHtml(html);
+}
+
+
+
 
 void Log::escribir(string mensaje)
 {
 	// Escribimos en el log
 	this->log << currentDateTime()+" "<< mensaje << endl;
+
+	QString text = QString("\033cyan %1 \033black%2 ").arg(currentDateTime().c_str())
+                .arg(mensaje.c_str());
+
+	appendText(text);
 	
-	std::string str = currentDateTime() + " : "+ mensaje + "\n";
-
-
-	QString qstr = QString::fromStdString(str);
-	OutPut->insertPlainText(qstr);
 
 }
 void Log::error(string mensaje){
@@ -67,9 +97,14 @@ void Log::error(string mensaje){
 	this->log << currentDateTime() + " [ERROR [ " << to_string(errors) + "]" << mensaje << endl;
 	this->errors++;
 
-	std::string str = currentDateTime() + "[ERROR["+ to_string(errors) + "]" + mensaje + "\n";
-	QString qstr = QString::fromStdString(str);
-	OutPut->insertPlainText(qstr);
+	std::string str =  "[ERROR["+ to_string(errors) + "]" ;
+
+	QString text = QString("\033cyan %1 \033red%2 \033black%3")
+		.arg(currentDateTime().c_str())
+		.arg(str.c_str())
+		.arg(mensaje.c_str());
+
+	appendText(text);
 }
 void Log::warning(string mensaje){
 
@@ -79,9 +114,12 @@ void Log::warning(string mensaje){
 
 
 
-	std::string str = currentDateTime() + " [WARNING]" + mensaje + "\n";
-	QString qstr = QString::fromStdString(str);
-	OutPut->insertPlainText(qstr);
+	QString text = QString("\033cyan %1 \033yellow%2 \033black%3")
+		.arg(currentDateTime().c_str())
+		.arg("[WARNING]")
+		.arg(mensaje.c_str());
+
+	appendText(text);
 
 }
 void Log::success(string mensaje)
@@ -93,10 +131,16 @@ void Log::success(string mensaje)
 
 
 
-	std::string str = currentDateTime() + " [SUCCESSFUL] " + mensaje + "\n";
-	QString qstr = QString::fromStdString(str);
-	OutPut->insertPlainText(qstr);
 
+	QString text = QString("\033cyan %1 \033green%2 \033black%3")
+		.arg(currentDateTime().c_str())
+		.arg(" [SUCCESSFUL] ")
+		.arg(mensaje.c_str());
+
+	appendText(text);
+
+
+	
 }
 void Log::close()
 {

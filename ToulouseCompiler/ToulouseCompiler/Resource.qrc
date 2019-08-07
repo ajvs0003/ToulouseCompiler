@@ -6,4 +6,7 @@
         <file>Resources/img/line.png</file>
         <file>Resources/img/points.png</file>
     </qresource>
+    <qresource prefix="/obj">
+        <file>Resources/Objects/peon.txt</file>
+    </qresource>
 </RCC>

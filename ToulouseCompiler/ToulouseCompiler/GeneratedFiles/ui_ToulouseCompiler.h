@@ -219,16 +219,8 @@ public:
         QFont font1;
         font1.setFamily(QString::fromUtf8("Arial"));
         changePage->setFont(font1);
-        changePage->setStyleSheet(QString::fromUtf8("QPushButton#evilButton {\n"
-"    background-color: red;\n"
-"    border-style: outset;\n"
-"    border-width: 2px;\n"
-"    border-radius: 10px;\n"
-"    border-color: beige;\n"
-"    font: bold 14px;\n"
-"    min-width: 10em;\n"
-"    padding: 6px;\n"
-"}"));
+        changePage->setAutoFillBackground(false);
+        changePage->setStyleSheet(QString::fromUtf8(""));
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/img/Resources/img/next.png"), QSize(), QIcon::Normal, QIcon::Off);
         changePage->setIcon(icon4);
