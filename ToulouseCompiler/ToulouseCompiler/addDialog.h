@@ -6,7 +6,7 @@
 #include <QCheckBox>
 #include <QPushButton>
 #include <QLineEdit>
-
+#include <Qstring>
 typedef struct
 {
 	string type;
@@ -46,7 +46,7 @@ private:
 
 	QLineEdit* inputValue;
 
-	bool enableButtonSave = false;
+
 	bool textCheck = false;
 	bool typeCheck = false;
 
@@ -54,11 +54,12 @@ private slots:
 	
 	void push_save();
 	void push_reject();
-	void text_changed(const QString &newValue);
 
+	void text_changed(const QString &newValue);
+	void switchcall(const QString&value);
 	
 signals:
 	void dataChanged(const dataForUniform &data);
-
+	
 	
 };

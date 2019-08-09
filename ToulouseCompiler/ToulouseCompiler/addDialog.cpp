@@ -1,6 +1,5 @@
 #include "addDialog.h"
 #include "ui_addDialog.h"
-
 addDialog::addDialog(QWidget *parent)
 	: QDialog(parent)
 {
@@ -9,11 +8,13 @@ addDialog::addDialog(QWidget *parent)
 
 	guardar_cancelar = ui->buttonBox;
 	guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(false);
+
 	options = ui->comboBox;
+	connect(options, SIGNAL(currentIndexChanged(const QString&)),this, SLOT(switchcall(const QString&)));
 
 
 	inputValue = ui->lineEdit;
-	connect(inputValue, SIGNAL(textChanged(const QString &)), this, SLOT(customSlot(const QString &newValue)));
+	connect(inputValue, SIGNAL(textChanged(const QString&)), this, SLOT(text_changed(const QString &)));
 
 
 
@@ -63,10 +64,18 @@ void addDialog::push_save()
 }
 
 void addDialog::text_changed(const QString &newValue) {
-
+	Log::getInstancia()->warning("detectado cambio texto");
 
 	if (newValue != "") {
 		textCheck = true;
-		if (typeCheck == true)enableButtonSave = true;
+		if (typeCheck == true)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
 	}
+}
+void addDialog::switchcall(const QString&  value) {
+	Log::getInstancia()->warning("Detectado cambio de tipo");
+	if (value != "") {
+		typeCheck = true;
+		if (textCheck == true)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
+	}
+
 }
