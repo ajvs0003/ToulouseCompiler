@@ -1,27 +1,29 @@
-LogFile de la practica_(tiempo ejecucion 22:44:12).
+LogFile de la practica_(tiempo ejecucion 22:49:07).
 ---------------------------------- 
-22:44:13 Inicializando OpenGL
-22:44:13 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
-22:44:13 Fabricante    : NVIDIA Corporation
-22:44:13 Version OpenGL: 4.5.0 NVIDIA 430.86
-22:44:13 Version GLSL  : 4.50 NVIDIA
-22:44:13 [SUCCESSFUL] Iniciating Vao
-22:44:13 [SUCCESSFUL] Opening file...
-22:44:13 [SUCCESSFUL] Profile  accepted
-22:44:13 [SUCCESSFUL] Iniciating Vao
-22:44:13 [SUCCESSFUL] Iniciating Vao
-22:44:13 [SUCCESSFUL] Iniciating Vao
-22:44:13 [SUCCESSFUL] Rendering
-22:44:14 [SUCCESSFUL] Rendering
-22:44:15 [WARNING]Pulsado add
-22:44:17 [WARNING]Detectado cambio de tipo
-22:44:19 [WARNING]detectado cambio texto
-22:44:19 [WARNING]detectado cambio texto
-22:44:19 [WARNING]detectado cambio texto
-22:44:19 [WARNING]detectado cambio texto
-22:44:19 [WARNING]detectado cambio texto
-22:44:19 [WARNING]detectado cambio texto
-22:44:19 [WARNING]detectado cambio texto
-22:44:19 [WARNING]detectado cambio texto
-22:44:28 [WARNING]Pulsado guardar
-22:44:28 dsasasas
+22:49:08 Inicializando OpenGL
+22:49:08 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
+22:49:08 Fabricante    : NVIDIA Corporation
+22:49:08 Version OpenGL: 4.5.0 NVIDIA 430.86
+22:49:08 Version GLSL  : 4.50 NVIDIA
+22:49:08 [SUCCESSFUL] Iniciating Vao
+22:49:08 [SUCCESSFUL] Opening file...
+22:49:08 [SUCCESSFUL] Profile  accepted
+22:49:08 [SUCCESSFUL] Iniciating Vao
+22:49:08 [SUCCESSFUL] Iniciating Vao
+22:49:08 [SUCCESSFUL] Iniciating Vao
+22:49:08 [SUCCESSFUL] Rendering
+22:49:08 [SUCCESSFUL] Rendering
+22:49:53 [WARNING]Pulsado add
+22:50:02 [WARNING]Pulsado guardar
+22:50:02 kjkjkjkjkj
+22:50:15 [WARNING]Pulsado guardar
+22:50:15 figaro
+22:50:23 [WARNING]activado el modo puntos
+22:50:24 [WARNING]activado el modo lineas
+22:50:25 [WARNING]activado el modo lineas
+22:50:26 [SUCCESSFUL] Rendering
+22:50:29 [WARNING]activado el modo triangulos
+22:50:30 [SUCCESSFUL] Rendering
+22:50:33 [WARNING]activado el modo triangulos
+22:50:34 [WARNING]activado el modo puntos
+22:50:35 [SUCCESSFUL] Rendering

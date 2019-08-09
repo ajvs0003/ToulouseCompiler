@@ -53,9 +53,9 @@ void ToulouseCompiler::handleToolActionPoints() {
 	else {
 
 		modePoints->setChecked(false);
-		
+
 	}
-		
+
 }
 
 void ToulouseCompiler::handleToolActionLines()
@@ -89,7 +89,7 @@ void ToulouseCompiler::handleToolActionLines()
 
 
 
-	
+
 }
 
 void ToulouseCompiler::handleToolActionTriangles()
@@ -108,7 +108,7 @@ void ToulouseCompiler::handleToolActionTriangles()
 	if (!desactivate) {
 
 		openGLWindow->changeTrial(2);
-		
+
 		Log::getInstancia()->warning("activado el modo triangulos");
 	}
 	else {
@@ -119,15 +119,15 @@ void ToulouseCompiler::handleToolActionTriangles()
 
 
 
-	
+
 }
 
 void ToulouseCompiler::handleToolActionSave()
 {
-	
 
-		Log::getInstancia()->warning("Pulsado guardar");
-	
+
+	Log::getInstancia()->warning("Pulsado guardar");
+
 }
 
 void ToulouseCompiler::handleToolActionRender()
@@ -137,7 +137,10 @@ void ToulouseCompiler::handleToolActionRender()
 	openGLWindow->compile();
 }
 
-void ToulouseCompiler::handleData(const dataForUniform &data) 
+
+
+//this slot handle the data that for the uniforms that the widget send
+void ToulouseCompiler::handleData(const dataForUniform &data)
 {
 	Log::getInstancia()->escribir(data.value);
 
@@ -148,23 +151,36 @@ void ToulouseCompiler::handleData(const dataForUniform &data)
 
 void ToulouseCompiler::handleButtonAddUniform()
 {
-	Log::getInstancia()->warning("Pulsado add");
-	addForm = new addDialog(this);
+	/*Log::getInstancia()->warning("Pulsado add");*/
 
+
+
+	//**************widget add uniforms data***************//
+
+	addForm = new addDialog(this);
 	// connect your signal to the mainwindow slot
-	connect(addForm, SIGNAL(dataChanged(const dataForUniform &)),this, SLOT(handleData(const dataForUniform &)));
+	connect(addForm, SIGNAL(dataChanged(const dataForUniform &)), this, SLOT(handleData(const dataForUniform &)));
 
 	addForm->setWindowTitle("Uniform Data");
+
+	//if is true dont let change the window until close
+
 	/*addForm->setModal(true);*/
+
 	addForm->show();
 
 
-	
-	
-	
-	
-	
-	
+
+	//**************end widget add uniforms data***************//
+
+
+	//**************table widget data***************//
+
+
+
+	//**************end table widget data***************//
+
+
 }
 
 void ToulouseCompiler::configurate()
@@ -172,7 +188,7 @@ void ToulouseCompiler::configurate()
 
 	this->configuration_OutPut();
 
-	this->configuration_changePage();	
+	this->configuration_changePage();
 	this->configuration_codeEditor();
 	this->configuration_opengl();
 	this->configuration_ToolBar();
@@ -181,7 +197,7 @@ void ToulouseCompiler::configurate()
 
 
 
-	
+
 
 }
 
@@ -203,10 +219,13 @@ void ToulouseCompiler::configuration_changePage()
 
 void ToulouseCompiler::configuration_ToolBar()
 {
+
+	//signals for manage the action in the toolbar
+
 	modePoints = ui.actionPoints;
+
 	modePoints->setChecked(true);
 	connect(modePoints, SIGNAL(triggered()), this, SLOT(handleToolActionPoints()));
-
 
 
 	modeLines = ui.actionLines;

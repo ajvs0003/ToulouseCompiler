@@ -7,6 +7,9 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <Qstring>
+
+
+//Very important for can send data to the main window
 typedef struct
 {
 	string type;
@@ -14,6 +17,8 @@ typedef struct
 } dataForUniform;
 
 Q_DECLARE_METATYPE(dataForUniform);
+
+
 
 namespace Ui { class addDialog; };
 
