@@ -126,6 +126,9 @@
     <ClCompile Include="CodeEditor.cpp">
       <Filter>Source Files\CodeEditor</Filter>
     </ClCompile>
+    <ClCompile Include="addDialog.cpp">
+      <Filter>Source Files\QTConfiguration</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="OpenGLWidget.h">
@@ -137,9 +140,15 @@
     <QtMoc Include="CodeEditor.h">
       <Filter>Header Files\CodeEditor</Filter>
     </QtMoc>
+    <QtMoc Include="addDialog.h">
+      <Filter>Header Files\QTConfiguration</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ToulouseCompiler.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="addDialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

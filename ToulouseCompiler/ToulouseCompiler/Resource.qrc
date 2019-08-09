@@ -12,6 +12,7 @@
         <file>Resources/img/line_activate.png</file>
         <file>Resources/img/points_activate.png</file>
         <file>Resources/img/triangle_activate.png</file>
+        <file>Resources/img/add.png</file>
     </qresource>
     <qresource prefix="/obj">
         <file>Resources/Objects/peon.txt</file>

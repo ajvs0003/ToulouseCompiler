@@ -5,6 +5,14 @@
 #include "CodeEditor.h"
 #include "OpenGLWidget.h"
 #include "Log.h"
+#include <QTableWidget>
+#include "addDialog.h"
+#include <QPoint>
+
+
+
+
+
 
 /*******************/
 class ToulouseCompiler : public QMainWindow
@@ -18,7 +26,7 @@ private:
 
 
 	Ui::MainWindowClass ui;//MAIN WINDOW
-
+	
 	
 
 
@@ -67,6 +75,16 @@ private:
 	/********************END OPENGL DATA********************/
 
 
+	/********************UNIFORMS TABLE DATA********************/
+
+	QTableWidget* tablaUniforms;
+	QPushButton *addUniform;//Pointer to the button for add uniforms
+	addDialog* addForm;
+
+
+
+	/********************END UNIFORMS TABLE DATA********************/
+
 	//metodo que hara que se llamen a todos los configurate de la aplicacion
 	//que se encargan de enlazar la ui con las clases cpp que gestionan el funcionamiento
 	void configurate();
@@ -74,18 +92,26 @@ private:
 	void configuration_changePage();
 	void configuration_ToolBar();
 
-
+	void configuration_tablaUniforms();
 
 	void configuration_OutPut();
 	void configuration_codeEditor();
 	void configuration_opengl();
 
 
+
+	
+
 private slots:
+
+	void handleData(const dataForUniform &data);
+
+	//BUTTONS
 	void handleButton();
 	void handleToolActionPoints();
 	void handleToolActionLines();
 	void handleToolActionTriangles();
 	void handleToolActionSave();
 	void handleToolActionRender();
+	void handleButtonAddUniform();
 };

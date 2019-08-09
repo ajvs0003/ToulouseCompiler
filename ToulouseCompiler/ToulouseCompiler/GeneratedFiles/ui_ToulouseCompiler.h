@@ -13,9 +13,9 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QColumnView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -25,6 +25,7 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -54,8 +55,11 @@ public:
     QHBoxLayout *widgetLayout;
     QWidget *openglwidget;
     QHBoxLayout *opengl_layout;
-    QHBoxLayout *uniformLayouts;
-    QColumnView *columnView;
+    QVBoxLayout *verticalLayout_3;
+    QHBoxLayout *horizontalLayout_5;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *addUniform;
+    QTableWidget *uniforms;
     QVBoxLayout *EditorLayout;
     QHBoxLayout *horizontalLayout_2;
     QLabel *vistaActivada;
@@ -187,18 +191,34 @@ public:
 
         verticalLayout->addLayout(widgetLayout);
 
-        uniformLayouts = new QHBoxLayout();
-        uniformLayouts->setSpacing(6);
-        uniformLayouts->setObjectName(QString::fromUtf8("uniformLayouts"));
-        columnView = new QColumnView(centralWidget);
-        columnView->setObjectName(QString::fromUtf8("columnView"));
-        sizePolicy1.setHeightForWidth(columnView->sizePolicy().hasHeightForWidth());
-        columnView->setSizePolicy(sizePolicy1);
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        uniformLayouts->addWidget(columnView);
+        horizontalLayout_5->addItem(horizontalSpacer);
+
+        addUniform = new QPushButton(centralWidget);
+        addUniform->setObjectName(QString::fromUtf8("addUniform"));
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/img/Resources/img/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addUniform->setIcon(icon8);
+
+        horizontalLayout_5->addWidget(addUniform);
 
 
-        verticalLayout->addLayout(uniformLayouts);
+        verticalLayout_3->addLayout(horizontalLayout_5);
+
+        uniforms = new QTableWidget(centralWidget);
+        uniforms->setObjectName(QString::fromUtf8("uniforms"));
+
+        verticalLayout_3->addWidget(uniforms);
+
+
+        verticalLayout->addLayout(verticalLayout_3);
 
 
         horizontalLayout->addLayout(verticalLayout);
@@ -239,9 +259,9 @@ public:
         changePage->setFont(font1);
         changePage->setAutoFillBackground(false);
         changePage->setStyleSheet(QString::fromUtf8(""));
-        QIcon icon8;
-        icon8.addFile(QString::fromUtf8(":/img/Resources/img/next.png"), QSize(), QIcon::Normal, QIcon::Off);
-        changePage->setIcon(icon8);
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/img/Resources/img/next.png"), QSize(), QIcon::Normal, QIcon::Off);
+        changePage->setIcon(icon9);
         changePage->setAutoDefault(false);
 
         horizontalLayout_2->addWidget(changePage, 0, Qt::AlignRight|Qt::AlignVCenter);
@@ -357,6 +377,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         actionRender->setToolTip(QApplication::translate("MainWindowClass", "for render the shader programs", nullptr));
 #endif // QT_NO_TOOLTIP
+        addUniform->setText(QString());
         vistaActivada->setText(QApplication::translate("MainWindowClass", "Vertex Shader", nullptr));
         changePage->setText(QString());
         OutPut->setPlainText(QString());

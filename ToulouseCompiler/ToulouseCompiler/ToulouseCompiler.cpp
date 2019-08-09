@@ -137,6 +137,36 @@ void ToulouseCompiler::handleToolActionRender()
 	openGLWindow->compile();
 }
 
+void ToulouseCompiler::handleData(const dataForUniform &data) 
+{
+	Log::getInstancia()->escribir(data.value);
+
+
+
+}
+
+
+void ToulouseCompiler::handleButtonAddUniform()
+{
+	Log::getInstancia()->warning("Pulsado add");
+	addForm = new addDialog(this);
+
+	// connect your signal to the mainwindow slot
+	connect(addForm, SIGNAL(dataChanged(const dataForUniform &)),this, SLOT(handleData(const dataForUniform &)));
+
+	addForm->setWindowTitle("Uniform Data");
+	/*addForm->setModal(true);*/
+	addForm->show();
+
+
+	
+	
+	
+	
+	
+	
+}
+
 void ToulouseCompiler::configurate()
 {
 
@@ -146,7 +176,7 @@ void ToulouseCompiler::configurate()
 	this->configuration_codeEditor();
 	this->configuration_opengl();
 	this->configuration_ToolBar();
-
+	this->configuration_tablaUniforms();
 
 
 
@@ -192,6 +222,23 @@ void ToulouseCompiler::configuration_ToolBar()
 	render = ui.actionRender;
 	connect(render, SIGNAL(triggered()), this, SLOT(handleToolActionRender()));
 }
+
+
+
+
+void ToulouseCompiler::configuration_tablaUniforms()
+{
+	tablaUniforms = ui.uniforms;
+	addUniform = ui.addUniform;
+
+	addUniform->setStyleSheet("QPushButton{background: transparent;}");
+	//gestiona los conect del boton
+	connect(addUniform, SIGNAL(released()), this, SLOT(handleButtonAddUniform()));
+}
+
+
+
+
 
 void ToulouseCompiler::configuration_OutPut()
 {
@@ -244,3 +291,38 @@ void ToulouseCompiler::configuration_opengl()
 
 	openglwidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
+
+
+
+
+
+//QList<QPair<QString, QColor> > list;
+//list << QPair<QString, QColor>(tr("Alice"), QColor("aliceblue")) <<
+//QPair<QString, QColor>(tr("Neptun"), QColor("aquamarine")) <<
+//QPair<QString, QColor>(tr("Ferdinand"), QColor("springgreen"));
+//
+//QTableWidget *table = new QTableWidget(3, 2);
+//table->setHorizontalHeaderLabels(QStringList() << tr("Name")
+//	<< tr("Hair Color"));
+//table->verticalHeader()->setVisible(false);
+//table->resize(150, 50);
+//
+//for (int i = 0; i < 3; ++i) {
+//	QPair<QString, QColor> pair = list.at(i);
+//
+//	QTableWidgetItem *nameItem = new QTableWidgetItem(pair.first);
+//	QTableWidgetItem *colorItem = new QTableWidgetItem;
+//	colorItem->setData(Qt::DisplayRole, pair.second);
+//
+//	table->setItem(i, 0, nameItem);
+//	table->setItem(i, 1, colorItem);
+//}
+//table->resizeColumnToContents(0);
+//table->horizontalHeader()->setStretchLastSection(true);
+//
+//QGridLayout *layout = new QGridLayout;
+//layout->addWidget(table, 0, 0);
+//
+//setLayout(layout);
+//
+//setWindowTitle(tr("Color Editor Factory"));
