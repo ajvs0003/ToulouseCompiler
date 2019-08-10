@@ -13,6 +13,7 @@
         <file>Resources/img/points_activate.png</file>
         <file>Resources/img/triangle_activate.png</file>
         <file>Resources/img/add.png</file>
+        <file>Resources/img/icono.png</file>
     </qresource>
     <qresource prefix="/obj">
         <file>Resources/Objects/peon.txt</file>

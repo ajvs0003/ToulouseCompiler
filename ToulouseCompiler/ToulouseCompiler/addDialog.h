@@ -12,6 +12,7 @@
 //Very important for can send data to the main window
 typedef struct
 {
+	string name;
 	string type;
 	string value;
 } dataForUniform;
@@ -49,9 +50,10 @@ private:
 
 	QCheckBox* multipleAddings;
 
+	QLineEdit* nameVar;
 	QLineEdit* inputValue;
 
-
+	bool textNameCheck = false;
 	bool textCheck = false;
 	bool typeCheck = false;
 
@@ -62,7 +64,7 @@ private slots:
 
 	void text_changed(const QString &newValue);
 	void switchcall(const QString&value);
-	
+	void textName_changed(const QString &newValue);
 signals:
 	void dataChanged(const dataForUniform &data);
 	

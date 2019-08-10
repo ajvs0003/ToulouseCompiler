@@ -91,6 +91,9 @@ void  OpenGLWidget::prepareOpenGL()
 
 }
 
+
+
+
 void OpenGLWidget::compile()
 {
 	this->glDeleteProgram(shaderProgram->getHandler());
@@ -100,6 +103,13 @@ void OpenGLWidget::compile()
 
 	renderNow();
 	
+}
+
+void OpenGLWidget::addUserShader(string path){
+
+	rutaShaderUsuario = path;
+
+
 }
 
 
@@ -135,7 +145,25 @@ void OpenGLWidget::chargeShader()
 	else {
 		//Here we use the shader that the user wrote
 
+		switch (typeTrial) {
+		case 0:
+			_typePaint = "points";
+			
+			
+			break;
 
+		case 1:
+			_typePaint = "wire";
+			
+			
+			break;
+		case 2:
+			_typePaint = "triangle";
+			
+			break;
+		}
+
+		shaderProgram->createShaderProgram(rutaShaderUsuario);
 	}
 
 

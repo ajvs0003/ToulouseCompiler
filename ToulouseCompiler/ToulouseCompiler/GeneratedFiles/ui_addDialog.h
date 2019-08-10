@@ -31,6 +31,9 @@ public:
     QCheckBox *checkBox;
     QSpacerItem *verticalSpacer_2;
     QHBoxLayout *horizontalLayout_3;
+    QHBoxLayout *horizontalLayout_5;
+    QLabel *label_3;
+    QLineEdit *nameVar;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label;
     QComboBox *comboBox;
@@ -45,7 +48,10 @@ public:
     {
         if (addDialog->objectName().isEmpty())
             addDialog->setObjectName(QString::fromUtf8("addDialog"));
-        addDialog->resize(364, 127);
+        addDialog->resize(437, 159);
+        QFont font;
+        font.setFamily(QString::fromUtf8("Arial"));
+        addDialog->setFont(font);
         horizontalLayout_4 = new QHBoxLayout(addDialog);
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
@@ -65,6 +71,27 @@ public:
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        label_3 = new QLabel(addDialog);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        horizontalLayout_5->addWidget(label_3);
+
+        nameVar = new QLineEdit(addDialog);
+        nameVar->setObjectName(QString::fromUtf8("nameVar"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(nameVar->sizePolicy().hasHeightForWidth());
+        nameVar->setSizePolicy(sizePolicy);
+
+        horizontalLayout_5->addWidget(nameVar);
+
+
+        horizontalLayout_3->addLayout(horizontalLayout_5);
+
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
@@ -135,7 +162,8 @@ public:
     void retranslateUi(QDialog *addDialog)
     {
         addDialog->setWindowTitle(QApplication::translate("addDialog", "addDialog", nullptr));
-        checkBox->setText(QApplication::translate("addDialog", "Multiple addings", nullptr));
+        checkBox->setText(QApplication::translate("addDialog", "Multiple adds", nullptr));
+        label_3->setText(QApplication::translate("addDialog", "Name:", nullptr));
         label->setText(QApplication::translate("addDialog", "Type:", nullptr));
         comboBox->setItemText(0, QString());
         comboBox->setItemText(1, QApplication::translate("addDialog", "boolean", nullptr));

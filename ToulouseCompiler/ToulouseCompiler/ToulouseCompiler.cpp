@@ -9,7 +9,8 @@ ToulouseCompiler::ToulouseCompiler(QWidget *parent)
 {
 	ui.setupUi(this);
 
-
+	
+	this->setWindowIcon(QIcon(":/img/Resources/img/icono.png"));
 
 	this->configurate();
 
@@ -33,18 +34,18 @@ void ToulouseCompiler::handleButton() {
 void ToulouseCompiler::handleToolActionPoints() {
 
 
-	bool desactivate = false;
+
 	if (modeLines->isChecked()) {
-		desactivate = true;
+		modeLines->setChecked(false);
 	}
 	if (modeTriangles->isChecked()) {
-		desactivate = true;
+		modeTriangles->setChecked(false);
 	}
 
 
 
 
-	if (!desactivate) {
+	if ( modePoints->isChecked()) {
 
 		openGLWindow->changeTrial(0);
 
@@ -61,18 +62,18 @@ void ToulouseCompiler::handleToolActionPoints() {
 void ToulouseCompiler::handleToolActionLines()
 {
 
-	bool desactivate = false;
+	
 	if (modePoints->isChecked()) {
-		desactivate = true;
+		modePoints->setChecked(false);
 	}
 	if (modeTriangles->isChecked()) {
-		desactivate = true;
+		modeTriangles->setChecked(false);
 	}
 
 
 
 
-	if (!desactivate) {
+	if (modeLines->isChecked()) {
 
 		openGLWindow->changeTrial(1);
 
@@ -94,18 +95,18 @@ void ToulouseCompiler::handleToolActionLines()
 
 void ToulouseCompiler::handleToolActionTriangles()
 {
-	bool desactivate = false;
+	
 	if (modeLines->isChecked()) {
-		desactivate = true;
+		modeLines->setChecked(false);
 	}
 	if (modePoints->isChecked()) {
-		desactivate = true;
+		modePoints->setChecked(false);
 	}
 
 
 
 
-	if (!desactivate) {
+	if ( modeTriangles->isChecked()) {
 
 		openGLWindow->changeTrial(2);
 
@@ -137,13 +138,81 @@ void ToulouseCompiler::handleToolActionRender()
 	openGLWindow->compile();
 }
 
+void ToulouseCompiler::editSlot(int row, int col) {
+
+	
+		Log::getInstancia()->warning("AY ME ESTAS EDITANDO");
+	
+
+
+
+}
+
+
+void ToulouseCompiler::cell_onClicked() {
+	QWidget *w = qobject_cast<QWidget *>(sender()->parent());
+	if (w) {
+		int row = tableUniforms->indexAt(w->pos()).row();
+		tableUniforms->removeRow(row);
+		tableUniforms->setCurrentCell(0, 0);
+	}
+}
+
 
 
 //this slot handle the data that for the uniforms that the widget send
 void ToulouseCompiler::handleData(const dataForUniform &data)
 {
-	Log::getInstancia()->escribir(data.value);
+	
+	/*Log::getInstancia()->escribir(data.value);*/
+	//**************table widget data***************//
+	int row = tableUniforms->rowCount() - 1;
+	tableUniforms->insertRow(tableUniforms->rowCount());
 
+
+	
+	//create qt elements for the table
+	QTableWidgetItem *name = new QTableWidgetItem(QString::fromStdString(data.name));
+	QTableWidgetItem *type = new QTableWidgetItem(QString::fromStdString(data.type));
+	QTableWidgetItem *value = new QTableWidgetItem(QString::fromStdString(data.value));
+
+
+	
+	/*name->setFlags(name->flags() ^ Qt::ItemIsEditable);
+	type->setFlags(type->flags() ^ Qt::ItemIsEditable);
+	value->setFlags(value->flags() ^ Qt::ItemIsEditable);*/
+
+	//insert values to the table
+	tableUniforms->setItem(row, column::name, name);
+	tableUniforms->setItem(row, column::type,type);
+	tableUniforms->setItem(row, column::value, value);
+
+
+	QWidget* pWidget = new QWidget();
+	QPushButton* btn_edit = new QPushButton();
+	btn_edit->setText("Remove");
+	
+	connect(btn_edit, SIGNAL(clicked()), this, SLOT(cell_onClicked()));
+	
+
+	QHBoxLayout* pLayout = new QHBoxLayout(pWidget);
+	pLayout->addWidget(btn_edit);
+	pLayout->setAlignment(Qt::AlignCenter);
+	pLayout->setContentsMargins(0, 0, 0, 0);
+	pWidget->setLayout(pLayout);
+	tableUniforms->setCellWidget(row, column::deleteRow, pWidget);
+
+
+
+
+
+	/*tableUniforms->setIndexWidget(tableUniforms->model()->index(row, column::deleteRow), new QPushButton("Remove", tableUniforms));*/
+
+	
+
+
+
+	//**************end table widget data***************//
 
 
 }
@@ -174,11 +243,7 @@ void ToulouseCompiler::handleButtonAddUniform()
 	//**************end widget add uniforms data***************//
 
 
-	//**************table widget data***************//
-
-
-
-	//**************end table widget data***************//
+	
 
 
 }
@@ -247,7 +312,29 @@ void ToulouseCompiler::configuration_ToolBar()
 
 void ToulouseCompiler::configuration_tablaUniforms()
 {
-	tablaUniforms = ui.uniforms;
+	tableUniforms = ui.uniforms;
+
+	tableUniforms->setColumnCount(4);
+	
+	tableUniforms->setHorizontalHeaderLabels(QStringList() << tr("Name") << tr("Type Uniform")
+		<< tr("Value")<<tr("Delete"));
+
+	tableUniforms->insertRow(tableUniforms->rowCount());
+
+	//only read if i active this
+	tableUniforms->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+
+	tableUniforms->verticalHeader()->setVisible(false);
+
+	//para editar celdas
+
+	connect(tableUniforms, SIGNAL(cellClicked(int, int)), this, SLOT(editSlot(int, int)));
+
+	tableUniforms->show();
+
+
+
 	addUniform = ui.addUniform;
 
 	addUniform->setStyleSheet("QPushButton{background: transparent;}");

@@ -57,8 +57,9 @@ public:
     QHBoxLayout *opengl_layout;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout_5;
-    QSpacerItem *horizontalSpacer;
+    QVBoxLayout *verticalLayout_4;
     QPushButton *addUniform;
+    QHBoxLayout *horizontalLayout_6;
     QTableWidget *uniforms;
     QVBoxLayout *EditorLayout;
     QHBoxLayout *horizontalLayout_2;
@@ -89,6 +90,9 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(MainWindowClass->sizePolicy().hasHeightForWidth());
         MainWindowClass->setSizePolicy(sizePolicy);
+        QFont font;
+        font.setFamily(QString::fromUtf8("Arial"));
+        MainWindowClass->setFont(font);
         actionNew = new QAction(MainWindowClass);
         actionNew->setObjectName(QString::fromUtf8("actionNew"));
         QIcon icon;
@@ -197,25 +201,42 @@ public:
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer);
-
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         addUniform = new QPushButton(centralWidget);
         addUniform->setObjectName(QString::fromUtf8("addUniform"));
         QIcon icon8;
         icon8.addFile(QString::fromUtf8(":/img/Resources/img/add.png"), QSize(), QIcon::Normal, QIcon::Off);
         addUniform->setIcon(icon8);
 
-        horizontalLayout_5->addWidget(addUniform);
+        verticalLayout_4->addWidget(addUniform, 0, Qt::AlignRight);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        uniforms = new QTableWidget(centralWidget);
+        uniforms->setObjectName(QString::fromUtf8("uniforms"));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(uniforms->sizePolicy().hasHeightForWidth());
+        uniforms->setSizePolicy(sizePolicy2);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Bell MT"));
+        font1.setPointSize(12);
+        uniforms->setFont(font1);
+
+        horizontalLayout_6->addWidget(uniforms);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_6);
+
+
+        horizontalLayout_5->addLayout(verticalLayout_4);
 
 
         verticalLayout_3->addLayout(horizontalLayout_5);
-
-        uniforms = new QTableWidget(centralWidget);
-        uniforms->setObjectName(QString::fromUtf8("uniforms"));
-
-        verticalLayout_3->addWidget(uniforms);
 
 
         verticalLayout->addLayout(verticalLayout_3);
@@ -238,30 +259,30 @@ public:
         vistaActivada = new QLabel(centralWidget);
         vistaActivada->setObjectName(QString::fromUtf8("vistaActivada"));
         vistaActivada->setMaximumSize(QSize(16777215, 20));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Arial"));
-        font.setBold(true);
-        font.setWeight(75);
-        vistaActivada->setFont(font);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Bell MT"));
+        font2.setPointSize(12);
+        font2.setBold(true);
+        font2.setWeight(75);
+        vistaActivada->setFont(font2);
 
         horizontalLayout_2->addWidget(vistaActivada);
 
         changePage = new QPushButton(centralWidget);
         changePage->setObjectName(QString::fromUtf8("changePage"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(changePage->sizePolicy().hasHeightForWidth());
-        changePage->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(changePage->sizePolicy().hasHeightForWidth());
+        changePage->setSizePolicy(sizePolicy3);
         changePage->setMinimumSize(QSize(0, 23));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Arial"));
-        changePage->setFont(font1);
+        changePage->setFont(font);
         changePage->setAutoFillBackground(false);
         changePage->setStyleSheet(QString::fromUtf8(""));
         QIcon icon9;
         icon9.addFile(QString::fromUtf8(":/img/Resources/img/next.png"), QSize(), QIcon::Normal, QIcon::Off);
         changePage->setIcon(icon9);
+        changePage->setCheckable(false);
         changePage->setAutoDefault(false);
 
         horizontalLayout_2->addWidget(changePage, 0, Qt::AlignRight|Qt::AlignVCenter);
@@ -277,6 +298,7 @@ public:
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         stackedWidget = new QStackedWidget(centralWidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
+        stackedWidget->setFont(font1);
         VertexShader = new QWidget();
         VertexShader->setObjectName(QString::fromUtf8("VertexShader"));
         sizePolicy1.setHeightForWidth(VertexShader->sizePolicy().hasHeightForWidth());
@@ -320,8 +342,8 @@ public:
         OutPutLayout->setObjectName(QString::fromUtf8("OutPutLayout"));
         OutPut = new QPlainTextEdit(centralWidget);
         OutPut->setObjectName(QString::fromUtf8("OutPut"));
-        sizePolicy2.setHeightForWidth(OutPut->sizePolicy().hasHeightForWidth());
-        OutPut->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(OutPut->sizePolicy().hasHeightForWidth());
+        OutPut->setSizePolicy(sizePolicy3);
 
         OutPutLayout->addWidget(OutPut);
 

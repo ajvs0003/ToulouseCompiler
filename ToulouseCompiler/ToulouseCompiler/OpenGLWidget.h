@@ -132,6 +132,7 @@ private:
 	int cont = 0;
 	int fog = 0;
 	string _typePaint;
+	string rutaShaderUsuario;
 
 
 	bool modeTrial = true;
@@ -149,12 +150,12 @@ private:
 
 	PagVAO dibujoPrueba;
 	
-	string rutaShaderUsuario;
+	
 
 
 	//PRIVATE METHODS
 
-
+	void addUserShader(string path);
 
 	void typePaint(string type);
 	

@@ -77,12 +77,15 @@ private:
 
 	/********************UNIFORMS TABLE DATA********************/
 
-	QTableWidget* tablaUniforms;
+	QTableWidget* tableUniforms;
 	QPushButton *addUniform;//Pointer to the button for add uniforms
 	addDialog* addForm;
 
+	enum column {
+		name,type, value,deleteRow
+	};
 
-
+	bool empty = true;
 	/********************END UNIFORMS TABLE DATA********************/
 
 	//metodo que hara que se llamen a todos los configurate de la aplicacion
@@ -105,6 +108,9 @@ private:
 private slots:
 
 	void handleData(const dataForUniform &data);
+	void editSlot(int row, int col);
+	void cell_onClicked();
+
 
 	//BUTTONS
 	void handleButton();
