@@ -66,13 +66,13 @@ GLuint PagShaderProgram::createShaderProgram(const std::string& filename)
 			char * cLogString = new char[logLen];
 			GLint written = 0;
 			gl->glGetProgramInfoLog(handler, logLen, &written, cLogString);
-			logString.assign(cLogString);
+			Log::getInstancia()->error("Cannot compile shader " + filename + (string)cLogString);
 
 			delete[] cLogString;
 
 
 			//aqui detectamos los posibles errores del shader
-			Log::getInstancia()->error("Cannot link shader " + filename+ logString);
+			/*Log::getInstancia()->error("Cannot link shader " + filename+ logString);*/
 				
 		}
 		return 0;
@@ -244,8 +244,13 @@ GLuint PagShaderProgram::compileShader(const std::string& filename, GLenum shade
 			GLint written = 0;
 			gl->glGetShaderInfoLog(shaderHandler, logLen, &written, cLogString);
 			logString.assign(cLogString);
+			Log::getInstancia()->error("Cannot compile shader " + shaderType + (string)cLogString);
 			delete[] cLogString;
-			Log::getInstancia()->error("Cannot compile shader " + shaderType + logString);
+			
+
+
+
+
 		}
 	}
 	return shaderHandler;

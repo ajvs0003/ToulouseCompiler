@@ -8,11 +8,11 @@
 #include <QTableWidget>
 #include "addDialog.h"
 #include <QPoint>
-
-
-
-
-
+#include <QComboBox>
+#include <vector>
+#include <QDebug>
+#include <QMessageBox>
+#include<QDir>
 
 /*******************/
 class ToulouseCompiler : public QMainWindow
@@ -21,7 +21,7 @@ class ToulouseCompiler : public QMainWindow
 
 public:
 	ToulouseCompiler(QWidget *parent = Q_NULLPTR);
-
+	~ToulouseCompiler();
 private:
 
 
@@ -37,7 +37,7 @@ private:
 
 	CodeEditor* vertexShader;
 	CodeEditor* fragmentShader;
-
+	QString curFile;
 	
 	QPushButton *changePage;//Pointer to the button for change pages
 	QLabel *vistaActivada;//label for indicate the current shader editor active
@@ -64,13 +64,13 @@ private:
 	/********************OUTPUT DATA********************/
 
 	QPlainTextEdit* OutPut;
-
+	QStatusBar* statusBar;
 
 	/********************END OUTPUT DATA********************/
 
 	/********************OPENGL DATA********************/
 	QWidget* openglwidget;
-
+	std::vector<dataForUniform> uniforms;
 	OpenGLWidget* openGLWindow;
 	/********************END OPENGL DATA********************/
 
@@ -102,15 +102,20 @@ private:
 	void configuration_opengl();
 
 
+	void loadFile(const QString &fileName);
+	bool saveFile(const QString &fileName);
+	void setCurrentFile(const QString &fileName);
 
-	
 
 private slots:
 
+	//Manage the data send for the ui that add uniforms
 	void handleData(const dataForUniform &data);
+
+	//Manage the data that is edit
 	void editSlot(int row, int col);
 	void cell_onClicked();
-
+	void cell_comboBoxChanged(const QString &newValue);
 
 	//BUTTONS
 	void handleButton();

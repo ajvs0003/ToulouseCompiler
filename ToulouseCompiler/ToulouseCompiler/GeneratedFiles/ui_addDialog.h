@@ -48,9 +48,10 @@ public:
     {
         if (addDialog->objectName().isEmpty())
             addDialog->setObjectName(QString::fromUtf8("addDialog"));
-        addDialog->resize(437, 159);
+        addDialog->resize(648, 123);
         QFont font;
         font.setFamily(QString::fromUtf8("Arial"));
+        font.setPointSize(10);
         addDialog->setFont(font);
         horizontalLayout_4 = new QHBoxLayout(addDialog);
         horizontalLayout_4->setSpacing(6);

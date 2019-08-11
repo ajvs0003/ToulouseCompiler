@@ -96,12 +96,15 @@ void  OpenGLWidget::prepareOpenGL()
 
 void OpenGLWidget::compile()
 {
+	
+
 	this->glDeleteProgram(shaderProgram->getHandler());
 
 	shaderProgram = new PagShaderProgram();
-	chargeShader();
+	initialize();
 
 	renderNow();
+
 	
 }
 
@@ -184,11 +187,11 @@ void OpenGLWidget::initialize()
 
 
 
-	qDebug() << "Inicializando OpenGL" << endl;
+	/*qDebug() << "Inicializando OpenGL" << endl;
 	qDebug() << "Nombre GPU    : " << (const char*)glGetString(GL_RENDERER);
 	qDebug() << "Fabricante    : " << (const char*)glGetString(GL_VENDOR);
 	qDebug() << "Version OpenGL: " << (const char*)glGetString(GL_VERSION);
-	qDebug() << "Version GLSL  : " << (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION);
+	qDebug() << "Version GLSL  : " << (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION);*/
 
 
 	chargeShader();
@@ -229,7 +232,7 @@ void OpenGLWidget::render()
 	m_device->setSize(size() * devicePixelRatio());
 	m_device->setDevicePixelRatio(devicePixelRatio());
 
-	Log::getInstancia()->success("Rendering");
+	/*Log::getInstancia()->success("Rendering");*/
 	
 
 }
@@ -240,7 +243,9 @@ void OpenGLWidget::resize(int w, int h)
 	{
 		glViewport(0, 0, w, h);
 		aspect = w / (float)h;
-		qDebug() << "Resizing: " << w << " x " << h;
+		/*Log::getInstancia()->success("Resizing: "+ std::to_string(w) +" X: "+ std::to_string(h));*/
+		qDebug()<< "Resizing: "<< w <<" X : "<< h;
+
 	}
 }
 

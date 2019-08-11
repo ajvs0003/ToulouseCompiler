@@ -1,4 +1,4 @@
-#include "ToulouseCompiler.h"
+ï»¿#include "ToulouseCompiler.h"
 #include <QSurfaceFormat>
 
 #include <QSizePolicy>
@@ -9,11 +9,31 @@ ToulouseCompiler::ToulouseCompiler(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	
+
 	this->setWindowIcon(QIcon(":/img/Resources/img/icono.png"));
 
 	this->configurate();
 
+
+}
+
+
+
+
+ToulouseCompiler::~ToulouseCompiler()
+{
+	delete stakedView;
+	delete changePage;
+	delete vistaActivada;
+	delete modePoints;
+	delete modeLines;
+	delete modeTriangles;
+	delete save;
+	delete render;
+	delete OutPut;
+	delete openglwidget;
+	delete tableUniforms;
+	delete addUniform;
 
 }
 
@@ -45,7 +65,7 @@ void ToulouseCompiler::handleToolActionPoints() {
 
 
 
-	if ( modePoints->isChecked()) {
+	if (modePoints->isChecked()) {
 
 		openGLWindow->changeTrial(0);
 
@@ -62,7 +82,7 @@ void ToulouseCompiler::handleToolActionPoints() {
 void ToulouseCompiler::handleToolActionLines()
 {
 
-	
+
 	if (modePoints->isChecked()) {
 		modePoints->setChecked(false);
 	}
@@ -95,7 +115,7 @@ void ToulouseCompiler::handleToolActionLines()
 
 void ToulouseCompiler::handleToolActionTriangles()
 {
-	
+
 	if (modeLines->isChecked()) {
 		modeLines->setChecked(false);
 	}
@@ -106,7 +126,7 @@ void ToulouseCompiler::handleToolActionTriangles()
 
 
 
-	if ( modeTriangles->isChecked()) {
+	if (modeTriangles->isChecked()) {
 
 		openGLWindow->changeTrial(2);
 
@@ -135,24 +155,54 @@ void ToulouseCompiler::handleToolActionRender()
 {
 	/*Log::getInstancia()->warning("Pulsado render");*/
 
+	OutPut->clear();
+
+
+	if (!uniforms.empty()) {
+		Log::getInstancia()->warning("HAY chicha");
+	}
+
+	//resetear log
 	openGLWindow->compile();
 }
 
 void ToulouseCompiler::editSlot(int row, int col) {
 
 	
-		Log::getInstancia()->warning("AY ME ESTAS EDITANDO");
-	
+	if (row>=0) {
 
+		switch (col) {
+		case column::name:
+			uniforms.at(row).name = tableUniforms->item(row, col)->text().toStdString();
+			
+			break;
+		case column::value:
+			uniforms.at(row).value = tableUniforms->item(row, col)->text().toStdString();
+			
+			break;
 
+		default:
+			break;
+
+		}
+	}
 
 }
 
-
+//Method that manage the signal for remove the uniform
 void ToulouseCompiler::cell_onClicked() {
 	QWidget *w = qobject_cast<QWidget *>(sender()->parent());
 	if (w) {
 		int row = tableUniforms->indexAt(w->pos()).row();
+
+		string id = uniforms.at(row).name;
+
+		uniforms.erase(
+			std::remove_if(uniforms.begin(), uniforms.end(), [&](dataForUniform const & data) {
+			return data.name == id;
+		}),
+			uniforms.end());
+
 		tableUniforms->removeRow(row);
 		tableUniforms->setCurrentCell(0, 0);
 	}
@@ -160,55 +210,79 @@ void ToulouseCompiler::cell_onClicked() {
 
 
 
+//Method that manage the signal for edit type of the uniform
+void ToulouseCompiler::cell_comboBoxChanged(const QString & newValue)
+{
+
+
+	int row = sender()->property("row").toInt();
+	uniforms.at(row).type = newValue.toStdString();
+
+}
+
+
+
 //this slot handle the data that for the uniforms that the widget send
 void ToulouseCompiler::handleData(const dataForUniform &data)
 {
-	
-	/*Log::getInstancia()->escribir(data.value);*/
+	tableUniforms->setEditTriggers(QAbstractItemView::DoubleClicked);
+
 	//**************table widget data***************//
-	int row = tableUniforms->rowCount() - 1;
+	int row = tableUniforms->rowCount();
 	tableUniforms->insertRow(tableUniforms->rowCount());
 
 
-	
+	dataForUniform nuevo = data;
+	uniforms.push_back(nuevo);
+
+
 	//create qt elements for the table
 	QTableWidgetItem *name = new QTableWidgetItem(QString::fromStdString(data.name));
-	QTableWidgetItem *type = new QTableWidgetItem(QString::fromStdString(data.type));
 	QTableWidgetItem *value = new QTableWidgetItem(QString::fromStdString(data.value));
 
 
-	
-	/*name->setFlags(name->flags() ^ Qt::ItemIsEditable);
-	type->setFlags(type->flags() ^ Qt::ItemIsEditable);
-	value->setFlags(value->flags() ^ Qt::ItemIsEditable);*/
-
 	//insert values to the table
 	tableUniforms->setItem(row, column::name, name);
-	tableUniforms->setItem(row, column::type,type);
 	tableUniforms->setItem(row, column::value, value);
+
+
+
+	//comboBox for type
+	QWidget* pWi = new QWidget();
+	QComboBox* combo = new QComboBox();
+
+	combo->setProperty("row", (int)row); // row represents the row number in qtablewidget
+
+	combo->addItems(QStringList() << tr("boolean") << tr("vec3") << tr("vec4") << tr("float") << tr("int")); //add the types for the uniforms
+
+	combo->setCurrentText(QString::fromStdString(data.type));
+
+	connect(combo, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(cell_comboBoxChanged(const QString&)));//conect signalk if something change
+
+//# layout for the comboBox
+	QHBoxLayout* pLayout = new QHBoxLayout(pWi);
+	pLayout->addWidget(combo);
+	pLayout->setAlignment(Qt::AlignCenter);
+	pLayout->setContentsMargins(0, 0, 0, 0);
+	pWi->setLayout(pLayout);
+	tableUniforms->setCellWidget(row, column::type, pWi);
 
 
 	QWidget* pWidget = new QWidget();
 	QPushButton* btn_edit = new QPushButton();
 	btn_edit->setText("Remove");
-	
-	connect(btn_edit, SIGNAL(clicked()), this, SLOT(cell_onClicked()));
-	
 
-	QHBoxLayout* pLayout = new QHBoxLayout(pWidget);
-	pLayout->addWidget(btn_edit);
-	pLayout->setAlignment(Qt::AlignCenter);
-	pLayout->setContentsMargins(0, 0, 0, 0);
-	pWidget->setLayout(pLayout);
+	connect(btn_edit, SIGNAL(clicked()), this, SLOT(cell_onClicked()));
+
+	//# layout for the qPushButton
+	QHBoxLayout* Layout = new QHBoxLayout(pWidget);
+	Layout->addWidget(btn_edit);
+	Layout->setAlignment(Qt::AlignCenter);
+	Layout->setContentsMargins(0, 0, 0, 0);
+	pWidget->setLayout(Layout);
 	tableUniforms->setCellWidget(row, column::deleteRow, pWidget);
 
 
-
-
-
-	/*tableUniforms->setIndexWidget(tableUniforms->model()->index(row, column::deleteRow), new QPushButton("Remove", tableUniforms));*/
-
-	
 
 
 
@@ -243,10 +317,12 @@ void ToulouseCompiler::handleButtonAddUniform()
 	//**************end widget add uniforms data***************//
 
 
-	
+
 
 
 }
+
+
 
 void ToulouseCompiler::configurate()
 {
@@ -261,7 +337,7 @@ void ToulouseCompiler::configurate()
 
 
 
-
+	statusBar->showMessage("Ready for start");
 
 
 }
@@ -308,18 +384,15 @@ void ToulouseCompiler::configuration_ToolBar()
 }
 
 
-
-
 void ToulouseCompiler::configuration_tablaUniforms()
 {
 	tableUniforms = ui.uniforms;
 
 	tableUniforms->setColumnCount(4);
-	
-	tableUniforms->setHorizontalHeaderLabels(QStringList() << tr("Name") << tr("Type Uniform")
-		<< tr("Value")<<tr("Delete"));
 
-	tableUniforms->insertRow(tableUniforms->rowCount());
+	tableUniforms->setHorizontalHeaderLabels(QStringList() << tr("Name") << tr("Type Uniform") << tr("Value") << tr("Delete"));
+
+	
 
 	//only read if i active this
 	tableUniforms->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -327,9 +400,17 @@ void ToulouseCompiler::configuration_tablaUniforms()
 
 	tableUniforms->verticalHeader()->setVisible(false);
 
+
+	//for put that all the widget is only the 4 columns that we have
+	QHeaderView* header = tableUniforms->horizontalHeader();
+	header->setSectionResizeMode(QHeaderView::Stretch);
+
+
+
+
 	//para editar celdas
 
-	connect(tableUniforms, SIGNAL(cellClicked(int, int)), this, SLOT(editSlot(int, int)));
+	connect(tableUniforms, SIGNAL(cellChanged(int, int)), this, SLOT(editSlot(int, int)));
 
 	tableUniforms->show();
 
@@ -349,11 +430,14 @@ void ToulouseCompiler::configuration_tablaUniforms()
 void ToulouseCompiler::configuration_OutPut()
 {
 	OutPut = ui.OutPut;
+	
 	OutPut->setReadOnly(true);// lo pongo en solo modo lectura
 
 	//Gestiono que el log reciba el output para que otras clases puedan trabajar con el
 	Log::getInstancia()->setOutPut(OutPut);
 
+	statusBar = ui.statusBar;
+	
 
 }
 
@@ -374,6 +458,9 @@ void ToulouseCompiler::configuration_codeEditor()
 
 	ui.FragmentLayout->addWidget(fragmentShader);
 	this->fragmentShader->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+
+
 }
 
 void ToulouseCompiler::configuration_opengl()
@@ -382,7 +469,7 @@ void ToulouseCompiler::configuration_opengl()
 	QSurfaceFormat format;
 	format.setSamples(16);
 
-	// Para cambiar la versión de OpenGL cambiar aquí y en la clase OpenGLFunctions
+	// Para cambiar la versiÃ³n de OpenGL cambiar aquÃ­ y en la clase OpenGLFunctions
 	format.setVersion(4, 5);
 
 	openGLWindow = new OpenGLWidget();
@@ -402,33 +489,58 @@ void ToulouseCompiler::configuration_opengl()
 
 
 
-//QList<QPair<QString, QColor> > list;
-//list << QPair<QString, QColor>(tr("Alice"), QColor("aliceblue")) <<
-//QPair<QString, QColor>(tr("Neptun"), QColor("aquamarine")) <<
-//QPair<QString, QColor>(tr("Ferdinand"), QColor("springgreen"));
-//
-//QTableWidget *table = new QTableWidget(3, 2);
-//table->setHorizontalHeaderLabels(QStringList() << tr("Name")
-//	<< tr("Hair Color"));
-//table->verticalHeader()->setVisible(false);
-//table->resize(150, 50);
-//
-//for (int i = 0; i < 3; ++i) {
-//	QPair<QString, QColor> pair = list.at(i);
-//
-//	QTableWidgetItem *nameItem = new QTableWidgetItem(pair.first);
-//	QTableWidgetItem *colorItem = new QTableWidgetItem;
-//	colorItem->setData(Qt::DisplayRole, pair.second);
-//
-//	table->setItem(i, 0, nameItem);
-//	table->setItem(i, 1, colorItem);
-//}
-//table->resizeColumnToContents(0);
-//table->horizontalHeader()->setStretchLastSection(true);
-//
-//QGridLayout *layout = new QGridLayout;
-//layout->addWidget(table, 0, 0);
-//
-//setLayout(layout);
-//
-//setWindowTitle(tr("Color Editor Factory"));
+
+
+
+void ToulouseCompiler::loadFile(const QString &fileName)
+
+{
+	QFile file(fileName);
+	if (!file.open(QFile::ReadOnly | QFile::Text)) {
+		QMessageBox::warning(this, tr("Application"),
+			tr("Cannot read file %1:\n%2.")
+			.arg(QDir::toNativeSeparators(fileName), file.errorString()));
+		return;
+	}
+}
+
+bool ToulouseCompiler::saveFile(const QString &fileName)
+		
+	{
+		QFile file(fileName);
+		if (!file.open(QFile::WriteOnly | QFile::Text)) {
+			QMessageBox::warning(this, tr("Application"),
+				tr("Cannot write file %1:\n%2.")
+				.arg(QDir::toNativeSeparators(fileName),
+					file.errorString()));
+			return false;
+		}
+
+		QTextStream out(&file);
+#ifndef QT_NO_CURSOR
+		QApplication::setOverrideCursor(Qt::WaitCursor);
+#endif
+		out << vertexShader->toPlainText();
+
+#ifndef QT_NO_CURSOR
+		QApplication::restoreOverrideCursor();
+#endif
+
+		setCurrentFile(fileName);
+		statusBar->showMessage(tr("File saved"), 2000);
+		return true;
+	}
+
+void ToulouseCompiler::setCurrentFile(const QString &fileName)
+{
+	curFile = fileName;
+
+	vertexShader->document()->setModified(false);
+
+	setWindowModified(false);
+
+	QString shownName = curFile;
+	if (curFile.isEmpty())
+		shownName = "untitled.txt";
+	setWindowFilePath(shownName);
+}
