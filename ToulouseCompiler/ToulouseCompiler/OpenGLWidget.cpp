@@ -108,6 +108,32 @@ void OpenGLWidget::compile()
 	
 }
 
+void OpenGLWidget::mouseMoveEvent(QMouseEvent * ev)
+{
+	this->posX = ev->x();
+	this->posY = ev->y();
+	emit Mouse_Pos();
+
+}
+
+void OpenGLWidget::mousePressEvent(QMouseEvent * ev)
+{
+
+	if (ev->button() == Qt::MidButton)   // Middle button...
+	{
+		
+		emit Mouse_Pressed();
+	}
+	
+
+}
+
+void OpenGLWidget::leaveEvent(QMouseEvent *)
+{
+
+	emit Mouse_Left();
+}
+
 void OpenGLWidget::addUserShader(string path){
 
 	rutaShaderUsuario = path;
@@ -115,7 +141,14 @@ void OpenGLWidget::addUserShader(string path){
 
 }
 
-
+void OpenGLWidget::mouseReleaseEvent(QMouseEvent *e)
+{
+	 if (e->button() == Qt::MidButton)   // Middle button...
+	{
+		 
+		 emit Mouse_Released();
+	}
+}
 
 
 
@@ -200,9 +233,9 @@ void OpenGLWidget::initialize()
 
 
 
-	glm::vec3 look(10.0f, 0.0f, -20.0f);
+	glm::vec3 look(0.0f, 6.0f, 0.0f);
 
-	glm::vec3 pos(0.0f, 20.f, 50.0f);
+	glm::vec3 pos(0.0f, 6.f, 30.0f);
 	camera = new PagCamera(pos, look, 90);
 
 	prepareOpenGL();
@@ -210,6 +243,10 @@ void OpenGLWidget::initialize()
 	//CAMARA SETTINGS
 
 	aspect = float(this->width()) / this->height();
+
+	h = this->height();
+	w = this->width();
+
 	
 	viewMatrix = camera->getWorldToViewMatrix();
 
@@ -241,6 +278,8 @@ void OpenGLWidget::resize(int w, int h)
 {
 	if (m_context)
 	{
+		this->h = h;
+		this->w = w;
 		glViewport(0, 0, w, h);
 		aspect = w / (float)h;
 		/*Log::getInstancia()->success("Resizing: "+ std::to_string(w) +" X: "+ std::to_string(h));*/
@@ -320,21 +359,21 @@ void OpenGLWidget::typePaint(string type)
 		if (_typePaint == "triangle") {
 
 			glEnable(GL_BLEND);
-			adsShader.use();
+			shaderProgram->use();
 			for (unsigned int i = 0; i < luces.size(); i++) {
 
 				if (i == 0) glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 				else glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 
-				/*luces.at(i).aplicateLuz(adsShader, camera->getWorldToViewMatrix(), subrutinas);*/
+				/*luces.at(i).aplicateLuz(shaderProgram, camera->getWorldToViewMatrix(), subrutinas);*/
 
-				paintObjects(adsShader, 4);
+				paintObjects(*shaderProgram, 4);
 			}
 
 		}
 		else if (_typePaint == "textures") {
 			glEnable(GL_BLEND);
-			textureShader.use();
+			shaderProgram->use();
 			/*bumpMapping.use();*/
 
 
@@ -348,7 +387,7 @@ void OpenGLWidget::typePaint(string type)
 				/*luces.at(i).aplicateLuz(textureShader, camera->getWorldToViewMatrix(), subrutinas2);*/
 
 
-				paintObjects(textureShader, 5);
+				paintObjects(*shaderProgram, 5);
 
 
 			}
@@ -372,11 +411,11 @@ void OpenGLWidget::typePaint(string type)
 		Pag3DGroup* ob;
 		ob = new Pag3DGroup();
 
-		PagPlane* mesa;
-		mesa = new PagPlane(this,100, 100, 10);
+		/*PagPlane* mesa;
+		mesa = new PagPlane(this, 100, 100, 10);
 		mesa->translate(glm::vec3(-50.f, 0.f, -50.f));
 
-		ob->insertObject(mesa);
+		ob->insertObject(mesa);*/
 
 
 		dataTxt = Metodos_especiales::lecturaFichero(dataTxt, ":/obj/Resources/Objects/peon.txt");

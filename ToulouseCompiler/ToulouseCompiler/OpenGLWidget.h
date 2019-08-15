@@ -9,7 +9,8 @@
 #include "PagCamera.h"
 #include "PagLightSource.h"
 #include <string>
-
+#include <QMouseEvent>
+#include <QEvent>
 
 
 class QPainter;
@@ -25,7 +26,10 @@ class OpenGLWidget : public QWindow, protected OpenGLFunctions
 {
 	Q_OBJECT
 public:
-
+	//CAMERA SETTINGS
+	PagCamera *camera;
+	int w, h;
+	int posX, posY;
 
 	explicit OpenGLWidget(QWindow *parent = 0);
 	~OpenGLWidget();
@@ -57,6 +61,25 @@ public:
 	}
 	
 	void compile();
+
+
+	//EVENTS for mouse
+
+
+	void mouseMoveEvent(QMouseEvent *ev);
+	void mousePressEvent(QMouseEvent *ev);
+	void leaveEvent(QMouseEvent *);
+	void mouseReleaseEvent(QMouseEvent *e);
+
+	
+
+	
+
+signals:
+	void Mouse_Pressed();
+	void Mouse_Released();
+	void Mouse_Pos();
+	void Mouse_Left();
 
 public slots:
 	void renderLater();
@@ -97,12 +120,12 @@ private:
 	float aspect;
 
 	//LIGHTS
-	/*vector< PagLightSource> luces;*/
+	vector< PagLightSource> luces;
 
 
 	//REVOLUTION OBJECTS(GRAPH SCENE)
 	vector< Pag3DGroup> objetos;
-	vector< PagLightSource> luces;
+	
 
 
 
@@ -111,18 +134,10 @@ private:
 
 	PagShaderProgram* shaderProgram ;
 
-	PagShaderProgram pointShader;
-	PagShaderProgram TriangleShader;
-	PagShaderProgram WireShader;
-	PagShaderProgram magicShader;
-	PagShaderProgram adsShader;
-	PagShaderProgram textureShader;
-	PagShaderProgram bumpMapping;
-	PagShaderProgram fogShader;
 
 
 	//CAMERA SETTINGS
-	PagCamera *camera;
+	
 	glm::mat4 view;
 	glm::mat4 mvp;
 
@@ -145,10 +160,7 @@ private:
 	
 
 
-	//TESTING
 	
-
-	PagVAO dibujoPrueba;
 	
 	
 

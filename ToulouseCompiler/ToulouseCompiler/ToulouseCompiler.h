@@ -5,14 +5,15 @@
 #include "CodeEditor.h"
 #include "OpenGLWidget.h"
 #include "Log.h"
-#include <QTableWidget>
 #include "addDialog.h"
+#include <QTableWidget>
 #include <QPoint>
 #include <QComboBox>
 #include <vector>
 #include <QDebug>
 #include <QMessageBox>
-#include<QDir>
+#include <QDir>
+
 
 /*******************/
 class ToulouseCompiler : public QMainWindow
@@ -22,6 +23,9 @@ class ToulouseCompiler : public QMainWindow
 public:
 	ToulouseCompiler(QWidget *parent = Q_NULLPTR);
 	~ToulouseCompiler();
+	
+
+
 private:
 
 
@@ -72,6 +76,9 @@ private:
 	QWidget* openglwidget;
 	std::vector<dataForUniform> uniforms;
 	OpenGLWidget* openGLWindow;
+	glm::vec2 oldMousePosition;
+	bool isHold = false;
+
 	/********************END OPENGL DATA********************/
 
 
@@ -85,7 +92,7 @@ private:
 		name,type, value,deleteRow
 	};
 
-	bool empty = true;
+	
 	/********************END UNIFORMS TABLE DATA********************/
 
 	//metodo que hara que se llamen a todos los configurate de la aplicacion
@@ -107,7 +114,17 @@ private:
 	void setCurrentFile(const QString &fileName);
 
 
+
+
 private slots:
+
+	//Camera Inputs
+
+	void Mouse_currentPos();
+	void Mouse_Pressed();
+	void Mouse_Realeased();
+	void Mouse_Left();
+
 
 	//Manage the data send for the ui that add uniforms
 	void handleData(const dataForUniform &data);

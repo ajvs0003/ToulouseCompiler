@@ -214,13 +214,78 @@ void ToulouseCompiler::cell_onClicked() {
 void ToulouseCompiler::cell_comboBoxChanged(const QString & newValue)
 {
 
-
 	int row = sender()->property("row").toInt();
 	uniforms.at(row).type = newValue.toStdString();
 
 }
 
 
+void ToulouseCompiler::Mouse_currentPos() {
+	float width = openGLWindow->w;
+	float height = openGLWindow->h;
+
+	glm::vec2 newMousePosition((float)openGLWindow->posX, (float)openGLWindow->posY);
+	GLfloat mouseSensitive = 0.1f;
+	glm::vec2 mouseDelta = newMousePosition - oldMousePosition;//cuanto de movio el raton
+
+
+	if (glm::length(mouseDelta) > 50.0f) {
+		oldMousePosition = newMousePosition;
+		return;
+	}
+
+	if (isHold) {
+		/*openGLWindow->camera->tiltAndPan(mouseDelta.x*mouseSensitive, mouseDelta.y*mouseSensitive);*/
+		if (mouseDelta.y > 0) {
+			openGLWindow->camera->orbitX(1.f);
+
+		}
+		else if (mouseDelta.y < 0) {
+			openGLWindow->camera->orbitX(-1.f);
+
+		}
+		else {
+
+			if (mouseDelta.x > 0) {
+				openGLWindow->camera->orbitY(1.f);
+
+			}
+			else if (mouseDelta.x < 0) {
+				openGLWindow->camera->orbitY(-1.f);
+
+			}
+
+		}
+		
+		openGLWindow->renderNow();
+	}
+
+
+	oldMousePosition = newMousePosition;
+
+
+	
+
+}
+
+
+void ToulouseCompiler::Mouse_Pressed()
+{
+
+	isHold = true;
+
+}
+
+void ToulouseCompiler::Mouse_Realeased()
+{
+	
+	isHold = false;
+}
+
+void ToulouseCompiler::Mouse_Left()
+{
+	isHold = false;
+}
 
 //this slot handle the data that for the uniforms that the widget send
 void ToulouseCompiler::handleData(const dataForUniform &data)
@@ -483,6 +548,13 @@ void ToulouseCompiler::configuration_opengl()
 	ui.opengl_layout->addWidget(openglwidget);
 
 	openglwidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+
+	//Configuration for camera inputs
+	connect(openGLWindow, SIGNAL(Mouse_Pos()), this, SLOT(Mouse_currentPos()));
+	connect(openGLWindow, SIGNAL(Mouse_Pressed()), this, SLOT(Mouse_Pressed()));
+	connect(openGLWindow, SIGNAL(Mouse_Released()), this, SLOT(Mouse_Realeased()));
+	connect(openGLWindow, SIGNAL(Mouse_Left()), this, SLOT(Mouse_Left()));
 }
 
 
