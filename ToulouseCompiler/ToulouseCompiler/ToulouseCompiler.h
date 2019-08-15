@@ -37,14 +37,12 @@ private:
 	/********************CODE EDITOR DATA********************/
 
 	
-	QStackedWidget* stakedView;//Pointer to the widget for code editor
-
+	//QStackedWidget* stakedView;//Pointer to the widget for code editor
+	QTabWidget* tabView;
 	CodeEditor* vertexShader;
 	CodeEditor* fragmentShader;
 	QString curFile;
 	
-	QPushButton *changePage;//Pointer to the button for change pages
-	QLabel *vistaActivada;//label for indicate the current shader editor active
 	int index = 0;//index for change text of button
 
 	/********************END CODE EDITOR DATA********************/
@@ -99,7 +97,7 @@ private:
 	//que se encargan de enlazar la ui con las clases cpp que gestionan el funcionamiento
 	void configurate();
 
-	void configuration_changePage();
+
 	void configuration_ToolBar();
 
 	void configuration_tablaUniforms();
@@ -135,7 +133,7 @@ private slots:
 	void cell_comboBoxChanged(const QString &newValue);
 
 	//BUTTONS
-	void handleButton();
+	
 	void handleToolActionPoints();
 	void handleToolActionLines();
 	void handleToolActionTriangles();

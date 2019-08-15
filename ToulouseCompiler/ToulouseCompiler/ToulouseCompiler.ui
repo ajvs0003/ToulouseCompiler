@@ -27,14 +27,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_5">
     <item>
-     <layout class="QHBoxLayout" name="barraHerramientas">
-      <property name="spacing">
-       <number>6</number>
-      </property>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3"/>
-      </item>
-     </layout>
+     <layout class="QHBoxLayout" name="separador"/>
     </item>
     <item>
      <layout class="QVBoxLayout" name="central">
@@ -64,6 +57,9 @@
                     <width>16777215</width>
                     <height>16777215</height>
                    </size>
+                  </property>
+                  <property name="mouseTracking">
+                   <bool>false</bool>
                   </property>
                   <layout class="QHBoxLayout" name="opengl_layout">
                    <property name="spacing">
@@ -138,102 +134,43 @@
         <item row="1" column="0">
          <layout class="QVBoxLayout" name="EditorLayout">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QLabel" name="vistaActivada">
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Bell MT</family>
-                <pointsize>12</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Vertex Shader</string>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignRight|Qt::AlignVCenter">
-             <widget class="QPushButton" name="changePage">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>23</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Arial</family>
-               </font>
-              </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
-              <property name="text">
-               <string extracomment="change shader program"/>
-              </property>
-              <property name="icon">
-               <iconset resource="Resource.qrc">
-                <normaloff>:/img/Resources/img/next.png</normaloff>:/img/Resources/img/next.png</iconset>
-              </property>
-              <property name="checkable">
-               <bool>false</bool>
-              </property>
-              <property name="autoDefault">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_4">
-              <item>
-               <widget class="QStackedWidget" name="stackedWidget">
-                <property name="font">
-                 <font>
-                  <family>Bell MT</family>
-                  <pointsize>12</pointsize>
-                 </font>
-                </property>
-                <property name="currentIndex">
-                 <number>0</number>
-                </property>
-                <widget class="QWidget" name="VertexShader">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <layout class="QVBoxLayout" name="vertexLayout"/>
-                </widget>
-                <widget class="QWidget" name="FragmentShader">
-                 <layout class="QVBoxLayout" name="FragmentLayout"/>
-                </widget>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
+           <widget class="QTabWidget" name="tabWidget">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="tabPosition">
+             <enum>QTabWidget::North</enum>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <property name="documentMode">
+             <bool>false</bool>
+            </property>
+            <property name="tabsClosable">
+             <bool>false</bool>
+            </property>
+            <property name="movable">
+             <bool>false</bool>
+            </property>
+            <property name="tabBarAutoHide">
+             <bool>false</bool>
+            </property>
+            <widget class="QWidget" name="VertexS">
+             <attribute name="title">
+              <string>Vertex Shader</string>
+             </attribute>
+            </widget>
+            <widget class="QWidget" name="FragmentS">
+             <attribute name="title">
+              <string>Fragment Shader</string>
+             </attribute>
+            </widget>
+           </widget>
           </item>
          </layout>
         </item>

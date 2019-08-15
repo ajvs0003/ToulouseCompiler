@@ -22,9 +22,7 @@ ToulouseCompiler::ToulouseCompiler(QWidget *parent)
 
 ToulouseCompiler::~ToulouseCompiler()
 {
-	delete stakedView;
-	delete changePage;
-	delete vistaActivada;
+	delete tabView;
 	delete modePoints;
 	delete modeLines;
 	delete modeTriangles;
@@ -37,19 +35,9 @@ ToulouseCompiler::~ToulouseCompiler()
 
 }
 
-void ToulouseCompiler::handleButton() {
 
-	if (index == 0) {
-		index = 1;
-		vistaActivada->setText("Fragment Shader");
-	}
-	else {
-		index = 0;
-		vistaActivada->setText("Vertex Shader");
-	}
 
-	stakedView->setCurrentIndex(index);
-}
+
 
 void ToulouseCompiler::handleToolActionPoints() {
 
@@ -394,7 +382,7 @@ void ToulouseCompiler::configurate()
 
 	this->configuration_OutPut();
 
-	this->configuration_changePage();
+	
 	this->configuration_codeEditor();
 	this->configuration_opengl();
 	this->configuration_ToolBar();
@@ -407,21 +395,7 @@ void ToulouseCompiler::configurate()
 
 }
 
-void ToulouseCompiler::configuration_changePage()
-{
 
-	vistaActivada = ui.vistaActivada;
-	vistaActivada->setText("Vertex Shader");
-
-	//Take the button that i design in de editor and conect the signal for can handle the click event, and change the page in the stakeck view
-	changePage = ui.changePage;
-	changePage->setStyleSheet("QPushButton{background: transparent;}");
-	//gestiona los conect del boton
-	connect(changePage, SIGNAL(released()), this, SLOT(handleButton()));
-
-
-
-}
 
 void ToulouseCompiler::configuration_ToolBar()
 {
@@ -509,19 +483,30 @@ void ToulouseCompiler::configuration_OutPut()
 void ToulouseCompiler::configuration_codeEditor()
 {
 	//I take the stakedWidget and assign to a pointer for can manage later all the stuff that i will need
-	stakedView = ui.stackedWidget;
-	stakedView->setCurrentIndex(index);
+	/*stakedView = ui.stackedWidget;
+	stakedView->setCurrentIndex(index);*/
+
+	tabView = ui.tabWidget;
+	tabView->setCurrentIndex(index);
+	
+	tabView->setStyleSheet("QTabBar { font:bold 10pt; font-family: Arial; }");
 
 	this->vertexShader = new CodeEditor();
 	this->fragmentShader = new CodeEditor();
 
+	
 	//Para que funcionara el resize hay que tener en cuenta que los valores de maximumSize en qt designer esten en el "maximo" (16777215) 
-	ui.vertexLayout->addWidget(vertexShader);
+
+	
+	tabView->removeTab(0);
+	tabView->insertTab(0, vertexShader, QString("Vertex Shader"));
+
 	this->vertexShader->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
 
 
-	ui.FragmentLayout->addWidget(fragmentShader);
+	tabView->removeTab(1);
+	tabView->insertTab(1, fragmentShader, QString("Fragment Shader"));
 	this->fragmentShader->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
 

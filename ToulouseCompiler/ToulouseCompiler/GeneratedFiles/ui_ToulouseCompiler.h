@@ -16,15 +16,14 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
@@ -45,8 +44,7 @@ public:
     QAction *actionRender;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_5;
-    QHBoxLayout *barraHerramientas;
-    QHBoxLayout *horizontalLayout_3;
+    QHBoxLayout *separador;
     QVBoxLayout *central;
     QGridLayout *gridLayout;
     QVBoxLayout *OpenglLayout;
@@ -62,16 +60,9 @@ public:
     QHBoxLayout *horizontalLayout_6;
     QTableWidget *uniforms;
     QVBoxLayout *EditorLayout;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *vistaActivada;
-    QPushButton *changePage;
-    QVBoxLayout *verticalLayout_2;
-    QHBoxLayout *horizontalLayout_4;
-    QStackedWidget *stackedWidget;
-    QWidget *VertexShader;
-    QVBoxLayout *vertexLayout;
-    QWidget *FragmentShader;
-    QVBoxLayout *FragmentLayout;
+    QTabWidget *tabWidget;
+    QWidget *VertexS;
+    QWidget *FragmentS;
     QSpacerItem *verticalSpacer_2;
     QVBoxLayout *OutPutLayout;
     QPlainTextEdit *OutPut;
@@ -145,17 +136,11 @@ public:
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        barraHerramientas = new QHBoxLayout();
-        barraHerramientas->setSpacing(6);
-        barraHerramientas->setObjectName(QString::fromUtf8("barraHerramientas"));
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        separador = new QHBoxLayout();
+        separador->setSpacing(6);
+        separador->setObjectName(QString::fromUtf8("separador"));
 
-        barraHerramientas->addLayout(horizontalLayout_3);
-
-
-        verticalLayout_5->addLayout(barraHerramientas);
+        verticalLayout_5->addLayout(separador);
 
         central = new QVBoxLayout();
         central->setSpacing(6);
@@ -184,6 +169,7 @@ public:
         sizePolicy1.setHeightForWidth(openglwidget->sizePolicy().hasHeightForWidth());
         openglwidget->setSizePolicy(sizePolicy1);
         openglwidget->setMaximumSize(QSize(16777215, 16777215));
+        openglwidget->setMouseTracking(false);
         opengl_layout = new QHBoxLayout(openglwidget);
         opengl_layout->setSpacing(0);
         opengl_layout->setContentsMargins(11, 11, 11, 11);
@@ -253,76 +239,26 @@ public:
         EditorLayout = new QVBoxLayout();
         EditorLayout->setSpacing(6);
         EditorLayout->setObjectName(QString::fromUtf8("EditorLayout"));
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        vistaActivada = new QLabel(centralWidget);
-        vistaActivada->setObjectName(QString::fromUtf8("vistaActivada"));
-        vistaActivada->setMaximumSize(QSize(16777215, 20));
+        tabWidget = new QTabWidget(centralWidget);
+        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         QFont font2;
-        font2.setFamily(QString::fromUtf8("Bell MT"));
-        font2.setPointSize(12);
+        font2.setPointSize(10);
         font2.setBold(true);
         font2.setWeight(75);
-        vistaActivada->setFont(font2);
+        tabWidget->setFont(font2);
+        tabWidget->setTabPosition(QTabWidget::North);
+        tabWidget->setDocumentMode(false);
+        tabWidget->setTabsClosable(false);
+        tabWidget->setMovable(false);
+        tabWidget->setTabBarAutoHide(false);
+        VertexS = new QWidget();
+        VertexS->setObjectName(QString::fromUtf8("VertexS"));
+        tabWidget->addTab(VertexS, QString());
+        FragmentS = new QWidget();
+        FragmentS->setObjectName(QString::fromUtf8("FragmentS"));
+        tabWidget->addTab(FragmentS, QString());
 
-        horizontalLayout_2->addWidget(vistaActivada);
-
-        changePage = new QPushButton(centralWidget);
-        changePage->setObjectName(QString::fromUtf8("changePage"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(changePage->sizePolicy().hasHeightForWidth());
-        changePage->setSizePolicy(sizePolicy3);
-        changePage->setMinimumSize(QSize(0, 23));
-        changePage->setFont(font);
-        changePage->setAutoFillBackground(false);
-        changePage->setStyleSheet(QString::fromUtf8(""));
-        QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/img/Resources/img/next.png"), QSize(), QIcon::Normal, QIcon::Off);
-        changePage->setIcon(icon9);
-        changePage->setCheckable(false);
-        changePage->setAutoDefault(false);
-
-        horizontalLayout_2->addWidget(changePage, 0, Qt::AlignRight|Qt::AlignVCenter);
-
-
-        EditorLayout->addLayout(horizontalLayout_2);
-
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setSpacing(6);
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        stackedWidget = new QStackedWidget(centralWidget);
-        stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
-        stackedWidget->setFont(font1);
-        VertexShader = new QWidget();
-        VertexShader->setObjectName(QString::fromUtf8("VertexShader"));
-        sizePolicy1.setHeightForWidth(VertexShader->sizePolicy().hasHeightForWidth());
-        VertexShader->setSizePolicy(sizePolicy1);
-        vertexLayout = new QVBoxLayout(VertexShader);
-        vertexLayout->setSpacing(6);
-        vertexLayout->setContentsMargins(11, 11, 11, 11);
-        vertexLayout->setObjectName(QString::fromUtf8("vertexLayout"));
-        stackedWidget->addWidget(VertexShader);
-        FragmentShader = new QWidget();
-        FragmentShader->setObjectName(QString::fromUtf8("FragmentShader"));
-        FragmentLayout = new QVBoxLayout(FragmentShader);
-        FragmentLayout->setSpacing(6);
-        FragmentLayout->setContentsMargins(11, 11, 11, 11);
-        FragmentLayout->setObjectName(QString::fromUtf8("FragmentLayout"));
-        stackedWidget->addWidget(FragmentShader);
-
-        horizontalLayout_4->addWidget(stackedWidget);
-
-
-        verticalLayout_2->addLayout(horizontalLayout_4);
-
-
-        EditorLayout->addLayout(verticalLayout_2);
+        EditorLayout->addWidget(tabWidget);
 
 
         gridLayout->addLayout(EditorLayout, 1, 0, 1, 1);
@@ -342,6 +278,9 @@ public:
         OutPutLayout->setObjectName(QString::fromUtf8("OutPutLayout"));
         OutPut = new QPlainTextEdit(centralWidget);
         OutPut->setObjectName(QString::fromUtf8("OutPut"));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(OutPut->sizePolicy().hasHeightForWidth());
         OutPut->setSizePolicy(sizePolicy3);
 
@@ -379,7 +318,7 @@ public:
 
         retranslateUi(MainWindowClass);
 
-        stackedWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindowClass);
@@ -400,8 +339,8 @@ public:
         actionRender->setToolTip(QApplication::translate("MainWindowClass", "for render the shader programs", nullptr));
 #endif // QT_NO_TOOLTIP
         addUniform->setText(QString());
-        vistaActivada->setText(QApplication::translate("MainWindowClass", "Vertex Shader", nullptr));
-        changePage->setText(QString());
+        tabWidget->setTabText(tabWidget->indexOf(VertexS), QApplication::translate("MainWindowClass", "Vertex Shader", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(FragmentS), QApplication::translate("MainWindowClass", "Fragment Shader", nullptr));
         OutPut->setPlainText(QString());
         menuFile->setTitle(QApplication::translate("MainWindowClass", "File", nullptr));
     } // retranslateUi
