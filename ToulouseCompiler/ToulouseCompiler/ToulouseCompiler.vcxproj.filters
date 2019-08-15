@@ -117,9 +117,6 @@
     <ClCompile Include="PagCamera.cpp">
       <Filter>Source Files\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="PagLightSource.cpp">
-      <Filter>Source Files\Ligths</Filter>
-    </ClCompile>
     <ClCompile Include="PagPlane.cpp">
       <Filter>Source Files\Geometry</Filter>
     </ClCompile>
@@ -128,6 +125,18 @@
     </ClCompile>
     <ClCompile Include="addDialog.cpp">
       <Filter>Source Files\QTConfiguration</Filter>
+    </ClCompile>
+    <ClCompile Include="Spotlight.cpp">
+      <Filter>Source Files\Ligths</Filter>
+    </ClCompile>
+    <ClCompile Include="AmbientLight.cpp">
+      <Filter>Source Files\Ligths</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectionalLight.cpp">
+      <Filter>Source Files\Ligths</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLight.cpp">
+      <Filter>Source Files\Ligths</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +208,18 @@
     </ClInclude>
     <ClInclude Include="PagPlane.h">
       <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Spotlight.h">
+      <Filter>Header Files\Ligths</Filter>
+    </ClInclude>
+    <ClInclude Include="AmbientLight.h">
+      <Filter>Header Files\Ligths</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionalLight.h">
+      <Filter>Header Files\Ligths</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>Header Files\Ligths</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

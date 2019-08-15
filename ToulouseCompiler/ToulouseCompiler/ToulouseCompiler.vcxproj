@@ -114,19 +114,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="addDialog.cpp" />
+    <ClCompile Include="AmbientLight.cpp" />
     <ClCompile Include="CodeEditor.cpp" />
+    <ClCompile Include="DirectionalLight.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Metodos_especiales.cpp" />
     <ClCompile Include="OpenGLWidget.cpp" />
     <ClCompile Include="Pag3DGroup.cpp" />
     <ClCompile Include="PagCamera.cpp" />
-    <ClCompile Include="PagLightSource.cpp" />
     <ClCompile Include="PagPlane.cpp" />
     <ClCompile Include="PagRevolutionObject.cpp" />
     <ClCompile Include="PagShaderProgram.cpp" />
     <ClCompile Include="PagSubdivisionProfile.cpp" />
     <ClCompile Include="PagVAO.cpp" />
+    <ClCompile Include="PointLight.cpp" />
+    <ClCompile Include="Spotlight.cpp" />
     <ClCompile Include="ToulouseCompiler.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +143,10 @@
     <QtRcc Include="Resource.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AmbientLight.h" />
+    <ClInclude Include="DirectionalLight.h" />
+    <ClInclude Include="PointLight.h" />
+    <ClInclude Include="Spotlight.h" />
     <QtMoc Include="CodeEditor.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets;.\%userprofile%\Desktop\glwrappers\glm-0.9.9.0\glm\glm</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets;.\%userprofile%\Desktop\glwrappers\glm-0.9.9.0\glm\glm</IncludePath>

@@ -14,6 +14,10 @@
         <file>Resources/img/triangle_activate.png</file>
         <file>Resources/img/add.png</file>
         <file>Resources/img/icono.png</file>
+        <file>Resources/img/material.png</file>
+        <file>Resources/img/textures.png</file>
+        <file>Resources/img/Material_activate.png</file>
+        <file>Resources/img/textures_activate.png</file>
     </qresource>
     <qresource prefix="/obj">
         <file>Resources/Objects/peon.txt</file>

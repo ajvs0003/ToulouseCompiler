@@ -42,6 +42,8 @@ public:
     QAction *actionLines;
     QAction *actiontriangles;
     QAction *actionRender;
+    QAction *actionModeMarterial;
+    QAction *actionModeTexture;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *separador;
@@ -130,6 +132,20 @@ public:
         QIcon icon7;
         icon7.addFile(QString::fromUtf8(":/img/Resources/img/play.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionRender->setIcon(icon7);
+        actionModeMarterial = new QAction(MainWindowClass);
+        actionModeMarterial->setObjectName(QString::fromUtf8("actionModeMarterial"));
+        actionModeMarterial->setCheckable(true);
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/img/Resources/img/material.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon8.addFile(QString::fromUtf8(":/img/Resources/img/Material_activate.png"), QSize(), QIcon::Normal, QIcon::On);
+        actionModeMarterial->setIcon(icon8);
+        actionModeTexture = new QAction(MainWindowClass);
+        actionModeTexture->setObjectName(QString::fromUtf8("actionModeTexture"));
+        actionModeTexture->setCheckable(true);
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/img/Resources/img/textures.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon9.addFile(QString::fromUtf8(":/img/Resources/img/textures_activate.png"), QSize(), QIcon::Normal, QIcon::On);
+        actionModeTexture->setIcon(icon9);
         centralWidget = new QWidget(MainWindowClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout_5 = new QVBoxLayout(centralWidget);
@@ -192,9 +208,9 @@ public:
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         addUniform = new QPushButton(centralWidget);
         addUniform->setObjectName(QString::fromUtf8("addUniform"));
-        QIcon icon8;
-        icon8.addFile(QString::fromUtf8(":/img/Resources/img/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addUniform->setIcon(icon8);
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8(":/img/Resources/img/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addUniform->setIcon(icon10);
 
         verticalLayout_4->addWidget(addUniform, 0, Qt::AlignRight);
 
@@ -313,6 +329,8 @@ public:
         mainToolBar->addAction(actionPoints);
         mainToolBar->addAction(actionLines);
         mainToolBar->addAction(actiontriangles);
+        mainToolBar->addAction(actionModeMarterial);
+        mainToolBar->addAction(actionModeTexture);
         mainToolBar->addSeparator();
         mainToolBar->addAction(actionRender);
 
@@ -337,6 +355,14 @@ public:
         actionRender->setText(QApplication::translate("MainWindowClass", "Render", nullptr));
 #ifndef QT_NO_TOOLTIP
         actionRender->setToolTip(QApplication::translate("MainWindowClass", "for render the shader programs", nullptr));
+#endif // QT_NO_TOOLTIP
+        actionModeMarterial->setText(QApplication::translate("MainWindowClass", "ModeMarterial", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionModeMarterial->setToolTip(QApplication::translate("MainWindowClass", "this activate the uniforms for material", nullptr));
+#endif // QT_NO_TOOLTIP
+        actionModeTexture->setText(QApplication::translate("MainWindowClass", "ModeTexture", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionModeTexture->setToolTip(QApplication::translate("MainWindowClass", "this activate the uniforms for textures", nullptr));
 #endif // QT_NO_TOOLTIP
         addUniform->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(VertexS), QApplication::translate("MainWindowClass", "Vertex Shader", nullptr));

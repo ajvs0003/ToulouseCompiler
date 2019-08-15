@@ -146,7 +146,11 @@ private:
 	//MANAGEMENT FOR INPUT KEYS
 	int cont = 0;
 	int fog = 0;
-	string _typePaint;
+	
+
+	enum typePaint {
+		points, wire, triangle, material,textures
+	};
 	string rutaShaderUsuario;
 
 
@@ -169,7 +173,7 @@ private:
 
 	void addUserShader(string path);
 
-	void typePaint(string type);
+	void Paint();
 	
 	void chargeShader();
 

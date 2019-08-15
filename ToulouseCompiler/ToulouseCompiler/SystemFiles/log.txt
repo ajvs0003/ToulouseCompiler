@@ -1,12 +1,20 @@
-LogFile de la practica_(tiempo ejecucion 12:01:43).
+LogFile de la practica_(tiempo ejecucion 22:00:10).
 ---------------------------------- 
-12:01:44 Inicializando OpenGL
-12:01:44 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
-12:01:44 Fabricante    : NVIDIA Corporation
-12:01:44 Version OpenGL: 4.5.0 NVIDIA 430.86
-12:01:44 Version GLSL  : 4.50 NVIDIA
-12:01:44 [SUCCESSFUL] Opening file...
-12:01:44 [SUCCESSFUL] Profile  accepted
-12:01:44 [SUCCESSFUL] Iniciating Vao
-12:01:44 [SUCCESSFUL] Iniciating Vao
-12:01:44 [SUCCESSFUL] Iniciating Vao
+22:00:11 Inicializando OpenGL
+22:00:11 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
+22:00:11 Fabricante    : NVIDIA Corporation
+22:00:11 Version OpenGL: 4.5.0 NVIDIA 430.86
+22:00:11 Version GLSL  : 4.50 NVIDIA
+22:00:11 [SUCCESSFUL] Opening file...
+22:00:11 [SUCCESSFUL] Profile  accepted
+22:00:11 [SUCCESSFUL] Iniciating Vao
+22:00:11 [SUCCESSFUL] Iniciating Vao
+22:00:11 [SUCCESSFUL] Iniciating Vao
+22:00:13 [WARNING]activado el modo lineas
+22:00:14 [WARNING]activado el modo triangulos
+22:00:14 [WARNING]activado el modo material
+22:00:15 [WARNING]activado el modo modeTextures
+22:00:16 [WARNING]activado el modo material
+22:00:16 [WARNING]activado el modo triangulos
+22:00:17 [WARNING]activado el modo lineas
+22:00:17 [WARNING]activado el modo puntos

@@ -25,6 +25,8 @@ ToulouseCompiler::~ToulouseCompiler()
 	delete tabView;
 	delete modePoints;
 	delete modeLines;
+	delete modeMaterial;
+	delete modeTextures;
 	delete modeTriangles;
 	delete save;
 	delete render;
@@ -49,7 +51,14 @@ void ToulouseCompiler::handleToolActionPoints() {
 	if (modeTriangles->isChecked()) {
 		modeTriangles->setChecked(false);
 	}
+	
+	if (modeMaterial->isChecked()) {
+		modeMaterial->setChecked(false);
+	}
 
+	if (modeTextures->isChecked()) {
+		modeTextures->setChecked(false);
+	}
 
 
 
@@ -78,7 +87,13 @@ void ToulouseCompiler::handleToolActionLines()
 		modeTriangles->setChecked(false);
 	}
 
+	if (modeMaterial->isChecked()) {
+		modeMaterial->setChecked(false);
+	}
 
+	if (modeTextures->isChecked()) {
+		modeTextures->setChecked(false);
+	}
 
 
 	if (modeLines->isChecked()) {
@@ -111,7 +126,13 @@ void ToulouseCompiler::handleToolActionTriangles()
 		modePoints->setChecked(false);
 	}
 
+	if (modeMaterial->isChecked()) {
+		modeMaterial->setChecked(false);
+	}
 
+	if (modeTextures->isChecked()) {
+		modeTextures->setChecked(false);
+	}
 
 
 	if (modeTriangles->isChecked()) {
@@ -129,6 +150,73 @@ void ToulouseCompiler::handleToolActionTriangles()
 
 
 
+}
+
+void ToulouseCompiler::handleToolActionMaterial()
+{
+	if (modeLines->isChecked()) {
+		modeLines->setChecked(false);
+	}
+	if (modePoints->isChecked()) {
+		modePoints->setChecked(false);
+	}
+	if (modeTriangles->isChecked()) {
+		modeTriangles->setChecked(false);
+	}
+
+	if (modeTextures->isChecked()) {
+		modeTextures->setChecked(false);
+	}
+
+
+	if (modeMaterial->isChecked()) {
+
+		/penGLWindow->changeTrial(3);
+
+		Log::getInstancia()->warning("activado el modo material");
+	}
+	else {
+
+		modeMaterial->setChecked(false);
+
+	}
+
+
+
+
+
+	
+}
+
+void ToulouseCompiler::handleToolActionTextures()
+{
+	if (modeLines->isChecked()) {
+		modeLines->setChecked(false);
+	}
+	if (modePoints->isChecked()) {
+		modePoints->setChecked(false);
+	}
+
+	if (modeMaterial->isChecked()) {
+		modeMaterial->setChecked(false);
+	}
+
+	if (modeTriangles->isChecked()) {
+		modeTriangles->setChecked(false);
+	}
+
+
+	if (modeTextures->isChecked()) {
+
+		openGLWindow->changeTrial(4);
+
+		Log::getInstancia()->warning("activado el modo modeTextures");
+	}
+	else {
+
+		modeTextures->setChecked(false);
+
+	}
 }
 
 void ToulouseCompiler::handleToolActionSave()
@@ -415,6 +503,13 @@ void ToulouseCompiler::configuration_ToolBar()
 	modeTriangles = ui.actiontriangles;
 	connect(modeTriangles, SIGNAL(triggered()), this, SLOT(handleToolActionTriangles()));
 
+
+	modeMaterial = ui.actionModeMarterial;
+	connect(modeMaterial, SIGNAL(triggered()), this, SLOT(handleToolActionMaterial()));
+
+	modeTextures = ui.actionModeTexture;
+	connect(modeTextures, SIGNAL(triggered()), this, SLOT(handleToolActionTextures()));
+
 	save = ui.actionSave;
 	connect(save, SIGNAL(triggered()), this, SLOT(handleToolActionSave()));
 
@@ -486,7 +581,7 @@ void ToulouseCompiler::configuration_codeEditor()
 	
 
 	tabView = ui.tabWidget;
-	tabView->setCurrentIndex(index);
+	tabView->setCurrentIndex(0);
 	
 	tabView->setStyleSheet("QTabBar { font:bold 10pt; font-family: Arial; }");
 

@@ -248,6 +248,8 @@
    <addaction name="actionPoints"/>
    <addaction name="actionLines"/>
    <addaction name="actiontriangles"/>
+   <addaction name="actionModeMarterial"/>
+   <addaction name="actionModeTexture"/>
    <addaction name="separator"/>
    <addaction name="actionRender"/>
   </widget>
@@ -337,6 +339,38 @@
    </property>
    <property name="toolTip">
     <string>for render the shader programs</string>
+   </property>
+  </action>
+  <action name="actionModeMarterial">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/material.png</normaloff>
+     <normalon>:/img/Resources/img/Material_activate.png</normalon>:/img/Resources/img/material.png</iconset>
+   </property>
+   <property name="text">
+    <string>ModeMarterial</string>
+   </property>
+   <property name="toolTip">
+    <string>this activate the uniforms for material</string>
+   </property>
+  </action>
+  <action name="actionModeTexture">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/textures.png</normaloff>
+     <normalon>:/img/Resources/img/textures_activate.png</normalon>:/img/Resources/img/textures.png</iconset>
+   </property>
+   <property name="text">
+    <string>ModeTexture</string>
+   </property>
+   <property name="toolTip">
+    <string>this activate the uniforms for textures</string>
    </property>
   </action>
  </widget>

@@ -43,7 +43,7 @@ private:
 	CodeEditor* fragmentShader;
 	QString curFile;
 	
-	int index = 0;//index for change text of button
+	
 
 	/********************END CODE EDITOR DATA********************/
 
@@ -55,6 +55,8 @@ private:
 	QAction* modePoints;
 	QAction* modeLines;
 	QAction* modeTriangles;
+	QAction* modeMaterial;
+	QAction* modeTextures;
 
 	QAction* save;
 	QAction* render;
@@ -137,6 +139,9 @@ private slots:
 	void handleToolActionPoints();
 	void handleToolActionLines();
 	void handleToolActionTriangles();
+	void handleToolActionMaterial();
+	void handleToolActionTextures();
+
 	void handleToolActionSave();
 	void handleToolActionRender();
 	void handleButtonAddUniform();
