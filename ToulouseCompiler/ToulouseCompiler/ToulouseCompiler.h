@@ -37,7 +37,7 @@ private:
 	/********************CODE EDITOR DATA********************/
 
 	
-	//QStackedWidget* stakedView;//Pointer to the widget for code editor
+	//Pointer to the widget for code editor
 	QTabWidget* tabView;
 	CodeEditor* vertexShader;
 	CodeEditor* fragmentShader;

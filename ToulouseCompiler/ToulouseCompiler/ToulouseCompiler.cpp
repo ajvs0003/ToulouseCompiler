@@ -482,9 +482,8 @@ void ToulouseCompiler::configuration_OutPut()
 
 void ToulouseCompiler::configuration_codeEditor()
 {
-	//I take the stakedWidget and assign to a pointer for can manage later all the stuff that i will need
-	/*stakedView = ui.stackedWidget;
-	stakedView->setCurrentIndex(index);*/
+	//I take the qtabWidget and assign to a pointer for can manage later all the stuff that i will need
+	
 
 	tabView = ui.tabWidget;
 	tabView->setCurrentIndex(index);
