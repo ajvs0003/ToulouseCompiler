@@ -270,6 +270,8 @@ public:
 	*/
 	void DrawAsLines(PagShaderProgram &shader, glm::mat4 model, glm::mat4 view, glm::mat4 projection)  ;
 
+	void DrawAsTriangles(PagShaderProgram &shader, glm::mat4 model, glm::mat4 view, glm::mat4 projection);
+
 	/**
 		* @brief  Esta función gestiona decirle a los onjetos o al grupo que se pinte como triangulos
 		* @param shader shader a usar
@@ -278,7 +280,7 @@ public:
 		* @param projection , matriz de proyeccion de la camara
 		* @param type , es apr ala utilizacion de unos uniforms caracteristicos para esta forma de pintar, si se usan luces o no
 	*/
-	void DrawAsTriangles(PagShaderProgram &shader, glm::mat4 model, glm::mat4 view, glm::mat4 projection, string type)  ;
+	void DrawAsTrianglesWithLights(PagShaderProgram &shader, glm::mat4 model, glm::mat4 view, glm::mat4 projection, bool textures);
 
 
 

@@ -8,15 +8,16 @@
 class TextureLibrary
 {
 private:
+	OpenGLFunctions* gl;
 	static  TextureLibrary* instance;
 
 	std::map< NameTexture, PagTexture*> texturas;
 
-	TextureLibrary();
+	TextureLibrary(OpenGLFunctions *_gl);
 
 
 public:
-	static TextureLibrary* getInstance();
+	static TextureLibrary* getInstance(OpenGLFunctions *_gl);
 
 	PagTexture* find(NameTexture name);
 

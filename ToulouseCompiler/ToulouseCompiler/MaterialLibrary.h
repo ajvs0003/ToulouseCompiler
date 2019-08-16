@@ -7,6 +7,8 @@ class MaterialLibrary
 
 private:
 		
+	
+
 	static  MaterialLibrary* instance;
 
 	std::map< NameMaterial, PagMaterial*> materiales;

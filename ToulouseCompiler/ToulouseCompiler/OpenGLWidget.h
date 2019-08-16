@@ -55,11 +55,11 @@ public:
 	void prepareOpenGL();
 
 
-	void changeTrial(int nuevo) {
-		
-		typeTrial = nuevo;
-	}
+	void changeTrial(int nuevo);
 	
+	void setPathShader(string path);
+
+
 	void compile();
 
 
@@ -151,7 +151,7 @@ private:
 	enum typePaint {
 		points, wire, triangle, material,textures
 	};
-	string rutaShaderUsuario;
+	string shaderPath;
 
 
 	bool modeTrial = true;
@@ -171,8 +171,7 @@ private:
 
 	//PRIVATE METHODS
 
-	void addUserShader(string path);
-
+	
 	void Paint();
 	
 	void chargeShader();

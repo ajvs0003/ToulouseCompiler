@@ -14,7 +14,7 @@ private:
 
 	std::vector<unsigned char> image;
 	
-
+	OpenGLFunctions *gl;
 
 	
 
@@ -25,7 +25,12 @@ private:
 	
 
 public:
-	PagTexture(unsigned _width,unsigned _height,std::string filename);
+
+
+
+
+
+	PagTexture(OpenGLFunctions *_gl,unsigned _width,unsigned _height,std::string filename);
 
 	
 

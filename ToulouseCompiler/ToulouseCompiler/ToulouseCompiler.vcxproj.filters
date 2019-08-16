@@ -117,9 +117,6 @@
     <ClCompile Include="PagCamera.cpp">
       <Filter>Source Files\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="PagPlane.cpp">
-      <Filter>Source Files\Geometry</Filter>
-    </ClCompile>
     <ClCompile Include="CodeEditor.cpp">
       <Filter>Source Files\CodeEditor</Filter>
     </ClCompile>
@@ -137,6 +134,21 @@
     </ClCompile>
     <ClCompile Include="PointLight.cpp">
       <Filter>Source Files\Ligths</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialLibrary.cpp">
+      <Filter>Source Files\Materials&amp;Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="PagMaterial.cpp">
+      <Filter>Source Files\Materials&amp;Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="PagTexture.cpp">
+      <Filter>Source Files\Materials&amp;Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureLibrary.cpp">
+      <Filter>Source Files\Materials&amp;Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="lodepng.cpp">
+      <Filter>Source Files\Helpers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -206,9 +218,6 @@
     <ClInclude Include="PagCamera.h">
       <Filter>Header Files\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="PagPlane.h">
-      <Filter>Header Files\Geometry</Filter>
-    </ClInclude>
     <ClInclude Include="Spotlight.h">
       <Filter>Header Files\Ligths</Filter>
     </ClInclude>
@@ -220,6 +229,21 @@
     </ClInclude>
     <ClInclude Include="PointLight.h">
       <Filter>Header Files\Ligths</Filter>
+    </ClInclude>
+    <ClInclude Include="PagMaterial.h">
+      <Filter>Header Files\Materials&amp;Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialLibrary.h">
+      <Filter>Header Files\Materials&amp;Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureLibrary.h">
+      <Filter>Header Files\Materials&amp;Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="PagTexture.h">
+      <Filter>Header Files\Materials&amp;Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="lodepng.h">
+      <Filter>Header Files\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

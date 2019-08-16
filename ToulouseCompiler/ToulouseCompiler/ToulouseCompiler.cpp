@@ -171,7 +171,7 @@ void ToulouseCompiler::handleToolActionMaterial()
 
 	if (modeMaterial->isChecked()) {
 
-		/penGLWindow->changeTrial(3);
+		openGLWindow->changeTrial(3);
 
 		Log::getInstancia()->warning("activado el modo material");
 	}

@@ -46,11 +46,20 @@ void Pag3DGroup::DrawAsLines(PagShaderProgram &shader, glm::mat4 model, glm::mat
 
 }
 
-void Pag3DGroup::DrawAsTriangles(PagShaderProgram &shader, glm::mat4 model, glm::mat4 view, glm::mat4 projection, string type)
+void Pag3DGroup::DrawAsTriangles(PagShaderProgram & shader, glm::mat4 model, glm::mat4 view, glm::mat4 projection)
 {
 	for (unsigned int i = 0; i < objetos.size(); i++) {
 		objetos.at(i)->DrawAsTriangles(shader, modelMatrix*model, view,
-			projection,type);
+			projection);
+
+	}
+}
+
+void Pag3DGroup::DrawAsTrianglesWithLights(PagShaderProgram &shader, glm::mat4 model, glm::mat4 view, glm::mat4 projection, bool textures)
+{
+	for (unsigned int i = 0; i < objetos.size(); i++) {
+		objetos.at(i)->DrawAsTrianglesWithLights(shader, modelMatrix*model, view,
+			projection,textures);
 		
 	}
 }

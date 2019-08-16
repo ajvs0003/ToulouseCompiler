@@ -1,13 +1,12 @@
 #include "PagTexture.h"
 #include "Log.h"
 #include "lodepng.h"
-#include "GL/glew.h"
 
 
 
-PagTexture::PagTexture( unsigned _width, unsigned _height, std::string filename)
+PagTexture::PagTexture(OpenGLFunctions *_gl, unsigned _width, unsigned _height, std::string filename)
 {
-
+	gl = _gl;
 	width = _width;
 	height = _height;
 	unsigned error = lodepng::decode(image, width, height, filename);
@@ -50,13 +49,13 @@ PagTexture::PagTexture( unsigned _width, unsigned _height, std::string filename)
 
 
 
-	glBindTexture(GL_TEXTURE_2D, textureId);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,width,height,0,GL_RGBA,GL_UNSIGNED_BYTE,image.data());
-	glGenerateMipmap(GL_TEXTURE_2D);
+	gl->glBindTexture(GL_TEXTURE_2D, textureId);
+	gl->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	gl->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	gl->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	gl->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	gl->glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,width,height,0,GL_RGBA,GL_UNSIGNED_BYTE,image.data());
+	gl->glGenerateMipmap(GL_TEXTURE_2D);
 
 }
 
@@ -71,20 +70,20 @@ void PagTexture::aplicateTexture(PagShaderProgram &shader, std::string type) {
 
 	if (type == "texture") {
 		shader.setUniform("TexSamplerColor", GL_TEXTURE0);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, textureId);
+		gl->glActiveTexture(GL_TEXTURE0);
+		gl->glBindTexture(GL_TEXTURE_2D, textureId);
 	}
 	else if (type == "bumpMapping") {
 
 		shader.setUniform("TexSamplerBump", GL_TEXTURE1);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, textureId);
+		gl->glActiveTexture(GL_TEXTURE1);
+		gl->glBindTexture(GL_TEXTURE_2D, textureId);
 
 	}
 	else if (type == "displacement") {
 		shader.setUniform("TexSamplerBump", GL_TEXTURE2);
-		glActiveTexture(GL_TEXTURE2);
-		glBindTexture(GL_TEXTURE_2D, textureId);
+		gl->glActiveTexture(GL_TEXTURE2);
+		gl->glBindTexture(GL_TEXTURE_2D, textureId);
 	}
 
 }

@@ -94,6 +94,18 @@ void  OpenGLWidget::prepareOpenGL()
 
 
 
+void OpenGLWidget::changeTrial(int nuevo)
+{
+	typeTrial = nuevo;
+	
+}
+
+void OpenGLWidget::setPathShader(string path)
+{
+	shaderPath = path;
+
+}
+
 void OpenGLWidget::compile()
 {
 
@@ -134,12 +146,7 @@ void OpenGLWidget::leaveEvent(QMouseEvent *)
 	emit Mouse_Left();
 }
 
-void OpenGLWidget::addUserShader(string path) {
 
-	rutaShaderUsuario = path;
-
-
-}
 
 void OpenGLWidget::mouseReleaseEvent(QMouseEvent *e)
 {
@@ -214,7 +221,7 @@ void OpenGLWidget::chargeShader()
 			break;
 		}
 
-		shaderProgram->createShaderProgram(rutaShaderUsuario);
+		shaderProgram->createShaderProgram(shaderPath);
 	}
 
 
@@ -450,7 +457,7 @@ void OpenGLWidget::paintObjects(PagShaderProgram &shader, int mode) {
 	case 2://Modo triangulos ver orden indices
 		for (unsigned int i = 0; i < objetos.size(); i++) {
 			objetos.at(i).DrawAsTriangles(shader, glm::mat4(1), camera->getWorldToViewMatrix(),
-				camera->getWorldToProjecMatrix(width(), height()), "triangles");
+				camera->getWorldToProjecMatrix(width(), height()));
 		}
 
 		break;
@@ -460,16 +467,16 @@ void OpenGLWidget::paintObjects(PagShaderProgram &shader, int mode) {
 
 	case 3://Modo triangulos para shader luces y materiales
 		for (unsigned int i = 0; i < objetos.size(); i++) {
-			objetos.at(i).DrawAsTriangles(shader, objetos.at(i).getModelMatrix(), camera->getWorldToViewMatrix(),
-				camera->getWorldToProjecMatrix(width(), height()), "luces");
+			objetos.at(i).DrawAsTrianglesWithLights(shader, objetos.at(i).getModelMatrix(), camera->getWorldToViewMatrix(),
+				camera->getWorldToProjecMatrix(width(), height()), false);
 		}
 
 		break;
 	case 4://Modo triangulos para shader luces y materiales
 
 		for (unsigned int i = 0; i < objetos.size(); i++) {
-			objetos.at(i).DrawAsTriangles(shader, objetos.at(i).getModelMatrix(), camera->getWorldToViewMatrix(),
-				camera->getWorldToProjecMatrix(width(), height()), "textures");
+			objetos.at(i).DrawAsTrianglesWithLights(shader, objetos.at(i).getModelMatrix(), camera->getWorldToViewMatrix(),
+				camera->getWorldToProjecMatrix(width(), height()), true);
 
 		}
 
