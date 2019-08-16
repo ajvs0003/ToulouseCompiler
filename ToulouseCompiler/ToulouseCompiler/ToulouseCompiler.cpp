@@ -219,27 +219,86 @@ void ToulouseCompiler::handleToolActionTextures()
 	}
 }
 
-void ToulouseCompiler::handleToolActionSave()
+void ToulouseCompiler::handleToolActionOpen()
 {
+	if (maybeSave()) {
+		QString fileName = QFileDialog::getOpenFileName(this);
+		if (!fileName.isEmpty())
+			loadFile(fileName);
+	}
 
 
-	Log::getInstancia()->warning("Pulsado guardar");
 
+}
+
+
+bool ToulouseCompiler::maybeSave()
+
+{
+	if (!vertexShader->document()->isModified() && !fragmentShader->document()->isModified())
+		return true;
+	const QMessageBox::StandardButton ret
+		= QMessageBox::warning(this, tr("Application"),
+			tr("The document has been modified.\n"
+				"Do you want to save your changes?"),
+			QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+	switch (ret) {
+	case QMessageBox::Save:
+		return handleToolActionSave();
+	case QMessageBox::Cancel:
+		return false;
+	default:
+		break;
+	}
+	return true;
+}
+
+bool ToulouseCompiler::handleToolActionSave()
+{
+	if (curFile.isEmpty()) {
+		return handleToolActionSaveAs();
+	}
+	else {
+		return saveFile(curFile);
+	}
+
+
+}
+
+bool ToulouseCompiler::handleToolActionSaveAs()
+{
+	QFileDialog dialog(this);
+	dialog.setWindowModality(Qt::WindowModal);
+	dialog.setAcceptMode(QFileDialog::AcceptSave);
+	if (dialog.exec() != QDialog::Accepted)
+		return false;
+	return saveFile(dialog.selectedFiles().first());
+
+
+
+	
 }
 
 void ToulouseCompiler::handleToolActionRender()
 {
 	/*Log::getInstancia()->warning("Pulsado render");*/
 
-	OutPut->clear();
+	if (maybeSave()) {
+		//resetear log
+		OutPut->clear();
 
 
-	if (!uniforms.empty()) {
-		Log::getInstancia()->warning("HAY chicha");
+		if (!uniforms.empty()) {
+			
+			openGLWindow->setUniforms(uniforms);
+
+		}
+
+		
+		openGLWindow->setPathShader(curFile.toStdString());
+		openGLWindow->compile();
+		
 	}
-
-	//resetear log
-	openGLWindow->compile();
 }
 
 void ToulouseCompiler::editSlot(int row, int col) {
@@ -380,13 +439,13 @@ void ToulouseCompiler::handleData(const dataForUniform &data)
 	//create qt elements for the table
 	QTableWidgetItem *name = new QTableWidgetItem(QString::fromStdString(data.name));
 	QTableWidgetItem *value = new QTableWidgetItem(QString::fromStdString(data.value));
-
+	
 
 	//insert values to the table
 	tableUniforms->setItem(row, column::name, name);
 	tableUniforms->setItem(row, column::value, value);
 
-
+	
 
 	//comboBox for type
 	QWidget* pWi = new QWidget();
@@ -396,7 +455,15 @@ void ToulouseCompiler::handleData(const dataForUniform &data)
 
 	combo->addItems(QStringList() << tr("boolean") << tr("vec3") << tr("vec4") << tr("float") << tr("int")); //add the types for the uniforms
 
-	combo->setCurrentText(QString::fromStdString(data.type));
+	if(nuevo.type== "boolean")combo->setCurrentIndex(0);
+	else if (nuevo.type == "vec3")combo->setCurrentIndex(1);
+	else if (nuevo.type == "vec4")combo->setCurrentIndex(2);
+	else if (nuevo.type == "float")combo->setCurrentIndex(3);
+	else if (nuevo.type == "int")combo->setCurrentIndex(4);
+
+
+	
+
 
 	connect(combo, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(cell_comboBoxChanged(const QString&)));//conect signalk if something change
 
@@ -510,8 +577,16 @@ void ToulouseCompiler::configuration_ToolBar()
 	modeTextures = ui.actionModeTexture;
 	connect(modeTextures, SIGNAL(triggered()), this, SLOT(handleToolActionTextures()));
 
+
+	load = ui.actionOpen;
+	connect(load, SIGNAL(triggered()), this, SLOT(handleToolActionOpen()));
+
+
 	save = ui.actionSave;
 	connect(save, SIGNAL(triggered()), this, SLOT(handleToolActionSave()));
+
+	saveAs = ui.actionSave_As;
+	connect(saveAs, SIGNAL(triggered()), this, SLOT(handleToolActionSaveAs()));
 
 	render = ui.actionRender;
 	connect(render, SIGNAL(triggered()), this, SLOT(handleToolActionRender()));
@@ -646,19 +721,53 @@ void ToulouseCompiler::configuration_opengl()
 void ToulouseCompiler::loadFile(const QString &fileName)
 
 {
-	QFile file(fileName);
+
+	string aux = fileName.toStdString();
+	aux = aux.substr(0, aux.find("-", 0));
+
+	QString filename = QString::fromStdString(aux);
+
+	QFile file(filename + "-vert.glsl");
 	if (!file.open(QFile::ReadOnly | QFile::Text)) {
 		QMessageBox::warning(this, tr("Application"),
 			tr("Cannot read file %1:\n%2.")
-			.arg(QDir::toNativeSeparators(fileName), file.errorString()));
+			.arg(QDir::toNativeSeparators(filename + "-vert.glsl"), file.errorString()));
 		return;
 	}
+
+	QTextStream in(&file);
+
+	QFile file2(filename + "-frag.glsl");
+	if (!file2.open(QFile::ReadOnly | QFile::Text)) {
+		QMessageBox::warning(this, tr("Application"),
+			tr("Cannot read file %1:\n%2.")
+			.arg(QDir::toNativeSeparators(filename + "-frag.glsl"), file2.errorString()));
+		return;
+	}
+
+	QTextStream in2(&file2);
+
+
+#ifndef QT_NO_CURSOR
+	QApplication::setOverrideCursor(Qt::WaitCursor);
+#endif
+
+	vertexShader->setPlainText(in.readAll());
+	fragmentShader->setPlainText(in2.readAll());
+
+
+#ifndef QT_NO_CURSOR
+	QApplication::restoreOverrideCursor();
+#endif
+
+	setCurrentFile(filename);
+	statusBar->showMessage(tr("File loaded"), 2000);
 }
 
 bool ToulouseCompiler::saveFile(const QString &fileName)
 		
 	{
-		QFile file(fileName);
+		QFile file(fileName + "-vert.glsl");
 		if (!file.open(QFile::WriteOnly | QFile::Text)) {
 			QMessageBox::warning(this, tr("Application"),
 				tr("Cannot write file %1:\n%2.")
@@ -666,12 +775,28 @@ bool ToulouseCompiler::saveFile(const QString &fileName)
 					file.errorString()));
 			return false;
 		}
+		QFile file2(fileName+"-frag.glsl");
+		if (!file2.open(QFile::WriteOnly | QFile::Text)) {
+			QMessageBox::warning(this, tr("Application"),
+				tr("Cannot write file %1:\n%2.")
+				.arg(QDir::toNativeSeparators(fileName),
+					file2.errorString()));
+			return false;
+		}
 
-		QTextStream out(&file);
+
+
+		QTextStream vertex(&file);
+		QTextStream fragment(&file2);
+
+
 #ifndef QT_NO_CURSOR
 		QApplication::setOverrideCursor(Qt::WaitCursor);
 #endif
-		out << vertexShader->toPlainText();
+
+		vertex << vertexShader->toPlainText();
+		fragment << fragmentShader->toPlainText();
+
 
 #ifndef QT_NO_CURSOR
 		QApplication::restoreOverrideCursor();
@@ -692,6 +817,6 @@ void ToulouseCompiler::setCurrentFile(const QString &fileName)
 
 	QString shownName = curFile;
 	if (curFile.isEmpty())
-		shownName = "untitled.txt";
+		shownName = "untitled-vert.glsl";
 	setWindowFilePath(shownName);
 }

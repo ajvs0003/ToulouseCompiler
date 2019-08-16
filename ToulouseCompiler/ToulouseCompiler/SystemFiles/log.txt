@@ -1,34 +1,23 @@
-LogFile de la practica_(tiempo ejecucion 11:47:53).
+LogFile de la practica_(tiempo ejecucion 14:03:46).
 ---------------------------------- 
-11:47:54 Inicializando OpenGL
-11:47:54 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
-11:47:54 Fabricante    : NVIDIA Corporation
-11:47:54 Version OpenGL: 4.5.0 NVIDIA 430.86
-11:47:54 Version GLSL  : 4.50 NVIDIA
-11:47:54 [SUCCESSFUL] Opening file...
-11:47:54 [SUCCESSFUL] Profile  accepted
-11:47:54 [SUCCESSFUL] Iniciating Vao
-11:47:54 [SUCCESSFUL] Iniciating Vao
-11:47:54 [SUCCESSFUL] Iniciating Vao
-11:47:57 [WARNING]activado el modo triangulos
-11:47:58 Inicializando OpenGL
-11:47:58 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
-11:47:58 Fabricante    : NVIDIA Corporation
-11:47:58 Version OpenGL: 4.5.0 NVIDIA 430.86
-11:47:58 Version GLSL  : 4.50 NVIDIA
-11:47:58 [SUCCESSFUL] Opening file...
-11:47:58 [SUCCESSFUL] Profile  accepted
-11:47:58 [SUCCESSFUL] Iniciating Vao
-11:47:58 [SUCCESSFUL] Iniciating Vao
-11:47:58 [SUCCESSFUL] Iniciating Vao
-11:48:13 [WARNING]activado el modo lineas
-11:48:14 Inicializando OpenGL
-11:48:14 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
-11:48:14 Fabricante    : NVIDIA Corporation
-11:48:14 Version OpenGL: 4.5.0 NVIDIA 430.86
-11:48:14 Version GLSL  : 4.50 NVIDIA
-11:48:14 [SUCCESSFUL] Opening file...
-11:48:14 [SUCCESSFUL] Profile  accepted
-11:48:14 [SUCCESSFUL] Iniciating Vao
-11:48:14 [SUCCESSFUL] Iniciating Vao
-11:48:14 [SUCCESSFUL] Iniciating Vao
+14:03:47 Inicializando OpenGL
+14:03:48 Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
+14:03:48 Fabricante    : NVIDIA Corporation
+14:03:48 Version OpenGL: 4.5.0 NVIDIA 430.86
+14:03:48 Version GLSL  : 4.50 NVIDIA
+14:03:48 [SUCCESSFUL] Opening file...
+14:03:48 [SUCCESSFUL] Profile  accepted
+14:03:48 [SUCCESSFUL] Iniciating Vao
+14:03:48 [SUCCESSFUL] Iniciating Vao
+14:03:48 [SUCCESSFUL] Iniciating Vao
+14:04:13 [SUCCESSFUL] Inicializando OpenGL
+14:04:13 [SUCCESSFUL] Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
+14:04:13 [SUCCESSFUL] Fabricante    : NVIDIA Corporation
+14:04:13 [SUCCESSFUL] Version OpenGL: 4.5.0 NVIDIA 430.86
+14:04:13 [SUCCESSFUL] Version GLSL  : 4.50 NVIDIA
+14:04:16 [WARNING]activado el modo lineas
+14:04:17 [SUCCESSFUL] Inicializando OpenGL
+14:04:17 [SUCCESSFUL] Nombre GPU    : GeForce GTX 1050 Ti/PCIe/SSE2
+14:04:17 [SUCCESSFUL] Fabricante    : NVIDIA Corporation
+14:04:17 [SUCCESSFUL] Version OpenGL: 4.5.0 NVIDIA 430.86
+14:04:17 [SUCCESSFUL] Version GLSL  : 4.50 NVIDIA

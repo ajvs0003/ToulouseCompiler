@@ -11,7 +11,7 @@
 #include <string>
 #include <QMouseEvent>
 #include <QEvent>
-
+#include "addDialog.h"
 
 class QPainter;
 class QOpenGLContext;
@@ -59,9 +59,12 @@ public:
 	
 	void setPathShader(string path);
 
+	void setUniforms(vector<dataForUniform> _uniforms);
 
 	void compile();
 
+	void chargeUniforms();
+	
 
 	//EVENTS for mouse
 
@@ -133,7 +136,7 @@ private:
 	// - Shaders program that we will use for paint the geometry
 
 	PagShaderProgram* shaderProgram ;
-
+	std::vector<dataForUniform> uniforms;
 
 
 	//CAMERA SETTINGS
@@ -144,30 +147,23 @@ private:
 
 
 	//MANAGEMENT FOR INPUT KEYS
-	int cont = 0;
-	int fog = 0;
-	
+
 
 	enum typePaint {
 		points, wire, triangle, material,textures
 	};
+
+
 	string shaderPath;
 
 
-	bool modeTrial = true;
+	bool modeTrial = false;
 
 	int typeTrial = 0;
 
-	bool lightsOn = false;
+	bool firstCompile = false;
 
 	
-	
-
-
-	
-	
-	
-
 
 	//PRIVATE METHODS
 
@@ -176,6 +172,7 @@ private:
 	
 	void chargeShader();
 
+	
 	
 
 	/**

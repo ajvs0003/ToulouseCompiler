@@ -81,31 +81,6 @@
              <string/>
             </property>
            </item>
-           <item>
-            <property name="text">
-             <string>boolean</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Vec3</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>vec4</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>float</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>int</string>
-            </property>
-           </item>
           </widget>
          </item>
         </layout>

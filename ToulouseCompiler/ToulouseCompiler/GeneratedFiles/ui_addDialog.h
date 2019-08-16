@@ -103,11 +103,6 @@ public:
 
         comboBox = new QComboBox(addDialog);
         comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
 
         horizontalLayout_2->addWidget(comboBox);
@@ -167,11 +162,6 @@ public:
         label_3->setText(QApplication::translate("addDialog", "Name:", nullptr));
         label->setText(QApplication::translate("addDialog", "Type:", nullptr));
         comboBox->setItemText(0, QString());
-        comboBox->setItemText(1, QApplication::translate("addDialog", "boolean", nullptr));
-        comboBox->setItemText(2, QApplication::translate("addDialog", "Vec3", nullptr));
-        comboBox->setItemText(3, QApplication::translate("addDialog", "vec4", nullptr));
-        comboBox->setItemText(4, QApplication::translate("addDialog", "float", nullptr));
-        comboBox->setItemText(5, QApplication::translate("addDialog", "int", nullptr));
 
         label_2->setText(QApplication::translate("addDialog", "Value:", nullptr));
         lineEdit->setText(QString());

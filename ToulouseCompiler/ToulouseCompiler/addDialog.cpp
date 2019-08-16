@@ -1,5 +1,6 @@
 #include "addDialog.h"
 #include "ui_addDialog.h"
+
 addDialog::addDialog(QWidget *parent)
 	: QDialog(parent)
 {
@@ -16,6 +17,7 @@ addDialog::addDialog(QWidget *parent)
 
 	//take the pointer to the comBox 
 	options = ui->comboBox;
+	options->addItems(QStringList() << tr("boolean") << tr("vec3") << tr("vec4") << tr("float") << tr("int")); //add the types for the uniforms
 	//for manage when is changed the value
 	connect(options, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(switchcall(const QString&)));
 
@@ -65,6 +67,7 @@ void addDialog::push_save()
 	nuevo.value = inputValue->text().toStdString();
 	
 	
+	
 	//Send the data to the mainWindow
 	emit dataChanged(nuevo);
 	if (!multipleAddings->isChecked())this->close();
@@ -83,7 +86,7 @@ void addDialog::textName_changed(const QString &newValue) {
 
 	if (newValue != "") {
 		textNameCheck = true;
-		if (typeCheck == true && textCheck)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
+		if (typeCheck  && textCheck)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
 	}
 	else {
 		textNameCheck = false;
@@ -99,7 +102,7 @@ void addDialog::text_changed(const QString &newValue) {
 
 	if (newValue != "") {
 		textCheck = true;
-		if (typeCheck == true && textNameCheck)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
+		if (typeCheck  && textNameCheck)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
 	}
 	else {
 		textCheck = false;
@@ -110,7 +113,7 @@ void addDialog::switchcall(const QString&  value) {
 
 	if (value != "") {
 		typeCheck = true;
-		if (textCheck == true && textNameCheck)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
+		if (textCheck  && textNameCheck)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
 	}
 	else {
 		typeCheck = false;

@@ -13,7 +13,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QDir>
-
+#include <QFileDialog>
 
 /*******************/
 class ToulouseCompiler : public QMainWindow
@@ -58,7 +58,9 @@ private:
 	QAction* modeMaterial;
 	QAction* modeTextures;
 
+	QAction* load;
 	QAction* save;
+	QAction* saveAs;
 	QAction* render;
 
 	/********************END TOOL BAR DATA********************/
@@ -95,6 +97,10 @@ private:
 	
 	/********************END UNIFORMS TABLE DATA********************/
 
+
+
+
+
 	//metodo que hara que se llamen a todos los configurate de la aplicacion
 	//que se encargan de enlazar la ui con las clases cpp que gestionan el funcionamiento
 	void configurate();
@@ -114,7 +120,7 @@ private:
 	void setCurrentFile(const QString &fileName);
 
 
-
+	 bool maybeSave();
 
 private slots:
 
@@ -136,13 +142,23 @@ private slots:
 
 	//BUTTONS
 	
+	
+	
+
+
+
 	void handleToolActionPoints();
 	void handleToolActionLines();
 	void handleToolActionTriangles();
 	void handleToolActionMaterial();
 	void handleToolActionTextures();
 
-	void handleToolActionSave();
+	void handleToolActionOpen();
+	bool handleToolActionSave();
+	bool handleToolActionSaveAs();
+
+
+
 	void handleToolActionRender();
 	void handleButtonAddUniform();
 };

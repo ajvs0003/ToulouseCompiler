@@ -20,7 +20,6 @@ typedef struct
 Q_DECLARE_METATYPE(dataForUniform);
 
 
-
 namespace Ui { class addDialog; };
 
 class addDialog : public QDialog

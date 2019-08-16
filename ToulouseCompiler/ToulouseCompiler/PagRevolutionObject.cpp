@@ -2,7 +2,7 @@
 #include <gtc\matrix_transform.hpp>
 #define GLM_ENABLE_EXPERIMENTAL
 #include <gtx\euler_angles.hpp>
-const int salto = 0xFFFFFFFF;
+
 
 //PAG_BODY = 0, 
 //PAG_TOP_FAN = 1,
@@ -353,7 +353,7 @@ void PagRevolutionObject::createGeometryTopFace(int slices, double delta)
 	for (unsigned int i = 0; i < TopFace.PositionsAndNormals.size() ; i++) {
 		TopFace.Indices4PointCloud.push_back(i);
 	}
-	TopFace.Indices4PointCloud.push_back(salto);
+	TopFace.Indices4PointCloud.push_back(PAG_PRIMITIVE_RESTART);
 
 	for (int s = 0; s < slices; s++) {
 		//indices tipo wireframe
@@ -437,7 +437,7 @@ void PagRevolutionObject::createGeometryBotFace(int slices, double delta)
 
 
 	BotFace.Indices4PointCloud.push_back(slices + 1);
-	BotFace.Indices4PointCloud.push_back(salto);
+	BotFace.Indices4PointCloud.push_back(PAG_PRIMITIVE_RESTART);
 
 
 	for(int i= BotFace.PositionsAndNormals.size()-1; i>=0; i--)
@@ -866,8 +866,11 @@ void PagRevolutionObject::DrawAsPoints(PagShaderProgram &shader, glm::mat4 model
 	/*shader.use();*/
 	// - Asignamos los parámetros de tipo uniform del shader program.
 	// Cada shader program tiene su propio conjunto de parámetros.
-	shader.setUniform("pointSize", 7.0f);
-	shader.setUniform("vColor", glm::vec3(1.0f, 0.0f, 0.0f));
+	/*shader.setUniform("pointSize", 7.0f);*/
+	/*shader.setUniform("vColor", glm::vec3(1.0f, 0.0f, 0.0f));*/
+
+	
+
 	glm::mat4 matriz = this->modelMatrix * model;
 
 	shader.setUniform("mModelViewProj", projection*view*matriz);
@@ -888,7 +891,7 @@ void PagRevolutionObject::DrawAsLines(PagShaderProgram &shader, glm::mat4 model,
 	
 	// - Asignamos los parámetros de tipo uniform del shader program.
 	// Cada shader program tiene su propio conjunto de parámetros.
-	shader.setUniform("vColor", glm::vec3(0.0f, 0.0f, 1.0f));
+	/*shader.setUniform("vColor", glm::vec3(0.0f, 0.0f, 1.0f));*/
 	glm::mat4 matriz = modelMatrix * model;
 	shader.setUniform("mModelViewProj", projection*view*matriz);
 

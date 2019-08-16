@@ -11,6 +11,7 @@
 
 #include <gtc/matrix_transform.hpp>
 
+#include "PagEnumerations.h"
 
 OpenGLWidget * OpenGLWidget::instance = nullptr;
 
@@ -31,7 +32,7 @@ void OpenGLWidget::refreshCallback()
 	qDebug() << "Refresh callback called by Renderer";
 
 
-	this->Paint();
+	if(firstCompile)this->Paint();
 
 }
 
@@ -97,7 +98,7 @@ void  OpenGLWidget::prepareOpenGL()
 void OpenGLWidget::changeTrial(int nuevo)
 {
 	typeTrial = nuevo;
-	
+
 }
 
 void OpenGLWidget::setPathShader(string path)
@@ -106,16 +107,136 @@ void OpenGLWidget::setPathShader(string path)
 
 }
 
+void OpenGLWidget::setUniforms(vector<dataForUniform> _uniforms)
+{
+	uniforms = _uniforms;
+}
+
 void OpenGLWidget::compile()
 {
+	firstCompile = true;
+
+	Log::getInstancia()->success("Inicializando OpenGL");
+
+	Log::getInstancia()->success("Nombre GPU    : " + (string)(const char*)glGetString(GL_RENDERER));
+	Log::getInstancia()->success("Fabricante    : " + (string)(const char*)glGetString(GL_VENDOR));
+	Log::getInstancia()->success("Version OpenGL: " + (string)(const char*)glGetString(GL_VERSION));
+	Log::getInstancia()->success("Version GLSL  : " + (string)(const char*)glGetString(GL_SHADING_LANGUAGE_VERSION));
+
 
 
 	this->glDeleteProgram(shaderProgram->getHandler());
 
 	shaderProgram = new PagShaderProgram();
-	initialize();
+	
+	
+	chargeShader();
+
+	
+
+	
 
 	renderNow();
+
+	
+
+}
+
+void OpenGLWidget::chargeUniforms()
+{
+	for (int i = 0; i < uniforms.size(); i++) {
+
+
+		if (uniforms.at(i).type == "boolean") {
+
+			//shader.setUniform("pointSize", 7.0f);
+			if (uniforms.at(i).value == "true")shaderProgram->setUniform(uniforms.at(i).name, true);
+			else if (uniforms.at(i).value == "false")shaderProgram->setUniform(uniforms.at(i).name, false);
+			else Log::getInstancia()->error("uniform bool value incorrect");
+
+		}
+		else if (uniforms.at(i).type == "vec3") {
+			//shader.setUniform("vColor", glm::vec3(1.0f, 0.0f, 0.0f));
+			std::stringstream val(uniforms.at(i).value);
+			std::string segment;
+			std::vector<float> seglist;
+
+			while (std::getline(val, segment, ','))
+			{
+				seglist.push_back(std::stof(segment));
+			}
+
+			if (seglist.size() <= 3 && seglist.size() > 0) {
+
+
+				glm::vec3 vector(seglist.at(0), seglist.at(1) , seglist.at(2) );
+
+				
+
+
+				shaderProgram->setUniform(uniforms.at(i).name, vector);
+
+
+			}
+			else Log::getInstancia()->error("uniform vec3 value incorrect");
+
+
+
+		}
+		else if (uniforms.at(i).type == "vec4") {
+			std::stringstream val(uniforms.at(i).value);
+			std::string segment;
+			std::vector<GLfloat> seglist;
+
+			while (std::getline(val, segment, ','))
+			{
+				seglist.push_back(std::stof(segment));
+			}
+
+			if (seglist.size() <= 4 && seglist.size() > 0) {
+				glm::vec4 vector(seglist.at(0), seglist.at(1), seglist.at(2), seglist.at(3));
+
+				shaderProgram->setUniform(uniforms.at(i).name, vector);
+
+
+			}
+			else Log::getInstancia()->error("uniform vec4 value incorrect");
+
+
+		}
+
+		else if (uniforms.at(i).type == "float") {
+
+			GLfloat val = std::stof(uniforms.at(i).value);
+			shaderProgram->setUniform(uniforms.at(i).name, val);
+
+		}
+		else if (uniforms.at(i).type == "int") {
+
+			GLint val = std::stoi(uniforms.at(i).value);
+			shaderProgram->setUniform(uniforms.at(i).name, val);
+
+		}
+		else {
+			Log::getInstancia()->error("uniform type incorrect");
+		}
+
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+
 
 
 }
@@ -196,32 +317,10 @@ void OpenGLWidget::chargeShader()
 	else {
 		//Here we use the shader that the user wrote
 
-		switch (typeTrial) {
-		case typePaint::points:
 
-
-			break;
-
-		case typePaint::wire:
-
-
-
-			break;
-		case typePaint::triangle:
-
-
-			break;
-		case typePaint::material:
-
-
-			break;
-		case typePaint::textures:
-
-
-			break;
-		}
 
 		shaderProgram->createShaderProgram(shaderPath);
+		
 	}
 
 
@@ -241,7 +340,7 @@ void OpenGLWidget::initialize()
 	Log::getInstancia()->escribir("Version GLSL  : " + (string)(const char*)glGetString(GL_SHADING_LANGUAGE_VERSION));
 
 
-	chargeShader();
+	
 
 	//CAMARA SETTINGS
 
@@ -342,6 +441,7 @@ void OpenGLWidget::Paint()
 
 		glDisable(GL_BLEND);
 		shaderProgram->use();
+		chargeUniforms();
 		paintObjects(*shaderProgram, 0);
 		break;
 
@@ -349,6 +449,7 @@ void OpenGLWidget::Paint()
 
 		glDisable(GL_BLEND);
 		shaderProgram->use();
+		chargeUniforms();
 		paintObjects(*shaderProgram, 1);
 
 		break;
@@ -356,11 +457,13 @@ void OpenGLWidget::Paint()
 
 		glDisable(GL_BLEND);
 		shaderProgram->use();
+		chargeUniforms();
 		paintObjects(*shaderProgram, 2);
 		break;
 	case typePaint::material:
 		glEnable(GL_BLEND);
 		shaderProgram->use();
+		chargeUniforms();
 		for (unsigned int i = 0; i < luces.size(); i++) {
 
 			if (i == 0) glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -375,6 +478,7 @@ void OpenGLWidget::Paint()
 	case typePaint::textures:
 		glEnable(GL_BLEND);
 		shaderProgram->use();
+		chargeUniforms();
 
 		for (unsigned int i = 0; i < luces.size(); i++) {
 
@@ -392,7 +496,7 @@ void OpenGLWidget::Paint()
 		break;
 	}
 
-
+	
 }
 
 
@@ -406,11 +510,7 @@ void OpenGLWidget::createObjects()
 	Pag3DGroup* ob;
 	ob = new Pag3DGroup();
 
-	/*PagPlane* mesa;
-	mesa = new PagPlane(this, 100, 100, 10);
-	mesa->translate(glm::vec3(-50.f, 0.f, -50.f));
 
-	ob->insertObject(mesa);*/
 
 
 	dataTxt = Metodos_especiales::lecturaFichero(dataTxt, ":/obj/Resources/Objects/peon.txt");
@@ -418,7 +518,7 @@ void OpenGLWidget::createObjects()
 
 	peon = new PagRevolutionObject(this, dataTxt, 2, 60);
 	peon->translate(glm::vec3(0.f, 0.01f, 0.f));
-	/*peon->scale(0.25f);*/
+
 
 
 
