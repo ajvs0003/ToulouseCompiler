@@ -34,7 +34,7 @@ ToulouseCompiler::~ToulouseCompiler()
 	delete openglwidget;
 	delete tableUniforms;
 	delete addUniform;
-
+	
 }
 
 
@@ -221,7 +221,11 @@ void ToulouseCompiler::handleToolActionTextures()
 
 void ToulouseCompiler::handleToolActionOpen()
 {
+	uniforms.clear();
+	tableUniforms->setRowCount(0);
+
 	if (maybeSave()) {
+		
 		QString fileName = QFileDialog::getOpenFileName(this);
 		if (!fileName.isEmpty())
 			loadFile(fileName);
@@ -286,7 +290,7 @@ void ToulouseCompiler::handleToolActionRender()
 	if (maybeSave()) {
 		//resetear log
 		OutPut->clear();
-
+		
 
 		if (!uniforms.empty()) {
 			
@@ -759,7 +763,8 @@ void ToulouseCompiler::loadFile(const QString &fileName)
 #ifndef QT_NO_CURSOR
 	QApplication::restoreOverrideCursor();
 #endif
-
+	file.close();
+	file2.close();
 	setCurrentFile(filename);
 	statusBar->showMessage(tr("File loaded"), 2000);
 }
@@ -801,7 +806,8 @@ bool ToulouseCompiler::saveFile(const QString &fileName)
 #ifndef QT_NO_CURSOR
 		QApplication::restoreOverrideCursor();
 #endif
-
+		file.close();
+		file2.close();
 		setCurrentFile(fileName);
 		statusBar->showMessage(tr("File saved"), 2000);
 		return true;

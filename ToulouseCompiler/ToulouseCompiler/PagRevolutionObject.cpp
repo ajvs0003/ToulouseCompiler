@@ -12,7 +12,7 @@
 
 glm::vec3 PagRevolutionObject::CalculateNormalVector(glm::vec3 a, glm::vec3 b)
 {
-	glm::vec3 v1 =(b-a);
+	glm::vec3 v1 = (b - a);
 	glm::vec3 n1(v1.y, -v1.x, 0);
 	n1 = glm::normalize(n1);
 
@@ -49,8 +49,8 @@ void PagRevolutionObject::NormalsProfile() {
 
 		//mirar que pasa si no hay tapa arriba y estamos en el ultimo punto
 		if (!has(PAG_TOP_FAN) && i == SubdividedProfile->profile.size() - 1) {
-			b=(SubdividedProfile->profile.at(i-1));
-			c=(SubdividedProfile->profile.at(i));
+			b = (SubdividedProfile->profile.at(i - 1));
+			c = (SubdividedProfile->profile.at(i));
 			vi = (c - b);
 			ni = CalculateNormal(vi);
 			this->NormalsOfProfile.push_back(ni);
@@ -63,7 +63,7 @@ void PagRevolutionObject::NormalsProfile() {
 			c = (SubdividedProfile->profile.at(i + 1));
 
 
-			
+
 
 			if (i == 1) {//Vemos si es la primera iteraccion del bucle
 
@@ -129,7 +129,7 @@ vector<float> PagRevolutionObject::BodyTextures() {
 	float TotalLength = 0.0;
 	int n = SubdividedProfile->profile.size();
 	if (has(PAG_TOP_FAN))n--;
-	for ( int i = 1; i < n; i++) {
+	for (int i = 1; i < n; i++) {
 		glm::vec2 a(SubdividedProfile->profile.at(i - 1));
 		glm::vec2 b(SubdividedProfile->profile.at(i));
 		glm::vec2 vi(b - a);
@@ -143,7 +143,7 @@ vector<float> PagRevolutionObject::BodyTextures() {
 	float total = 0.0;
 	n = SubdividedProfile->profile.size();;
 	if (has(PAG_TOP_FAN))n--;
-	for ( int i = 1; i <n; i++) {
+	for (int i = 1; i < n; i++) {
 
 		total += glm::length(vectors.at(i - 1));
 
@@ -164,18 +164,18 @@ void PagRevolutionObject::createGeometryBody(int slices, double delta)
 {
 	int i = 0;    int n = this->SubdividedProfile->profile.size();
 	if (has(PAG_BOTTOM_FAN)) {
-	
+
 		i = 1;
 	}
 
 	if (has(PAG_TOP_FAN)) {
 		n = n - 1;
-		
+
 	}
 	else {
-		n = this->SubdividedProfile->profile.size()-1;
+		n = this->SubdividedProfile->profile.size() - 1;
 	}
-	
+
 
 	vector<float> v = BodyTextures();
 	for (int p = i; p <= n; p++) {
@@ -192,7 +192,7 @@ void PagRevolutionObject::createGeometryBody(int slices, double delta)
 			PagI.position = pi;
 			PagI.normal = ni;
 			Body.PositionsAndNormals.push_back(PagI);
-			
+
 			//texturas
 			float u = s * (1.0f / slices);
 			if (p == 0) {
@@ -207,7 +207,7 @@ void PagRevolutionObject::createGeometryBody(int slices, double delta)
 				}
 				else {
 					if (p == n) {
-						glm::vec2 tc(u, v.at(p-1));
+						glm::vec2 tc(u, v.at(p - 1));
 						Body.TextureCoords.push_back(tc);
 					}
 					else {
@@ -216,21 +216,21 @@ void PagRevolutionObject::createGeometryBody(int slices, double delta)
 					}
 				}
 			}
-			
-	/*		cout <<s<<"_:"<< u <<","<< v.at(p - 1) << endl;*/
-			
+
+			/*		cout <<s<<"_:"<< u <<","<< v.at(p - 1) << endl;*/
 
 
-			//tangentes
+
+					//tangentes
 			glm::vec3 ti(-glm::sin(a), 0, -glm::cos(a));//formula normal
 			Body.Tangents.push_back(ti);
 
 			//lineas verticales para wireframe
 			Body.Indices4Lines.push_back((p*(slices + 1)) + s);
-			
+
 		}
 
-		
+
 		//lineas verticales para wireframe
 		Body.Indices4Lines.push_back(PAG_PRIMITIVE_RESTART);
 
@@ -255,7 +255,7 @@ void PagRevolutionObject::createGeometryBody(int slices, double delta)
 		}
 	}
 
-	
+
 	////lineas horizontales para wireframe y malla triangulos
 	for (int s = 0; s < slices; s++) {
 		for (int r = 0; r < m; r++) {
@@ -266,7 +266,7 @@ void PagRevolutionObject::createGeometryBody(int slices, double delta)
 			//triangulos
 			Body.Indices4TrianglesMesh.push_back((r*(slices + 1)) + s);
 			Body.Indices4TrianglesMesh.push_back((r*(slices + 1)) + (s + 1));
-			
+
 		}
 
 		Body.Indices4Lines.push_back(PAG_PRIMITIVE_RESTART);
@@ -289,7 +289,7 @@ void PagRevolutionObject::createGeometryTopFace(int slices, double delta)
 	glm::vec3 n0(this->NormalsOfProfile.at(n - 2).x, this->NormalsOfProfile.at(n - 2).y, 0);
 
 	PagPosNorm PagI;
-	
+
 	for (int s = 0; s <= slices; s++) {
 		double a = s * delta;
 
@@ -316,12 +316,12 @@ void PagRevolutionObject::createGeometryTopFace(int slices, double delta)
 
 
 
-		
-		
+
+
 
 	}
 
-	
+
 
 	PagPosNorm Ps;
 	Ps.position = pS;
@@ -337,7 +337,7 @@ void PagRevolutionObject::createGeometryTopFace(int slices, double delta)
 
 
 	TopFace.Indices4TrianglesMesh.push_back(slices + 1);
-	
+
 	for (int s = 0; s <= slices; s++) {
 
 		TopFace.Indices4TrianglesMesh.push_back(s);
@@ -350,7 +350,7 @@ void PagRevolutionObject::createGeometryTopFace(int slices, double delta)
 
 
 
-	for (unsigned int i = 0; i < TopFace.PositionsAndNormals.size() ; i++) {
+	for (unsigned int i = 0; i < TopFace.PositionsAndNormals.size(); i++) {
 		TopFace.Indices4PointCloud.push_back(i);
 	}
 	TopFace.Indices4PointCloud.push_back(PAG_PRIMITIVE_RESTART);
@@ -367,7 +367,7 @@ void PagRevolutionObject::createGeometryTopFace(int slices, double delta)
 	TopFace.Indices4Lines.push_back(0);
 	TopFace.Indices4Lines.push_back(PAG_PRIMITIVE_RESTART);
 
-	
+
 
 }
 
@@ -380,7 +380,7 @@ void PagRevolutionObject::createGeometryBotFace(int slices, double delta)
 	PagPosNorm PagI;
 
 
-	
+
 
 	for (int s = 0; s <= slices; s++) {
 		double a = s * delta;
@@ -411,8 +411,8 @@ void PagRevolutionObject::createGeometryBotFace(int slices, double delta)
 		//indices tipo punto
 		BotFace.Indices4PointCloud.push_back(s);
 
-		
-		
+
+
 
 
 	}
@@ -440,7 +440,7 @@ void PagRevolutionObject::createGeometryBotFace(int slices, double delta)
 	BotFace.Indices4PointCloud.push_back(PAG_PRIMITIVE_RESTART);
 
 
-	for(int i= BotFace.PositionsAndNormals.size()-1; i>=0; i--)
+	for (int i = BotFace.PositionsAndNormals.size() - 1; i >= 0; i--)
 		BotFace.Indices4TrianglesMesh.push_back(i);
 
 	BotFace.Indices4TrianglesMesh.push_back(PAG_PRIMITIVE_RESTART);
@@ -467,7 +467,7 @@ void PagRevolutionObject::Revolution(PagRevObjParts part, unsigned int slices) {
 
 	if (part == PAG_BOTTOM_FAN) {
 
-		this->createGeometryBotFace(slices,delta);
+		this->createGeometryBotFace(slices, delta);
 	}
 
 	if (part == PAG_BODY) {
@@ -475,7 +475,7 @@ void PagRevolutionObject::Revolution(PagRevObjParts part, unsigned int slices) {
 		this->createGeometryBody(slices, delta);
 	}
 	if (part == PAG_TOP_FAN) {
-		
+
 		this->createGeometryTopFace(slices, delta);
 
 
@@ -486,7 +486,7 @@ void PagRevolutionObject::Revolution(PagRevObjParts part, unsigned int slices) {
 
 
 
-PagRevolutionObject::PagRevolutionObject(OpenGLFunctions *_gl,std::vector<glm::vec2> points, unsigned int subdivisions, unsigned int slices) {
+PagRevolutionObject::PagRevolutionObject(OpenGLFunctions *_gl, std::vector<glm::vec2> points, unsigned int subdivisions, unsigned int slices) {
 
 	gl = _gl;
 
@@ -502,31 +502,32 @@ PagRevolutionObject::PagRevolutionObject(OpenGLFunctions *_gl,std::vector<glm::v
 
 			this->NormalsProfile();
 
-		}else {
+		}
+		else {
 
 			Log::getInstancia()->warning("You put 0 subdivisions,so you are using the copy of the Original Profile");
 			SubdividedProfile = new PagSubdivisionProfile(*Original);
 			this->NormalsProfile();
-			
+
 		}
 		//revolucionar y crear vaos,ibos y mas cosas
 		if (has(PAG_BOTTOM_FAN)) {
 			this->Revolution(PAG_BOTTOM_FAN, slices);
 			this->VaoBotFace = new PagVAO(gl);
-			this->VaoBotFace->iniciar(BotFace.PositionsAndNormals,BotFace.TextureCoords,BotFace.Tangents, 
+			this->VaoBotFace->iniciar(BotFace.PositionsAndNormals, BotFace.TextureCoords, BotFace.Tangents,
 				BotFace.Indices4PointCloud, BotFace.Indices4Lines, BotFace.Indices4TrianglesMesh);
 
 			/*
 			Generacionn de archivos para meshlab
 			WriteTxt(PAG_BOTTOM_FAN);
-			
+
 			*/
-			
+
 
 		}
 
 		if (has(PAG_BODY)) {
-			
+
 
 			this->Revolution(PAG_BODY, slices);
 			this->VaoBody = new PagVAO(gl);
@@ -535,7 +536,7 @@ PagRevolutionObject::PagRevolutionObject(OpenGLFunctions *_gl,std::vector<glm::v
 
 			/*WriteTxt(PAG_BODY);*/
 
-			
+
 
 		}
 
@@ -548,7 +549,7 @@ PagRevolutionObject::PagRevolutionObject(OpenGLFunctions *_gl,std::vector<glm::v
 
 			/*WriteTxt(PAG_TOP_FAN);*/
 
-			
+
 		}
 
 		/*WriteTxt(test);*/
@@ -560,7 +561,7 @@ PagRevolutionObject::PagRevolutionObject(OpenGLFunctions *_gl,std::vector<glm::v
 }
 
 
-PagRevolutionObject::~PagRevolutionObject(){
+PagRevolutionObject::~PagRevolutionObject() {
 	delete Original;
 	delete SubdividedProfile;
 	delete  VaoBody;
@@ -569,7 +570,7 @@ PagRevolutionObject::~PagRevolutionObject(){
 }
 
 
-bool PagRevolutionObject::isValid(){
+bool PagRevolutionObject::isValid() {
 
 	return Original->CheckPoints();
 }
@@ -593,11 +594,11 @@ bool PagRevolutionObject::has(PagRevObjParts part)
 
 		break;
 
-	 default:
-		 return false;
+	default:
+		return false;
 		break;
 	}
-	
+
 }
 
 void PagRevolutionObject::WriteTxt(PagRevObjParts part)
@@ -620,12 +621,12 @@ void PagRevolutionObject::WriteTxt(PagRevObjParts part)
 	}
 
 	if (part == test) {
-		string log_file; 
+		string log_file;
 		log_file.assign("./MeshLab/profile3d.txt");
 		/*this->log.open(log_file.c_str());*/
 		std::ofstream file;
 		file.open(log_file.c_str());
-		for (unsigned int i =  0; i< this->SubdividedProfile->profile.size(); i++)
+		for (unsigned int i = 0; i < this->SubdividedProfile->profile.size(); i++)
 		{
 			file << this->SubdividedProfile->profile.at(i).x << "," << this->SubdividedProfile->profile.at(i).y << "," << 0.0f << std::endl;
 		}
@@ -714,137 +715,120 @@ void PagRevolutionObject::setMatBotFace(NameMaterial nuevo)
 }
 
 
-void PagRevolutionObject::setTexBody(NameTexture nuevo, std::string type) {
-
-
-	if (type != "") {
-
-		PagTexture* aux;
-		aux = TextureLibrary::getInstance(gl)->find(nuevo);
-
-
-		if (aux == nullptr)Log::getInstancia()->error("pagrevolution: this material doesnt exist");
-		else textureBody.emplace(type, aux);
-
-
-	}else {
-		Log::getInstancia()->error("not type texture choosed");
-	}
-}
-
-void PagRevolutionObject::setTexTopFace(NameTexture nuevo, std::string type) {
+void PagRevolutionObject::setTexBody(NameTexture nuevo) {
 
 
 
-	if (type != "") {
 
-		PagTexture* aux;
-		aux = TextureLibrary::getInstance(gl)->find(nuevo);
+	PagTexture* aux;
+	aux = TextureLibrary::getInstance(gl)->find(nuevo);
 
-		if (aux == nullptr)Log::getInstancia()->error("pagrevolution: this material doesnt exist");
-		else textureTopFace.emplace(type, aux);
 
-	}
-	else {
-		Log::getInstancia()->error("not type texture choosed");
-	}
+	if (aux == nullptr)Log::getInstancia()->error("pagrevolution: this texture doesnt exist");
+	else textureBody = aux;
+
 
 
 }
 
-void PagRevolutionObject::setTexBotFace(NameTexture nuevo, std::string type) {
+void PagRevolutionObject::setTexTopFace(NameTexture nuevo) {
 
-	if (type != "") {
 
-		PagTexture* aux;
-		aux = TextureLibrary::getInstance(gl)->find(nuevo);
-		if (aux == nullptr)Log::getInstancia()->error("pagrevolution: this material dont exists");
-		else {
 
-			if (aux == nullptr)Log::getInstancia()->error("pagrevolution: this material doesnt exist");
-			else textureBotFace.emplace(type, aux);
 
-		}
-	}
-	else {
-		Log::getInstancia()->error("not type texture choosed");
-	}
+	PagTexture* aux;
+	aux = TextureLibrary::getInstance(gl)->find(nuevo);
+
+	if (aux == nullptr)Log::getInstancia()->error("pagrevolution: this texture doesnt exist");
+	else textureTopFace = aux;
+
+
+
+
+}
+
+void PagRevolutionObject::setTexBotFace(NameTexture nuevo) {
+
+
+
+	PagTexture* aux;
+	aux = TextureLibrary::getInstance(gl)->find(nuevo);
+
+
+	if (aux == nullptr)Log::getInstancia()->error("pagrevolution: this texture doesnt exist");
+	else textureBotFace = aux;
+
+
+
 }
 
 
-void PagRevolutionObject::Aplicate(PagShaderProgram &shader,PagRevObjParts part,bool textures) {
+void PagRevolutionObject::Aplicate(PagShaderProgram &shader, PagRevObjParts part, bool textures) {
 
-	if ( part== PAG_BOTTOM_FAN) {
+	if (part == PAG_BOTTOM_FAN) {
 		std::map<PagRevObjParts, PagMaterial* >::iterator it;
 		it = material.find(PAG_BOTTOM_FAN);
 		if (it != material.end())
-			 it->second->aplicateMaterial(shader, textures);
+			it->second->aplicateMaterial(shader, textures);
 		else
 			Log::getInstancia()->error("pagrevolution:aplicate material BotFace");
-			
+
 		if (textures) {
-			
-			std::map<string, PagTexture*>::iterator texture;
+
 			
 
-			texture = textureBotFace.find("texture");
-			
 
-			if (texture != textureBotFace.end())texture->second->aplicateTexture(shader,"texture");
-			
-			
-				
-				
-				
-				
-			}else
+			if (textureBotFace != nullptr)textureBotFace->aplicateTexture(shader, "texture");
+			else
 				Log::getInstancia()->error("pagrevolution:aplicate texture BotFace");
 
-		}
-			
 
-	if ( part == PAG_TOP_FAN) {
+
+
+
+		}
+		
+
+	}
+
+
+	if (part == PAG_TOP_FAN) {
 		std::map<PagRevObjParts, PagMaterial*>::iterator it;
 		it = material.find(PAG_TOP_FAN);
 		if (it != material.end())
-			 it->second->aplicateMaterial(shader, textures);
+			it->second->aplicateMaterial(shader, textures);
 		else
 			Log::getInstancia()->error("pagrevolution:aplicate material TopFace");
-		
+
 		if (textures) {
-			std::map<string, PagTexture*>::iterator texture;
 			
 
-			texture = textureTopFace.find("texture");
-			
 
-			if (texture != textureTopFace.end())texture->second->aplicateTexture(shader, "texture");
-			
+			if (textureTopFace != nullptr)textureTopFace->aplicateTexture(shader, "texture");
+			else
+				Log::getInstancia()->error("pagrevolution:aplicate texture TopFace");
 
 		}
-		else
-			Log::getInstancia()->error("pagrevolution:aplicate texture BotFace");
+		
 
-		}
+	}
 
-	
-	if ( part == PAG_BODY) {
+
+	if (part == PAG_BODY) {
 		std::map<PagRevObjParts, PagMaterial*>::iterator it;
 		it = material.find(PAG_BODY);
 		if (it != material.end())
-			 it->second->aplicateMaterial(shader, textures);
+			it->second->aplicateMaterial(shader, textures);
 		else
 			Log::getInstancia()->error("pagrevolution:aplicate material Body");
-		
+
 		if (textures) {
-			std::map<string, PagTexture*>::iterator texture;
 			
 
-			texture = textureBody.find("texture");
-			
 
-			if (texture != textureBody.end())texture->second->aplicateTexture(shader, "texture");
-			
+			if (textureBody != nullptr)textureBody->aplicateTexture(shader, "texture");
+			else
+				Log::getInstancia()->error("pagrevolution:aplicate texture Body");
 
 		}
 
@@ -854,7 +838,7 @@ void PagRevolutionObject::Aplicate(PagShaderProgram &shader,PagRevObjParts part,
 
 
 
-	
+
 }
 
 
@@ -869,7 +853,7 @@ void PagRevolutionObject::DrawAsPoints(PagShaderProgram &shader, glm::mat4 model
 	/*shader.setUniform("pointSize", 7.0f);*/
 	/*shader.setUniform("vColor", glm::vec3(1.0f, 0.0f, 0.0f));*/
 
-	
+
 
 	glm::mat4 matriz = this->modelMatrix * model;
 
@@ -888,7 +872,7 @@ void PagRevolutionObject::DrawAsPoints(PagShaderProgram &shader, glm::mat4 model
 
 void PagRevolutionObject::DrawAsLines(PagShaderProgram &shader, glm::mat4 model, glm::mat4 view, glm::mat4 projection)
 {
-	
+
 	// - Asignamos los parámetros de tipo uniform del shader program.
 	// Cada shader program tiene su propio conjunto de parámetros.
 	/*shader.setUniform("vColor", glm::vec3(0.0f, 0.0f, 1.0f));*/
@@ -904,6 +888,7 @@ void PagRevolutionObject::DrawAsLines(PagShaderProgram &shader, glm::mat4 model,
 
 void PagRevolutionObject::DrawAsTriangles(PagShaderProgram & shader, glm::mat4 model, glm::mat4 view, glm::mat4 projection)
 {
+	cout << "Ha llegado a la parte de pintar en revolution para materiales" << endl;
 	glm::mat4 matriz = this->modelMatrix * model;
 	//mModelViewProj
 	shader.setUniform("mvpMatrix", projection*view*matriz);
@@ -914,44 +899,44 @@ void PagRevolutionObject::DrawAsTriangles(PagShaderProgram & shader, glm::mat4 m
 
 void PagRevolutionObject::DrawAsTrianglesWithLights(PagShaderProgram &shader, glm::mat4 model, glm::mat4 view, glm::mat4 projection, bool textures)
 {
-	
-		
-		glm::mat4 matriz = this->modelMatrix * model;
-		//mModelViewProj
-		shader.setUniform("mvpMatrix", projection*view*matriz);
-		shader.setUniform("mModelView", view*matriz);
 
 
-		cout << "Ha llegado a la parte de pintar en revolution para triangulos" << endl;
-		if (has(PAG_BOTTOM_FAN)) {
-
-			Aplicate(shader, PAG_BOTTOM_FAN, textures);
-			
-			VaoBotFace->drawAsTriangles();
-		}
-		if (has(PAG_TOP_FAN)) {
+	glm::mat4 matriz = this->modelMatrix * model;
+	//mModelViewProj
+	shader.setUniform("mvpMatrix", projection*view*matriz);
+	shader.setUniform("mModelView", view*matriz);
 
 
-			Aplicate(shader, PAG_TOP_FAN, textures);
-			VaoTopFace->drawAsTriangles();
+	cout << "Ha llegado a la parte de pintar en revolution para texturas" << endl;
+	if (has(PAG_BOTTOM_FAN)) {
 
-		}
-		if (has(PAG_BODY)) {
+		Aplicate(shader, PAG_BOTTOM_FAN, textures);
 
-			Aplicate(shader, PAG_BODY, textures);
-			VaoBody->drawAsTriangles2();
-
-		}
+		VaoBotFace->drawAsTriangles();
+	}
+	if (has(PAG_TOP_FAN)) {
 
 
-	
+		Aplicate(shader, PAG_TOP_FAN, textures);
+		VaoTopFace->drawAsTriangles();
+
+	}
+	if (has(PAG_BODY)) {
+
+		Aplicate(shader, PAG_BODY, textures);
+		VaoBody->drawAsTriangles2();
 
 	}
 
 
 
 
-	
+}
+
+
+
+
+
 
 
 void PagRevolutionObject::DrawFog(PagShaderProgram & shader, glm::mat4 model, glm::mat4 view, glm::mat4 projection)

@@ -22,4 +22,10 @@
     <qresource prefix="/obj">
         <file>Resources/Objects/peon.txt</file>
     </qresource>
+    <qresource prefix="/">
+        <file>Textures/uv_checker large.png</file>
+        <file>Textures/uv_checker vHalf.png</file>
+        <file>Textures/uv_checker vQuart.png</file>
+    </qresource>
+    <qresource prefix="/system"/>
 </RCC>

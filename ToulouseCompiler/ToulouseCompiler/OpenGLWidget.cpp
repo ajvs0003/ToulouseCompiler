@@ -32,7 +32,7 @@ void OpenGLWidget::refreshCallback()
 	qDebug() << "Refresh callback called by Renderer";
 
 
-	if(firstCompile)this->Paint();
+	if (firstCompile)this->Paint();
 
 }
 
@@ -71,7 +71,7 @@ void  OpenGLWidget::prepareOpenGL()
 	glDepthFunc(GL_LEQUAL);
 
 
-	glPrimitiveRestartIndex(0xFFFFFFFF);
+	glPrimitiveRestartIndex(PAG_PRIMITIVE_RESTART);
 	glEnable(GL_PRIMITIVE_RESTART);
 
 
@@ -83,7 +83,7 @@ void  OpenGLWidget::prepareOpenGL()
 
 
 
-	/*createLights();*/
+	createLights();
 
 
 
@@ -116,25 +116,14 @@ void OpenGLWidget::compile()
 {
 	firstCompile = true;
 
-	Log::getInstancia()->success("Inicializando OpenGL");
-
-	Log::getInstancia()->success("Nombre GPU    : " + (string)(const char*)glGetString(GL_RENDERER));
-	Log::getInstancia()->success("Fabricante    : " + (string)(const char*)glGetString(GL_VENDOR));
-	Log::getInstancia()->success("Version OpenGL: " + (string)(const char*)glGetString(GL_VERSION));
-	Log::getInstancia()->success("Version GLSL  : " + (string)(const char*)glGetString(GL_SHADING_LANGUAGE_VERSION));
-
-
+	checkOpenGLVersion();//check the version for OpenGl
 
 	this->glDeleteProgram(shaderProgram->getHandler());
+	//delete the past shader
 
 	shaderProgram = new PagShaderProgram();
-	
-	
+
 	chargeShader();
-
-	
-
-	
 
 	renderNow();
 
@@ -169,9 +158,9 @@ void OpenGLWidget::chargeUniforms()
 			if (seglist.size() <= 3 && seglist.size() > 0) {
 
 
-				glm::vec3 vector(seglist.at(0), seglist.at(1) , seglist.at(2) );
+				glm::vec3 vector(seglist.at(0), seglist.at(1), seglist.at(2));
 
-				
+
 
 
 				shaderProgram->setUniform(uniforms.at(i).name, vector);
@@ -304,12 +293,12 @@ void OpenGLWidget::chargeShader()
 			break;
 		case typePaint::material:
 
-			//shaderProgram->createShaderProgram("./Shaders/triangleShader");//"Resources/points-1"
+			shaderProgram->createShaderProgram("./Shaders/spotShader");//"Resources/points-1"
 			break;
 		case typePaint::textures:
 
 			//We want to try the shaders for poitns
-			//shaderProgram->createShaderProgram("./Shaders/triangleShader");//"Resources/points-1"
+			shaderProgram->createShaderProgram("./Shaders/textureShader");//"Resources/points-1"
 			break;
 		}
 
@@ -320,27 +309,25 @@ void OpenGLWidget::chargeShader()
 
 
 		shaderProgram->createShaderProgram(shaderPath);
-		
+
 	}
 
 
 }
 
-
-void OpenGLWidget::initialize()
+void OpenGLWidget::checkOpenGLVersion()
 {
-
-
-
 	Log::getInstancia()->escribir("Inicializando OpenGL");
 
-	Log::getInstancia()->escribir("Nombre GPU    : " + (string)(const char*)glGetString(GL_RENDERER));
-	Log::getInstancia()->escribir("Fabricante    : " + (string)(const char*)glGetString(GL_VENDOR));
-	Log::getInstancia()->escribir("Version OpenGL: " + (string)(const char*)glGetString(GL_VERSION));
-	Log::getInstancia()->escribir("Version GLSL  : " + (string)(const char*)glGetString(GL_SHADING_LANGUAGE_VERSION));
+	Log::getInstancia()->escribir("GPU Name		: " + (string)(const char*)glGetString(GL_RENDERER));
+	Log::getInstancia()->escribir("Manufacturer	: " + (string)(const char*)glGetString(GL_VENDOR));
+	Log::getInstancia()->escribir("OpenGL Version	: " + (string)(const char*)glGetString(GL_VERSION));
+	Log::getInstancia()->escribir("GLSL Version	: " + (string)(const char*)glGetString(GL_SHADING_LANGUAGE_VERSION));
+	Log::getInstancia()->escribir("-----------OpenGL Initialized Correctly------------");
+}
 
-
-	
+void OpenGLWidget::configurateCamera()
+{
 
 	//CAMARA SETTINGS
 
@@ -363,6 +350,14 @@ void OpenGLWidget::initialize()
 
 
 	projMatrix = camera->getWorldToProjecMatrix(this->width(), this->height());
+}
+
+
+void OpenGLWidget::initialize()
+{
+	checkOpenGLVersion();
+	configurateCamera();
+
 }
 
 
@@ -432,7 +427,7 @@ void OpenGLWidget::Paint()
 {
 
 
-	//Un vector con los uniforms que cuando ya temga el modo de pintura agregue los uniforms que el usuario relleno
+	//activate the shader and chargue the user uniforms
 
 
 
@@ -464,15 +459,19 @@ void OpenGLWidget::Paint()
 		glEnable(GL_BLEND);
 		shaderProgram->use();
 		chargeUniforms();
-		for (unsigned int i = 0; i < luces.size(); i++) {
 
-			if (i == 0) glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-			else glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		ambiental->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+		paintObjects(*shaderProgram, 3);
+		
 
-			luces.at(i).aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+		puntual->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+		paintObjects(*shaderProgram, 3);
+		
 
-			paintObjects(*shaderProgram, 3);
-		}
+		
+		
 
 		break;
 	case typePaint::textures:
@@ -480,23 +479,20 @@ void OpenGLWidget::Paint()
 		shaderProgram->use();
 		chargeUniforms();
 
-		for (unsigned int i = 0; i < luces.size(); i++) {
-
-			if (i == 0) glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-			else glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-
-			luces.at(i).aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		ambiental->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+		paintObjects(*shaderProgram, 4);
 
 
-			paintObjects(*shaderProgram, 4);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+		puntual->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+		paintObjects(*shaderProgram, 4);
 
-
-		}
 
 		break;
 	}
 
-	
+
 }
 
 
@@ -519,7 +515,13 @@ void OpenGLWidget::createObjects()
 	peon = new PagRevolutionObject(this, dataTxt, 2, 60);
 	peon->translate(glm::vec3(0.f, 0.01f, 0.f));
 
+	peon->setMatBody(WOOD_LIGHT);
+	peon->setMatBotFace(WOOD_LIGHT);
+	peon->setMatTopFace(WOOD_LIGHT);
 
+	peon->setTexBody(TEXT2);
+	peon->setTexBotFace(TEXT2);
+	peon->setTexTopFace(TEXT2);
 
 
 	ob->insertObject(peon);
@@ -530,6 +532,27 @@ void OpenGLWidget::createObjects()
 
 
 
+}
+
+void OpenGLWidget::createLights()
+{
+
+
+
+	ambiental = new AmbientLight(glm::vec3(0.04, 0.04, 0.04f));
+
+
+	//glm::vec3 _Id, glm::vec3 _Is, glm::vec3 _lightPosition
+	puntual = new PointLight(glm::vec3(0.3f, 0.3f, 0.3f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(20.0f, 20.0f, 0.0f));
+
+
+
+	////glm::vec3 _Id, glm::vec3 _Is, glm::vec3 _lightPosition, glm::vec3 _lightLookAt, float _spotAngle
+	//spot = new SpotLight(glm::vec3(0.f, 0.f, 1.f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(20.0f, 0.0f, 0.0f), glm::vec3(10.0f, 0.0f, 0.0f), 15);
+
+
+	////glm::vec3 _Id, glm::vec3 _Is, glm::vec3 _lightPosition, glm::vec3 _lightLookAt
+	//directional = new DirectionalLight(glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(30.0f, 0.0f, 100.0f), glm::vec3(0.0f, 6.f, 30.0f));
 }
 
 

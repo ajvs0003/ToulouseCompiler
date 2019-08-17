@@ -8,18 +8,18 @@ TextureLibrary::TextureLibrary(OpenGLFunctions *_gl)
 	gl = _gl;
 
 	PagTexture* large;
-	large = new PagTexture(gl,1024,1024,"./Textures/uv_checker large.png");
+	large = new PagTexture(gl,1024,1024, QString(QDir::currentPath() + "/Textures/uv_checker large.png").toStdString());
 	
 
 
 	PagTexture* half;
-	half = new PagTexture(gl, 1024, 512, "./Textures/uv_checker vHalf.png");
+	half = new PagTexture(gl, 1024, 512, QString(QDir::currentPath() + "/Textures/uv_checker vHalf.png").toStdString());
 
 
 
 
 	PagTexture* quart;
-	quart = new PagTexture(gl, 1024, 256, "./Textures/uv_checker vQuart.png");
+	quart = new PagTexture(gl, 1024, 256, QString(QDir::currentPath() + "/Textures/uv_checker vQuart.png").toStdString());
 
 
 

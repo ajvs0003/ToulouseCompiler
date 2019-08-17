@@ -29,15 +29,24 @@ Log::Log() {
 	this->contador = 0;
 	this->errors = 0;
 	this->warnings = 0;
-	this->log_file.assign("./SystemFiles/log.txt");
-	/*this->log.open(log_file.c_str(), ios::app);*/
-	this->log.open(log_file.c_str());
-	// Escribimos una línea con el nombre del archivo
-	this->log << "LogFile de la practica_(tiempo ejecucion "+ currentDateTime() +")." << endl;
-	this->log << "---------------------------------- " << endl;
+	
+
+	QFile temp(QDir::currentPath() + "/SystemFiles/log.txt");
+	temp.remove();
+
+
+	string m= "Toulouse Compiler LogFile (execution time:( " + currentDateTime() + ")." ;
+	addToFile(m);
+	addToFile("---------------------------------- ");
+
+
+	
 }
 
 Log::~Log() {
+
+	
+
 
 }
 
@@ -47,6 +56,28 @@ Log *Log::getInstancia()
 		instancia = new Log();
 	}
 	return instancia;
+}
+void Log::addToFile(string message)
+{
+	
+
+
+	QFile file(QDir::currentPath() + "/SystemFiles/log.txt");
+	if (file.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
+	{
+		// We're going to streaming text to the file
+		
+
+
+		QTextStream log2(&file);
+
+		log2 << QString::fromStdString(message+"\n");
+
+		file.close();
+		
+	}
+
+
 }
 void Log::appendText(const QString & text) {
 	QString html{ text };
@@ -82,7 +113,10 @@ void Log::appendText(const QString & text) {
 void Log::escribir(string mensaje)
 {
 	// Escribimos en el log
-	this->log << currentDateTime()+" "<< mensaje << endl;
+	string m = currentDateTime() + " " + mensaje;
+	addToFile(m);
+
+	
 
 	QString text = QString("\033cyan %1 \033black%2 ").arg(currentDateTime().c_str())
                 .arg(mensaje.c_str());
@@ -93,8 +127,12 @@ void Log::escribir(string mensaje)
 }
 void Log::error(string mensaje){
 	// Escribimos en el log
+	string m = currentDateTime() + " [ERROR [ " + to_string(errors) + "]" + mensaje;
+	addToFile(m);
+
+
+
 	
-	this->log << currentDateTime() + " [ERROR [ " << to_string(errors) + "]" << mensaje << endl;
 	this->errors++;
 
 	std::string str =  "[ERROR["+ to_string(errors) + "]" ;
@@ -108,9 +146,12 @@ void Log::error(string mensaje){
 }
 void Log::warning(string mensaje){
 
+	string m = currentDateTime() + " [WARNING]"  + mensaje;
+	addToFile(m);
+
 	// Escribimos en el log
 	cout << currentDateTime() + " [WARNING]" << mensaje << endl;
-	this->log << currentDateTime() + " [WARNING]" << mensaje << endl;
+	
 
 
 
@@ -124,9 +165,14 @@ void Log::warning(string mensaje){
 }
 void Log::success(string mensaje)
 {
+
+
+	string m = currentDateTime() + "[SUCCESSFUL]" + mensaje;
+	addToFile(m);
+
 	// Escribimos en el log
 	cout << currentDateTime() + " [SUCCESSFUL] " << mensaje << endl;
-	this->log << currentDateTime() + " [SUCCESSFUL] " << mensaje << endl;
+	
 
 
 
@@ -140,13 +186,6 @@ void Log::success(string mensaje)
 	appendText(text);
 
 
-	
-}
-void Log::close()
-{
-	this->log << "--------------END LOG------------------- " << endl;
-// Cerramos el archivo
-	this->log.close();
 	
 }
 

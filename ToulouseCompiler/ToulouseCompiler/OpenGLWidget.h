@@ -7,7 +7,10 @@
 #include "Metodos_especiales.h"
 #include "Pag3DGroup.h"
 #include "PagCamera.h"
-#include "PagLightSource.h"
+#include "AmbientLight.h"
+#include "DirectionalLight.h"
+#include "PointLight.h"
+#include "Spotlight.h"
 #include <string>
 #include <QMouseEvent>
 #include <QEvent>
@@ -117,14 +120,14 @@ private:
 	
 	glm::mat4 viewMatrix, projMatrix;
 
-	GLuint vao;
-	GLuint vbo;
-	GLuint ibo;
+	
 	float aspect;
 
 	//LIGHTS
-	vector< PagLightSource> luces;
-
+	AmbientLight* ambiental;
+	PointLight* puntual;
+	SpotLight* spot;
+	DirectionalLight* directional;
 
 	//REVOLUTION OBJECTS(GRAPH SCENE)
 	vector< Pag3DGroup> objetos;
@@ -172,15 +175,16 @@ private:
 	
 	void chargeShader();
 
+	void checkOpenGLVersion();
 	
-	
+	void configurateCamera();
 
 	/**
 		* @brief metodo que encapsula la creacion de los objetos de la escena
 	*/
 	void createObjects();
 
-
+	void createLights();
 	/**
 	* @brief  Esta función gestiona el tipo de pintado que decirle al group que haga
 	* @param  shader a usar

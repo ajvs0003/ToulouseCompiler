@@ -1,6 +1,4 @@
 #pragma once
-#include "Metodos_especiales.h"
-#include"Log.h"
 #include "PagShaderProgram.h"
 class PagLightSource
 {

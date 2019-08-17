@@ -9,18 +9,20 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#include <fstream>
 #include <time.h>
 #include <QPlainTextEdit>
 #include <QTextCharFormat>
 #include <QColor>
+#include <QMessageBox>
+#include <QDir>
+#include <QFileDialog>
+#include <QTextStream>
+
 using namespace std;
 class Log{
 private:
 	static Log *instancia;
 
-	ofstream log;
-	string log_file;
 	unsigned long int contador;
 	unsigned long int errors;
 	unsigned long int warnings;
@@ -40,7 +42,7 @@ private:
 	*/
 	Log();
 
-
+	void addToFile(string message);
 	void appendText(const QString & text);
 public:
 	
@@ -86,8 +88,5 @@ public:
 		* @param mensaje es un string con el exito 
 		*/
 	void success(string mensaje);
-	/**
-		* @brief cierra el archivo
-	*/
-	void close();
+	
 };

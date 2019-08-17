@@ -11,9 +11,7 @@
 #include <QComboBox>
 #include <vector>
 #include <QDebug>
-#include <QMessageBox>
-#include <QDir>
-#include <QFileDialog>
+
 
 /*******************/
 class ToulouseCompiler : public QMainWindow

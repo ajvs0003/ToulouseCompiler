@@ -31,9 +31,9 @@ class PagRevolutionObject:public Pag3DElement{
 private:
 	std::map <PagRevObjParts, PagMaterial* > material;
 
-	std::map<string,PagTexture*> textureTopFace;
-	std::map<string, PagTexture*> textureBotFace;
-	std::map<string, PagTexture*> textureBody;
+	PagTexture* textureTopFace;
+	PagTexture* textureBotFace;
+	PagTexture* textureBody;
 
 	NameMaterial MatBody;
 	NameMaterial MatTopFace;
@@ -125,21 +125,21 @@ public:
 		* @param NameTexture nuevo, la textura a buscar en la biblioteca de texturas
 		* @param string type para indicar el tipo (normal,bump,...)
 	*/
-	void setTexBody(NameTexture nuevo, std::string type);
+	void setTexBody(NameTexture nuevo);
 
 	/**
 		* @brief  para establecer el tipo de textura ya sea normal o para bumpMapping(No funcional) para cara arriba
 		* @param NameTexture nuevo, la textura a buscar en la biblioteca de texturas
 		* @param string type para indicar el tipo (normal,bump,...)
 	*/
-	void setTexTopFace(NameTexture nuevo, std::string type);
+	void setTexTopFace(NameTexture nuevo);
 
 	/**
 		* @brief  para establecer el tipo de textura ya sea normal o para bumpMapping(No funcional) para cara abajo
 		* @param NameTexture nuevo, la textura a buscar en la biblioteca de texturas
 		* @param string type para indicar el tipo (normal,bump,...)
 	*/
-	void setTexBotFace(NameTexture nuevo, std::string type);
+	void setTexBotFace(NameTexture nuevo);
 
 
 
