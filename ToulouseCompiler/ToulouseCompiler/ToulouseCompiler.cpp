@@ -223,7 +223,7 @@ void ToulouseCompiler::handleToolActionOpen()
 {
 	uniforms.clear();
 	tableUniforms->setRowCount(0);
-
+	openGLWindow->deleteUniforms();
 	if (maybeSave()) {
 		
 		QString fileName = QFileDialog::getOpenFileName(this);

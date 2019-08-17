@@ -109,6 +109,7 @@ void OpenGLWidget::setPathShader(string path)
 
 void OpenGLWidget::setUniforms(vector<dataForUniform> _uniforms)
 {
+	
 	uniforms = _uniforms;
 }
 

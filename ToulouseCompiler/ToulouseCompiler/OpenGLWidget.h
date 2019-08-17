@@ -67,7 +67,11 @@ public:
 	void compile();
 
 	void chargeUniforms();
-	
+
+
+	void deleteUniforms() {
+		uniforms.clear();
+	}
 
 	//EVENTS for mouse
 
