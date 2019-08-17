@@ -1,33 +1,13 @@
-Toulouse Compiler LogFile (execution time:( 14:04:57).
+Toulouse Compiler LogFile (execution time:( 20:10:06).
 ---------------------------------- 
-14:04:58 Inicializando OpenGL
-14:04:58 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-14:04:58 Manufacturer	: NVIDIA Corporation
-14:04:58 OpenGL Version	: 4.5.0 NVIDIA 430.86
-14:04:58 GLSL Version	: 4.50 NVIDIA
-14:04:58 -----------OpenGL Initialized Correctly------------
-14:04:58[SUCCESSFUL]Opening file...
-14:04:58[SUCCESSFUL]Profile  accepted
-14:04:58[SUCCESSFUL]Iniciating Vao
-14:04:58[SUCCESSFUL]Iniciating Vao
-14:04:58[SUCCESSFUL]Iniciating Vao
-14:05:24 Inicializando OpenGL
-14:05:24 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-14:05:24 Manufacturer	: NVIDIA Corporation
-14:05:24 OpenGL Version	: 4.5.0 NVIDIA 430.86
-14:05:24 GLSL Version	: 4.50 NVIDIA
-14:05:24 -----------OpenGL Initialized Correctly------------
-14:05:25 [WARNING]activado el modo lineas
-14:05:25 Inicializando OpenGL
-14:05:25 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-14:05:25 Manufacturer	: NVIDIA Corporation
-14:05:25 OpenGL Version	: 4.5.0 NVIDIA 430.86
-14:05:25 GLSL Version	: 4.50 NVIDIA
-14:05:25 -----------OpenGL Initialized Correctly------------
-14:05:25 [ERROR [ 0]Cannot find localization for: pointSize
-14:05:29 Inicializando OpenGL
-14:05:29 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-14:05:29 Manufacturer	: NVIDIA Corporation
-14:05:29 OpenGL Version	: 4.5.0 NVIDIA 430.86
-14:05:29 GLSL Version	: 4.50 NVIDIA
-14:05:29 -----------OpenGL Initialized Correctly------------
+20:10:07 Inicializando OpenGL
+20:10:07 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+20:10:07 Manufacturer	: NVIDIA Corporation
+20:10:07 OpenGL Version	: 4.5.0 NVIDIA 430.86
+20:10:07 GLSL Version	: 4.50 NVIDIA
+20:10:07 -----------OpenGL Initialized Correctly------------
+20:10:07[SUCCESSFUL]Opening file...
+20:10:07[SUCCESSFUL]Profile  accepted
+20:10:07[SUCCESSFUL]Iniciating Vao
+20:10:07[SUCCESSFUL]Iniciating Vao
+20:10:07[SUCCESSFUL]Iniciating Vao

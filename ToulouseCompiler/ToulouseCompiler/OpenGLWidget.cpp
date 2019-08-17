@@ -29,7 +29,7 @@ void OpenGLWidget::refreshCallback()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-	qDebug() << "Refresh callback called by Renderer";
+	/*qDebug() << "Refresh callback called by Renderer";*/
 
 
 	if (firstCompile)this->Paint();
@@ -45,7 +45,7 @@ OpenGLWidget::OpenGLWidget(QWindow *parent)
 {
 	setSurfaceType(QWindow::OpenGLSurface);
 
-	qDebug() << "MyOpenGLWidget constructor";
+	/*qDebug() << "MyOpenGLWidget constructor";*/
 
 
 	shaderProgram = new PagShaderProgram();
