@@ -318,7 +318,7 @@ void OpenGLWidget::chargeShader()
 
 void OpenGLWidget::checkOpenGLVersion()
 {
-	Log::getInstancia()->escribir("Inicializando OpenGL");
+	Log::getInstancia()->escribir("Initializing OpenGL");
 
 	Log::getInstancia()->escribir("GPU Name		: " + (string)(const char*)glGetString(GL_RENDERER));
 	Log::getInstancia()->escribir("Manufacturer	: " + (string)(const char*)glGetString(GL_VENDOR));
@@ -470,7 +470,9 @@ void OpenGLWidget::Paint()
 		puntual->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
 		paintObjects(*shaderProgram, 3);
 		
-
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+		puntual2->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+		paintObjects(*shaderProgram, 3);
 		
 		
 
@@ -487,6 +489,11 @@ void OpenGLWidget::Paint()
 
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 		puntual->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+		paintObjects(*shaderProgram, 4);
+
+
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+		puntual2->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
 		paintObjects(*shaderProgram, 4);
 
 
@@ -514,6 +521,7 @@ void OpenGLWidget::createObjects()
 	PagRevolutionObject* peon;
 
 	peon = new PagRevolutionObject(this, dataTxt, 2, 60);
+	peon->scale(1.5f);
 	peon->translate(glm::vec3(0.f, 0.01f, 0.f));
 
 	peon->setMatBody(WOOD_LIGHT);
@@ -546,7 +554,8 @@ void OpenGLWidget::createLights()
 	//glm::vec3 _Id, glm::vec3 _Is, glm::vec3 _lightPosition
 	puntual = new PointLight(glm::vec3(0.3f, 0.3f, 0.3f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(20.0f, 20.0f, 0.0f));
 
-
+	//glm::vec3 _Id, glm::vec3 _Is, glm::vec3 _lightPosition
+	puntual2 = new PointLight(glm::vec3(0.3f, 0.3f, 0.3f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(20.0f, -10.0f, 0.0f));
 
 	////glm::vec3 _Id, glm::vec3 _Is, glm::vec3 _lightPosition, glm::vec3 _lightLookAt, float _spotAngle
 	//spot = new SpotLight(glm::vec3(0.f, 0.f, 1.f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(20.0f, 0.0f, 0.0f), glm::vec3(10.0f, 0.0f, 0.0f), 15);

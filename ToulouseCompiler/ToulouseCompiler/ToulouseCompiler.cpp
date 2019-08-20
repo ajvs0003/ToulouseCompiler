@@ -41,40 +41,7 @@ ToulouseCompiler::~ToulouseCompiler()
 
 
 
-void ToulouseCompiler::handleToolActionPoints() {
 
-
-
-	if (modeLines->isChecked()) {
-		modeLines->setChecked(false);
-	}
-	if (modeTriangles->isChecked()) {
-		modeTriangles->setChecked(false);
-	}
-	
-	if (modeMaterial->isChecked()) {
-		modeMaterial->setChecked(false);
-	}
-
-	if (modeTextures->isChecked()) {
-		modeTextures->setChecked(false);
-	}
-
-
-
-	if (modePoints->isChecked()) {
-
-		openGLWindow->changeTrial(0);
-
-		Log::getInstancia()->warning("activado el modo puntos");
-	}
-	else {
-
-		modePoints->setChecked(false);
-
-	}
-
-}
 
 
 /******************** TABLE HANDLE********************/
@@ -116,7 +83,40 @@ void ToulouseCompiler::handleRemoveData(const dataForUniform & data)
 
 /********************END TABLE HANDLE********************/
 
+void ToulouseCompiler::handleToolActionPoints() {
 
+
+
+	if (modeLines->isChecked()) {
+		modeLines->setChecked(false);
+	}
+	if (modeTriangles->isChecked()) {
+		modeTriangles->setChecked(false);
+	}
+
+	if (modeMaterial->isChecked()) {
+		modeMaterial->setChecked(false);
+	}
+
+	if (modeTextures->isChecked()) {
+		modeTextures->setChecked(false);
+	}
+
+
+
+	if (modePoints->isChecked()) {
+
+		openGLWindow->changeTrial(0);
+
+		/*Log::getInstancia()->warning("activado el modo puntos");*/
+	}
+	else {
+
+		modePoints->setChecked(false);
+
+	}
+
+}
 void ToulouseCompiler::handleToolActionLines()
 {
 
@@ -141,7 +141,7 @@ void ToulouseCompiler::handleToolActionLines()
 
 		openGLWindow->changeTrial(1);
 
-		Log::getInstancia()->warning("activado el modo lineas");
+		/*Log::getInstancia()->warning("activado el modo lineas");*/
 	}
 	else {
 
@@ -180,7 +180,7 @@ void ToulouseCompiler::handleToolActionTriangles()
 
 		openGLWindow->changeTrial(2);
 
-		Log::getInstancia()->warning("activado el modo triangulos");
+		/*Log::getInstancia()->warning("activado el modo triangulos");*/
 	}
 	else {
 
@@ -214,7 +214,7 @@ void ToulouseCompiler::handleToolActionMaterial()
 
 		openGLWindow->changeTrial(3);
 
-		Log::getInstancia()->warning("activado el modo material");
+		//Log::getInstancia()->warning("activado el modo material");
 	}
 	else {
 
@@ -251,7 +251,7 @@ void ToulouseCompiler::handleToolActionTextures()
 
 		openGLWindow->changeTrial(4);
 
-		Log::getInstancia()->warning("activado el modo modeTextures");
+		/*Log::getInstancia()->warning("activado el modo modeTextures");*/
 	}
 	else {
 

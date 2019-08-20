@@ -10,21 +10,17 @@
 #define UI_TOULOUSECOMPILER_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QIcon>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPlainTextEdit>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -56,12 +52,6 @@ public:
     QHBoxLayout *widgetLayout;
     QWidget *openglwidget;
     QHBoxLayout *opengl_layout;
-    QVBoxLayout *verticalLayout_3;
-    QHBoxLayout *horizontalLayout_5;
-    QVBoxLayout *verticalLayout_4;
-    QPushButton *addUniform;
-    QHBoxLayout *horizontalLayout_6;
-    QTableWidget *uniforms;
     QVBoxLayout *EditorLayout;
     QTabWidget *tabWidget;
     QWidget *VertexS;
@@ -201,52 +191,6 @@ public:
 
         verticalLayout->addLayout(widgetLayout);
 
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setSpacing(6);
-        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setSpacing(6);
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        verticalLayout_4 = new QVBoxLayout();
-        verticalLayout_4->setSpacing(6);
-        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        addUniform = new QPushButton(centralWidget);
-        addUniform->setObjectName(QString::fromUtf8("addUniform"));
-        QIcon icon10;
-        icon10.addFile(QString::fromUtf8(":/img/Resources/img/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addUniform->setIcon(icon10);
-
-        verticalLayout_4->addWidget(addUniform, 0, Qt::AlignRight);
-
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setSpacing(6);
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        uniforms = new QTableWidget(centralWidget);
-        uniforms->setObjectName(QString::fromUtf8("uniforms"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(uniforms->sizePolicy().hasHeightForWidth());
-        uniforms->setSizePolicy(sizePolicy2);
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Bell MT"));
-        font1.setPointSize(12);
-        uniforms->setFont(font1);
-
-        horizontalLayout_6->addWidget(uniforms);
-
-
-        verticalLayout_4->addLayout(horizontalLayout_6);
-
-
-        horizontalLayout_5->addLayout(verticalLayout_4);
-
-
-        verticalLayout_3->addLayout(horizontalLayout_5);
-
-
-        verticalLayout->addLayout(verticalLayout_3);
-
 
         horizontalLayout->addLayout(verticalLayout);
 
@@ -261,11 +205,11 @@ public:
         EditorLayout->setObjectName(QString::fromUtf8("EditorLayout"));
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        QFont font2;
-        font2.setPointSize(10);
-        font2.setBold(true);
-        font2.setWeight(75);
-        tabWidget->setFont(font2);
+        QFont font1;
+        font1.setPointSize(10);
+        font1.setBold(true);
+        font1.setWeight(75);
+        tabWidget->setFont(font1);
         tabWidget->setTabPosition(QTabWidget::North);
         tabWidget->setDocumentMode(false);
         tabWidget->setTabsClosable(false);
@@ -298,11 +242,11 @@ public:
         OutPutLayout->setObjectName(QString::fromUtf8("OutPutLayout"));
         OutPut = new QPlainTextEdit(centralWidget);
         OutPut->setObjectName(QString::fromUtf8("OutPut"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(OutPut->sizePolicy().hasHeightForWidth());
-        OutPut->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(OutPut->sizePolicy().hasHeightForWidth());
+        OutPut->setSizePolicy(sizePolicy2);
 
         OutPutLayout->addWidget(OutPut);
 
@@ -373,7 +317,6 @@ public:
         actionModeTexture->setToolTip(QApplication::translate("MainWindowClass", "this activate the uniforms for textures", nullptr));
 #endif // QT_NO_TOOLTIP
         actionUniform_Table->setText(QApplication::translate("MainWindowClass", "Uniform Table", nullptr));
-        addUniform->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(VertexS), QApplication::translate("MainWindowClass", "Vertex Shader", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(FragmentS), QApplication::translate("MainWindowClass", "Fragment Shader", nullptr));
         OutPut->setPlainText(QString());

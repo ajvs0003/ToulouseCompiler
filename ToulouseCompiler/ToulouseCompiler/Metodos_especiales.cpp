@@ -13,7 +13,7 @@ std::vector <glm::vec2>  Metodos_especiales::lecturaFichero(std::vector <glm::ve
 	if (inputFile.open(QIODevice::ReadOnly))
 	{
 
-		Log::getInstancia()->success("Opening file...");
+		Log::getInstancia()->success("Opening file ...");
 		QTextStream in(&inputFile);
 		while (!in.atEnd())
 		{

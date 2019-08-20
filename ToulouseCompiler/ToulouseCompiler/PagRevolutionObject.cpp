@@ -859,7 +859,7 @@ void PagRevolutionObject::DrawAsPoints(PagShaderProgram &shader, glm::mat4 model
 
 	shader.setUniform("mModelViewProj", projection*view*matriz);
 
-	cout << "Ha llegado a la parte de pintar en revolution para puntos" << endl;
+	/*cout << "Ha llegado a la parte de pintar en revolution para puntos" << endl;*/
 
 
 
@@ -879,7 +879,7 @@ void PagRevolutionObject::DrawAsLines(PagShaderProgram &shader, glm::mat4 model,
 	glm::mat4 matriz = modelMatrix * model;
 	shader.setUniform("mModelViewProj", projection*view*matriz);
 
-	cout << "Ha llegado a la parte de pintar en revolution para lineas" << endl;
+	/*cout << "Ha llegado a la parte de pintar en revolution para lineas" << endl;*/
 
 	if (has(PAG_BOTTOM_FAN))VaoBotFace->drawAsLines();
 	if (has(PAG_TOP_FAN))VaoTopFace->drawAsLines();
@@ -907,7 +907,7 @@ void PagRevolutionObject::DrawAsTrianglesWithLights(PagShaderProgram &shader, gl
 	shader.setUniform("mModelView", view*matriz);
 
 
-	cout << "Ha llegado a la parte de pintar en revolution para texturas" << endl;
+	/*cout << "Ha llegado a la parte de pintar en revolution para texturas" << endl;*/
 	if (has(PAG_BOTTOM_FAN)) {
 
 		Aplicate(shader, PAG_BOTTOM_FAN, textures);

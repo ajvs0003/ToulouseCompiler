@@ -130,8 +130,9 @@ private:
 	//LIGHTS
 	AmbientLight* ambiental;
 	PointLight* puntual;
-	SpotLight* spot;
-	DirectionalLight* directional;
+	PointLight* puntual2;
+	/*SpotLight* spot;
+	DirectionalLight* directional;*/
 
 	//REVOLUTION OBJECTS(GRAPH SCENE)
 	vector< Pag3DGroup> objetos;
