@@ -61,11 +61,12 @@ void addDialog::push_save()
 	/*Log::getInstancia()->warning("Pulsado guardar");*/
 
 	dataForUniform nuevo;
-
+	nuevo.id = idCont;
 	nuevo.name = nameVar->text().toStdString();
 	nuevo.type = options->currentText().toStdString();
 	nuevo.value = inputValue->text().toStdString();
 	
+	idCont++;
 	
 	
 	//Send the data to the mainWindow

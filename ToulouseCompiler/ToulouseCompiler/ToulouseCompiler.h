@@ -5,7 +5,7 @@
 #include "CodeEditor.h"
 #include "OpenGLWidget.h"
 #include "Log.h"
-#include "addDialog.h"
+#include "tableUniforms.h"
 #include <QTableWidget>
 #include <QPoint>
 #include <QComboBox>
@@ -56,6 +56,8 @@ private:
 	QAction* modeMaterial;
 	QAction* modeTextures;
 
+
+	QAction* UniformTable;
 	QAction* load;
 	QAction* save;
 	QAction* saveAs;
@@ -74,7 +76,6 @@ private:
 
 	/********************OPENGL DATA********************/
 	QWidget* openglwidget;
-	std::vector<dataForUniform> uniforms;
 	OpenGLWidget* openGLWindow;
 	glm::vec2 oldMousePosition;
 	bool isHold = false;
@@ -84,13 +85,10 @@ private:
 
 	/********************UNIFORMS TABLE DATA********************/
 
-	QTableWidget* tableUniforms;
-	QPushButton *addUniform;//Pointer to the button for add uniforms
-	addDialog* addForm;
+	std::vector<dataForUniform> uniforms;
+	tableUniforms* table;
 
-	enum column {
-		name,type, value,deleteRow
-	};
+	
 
 	
 	/********************END UNIFORMS TABLE DATA********************/
@@ -106,7 +104,7 @@ private:
 
 	void configuration_ToolBar();
 
-	void configuration_tablaUniforms();
+	void configuration_tableWindow();
 
 	void configuration_OutPut();
 	void configuration_codeEditor();
@@ -117,8 +115,9 @@ private:
 	bool saveFile(const QString &fileName);
 	void setCurrentFile(const QString &fileName);
 
+	int findData(dataForUniform &data);
 
-	 bool maybeSave();
+	bool maybeSave();
 
 private slots:
 
@@ -132,19 +131,11 @@ private slots:
 
 	//Manage the data send for the ui that add uniforms
 	void handleData(const dataForUniform &data);
-
-	//Manage the data that is edit
-	void editSlot(int row, int col);
-	void cell_onClicked();
-	void cell_comboBoxChanged(const QString &newValue);
+	void handleEditData(const dataForUniform &data);
+	void handleRemoveData(const dataForUniform &data);
 
 	//BUTTONS
 	
-	
-	
-
-
-
 	void handleToolActionPoints();
 	void handleToolActionLines();
 	void handleToolActionTriangles();
@@ -155,8 +146,9 @@ private slots:
 	bool handleToolActionSave();
 	bool handleToolActionSaveAs();
 
+	void handleToolActionTableUniforms();
 
 
 	void handleToolActionRender();
-	void handleButtonAddUniform();
+	
 };

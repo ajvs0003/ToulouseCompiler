@@ -150,6 +150,9 @@
     <ClCompile Include="lodepng.cpp">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="tableUniforms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="OpenGLWidget.h">
@@ -164,12 +167,18 @@
     <QtMoc Include="addDialog.h">
       <Filter>Header Files\QTConfiguration</Filter>
     </QtMoc>
+    <QtMoc Include="tableUniforms.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ToulouseCompiler.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="addDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="tableUniforms.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

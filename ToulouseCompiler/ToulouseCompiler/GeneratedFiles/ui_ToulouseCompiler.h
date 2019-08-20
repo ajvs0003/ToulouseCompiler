@@ -44,6 +44,7 @@ public:
     QAction *actionRender;
     QAction *actionModeMarterial;
     QAction *actionModeTexture;
+    QAction *actionUniform_Table;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *separador;
@@ -70,6 +71,7 @@ public:
     QPlainTextEdit *OutPut;
     QMenuBar *menuBar;
     QMenu *menuFile;
+    QMenu *menuTools;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -146,6 +148,8 @@ public:
         icon9.addFile(QString::fromUtf8(":/img/Resources/img/textures.png"), QSize(), QIcon::Normal, QIcon::Off);
         icon9.addFile(QString::fromUtf8(":/img/Resources/img/textures_activate.png"), QSize(), QIcon::Normal, QIcon::On);
         actionModeTexture->setIcon(icon9);
+        actionUniform_Table = new QAction(MainWindowClass);
+        actionUniform_Table->setObjectName(QString::fromUtf8("actionUniform_Table"));
         centralWidget = new QWidget(MainWindowClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout_5 = new QVBoxLayout(centralWidget);
@@ -311,6 +315,8 @@ public:
         menuBar->setGeometry(QRect(0, 0, 1113, 21));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
+        menuTools = new QMenu(menuBar);
+        menuTools->setObjectName(QString::fromUtf8("menuTools"));
         MainWindowClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindowClass);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -320,10 +326,12 @@ public:
         MainWindowClass->setStatusBar(statusBar);
 
         menuBar->addAction(menuFile->menuAction());
+        menuBar->addAction(menuTools->menuAction());
         menuFile->addAction(actionOpen);
         menuFile->addAction(actionNew);
         menuFile->addAction(actionSave);
         menuFile->addAction(actionSave_As);
+        menuTools->addAction(actionUniform_Table);
         mainToolBar->addAction(actionSave);
         mainToolBar->addSeparator();
         mainToolBar->addAction(actionPoints);
@@ -364,11 +372,13 @@ public:
 #ifndef QT_NO_TOOLTIP
         actionModeTexture->setToolTip(QApplication::translate("MainWindowClass", "this activate the uniforms for textures", nullptr));
 #endif // QT_NO_TOOLTIP
+        actionUniform_Table->setText(QApplication::translate("MainWindowClass", "Uniform Table", nullptr));
         addUniform->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(VertexS), QApplication::translate("MainWindowClass", "Vertex Shader", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(FragmentS), QApplication::translate("MainWindowClass", "Fragment Shader", nullptr));
         OutPut->setPlainText(QString());
         menuFile->setTitle(QApplication::translate("MainWindowClass", "File", nullptr));
+        menuTools->setTitle(QApplication::translate("MainWindowClass", "Tools", nullptr));
     } // retranslateUi
 
 };

@@ -234,7 +234,14 @@
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
    </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionUniform_Table"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuTools"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -371,6 +378,11 @@
    </property>
    <property name="toolTip">
     <string>this activate the uniforms for textures</string>
+   </property>
+  </action>
+  <action name="actionUniform_Table">
+   <property name="text">
+    <string>Uniform Table</string>
    </property>
   </action>
  </widget>

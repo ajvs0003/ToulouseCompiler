@@ -12,6 +12,7 @@
 //Very important for can send data to the main window
 typedef struct
 {
+	int id;
 	string name;
 	string type;
 	string value;
@@ -55,6 +56,8 @@ private:
 	bool textNameCheck = false;
 	bool textCheck = false;
 	bool typeCheck = false;
+
+	int idCont = 0;
 
 private slots:
 	

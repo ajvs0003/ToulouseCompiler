@@ -32,8 +32,8 @@ ToulouseCompiler::~ToulouseCompiler()
 	delete render;
 	delete OutPut;
 	delete openglwidget;
-	delete tableUniforms;
-	delete addUniform;
+	delete table;
+	
 	
 }
 
@@ -75,6 +75,47 @@ void ToulouseCompiler::handleToolActionPoints() {
 	}
 
 }
+
+
+/******************** TABLE HANDLE********************/
+void ToulouseCompiler::handleData(const dataForUniform &data)
+{
+	
+
+	dataForUniform nuevo = data;
+	uniforms.push_back(nuevo);
+
+
+}
+
+void ToulouseCompiler::handleEditData(const dataForUniform & data)
+{
+	dataForUniform nuevo = data;
+	int id = findData(nuevo);
+
+	if (id != -1) {
+		uniforms.at(id) = nuevo;
+	}
+	else Log::getInstancia()->warning("This uniform didn't exist");
+}
+
+void ToulouseCompiler::handleRemoveData(const dataForUniform & data)
+{
+	dataForUniform nuevo = data;
+	int id = findData(nuevo);
+
+	if (id != -1) {
+		uniforms.erase(
+			std::remove_if(uniforms.begin(), uniforms.end(), [&](dataForUniform const & data) {return data.name == nuevo.name;})
+			,uniforms.end());
+	}
+	else Log::getInstancia()->warning("This uniform didn't exist");
+
+
+}
+
+/********************END TABLE HANDLE********************/
+
 
 void ToulouseCompiler::handleToolActionLines()
 {
@@ -222,7 +263,9 @@ void ToulouseCompiler::handleToolActionTextures()
 void ToulouseCompiler::handleToolActionOpen()
 {
 	uniforms.clear();
-	tableUniforms->setRowCount(0);
+	configuration_tableWindow();
+
+
 	openGLWindow->deleteUniforms();
 	if (maybeSave()) {
 		
@@ -283,6 +326,22 @@ bool ToulouseCompiler::handleToolActionSaveAs()
 	
 }
 
+void ToulouseCompiler::handleToolActionTableUniforms()
+{
+
+	
+
+
+	table->show();
+
+
+
+
+
+
+
+}
+
 void ToulouseCompiler::handleToolActionRender()
 {
 	/*Log::getInstancia()->warning("Pulsado render");*/
@@ -305,58 +364,7 @@ void ToulouseCompiler::handleToolActionRender()
 	}
 }
 
-void ToulouseCompiler::editSlot(int row, int col) {
 
-	
-	if (row>=0) {
-
-		switch (col) {
-		case column::name:
-			uniforms.at(row).name = tableUniforms->item(row, col)->text().toStdString();
-			
-			break;
-		case column::value:
-			uniforms.at(row).value = tableUniforms->item(row, col)->text().toStdString();
-			
-			break;
-
-		default:
-			break;
-
-		}
-	}
-
-}
-
-//Method that manage the signal for remove the uniform
-void ToulouseCompiler::cell_onClicked() {
-	QWidget *w = qobject_cast<QWidget *>(sender()->parent());
-	if (w) {
-		int row = tableUniforms->indexAt(w->pos()).row();
-
-		string id = uniforms.at(row).name;
-
-		uniforms.erase(
-			std::remove_if(uniforms.begin(), uniforms.end(), [&](dataForUniform const & data) {
-			return data.name == id;
-		}),
-			uniforms.end());
-
-		tableUniforms->removeRow(row);
-		tableUniforms->setCurrentCell(0, 0);
-	}
-}
-
-
-
-//Method that manage the signal for edit type of the uniform
-void ToulouseCompiler::cell_comboBoxChanged(const QString & newValue)
-{
-
-	int row = sender()->property("row").toInt();
-	uniforms.at(row).type = newValue.toStdString();
-
-}
 
 
 void ToulouseCompiler::Mouse_currentPos() {
@@ -426,113 +434,6 @@ void ToulouseCompiler::Mouse_Left()
 	isHold = false;
 }
 
-//this slot handle the data that for the uniforms that the widget send
-void ToulouseCompiler::handleData(const dataForUniform &data)
-{
-	tableUniforms->setEditTriggers(QAbstractItemView::DoubleClicked);
-
-	//**************table widget data***************//
-	int row = tableUniforms->rowCount();
-	tableUniforms->insertRow(tableUniforms->rowCount());
-
-
-	dataForUniform nuevo = data;
-	uniforms.push_back(nuevo);
-
-
-	//create qt elements for the table
-	QTableWidgetItem *name = new QTableWidgetItem(QString::fromStdString(data.name));
-	QTableWidgetItem *value = new QTableWidgetItem(QString::fromStdString(data.value));
-	
-
-	//insert values to the table
-	tableUniforms->setItem(row, column::name, name);
-	tableUniforms->setItem(row, column::value, value);
-
-	
-
-	//comboBox for type
-	QWidget* pWi = new QWidget();
-	QComboBox* combo = new QComboBox();
-
-	combo->setProperty("row", (int)row); // row represents the row number in qtablewidget
-
-	combo->addItems(QStringList() << tr("boolean") << tr("vec3") << tr("vec4") << tr("float") << tr("int")); //add the types for the uniforms
-
-	if(nuevo.type== "boolean")combo->setCurrentIndex(0);
-	else if (nuevo.type == "vec3")combo->setCurrentIndex(1);
-	else if (nuevo.type == "vec4")combo->setCurrentIndex(2);
-	else if (nuevo.type == "float")combo->setCurrentIndex(3);
-	else if (nuevo.type == "int")combo->setCurrentIndex(4);
-
-
-	
-
-
-	connect(combo, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(cell_comboBoxChanged(const QString&)));//conect signalk if something change
-
-//# layout for the comboBox
-	QHBoxLayout* pLayout = new QHBoxLayout(pWi);
-	pLayout->addWidget(combo);
-	pLayout->setAlignment(Qt::AlignCenter);
-	pLayout->setContentsMargins(0, 0, 0, 0);
-	pWi->setLayout(pLayout);
-	tableUniforms->setCellWidget(row, column::type, pWi);
-
-
-	QWidget* pWidget = new QWidget();
-	QPushButton* btn_edit = new QPushButton();
-	btn_edit->setText("Remove");
-
-	connect(btn_edit, SIGNAL(clicked()), this, SLOT(cell_onClicked()));
-
-	//# layout for the qPushButton
-	QHBoxLayout* Layout = new QHBoxLayout(pWidget);
-	Layout->addWidget(btn_edit);
-	Layout->setAlignment(Qt::AlignCenter);
-	Layout->setContentsMargins(0, 0, 0, 0);
-	pWidget->setLayout(Layout);
-	tableUniforms->setCellWidget(row, column::deleteRow, pWidget);
-
-
-
-
-
-	//**************end table widget data***************//
-
-
-}
-
-
-void ToulouseCompiler::handleButtonAddUniform()
-{
-	/*Log::getInstancia()->warning("Pulsado add");*/
-
-
-
-	//**************widget add uniforms data***************//
-
-	addForm = new addDialog(this);
-	// connect your signal to the mainwindow slot
-	connect(addForm, SIGNAL(dataChanged(const dataForUniform &)), this, SLOT(handleData(const dataForUniform &)));
-
-	addForm->setWindowTitle("Uniform Data");
-
-	//if is true dont let change the window until close
-
-	/*addForm->setModal(true);*/
-
-	addForm->show();
-
-
-
-	//**************end widget add uniforms data***************//
-
-
-
-
-
-}
 
 
 
@@ -545,11 +446,11 @@ void ToulouseCompiler::configurate()
 	this->configuration_codeEditor();
 	this->configuration_opengl();
 	this->configuration_ToolBar();
-	this->configuration_tablaUniforms();
+	
 
+	this->configuration_tableWindow();
 
-
-	statusBar->showMessage("Ready for start");
+	statusBar->showMessage("Ready to start");
 
 
 }
@@ -592,49 +493,28 @@ void ToulouseCompiler::configuration_ToolBar()
 	saveAs = ui.actionSave_As;
 	connect(saveAs, SIGNAL(triggered()), this, SLOT(handleToolActionSaveAs()));
 
+
+	UniformTable = ui.actionUniform_Table;
+	connect(UniformTable, SIGNAL(triggered()), this, SLOT(handleToolActionTableUniforms()));
+
 	render = ui.actionRender;
 	connect(render, SIGNAL(triggered()), this, SLOT(handleToolActionRender()));
 }
 
-
-void ToulouseCompiler::configuration_tablaUniforms()
+void ToulouseCompiler::configuration_tableWindow()
 {
-	tableUniforms = ui.uniforms;
+	//**************widget add uniforms data***************//
 
-	tableUniforms->setColumnCount(4);
+	table = new tableUniforms(this);
+	// connect your signal to the mainwindow slot
+	connect(table, SIGNAL(newUniform(const dataForUniform &)), this, SLOT(handleData(const dataForUniform &)));
+	connect(table, SIGNAL(editUniform(const dataForUniform &)), this, SLOT(handleEditData(const dataForUniform &)));
+	connect(table, SIGNAL(removeUniform(const dataForUniform &)), this, SLOT(handleRemoveData(const dataForUniform &)));
 
-	tableUniforms->setHorizontalHeaderLabels(QStringList() << tr("Name") << tr("Type Uniform") << tr("Value") << tr("Delete"));
-
-	
-
-	//only read if i active this
-	tableUniforms->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
-
-	tableUniforms->verticalHeader()->setVisible(false);
-
-
-	//for put that all the widget is only the 4 columns that we have
-	QHeaderView* header = tableUniforms->horizontalHeader();
-	header->setSectionResizeMode(QHeaderView::Stretch);
-
-
-
-
-	//para editar celdas
-
-	connect(tableUniforms, SIGNAL(cellChanged(int, int)), this, SLOT(editSlot(int, int)));
-
-	tableUniforms->show();
-
-
-
-	addUniform = ui.addUniform;
-
-	addUniform->setStyleSheet("QPushButton{background: transparent;}");
-	//gestiona los conect del boton
-	connect(addUniform, SIGNAL(released()), this, SLOT(handleButtonAddUniform()));
+	table->setWindowTitle("Uniform Data");
 }
+
+
 
 
 
@@ -714,11 +594,6 @@ void ToulouseCompiler::configuration_opengl()
 	connect(openGLWindow, SIGNAL(Mouse_Released()), this, SLOT(Mouse_Realeased()));
 	connect(openGLWindow, SIGNAL(Mouse_Left()), this, SLOT(Mouse_Left()));
 }
-
-
-
-
-
 
 
 
@@ -825,4 +700,13 @@ void ToulouseCompiler::setCurrentFile(const QString &fileName)
 	if (curFile.isEmpty())
 		shownName = "untitled-vert.glsl";
 	setWindowFilePath(shownName);
+}
+
+int ToulouseCompiler::findData(dataForUniform & data)
+{
+	for (int i = 0; i < uniforms.size(); i++) {
+		if (data.id == uniforms.at(i).id)
+			return i;
+	}
+	return -1;
 }

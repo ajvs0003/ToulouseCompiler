@@ -135,6 +135,7 @@
     <ClCompile Include="PagVAO.cpp" />
     <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="Spotlight.cpp" />
+    <ClCompile Include="tableUniforms.cpp" />
     <ClCompile Include="TextureLibrary.cpp" />
     <ClCompile Include="ToulouseCompiler.cpp" />
   </ItemGroup>
@@ -143,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="addDialog.ui" />
+    <QtUic Include="tableUniforms.ui" />
     <QtUic Include="ToulouseCompiler.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +159,10 @@
     <ClInclude Include="PagTexture.h" />
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="Spotlight.h" />
+    <QtMoc Include="tableUniforms.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets;.\glwrappers\glm-0.9.9.0\glm\glm</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets;.\glwrappers\glm-0.9.9.0\glm\glm</IncludePath>
+    </QtMoc>
     <ClInclude Include="TextureLibrary.h" />
     <QtMoc Include="CodeEditor.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets;.\%userprofile%\Desktop\glwrappers\glm-0.9.9.0\glm\glm</IncludePath>
