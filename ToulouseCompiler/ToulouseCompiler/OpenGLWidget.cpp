@@ -122,7 +122,7 @@ void OpenGLWidget::compile()
 {
 	firstCompile = true;
 
-	checkOpenGLVersion();//check the version for OpenGl
+	//checkOpenGLVersion();//check the version for OpenGl
 
 	this->glDeleteProgram(shaderProgram->getHandler());
 	//delete the past shader
