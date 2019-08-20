@@ -43,12 +43,40 @@ tableUniforms::tableUniforms(QWidget *parent)
 	addUniform->setStyleSheet("QPushButton{background: transparent;}");
 	//gestiona los conect del boton
 	connect(addUniform, SIGNAL(released()), this, SLOT(handleButtonAddUniform()));
+
+
+	help = ui->help;
+	help->setStyleSheet("QPushButton{background: transparent;}");
+	connect(help, SIGNAL(released()), this, SLOT(handleButtonAboutUniform()));
+
+	Qt::WindowFlags flags = windowFlags();
+	flags |= Qt::CustomizeWindowHint;
+	flags &= ~Qt::WindowContextHelpButtonHint;
+	flags &= ~Qt::WindowSystemMenuHint;
+	setWindowFlags(flags);
 }
 
 tableUniforms::~tableUniforms()
 {
 	delete ui;
 }
+
+
+
+void tableUniforms::handleButtonAboutUniform()
+{
+	QMessageBox::about(this, tr("About Uniforms Table "),
+		tr("The <b>Table</b> show the uniforms that the user added for this shader. "
+			"<b> Important: </b>you must read the manual for know what uniforms are included by configuration. "
+			"Ex:(material mode & lights mode)"));
+
+
+
+
+
+}
+
+
 
 void tableUniforms::handleButtonAddUniform()
 {

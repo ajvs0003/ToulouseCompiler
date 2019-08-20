@@ -122,3 +122,25 @@ void addDialog::switchcall(const QString&  value) {
 	}
 
 }
+
+void addDialog::about()
+
+{
+
+	QMessageBox::about(this, tr("About Uniform form"),
+		tr("The <b>Form below</b> show data that the user can fill for an uniform. "
+			"<b> Important: </b>if you use vec3 or vec4 enter the data separated by <b>comma</b>. "
+			"Ex:(1.0,0.0,0.0)"));
+}
+
+
+bool addDialog::event(QEvent *event)
+{
+	if (event->type() == QEvent::EnterWhatsThisMode) {
+
+		about();
+	}
+
+
+	return QDialog::event(event);
+}

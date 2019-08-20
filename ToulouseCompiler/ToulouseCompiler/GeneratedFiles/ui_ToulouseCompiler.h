@@ -41,6 +41,9 @@ public:
     QAction *actionModeMarterial;
     QAction *actionModeTexture;
     QAction *actionUniform_Table;
+    QAction *actionPeon;
+    QAction *actioncopa;
+    QAction *actionjoy;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *separador;
@@ -140,6 +143,29 @@ public:
         actionModeTexture->setIcon(icon9);
         actionUniform_Table = new QAction(MainWindowClass);
         actionUniform_Table->setObjectName(QString::fromUtf8("actionUniform_Table"));
+        actionUniform_Table->setFont(font);
+        actionUniform_Table->setIconVisibleInMenu(true);
+        actionPeon = new QAction(MainWindowClass);
+        actionPeon->setObjectName(QString::fromUtf8("actionPeon"));
+        actionPeon->setCheckable(true);
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8(":/img/Resources/img/pawn.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon10.addFile(QString::fromUtf8(":/img/Resources/img/Active pawn.png"), QSize(), QIcon::Normal, QIcon::On);
+        actionPeon->setIcon(icon10);
+        actioncopa = new QAction(MainWindowClass);
+        actioncopa->setObjectName(QString::fromUtf8("actioncopa"));
+        actioncopa->setCheckable(true);
+        QIcon icon11;
+        icon11.addFile(QString::fromUtf8(":/img/Resources/img/wine.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon11.addFile(QString::fromUtf8(":/img/Resources/img/wine_activate.png"), QSize(), QIcon::Normal, QIcon::On);
+        actioncopa->setIcon(icon11);
+        actionjoy = new QAction(MainWindowClass);
+        actionjoy->setObjectName(QString::fromUtf8("actionjoy"));
+        actionjoy->setCheckable(true);
+        QIcon icon12;
+        icon12.addFile(QString::fromUtf8(":/img/Resources/img/circle.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon12.addFile(QString::fromUtf8(":/img/Resources/img/circle_activate.png"), QSize(), QIcon::Normal, QIcon::On);
+        actionjoy->setIcon(icon12);
         centralWidget = new QWidget(MainWindowClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout_5 = new QVBoxLayout(centralWidget);
@@ -257,10 +283,12 @@ public:
         menuBar = new QMenuBar(MainWindowClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1113, 21));
+        menuBar->setFont(font);
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuTools = new QMenu(menuBar);
         menuTools->setObjectName(QString::fromUtf8("menuTools"));
+        menuTools->setFont(font);
         MainWindowClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindowClass);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -283,6 +311,10 @@ public:
         mainToolBar->addAction(actiontriangles);
         mainToolBar->addAction(actionModeMarterial);
         mainToolBar->addAction(actionModeTexture);
+        mainToolBar->addSeparator();
+        mainToolBar->addAction(actionPeon);
+        mainToolBar->addAction(actioncopa);
+        mainToolBar->addAction(actionjoy);
         mainToolBar->addSeparator();
         mainToolBar->addAction(actionRender);
 
@@ -317,6 +349,9 @@ public:
         actionModeTexture->setToolTip(QApplication::translate("MainWindowClass", "this activate the uniforms for textures", nullptr));
 #endif // QT_NO_TOOLTIP
         actionUniform_Table->setText(QApplication::translate("MainWindowClass", "Uniform Table", nullptr));
+        actionPeon->setText(QApplication::translate("MainWindowClass", "Peon", nullptr));
+        actioncopa->setText(QApplication::translate("MainWindowClass", "copa", nullptr));
+        actionjoy->setText(QApplication::translate("MainWindowClass", "joy", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(VertexS), QApplication::translate("MainWindowClass", "Vertex Shader", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(FragmentS), QApplication::translate("MainWindowClass", "Fragment Shader", nullptr));
         OutPut->setPlainText(QString());

@@ -182,6 +182,11 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
@@ -192,6 +197,11 @@
     <addaction name="actionSave_As"/>
    </widget>
    <widget class="QMenu" name="menuTools">
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
+    </property>
     <property name="title">
      <string>Tools</string>
     </property>
@@ -214,6 +224,10 @@
    <addaction name="actiontriangles"/>
    <addaction name="actionModeMarterial"/>
    <addaction name="actionModeTexture"/>
+   <addaction name="separator"/>
+   <addaction name="actionPeon"/>
+   <addaction name="actioncopa"/>
+   <addaction name="actionjoy"/>
    <addaction name="separator"/>
    <addaction name="actionRender"/>
   </widget>
@@ -340,6 +354,53 @@
   <action name="actionUniform_Table">
    <property name="text">
     <string>Uniform Table</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionPeon">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/pawn.png</normaloff>
+     <normalon>:/img/Resources/img/Active pawn.png</normalon>:/img/Resources/img/pawn.png</iconset>
+   </property>
+   <property name="text">
+    <string>Peon</string>
+   </property>
+  </action>
+  <action name="actioncopa">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/wine.png</normaloff>
+     <normalon>:/img/Resources/img/wine_activate.png</normalon>:/img/Resources/img/wine.png</iconset>
+   </property>
+   <property name="text">
+    <string>copa</string>
+   </property>
+  </action>
+  <action name="actionjoy">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/circle.png</normaloff>
+     <normalon>:/img/Resources/img/circle_activate.png</normalon>:/img/Resources/img/circle.png</iconset>
+   </property>
+   <property name="text">
+    <string>joy</string>
    </property>
   </action>
  </widget>

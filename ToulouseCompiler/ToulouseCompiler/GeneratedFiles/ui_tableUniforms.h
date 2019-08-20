@@ -29,7 +29,9 @@ public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer_3;
+    QVBoxLayout *verticalLayout_3;
     QPushButton *addUniform;
+    QPushButton *help;
     QHBoxLayout *horizontalLayout;
     QTableWidget *table;
 
@@ -56,6 +58,12 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_3);
 
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+
+        horizontalLayout_2->addLayout(verticalLayout_3);
+
         addUniform = new QPushButton(tableUniforms);
         addUniform->setObjectName(QString::fromUtf8("addUniform"));
         QIcon icon;
@@ -63,6 +71,20 @@ public:
         addUniform->setIcon(icon);
 
         horizontalLayout_2->addWidget(addUniform, 0, Qt::AlignHCenter|Qt::AlignVCenter);
+
+        help = new QPushButton(tableUniforms);
+        help->setObjectName(QString::fromUtf8("help"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(help->sizePolicy().hasHeightForWidth());
+        help->setSizePolicy(sizePolicy);
+        help->setMaximumSize(QSize(30, 40));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/img/Resources/img/information.png"), QSize(), QIcon::Normal, QIcon::Off);
+        help->setIcon(icon1);
+
+        horizontalLayout_2->addWidget(help);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -92,6 +114,7 @@ public:
     {
         tableUniforms->setWindowTitle(QApplication::translate("tableUniforms", "tableUniforms", nullptr));
         addUniform->setText(QString());
+        help->setText(QString());
     } // retranslateUi
 
 };

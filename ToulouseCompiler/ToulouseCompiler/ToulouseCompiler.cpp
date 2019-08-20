@@ -260,6 +260,102 @@ void ToulouseCompiler::handleToolActionTextures()
 	}
 }
 
+void ToulouseCompiler::handleToolActionPeon()
+{
+	if (copa->isChecked()) {
+		copa->setChecked(false);
+	}
+	if (joy->isChecked()) {
+		joy->setChecked(false);
+	}
+	
+
+	if (peon->isChecked()) {
+
+		openGLWindow->changeObject(0);
+
+		//Log::getInstancia()->warning("activado el modo material");
+	}
+	else {
+
+		peon->setChecked(false);
+
+	}
+
+	
+}
+
+void ToulouseCompiler::handleToolActionCopa()
+{
+	if (peon->isChecked()) {
+		peon->setChecked(false);
+	}
+	if (joy->isChecked()) {
+		joy->setChecked(false);
+	}
+
+
+
+
+
+	if (copa->isChecked()) {
+
+		openGLWindow->changeObject(1);
+
+		//Log::getInstancia()->warning("activado el modo material");
+	}
+	else {
+
+		copa->setChecked(false);
+
+	}
+}
+
+void ToulouseCompiler::handleToolActionJoy()
+{
+	if (copa->isChecked()) {
+		copa->setChecked(false);
+	}
+	if (peon->isChecked()) {
+		peon->setChecked(false);
+	}
+
+
+
+
+
+	if (joy->isChecked()) {
+
+		openGLWindow->changeObject(2);
+
+		//Log::getInstancia()->warning("activado el modo material");
+	}
+	else {
+
+		joy->setChecked(false);
+
+	}
+}
+
+
+void ToulouseCompiler::handleToolActionNew()
+{
+	uniforms.clear();
+	configuration_tableWindow();
+
+
+	openGLWindow->deleteUniforms();
+	if (maybeSave()) {
+		vertexShader->clear();
+		fragmentShader->clear();
+
+        setCurrentFile(QString());
+    }
+
+
+
+}
+
 void ToulouseCompiler::handleToolActionOpen()
 {
 	uniforms.clear();
@@ -483,6 +579,26 @@ void ToulouseCompiler::configuration_ToolBar()
 	connect(modeTextures, SIGNAL(triggered()), this, SLOT(handleToolActionTextures()));
 
 
+	peon = ui.actionPeon;
+	peon->setChecked(true);
+	connect(peon, SIGNAL(triggered()), this, SLOT(handleToolActionPeon()));
+
+
+	copa = ui.actioncopa;
+	connect(copa, SIGNAL(triggered()), this, SLOT(handleToolActionCopa()));
+
+
+	joy = ui.actionjoy;
+	connect(joy, SIGNAL(triggered()), this, SLOT(handleToolActionJoy()));
+
+
+
+
+
+	newFile = ui.actionNew;
+	connect(newFile, SIGNAL(triggered()), this, SLOT(handleToolActionNew()));
+
+
 	load = ui.actionOpen;
 	connect(load, SIGNAL(triggered()), this, SLOT(handleToolActionOpen()));
 
@@ -511,7 +627,7 @@ void ToulouseCompiler::configuration_tableWindow()
 	connect(table, SIGNAL(editUniform(const dataForUniform &)), this, SLOT(handleEditData(const dataForUniform &)));
 	connect(table, SIGNAL(removeUniform(const dataForUniform &)), this, SLOT(handleRemoveData(const dataForUniform &)));
 
-	table->setWindowTitle("Uniform Data");
+	table->setWindowTitle("Uniforms Table");
 }
 
 

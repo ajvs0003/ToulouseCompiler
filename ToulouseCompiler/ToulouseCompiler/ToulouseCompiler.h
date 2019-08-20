@@ -57,7 +57,12 @@ private:
 	QAction* modeTextures;
 
 
+	QAction* peon;
+	QAction* copa;
+	QAction* joy;
+
 	QAction* UniformTable;
+	QAction* newFile;
 	QAction* load;
 	QAction* save;
 	QAction* saveAs;
@@ -142,6 +147,12 @@ private slots:
 	void handleToolActionMaterial();
 	void handleToolActionTextures();
 
+	void handleToolActionPeon();
+	void handleToolActionCopa();
+	void handleToolActionJoy();
+	
+
+	void handleToolActionNew();
 	void handleToolActionOpen();
 	bool handleToolActionSave();
 	bool handleToolActionSaveAs();

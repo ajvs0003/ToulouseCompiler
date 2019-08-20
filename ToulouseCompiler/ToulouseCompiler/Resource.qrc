@@ -18,9 +18,18 @@
         <file>Resources/img/textures.png</file>
         <file>Resources/img/Material_activate.png</file>
         <file>Resources/img/textures_activate.png</file>
+        <file>Resources/img/information.png</file>
+        <file>Resources/img/Active pawn.png</file>
+        <file>Resources/img/circle.png</file>
+        <file>Resources/img/circle_activate.png</file>
+        <file>Resources/img/pawn.png</file>
+        <file>Resources/img/wine.png</file>
+        <file>Resources/img/wine_activate.png</file>
     </qresource>
     <qresource prefix="/obj">
         <file>Resources/Objects/peon.txt</file>
+        <file>Resources/Objects/copa.txt</file>
+        <file>Resources/Objects/corona.txt</file>
     </qresource>
     <qresource prefix="/">
         <file>Textures/uv_checker large.png</file>

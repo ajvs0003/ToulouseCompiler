@@ -101,6 +101,11 @@ void OpenGLWidget::changeTrial(int nuevo)
 
 }
 
+void OpenGLWidget::changeObject(int nuevo)
+{
+	this->TypeObject = nuevo;
+}
+
 void OpenGLWidget::setPathShader(string path)
 {
 	shaderPath = path;
@@ -125,7 +130,7 @@ void OpenGLWidget::compile()
 	shaderProgram = new PagShaderProgram();
 
 	chargeShader();
-
+	initialize();
 	renderNow();
 
 	
@@ -514,26 +519,41 @@ void OpenGLWidget::createObjects()
 	Pag3DGroup* ob;
 	ob = new Pag3DGroup();
 
+	PagRevolutionObject* object;
+
+	if (TypeObject == 0) {
+		objetos.clear();
+		dataTxt = Metodos_especiales::lecturaFichero(dataTxt, ":/obj/Resources/Objects/peon.txt");
+		
+
+		object = new PagRevolutionObject(this, dataTxt, 2, 60);
+		object->scale(1.5f);
+
+	}
+	else if (TypeObject == 1) {
+		objetos.clear();
+		dataTxt = Metodos_especiales::lecturaFichero(dataTxt, ":/obj/Resources/Objects/copa.txt");
+		object = new PagRevolutionObject(this, dataTxt, 2, 60);
+		/*object->scale(1.5f);*/
+	}
+	else {
+		objetos.clear();
+		dataTxt = Metodos_especiales::lecturaFichero(dataTxt, ":/obj/Resources/Objects/corona.txt");
+		object = new PagRevolutionObject(this, dataTxt, 2, 60);
+		/*object->scale(1.5f);*/
+	}
+	object->translate(glm::vec3(0.f, 0.01f, 0.f));
+
+	object->setMatBody(WOOD_LIGHT);
+	object->setMatBotFace(WOOD_LIGHT);
+	object->setMatTopFace(WOOD_LIGHT);
+
+	object->setTexBody(TEXT2);
+	object->setTexBotFace(TEXT2);
+	object->setTexTopFace(TEXT2);
 
 
-
-	dataTxt = Metodos_especiales::lecturaFichero(dataTxt, ":/obj/Resources/Objects/peon.txt");
-	PagRevolutionObject* peon;
-
-	peon = new PagRevolutionObject(this, dataTxt, 2, 60);
-	peon->scale(1.5f);
-	peon->translate(glm::vec3(0.f, 0.01f, 0.f));
-
-	peon->setMatBody(WOOD_LIGHT);
-	peon->setMatBotFace(WOOD_LIGHT);
-	peon->setMatTopFace(WOOD_LIGHT);
-
-	peon->setTexBody(TEXT2);
-	peon->setTexBotFace(TEXT2);
-	peon->setTexTopFace(TEXT2);
-
-
-	ob->insertObject(peon);
+	ob->insertObject(object);
 
 	ob->translate(glm::vec3(0.f, 0.f, 0.f));
 	objetos.push_back(*ob);

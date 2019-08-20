@@ -7,6 +7,8 @@
 #include <QComboBox>
 #include <vector>
 #include <QDebug>
+#include <QEvent>
+
 
 namespace Ui { class tableUniforms; };
 
@@ -36,7 +38,15 @@ private:
 
 	/********************END UNIFORMS TABLE DATA********************/
 
+	QPushButton *help;
+	 
+	
+
 private slots:
+
+	
+	void handleButtonAboutUniform();
+
 	void handleButtonAddUniform();
 
 	//Manage the data send for the ui that add uniforms

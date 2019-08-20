@@ -59,6 +59,10 @@ private:
 
 	int idCont = 0;
 
+	bool event(QEvent *event);
+
+	void about();
+
 private slots:
 	
 	void push_save();

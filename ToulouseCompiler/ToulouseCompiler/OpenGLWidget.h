@@ -59,6 +59,8 @@ public:
 
 
 	void changeTrial(int nuevo);
+
+	void changeObject(int nuevo);
 	
 	void setPathShader(string path);
 
@@ -171,7 +173,7 @@ private:
 
 	bool firstCompile = false;
 
-	
+	int TypeObject = 0;
 
 	//PRIVATE METHODS
 
