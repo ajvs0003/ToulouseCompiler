@@ -74,9 +74,9 @@ void addDialog::push_save()
 	if (!multipleAddings->isChecked())this->close();
 
 	guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(false);
-
-
-
+	nameVar->setText("");
+	inputValue->setText("");
+	options->setCurrentIndex(-1);
 
 }
 
