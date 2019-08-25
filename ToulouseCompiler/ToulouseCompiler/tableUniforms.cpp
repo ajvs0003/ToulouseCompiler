@@ -1,6 +1,7 @@
 #include "tableUniforms.h"
 #include "ui_tableUniforms.h"
-
+#include <sstream>
+#include <glm.hpp>
 tableUniforms::tableUniforms(QWidget *parent)
 	: QDialog(parent)
 {
@@ -81,21 +82,185 @@ void tableUniforms::handleButtonAboutUniform()
 
 
 }
+bool tableUniforms::checkUniform(dataForUniform  data)
+{
+
+
+
+
+	if (data.type == "boolean") {
+
+		//shader.setUniform("pointSize", 7.0f);
+		if (data.value == "true")return true;
+		else if (data.value == "false")return true;
+		else return false;
+
+	}
+	else if (data.type == "vec3") {
+
+		std::stringstream val(data.value);
+		std::string segment;
+		std::vector<float> seglist;
+
+		while (std::getline(val, segment, ','))
+		{
+
+
+
+			try {
+				seglist.push_back(std::stof(segment));
+
+			}
+
+			catch (const std::invalid_argument& ia) {
+				
+				return false;
+			}
+
+			catch (const std::out_of_range& oor) {
+				
+				return false;
+			}
+
+			catch (const std::exception& e)
+			{
+				
+				return false;
+			}
+
+
+
+		}
+
+		return seglist.size() == 3 && seglist.size() > 0;
+
+
+
+	}
+	else if (data.type == "vec4") {
+		std::stringstream val(data.value);
+		std::string segment;
+		std::vector<float> seglist;
+
+		while (std::getline(val, segment, ','))
+		{
+			try {
+				seglist.push_back(std::stof(segment));
+
+			}
+
+			catch (const std::invalid_argument& ia) {
+				
+				return false;
+			}
+
+			catch (const std::out_of_range& oor) {
+				
+				return false;
+			}
+
+			catch (const std::exception& e)
+			{
+				
+				return false;
+			}
+		}
+
+		return seglist.size() == 4 && seglist.size() > 0;
+
+
+	}
+
+	else if (data.type == "float") {
+
+
+		try {
+			float val = std::stof(data.value);
+			return true;
+		}
+
+		catch (const std::invalid_argument& ia) {
+			
+			return false;
+		}
+
+		catch (const std::out_of_range& oor) {
+			
+
+			return false;
+		}
+
+		catch (const std::exception& e)
+		{
+			
+
+			return false;
+		}
+
+	}
+	else {
+
+		try {
+			int val = std::stoi(data.value);
+			return true;
+		}
+
+		catch (const std::invalid_argument& ia) {
+			
+
+			return false;
+		}
+
+		catch (const std::out_of_range& oor) {
+			
+
+			return false;
+		}
+
+		catch (const std::exception& e)
+		{
+			
+
+			return false;
+		}
+
+	}
+
+
+
+
+}
+
+void tableUniforms::wrongUniform()
+{
+	QMessageBox::warning(this, tr("Wrong uniform data "),
+		tr("The uniform that you added is <b>wrong</b>. "
+			"<b> Important: </b>you must read the manual for know how create a correct one. "
+		));
+}
+
+void tableUniforms::changeUniform()
+{
+	QMessageBox::warning(this, tr("Wrong uniform value "),
+		tr("The uniform that you edit has a  <b>wrong</b> value. "
+			"<b> Important: </b>Please change it. "
+		));
+}
 
 
 
 void tableUniforms::handleButtonAccept()
 {
 	QVector<dataForUniform> aux;
-
+	bool send = true;
 	for (int i = 0; i < uniforms.size(); i++) {
 
 		aux.append(uniforms.at(i));
-
+		if (!checkUniform(uniforms.at(i)))send = false;
 	}
 
-	emit addUniforms(aux);
-
+	if(send)emit addUniforms(aux);
+	else wrongUniform();
 	this->hide();
 
 
@@ -135,7 +300,7 @@ void tableUniforms::handleButtonAddUniform()
 
 void tableUniforms::editSlot(int row, int col) {
 
-
+	dataForUniform aux;
 	if (row >= 0) {
 
 		switch (col) {
@@ -144,10 +309,19 @@ void tableUniforms::editSlot(int row, int col) {
 			
 			break;
 		case column::value:
-			uniforms.at(row).value = table->item(row, col)->text().toStdString();
+			aux = uniforms.at(row);
+			aux.value= table->item(row, col)->text().toStdString();
+			
+			if (checkUniform(aux)) {
+				uniforms.at(row).value = table->item(row, col)->text().toStdString();
+			}
+			else {
+				wrongUniform();
+				table->item(row, col)->setText(QString::fromStdString(uniforms.at(row).value));
+			}
 			
 			break;
-
+		
 		default:
 			break;
 
@@ -160,7 +334,23 @@ void tableUniforms::cell_comboBoxChanged(const QString & newValue)
 {
 
 	int row = sender()->property("row").toInt();
-	uniforms.at(row).type = newValue.toStdString();
+	
+	dataForUniform aux;
+	aux = uniforms.at(row);
+
+	string lastType = aux.type;
+
+	
+	
+	aux.type = newValue.toStdString();
+
+	if (checkUniform(aux)) {
+		uniforms.at(row).type = newValue.toStdString();
+	}
+	else {
+		changeUniform();
+		uniforms.at(row).type = newValue.toStdString();
+	}
 	
 
 }
@@ -192,6 +382,12 @@ void tableUniforms::cell_onClicked() {
 //this slot handle the data that for the uniforms that the widget send
 void tableUniforms::handleData(const dataForUniform &data)
 {
+
+	dataForUniform aux;
+	aux = data;
+
+	//check that the uniform is correct
+	if (checkUniform(aux)) {
 	table->setEditTriggers(QAbstractItemView::DoubleClicked);
 	
 	//**************table widget data***************//
@@ -265,7 +461,10 @@ void tableUniforms::handleData(const dataForUniform &data)
 
 
 	//**************end table widget data***************//
-
+	}
+	else {
+		wrongUniform();
+	}
 
 }
 

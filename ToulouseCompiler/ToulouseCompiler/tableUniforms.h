@@ -43,6 +43,10 @@ private:
 	QPushButton *accept;
 	
 
+	bool checkUniform(dataForUniform data);
+	void wrongUniform();
+	void changeUniform();
+
 private slots:
 
 	
