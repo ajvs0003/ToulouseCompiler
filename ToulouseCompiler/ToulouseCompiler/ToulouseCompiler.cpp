@@ -44,48 +44,7 @@ ToulouseCompiler::~ToulouseCompiler()
 
 
 
-/******************** TABLE HANDLE********************/
-void ToulouseCompiler::handleData(const dataForUniform &data)
-{
-	
 
-	dataForUniform nuevo = data;
-	uniforms.push_back(nuevo);
-
-
-}
-
-void ToulouseCompiler::handleEditData(const dataForUniform & data)
-{
-	dataForUniform nuevo = data;
-	int id = findData(nuevo);
-
-	if (id != -1) {
-		uniforms.at(id) = nuevo;
-	}
-	else Log::getInstancia()->warning("This uniform didn't exist");
-
-	openGLWindow->deleteUniforms();
-	openGLWindow->setUniforms(uniforms);
-}
-
-void ToulouseCompiler::handleRemoveData(const dataForUniform & data)
-{
-	dataForUniform nuevo = data;
-	int id = findData(nuevo);
-
-	if (id != -1) {
-		uniforms.erase(
-			std::remove_if(uniforms.begin(), uniforms.end(), [&](dataForUniform const & data) {return data.name == nuevo.name;})
-			,uniforms.end());
-	}
-	else Log::getInstancia()->warning("This uniform didn't exist");
-
-	openGLWindow->deleteUniforms();
-	openGLWindow->setUniforms(uniforms);
-}
-
-/********************END TABLE HANDLE********************/
 
 void ToulouseCompiler::handleToolActionPoints() {
 
@@ -344,11 +303,11 @@ void ToulouseCompiler::handleToolActionJoy()
 
 void ToulouseCompiler::handleToolActionNew()
 {
-	uniforms.clear();
+	
 	configuration_tableWindow();
 
 
-	openGLWindow->deleteUniforms();
+	
 	if (maybeSave()) {
 		vertexShader->clear();
 		fragmentShader->clear();
@@ -362,11 +321,11 @@ void ToulouseCompiler::handleToolActionNew()
 
 void ToulouseCompiler::handleToolActionOpen()
 {
-	uniforms.clear();
+	
 	configuration_tableWindow();
 
 
-	openGLWindow->deleteUniforms();
+	
 	if (maybeSave()) {
 		
 		QString fileName = QFileDialog::getOpenFileName(this);
@@ -450,13 +409,6 @@ void ToulouseCompiler::handleToolActionRender()
 		//resetear log
 		OutPut->clear();
 		
-
-		if (!uniforms.empty()) {
-			
-			openGLWindow->setUniforms(uniforms);
-
-		}
-
 		
 		openGLWindow->setPathShader(curFile.toStdString());
 		openGLWindow->compile();
@@ -621,17 +573,28 @@ void ToulouseCompiler::configuration_ToolBar()
 	connect(render, SIGNAL(triggered()), this, SLOT(handleToolActionRender()));
 }
 
+
+void ToulouseCompiler::handleData(const QVector<dataForUniform> &data)
+{
+
+
+	openGLWindow->setUniforms(data);
+
+
+	
+}
+
+
 void ToulouseCompiler::configuration_tableWindow()
 {
 	//**************widget add uniforms data***************//
 
 	table = new tableUniforms(this);
-	// connect your signal to the mainwindow slot
-	connect(table, SIGNAL(newUniform(const dataForUniform &)), this, SLOT(handleData(const dataForUniform &)));
-	connect(table, SIGNAL(editUniform(const dataForUniform &)), this, SLOT(handleEditData(const dataForUniform &)));
-	connect(table, SIGNAL(removeUniform(const dataForUniform &)), this, SLOT(handleRemoveData(const dataForUniform &)));
-
 	table->setWindowTitle("Uniforms Table");
+	
+	connect(table, SIGNAL(addUniforms(const QVector<dataForUniform> &)), this, SLOT(handleData(const QVector<dataForUniform> &)));
+
+	
 }
 
 
@@ -822,11 +785,4 @@ void ToulouseCompiler::setCurrentFile(const QString &fileName)
 	setWindowFilePath(shownName);
 }
 
-int ToulouseCompiler::findData(dataForUniform & data)
-{
-	for (int i = 0; i < uniforms.size(); i++) {
-		if (data.id == uniforms.at(i).id)
-			return i;
-	}
-	return -1;
-}
+

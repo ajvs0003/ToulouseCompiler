@@ -112,11 +112,14 @@ void OpenGLWidget::setPathShader(string path)
 
 }
 
-void OpenGLWidget::setUniforms(vector<dataForUniform> _uniforms)
+void OpenGLWidget::setUniforms(QVector<dataForUniform> _uniforms)
 {
-	
-	uniforms = _uniforms;
+
+	uniforms = _uniforms.toStdVector();
+
 }
+
+
 
 void OpenGLWidget::compile()
 {
@@ -128,20 +131,21 @@ void OpenGLWidget::compile()
 	//delete the past shader
 
 	shaderProgram = new PagShaderProgram();
+	initialize();
+
 
 	chargeShader();
-	initialize();
 	renderNow();
 
 	
-
+	if (firstCompile)this->Paint();
 }
 
 void OpenGLWidget::chargeUniforms()
 {
 	for (int i = 0; i < uniforms.size(); i++) {
 
-
+		
 		if (uniforms.at(i).type == "boolean") {
 
 			//shader.setUniform("pointSize", 7.0f);
@@ -202,13 +206,13 @@ void OpenGLWidget::chargeUniforms()
 
 		else if (uniforms.at(i).type == "float") {
 
-			GLfloat val = std::stof(uniforms.at(i).value);
+			float val = std::stof(uniforms.at(i).value);
 			shaderProgram->setUniform(uniforms.at(i).name, val);
 
 		}
 		else if (uniforms.at(i).type == "int") {
 
-			GLint val = std::stoi(uniforms.at(i).value);
+			int val = std::stoi(uniforms.at(i).value);
 			shaderProgram->setUniform(uniforms.at(i).name, val);
 
 		}
@@ -682,6 +686,7 @@ void OpenGLWidget::renderNow()
 	if (m_animating)
 		renderLater();
 }
+
 
 void OpenGLWidget::setAnimating(bool animating)
 {

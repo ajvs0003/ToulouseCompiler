@@ -68,7 +68,7 @@ public:
 	
 	void setPathShader(string path);
 
-	void setUniforms(vector<dataForUniform> _uniforms);
+	void setUniforms(QVector<dataForUniform> _uniforms);
 
 	void compile();
 
@@ -101,7 +101,7 @@ public slots:
 	void renderLater();
 	void renderNow();
 
-
+	
 
 
 protected:

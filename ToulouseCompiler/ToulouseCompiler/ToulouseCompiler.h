@@ -90,7 +90,7 @@ private:
 
 	/********************UNIFORMS TABLE DATA********************/
 
-	std::vector<dataForUniform> uniforms;
+	
 	tableUniforms* table;
 
 	
@@ -120,7 +120,7 @@ private:
 	bool saveFile(const QString &fileName);
 	void setCurrentFile(const QString &fileName);
 
-	int findData(dataForUniform &data);
+	
 
 	bool maybeSave();
 
@@ -133,11 +133,9 @@ private slots:
 	void Mouse_Realeased();
 	void Mouse_Left();
 
-
-	//Manage the data send for the ui that add uniforms
-	void handleData(const dataForUniform &data);
-	void handleEditData(const dataForUniform &data);
-	void handleRemoveData(const dataForUniform &data);
+	void handleData(const QVector<dataForUniform> &data);
+	
+	
 
 	//BUTTONS
 	

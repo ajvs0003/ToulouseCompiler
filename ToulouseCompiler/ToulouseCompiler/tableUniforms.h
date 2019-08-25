@@ -8,7 +8,7 @@
 #include <vector>
 #include <QDebug>
 #include <QEvent>
-
+#include <QVector>
 
 namespace Ui { class tableUniforms; };
 
@@ -29,6 +29,7 @@ private:
 	QTableWidget* table;
 	QPushButton *addUniform;//Pointer to the button for add uniforms
 	addDialog* addForm;
+
 	std::vector<dataForUniform> uniforms;
 
 	enum column {
@@ -59,9 +60,7 @@ private slots:
 
 
 signals:
-	void newUniform(const dataForUniform &data);
+	void addUniforms(const QVector<dataForUniform> &data);
 	
-	void editUniform(const dataForUniform &data);
-
-	void removeUniform(const dataForUniform &data);
+	
 };

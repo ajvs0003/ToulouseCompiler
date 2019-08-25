@@ -86,7 +86,18 @@ void tableUniforms::handleButtonAboutUniform()
 
 void tableUniforms::handleButtonAccept()
 {
-	close();
+	QVector<dataForUniform> aux;
+
+	for (int i = 0; i < uniforms.size(); i++) {
+
+		aux.append(uniforms.at(i));
+
+	}
+
+	emit addUniforms(aux);
+
+	this->hide();
+
 
 
 
@@ -130,11 +141,11 @@ void tableUniforms::editSlot(int row, int col) {
 		switch (col) {
 		case column::name:
 			uniforms.at(row).name = table->item(row, col)->text().toStdString();
-			emit editUniform(uniforms.at(row));
+			
 			break;
 		case column::value:
 			uniforms.at(row).value = table->item(row, col)->text().toStdString();
-			emit editUniform(uniforms.at(row));
+			
 			break;
 
 		default:
@@ -150,7 +161,7 @@ void tableUniforms::cell_comboBoxChanged(const QString & newValue)
 
 	int row = sender()->property("row").toInt();
 	uniforms.at(row).type = newValue.toStdString();
-	emit editUniform(uniforms.at(row));
+	
 
 }
 //Method that manage the signal for remove the uniform
@@ -161,15 +172,15 @@ void tableUniforms::cell_onClicked() {
 	if (w) {
 		int row = table->indexAt(w->pos()).row();
 
-		string id = uniforms.at(row).name;
+		int id = uniforms.at(row).id;
 		dataForUniform aux = uniforms.at(row);
 		uniforms.erase(
 			std::remove_if(uniforms.begin(), uniforms.end(), [&](dataForUniform const & data) {
-			return data.name == id;
+			return data.id == id;
 		}),
 			uniforms.end());
 
-		emit removeUniform(aux);
+		
 		table->removeRow(row);
 		table->setCurrentCell(0, 0);
 	}
@@ -182,7 +193,7 @@ void tableUniforms::cell_onClicked() {
 void tableUniforms::handleData(const dataForUniform &data)
 {
 	table->setEditTriggers(QAbstractItemView::DoubleClicked);
-	emit newUniform(data);
+	
 	//**************table widget data***************//
 	int row = table->rowCount();
 	table->insertRow(table->rowCount());

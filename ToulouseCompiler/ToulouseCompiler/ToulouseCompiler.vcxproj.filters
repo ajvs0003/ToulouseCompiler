@@ -151,7 +151,7 @@
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="tableUniforms.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\QTConfiguration</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +168,7 @@
       <Filter>Header Files\QTConfiguration</Filter>
     </QtMoc>
     <QtMoc Include="tableUniforms.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\QTConfiguration</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
