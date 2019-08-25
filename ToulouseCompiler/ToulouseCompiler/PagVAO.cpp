@@ -46,7 +46,7 @@ PagVAO::~PagVAO()
 void PagVAO::iniciar(std::vector<PagPosNorm> PositionsAndNormals, std::vector<glm::vec2>  TextureCoords,std::vector<glm::vec3> Tangents,
 	std::vector<GLuint> Indices4PointCloud,  std::vector<GLuint> Indices4Lines, std::vector<GLuint> Indices4TrianglesMesh)
 {
-	Log::getInstancia()->success("Iniciating Vao");
+	/*Log::getInstancia()->success("Iniciating Vao");*/
 	this->PositionsAndNormals = PositionsAndNormals;
 	this->TextureCoords = TextureCoords;
 	this->Tangents = Tangents;

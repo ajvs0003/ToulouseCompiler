@@ -25,6 +25,7 @@
         <file>Resources/img/pawn.png</file>
         <file>Resources/img/wine.png</file>
         <file>Resources/img/wine_activate.png</file>
+        <file>Resources/img/delete.png</file>
     </qresource>
     <qresource prefix="/obj">
         <file>Resources/Objects/peon.txt</file>

@@ -1,7 +1,6 @@
 #pragma once
 
-#include <QtGui/QWindow>
-#include <QtGui/QOpenGLFunctions>
+
 #include "PagShaderProgram.h"
 #include "OpenGLFunctions.h"
 #include "Metodos_especiales.h"
@@ -11,10 +10,15 @@
 #include "DirectionalLight.h"
 #include "PointLight.h"
 #include "Spotlight.h"
+#include "addDialog.h"
+
+
+
 #include <string>
 #include <QMouseEvent>
 #include <QEvent>
-#include "addDialog.h"
+#include <QtGui/QWindow>
+#include <QtGui/QOpenGLFunctions>
 
 class QPainter;
 class QOpenGLContext;

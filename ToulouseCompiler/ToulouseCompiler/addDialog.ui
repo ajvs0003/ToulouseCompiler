@@ -125,6 +125,9 @@
        </item>
        <item>
         <widget class="QDialogButtonBox" name="buttonBox">
+         <property name="locale">
+          <locale language="English" country="UnitedKingdom"/>
+         </property>
          <property name="standardButtons">
           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
          </property>

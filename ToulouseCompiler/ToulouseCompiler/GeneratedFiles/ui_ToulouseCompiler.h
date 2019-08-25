@@ -350,8 +350,17 @@ public:
 #endif // QT_NO_TOOLTIP
         actionUniform_Table->setText(QApplication::translate("MainWindowClass", "Uniform Table", nullptr));
         actionPeon->setText(QApplication::translate("MainWindowClass", "Peon", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionPeon->setToolTip(QApplication::translate("MainWindowClass", "this change the object to pawn", nullptr));
+#endif // QT_NO_TOOLTIP
         actioncopa->setText(QApplication::translate("MainWindowClass", "copa", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actioncopa->setToolTip(QApplication::translate("MainWindowClass", "this change the object to cup", nullptr));
+#endif // QT_NO_TOOLTIP
         actionjoy->setText(QApplication::translate("MainWindowClass", "joy", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionjoy->setToolTip(QApplication::translate("MainWindowClass", "this change the object to joy", nullptr));
+#endif // QT_NO_TOOLTIP
         tabWidget->setTabText(tabWidget->indexOf(VertexS), QApplication::translate("MainWindowClass", "Vertex Shader", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(FragmentS), QApplication::translate("MainWindowClass", "Fragment Shader", nullptr));
         OutPut->setPlainText(QString());

@@ -34,6 +34,8 @@ public:
     QPushButton *help;
     QHBoxLayout *horizontalLayout;
     QTableWidget *table;
+    QVBoxLayout *verticalLayout_4;
+    QPushButton *aceptar;
 
     void setupUi(QWidget *tableUniforms)
     {
@@ -104,6 +106,17 @@ public:
 
         verticalLayout_2->addLayout(verticalLayout);
 
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        aceptar = new QPushButton(tableUniforms);
+        aceptar->setObjectName(QString::fromUtf8("aceptar"));
+
+        verticalLayout_4->addWidget(aceptar, 0, Qt::AlignHCenter|Qt::AlignVCenter);
+
+
+        verticalLayout_2->addLayout(verticalLayout_4);
+
 
         retranslateUi(tableUniforms);
 
@@ -115,6 +128,7 @@ public:
         tableUniforms->setWindowTitle(QApplication::translate("tableUniforms", "tableUniforms", nullptr));
         addUniform->setText(QString());
         help->setText(QString());
+        aceptar->setText(QApplication::translate("tableUniforms", "Accept", nullptr));
     } // retranslateUi
 
 };

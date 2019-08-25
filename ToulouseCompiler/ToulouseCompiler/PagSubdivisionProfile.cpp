@@ -68,7 +68,7 @@ bool PagSubdivisionProfile::CheckPoints(){
 						Log::getInstancia()->warning(" Point of Profile (" + to_string((Pure.at(i).x)) + " , " + to_string((Pure.at(i).y)) + ") not accepted");
 					}
 				}
-			Log::getInstancia()->success("Profile  accepted");
+			/*Log::getInstancia()->success("Profile  accepted");*/
 			return true;
 
 			}

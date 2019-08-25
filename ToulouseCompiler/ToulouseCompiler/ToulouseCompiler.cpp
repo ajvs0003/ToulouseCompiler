@@ -64,6 +64,9 @@ void ToulouseCompiler::handleEditData(const dataForUniform & data)
 		uniforms.at(id) = nuevo;
 	}
 	else Log::getInstancia()->warning("This uniform didn't exist");
+
+	openGLWindow->deleteUniforms();
+	openGLWindow->setUniforms(uniforms);
 }
 
 void ToulouseCompiler::handleRemoveData(const dataForUniform & data)
@@ -78,7 +81,8 @@ void ToulouseCompiler::handleRemoveData(const dataForUniform & data)
 	}
 	else Log::getInstancia()->warning("This uniform didn't exist");
 
-
+	openGLWindow->deleteUniforms();
+	openGLWindow->setUniforms(uniforms);
 }
 
 /********************END TABLE HANDLE********************/

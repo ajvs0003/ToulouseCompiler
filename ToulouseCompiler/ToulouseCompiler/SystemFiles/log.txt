@@ -1,13 +1,86 @@
-Toulouse Compiler LogFile (execution time:( 13:58:36).
+Toulouse Compiler LogFile (execution time:( 11:42:29).
 ---------------------------------- 
-13:58:38 Initializing OpenGL
-13:58:38 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-13:58:38 Manufacturer	: NVIDIA Corporation
-13:58:38 OpenGL Version	: 4.5.0 NVIDIA 430.86
-13:58:38 GLSL Version	: 4.50 NVIDIA
-13:58:38 -----------OpenGL Initialized Correctly------------
-13:58:38[SUCCESSFUL]Opening file ...
-13:58:38[SUCCESSFUL]Profile  accepted
-13:58:38[SUCCESSFUL]Iniciating Vao
-13:58:38[SUCCESSFUL]Iniciating Vao
-13:58:38[SUCCESSFUL]Iniciating Vao
+11:42:30 Initializing OpenGL
+11:42:30 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:42:30 Manufacturer	: NVIDIA Corporation
+11:42:30 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:42:30 GLSL Version	: 4.50 NVIDIA
+11:42:30 -----------OpenGL Initialized Correctly------------
+11:43:02 Initializing OpenGL
+11:43:02 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:02 Manufacturer	: NVIDIA Corporation
+11:43:02 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:02 GLSL Version	: 4.50 NVIDIA
+11:43:02 -----------OpenGL Initialized Correctly------------
+11:43:07 Initializing OpenGL
+11:43:07 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:07 Manufacturer	: NVIDIA Corporation
+11:43:07 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:07 GLSL Version	: 4.50 NVIDIA
+11:43:07 -----------OpenGL Initialized Correctly------------
+11:43:07 Initializing OpenGL
+11:43:07 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:07 Manufacturer	: NVIDIA Corporation
+11:43:07 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:07 GLSL Version	: 4.50 NVIDIA
+11:43:07 -----------OpenGL Initialized Correctly------------
+11:43:09 Initializing OpenGL
+11:43:09 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:09 Manufacturer	: NVIDIA Corporation
+11:43:09 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:09 GLSL Version	: 4.50 NVIDIA
+11:43:09 -----------OpenGL Initialized Correctly------------
+11:43:10 Initializing OpenGL
+11:43:10 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:10 Manufacturer	: NVIDIA Corporation
+11:43:10 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:10 GLSL Version	: 4.50 NVIDIA
+11:43:10 -----------OpenGL Initialized Correctly------------
+11:43:11 Initializing OpenGL
+11:43:11 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:11 Manufacturer	: NVIDIA Corporation
+11:43:11 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:11 GLSL Version	: 4.50 NVIDIA
+11:43:11 -----------OpenGL Initialized Correctly------------
+11:43:11 Initializing OpenGL
+11:43:11 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:11 Manufacturer	: NVIDIA Corporation
+11:43:11 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:11 GLSL Version	: 4.50 NVIDIA
+11:43:11 -----------OpenGL Initialized Correctly------------
+11:43:11 Initializing OpenGL
+11:43:11 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:11 Manufacturer	: NVIDIA Corporation
+11:43:11 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:11 GLSL Version	: 4.50 NVIDIA
+11:43:11 -----------OpenGL Initialized Correctly------------
+11:43:11 Initializing OpenGL
+11:43:11 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:11 Manufacturer	: NVIDIA Corporation
+11:43:11 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:11 GLSL Version	: 4.50 NVIDIA
+11:43:11 -----------OpenGL Initialized Correctly------------
+11:43:11 Initializing OpenGL
+11:43:11 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:11 Manufacturer	: NVIDIA Corporation
+11:43:11 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:11 GLSL Version	: 4.50 NVIDIA
+11:43:11 -----------OpenGL Initialized Correctly------------
+11:43:11 Initializing OpenGL
+11:43:11 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:11 Manufacturer	: NVIDIA Corporation
+11:43:11 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:11 GLSL Version	: 4.50 NVIDIA
+11:43:11 -----------OpenGL Initialized Correctly------------
+11:43:12 Initializing OpenGL
+11:43:12 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:12 Manufacturer	: NVIDIA Corporation
+11:43:12 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:12 GLSL Version	: 4.50 NVIDIA
+11:43:12 -----------OpenGL Initialized Correctly------------
+11:43:12 Initializing OpenGL
+11:43:12 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:43:12 Manufacturer	: NVIDIA Corporation
+11:43:12 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:43:12 GLSL Version	: 4.50 NVIDIA
+11:43:12 -----------OpenGL Initialized Correctly------------

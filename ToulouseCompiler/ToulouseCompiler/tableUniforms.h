@@ -39,14 +39,14 @@ private:
 	/********************END UNIFORMS TABLE DATA********************/
 
 	QPushButton *help;
-	 
+	QPushButton *accept;
 	
 
 private slots:
 
 	
 	void handleButtonAboutUniform();
-
+	void handleButtonAccept();
 	void handleButtonAddUniform();
 
 	//Manage the data send for the ui that add uniforms

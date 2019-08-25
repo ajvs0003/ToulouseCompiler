@@ -12,7 +12,7 @@ tableUniforms::tableUniforms(QWidget *parent)
 
 	table->setColumnCount(4);
 
-	table->setHorizontalHeaderLabels(QStringList() << tr("Name") << tr("Type Uniform") << tr("Value") << tr("Delete"));
+	table->setHorizontalHeaderLabels(QStringList() << tr("Name") << tr("Uniform Type") << tr("Value") << tr(""));
 
 
 
@@ -21,7 +21,7 @@ tableUniforms::tableUniforms(QWidget *parent)
 
 
 	table->verticalHeader()->setVisible(false);
-
+	table->setShowGrid(false);
 
 	//for put that all the widget is only the 4 columns that we have
 	QHeaderView* header = table->horizontalHeader();
@@ -48,6 +48,12 @@ tableUniforms::tableUniforms(QWidget *parent)
 	help = ui->help;
 	help->setStyleSheet("QPushButton{background: transparent;}");
 	connect(help, SIGNAL(released()), this, SLOT(handleButtonAboutUniform()));
+
+	accept = ui->aceptar;
+	connect(accept, SIGNAL(released()), this, SLOT(handleButtonAccept()));
+
+
+
 
 	Qt::WindowFlags flags = windowFlags();
 	flags |= Qt::CustomizeWindowHint;
@@ -77,6 +83,14 @@ void tableUniforms::handleButtonAboutUniform()
 }
 
 
+
+void tableUniforms::handleButtonAccept()
+{
+	close();
+
+
+
+}
 
 void tableUniforms::handleButtonAddUniform()
 {
@@ -180,8 +194,10 @@ void tableUniforms::handleData(const dataForUniform &data)
 
 	//create qt elements for the table
 	QTableWidgetItem *name = new QTableWidgetItem(QString::fromStdString(data.name));
+	name->setTextAlignment(Qt::AlignCenter);
+	
 	QTableWidgetItem *value = new QTableWidgetItem(QString::fromStdString(data.value));
-
+	value->setTextAlignment(Qt::AlignCenter);
 
 	//insert values to the table
 	table->setItem(row, column::name, name);
@@ -217,10 +233,11 @@ void tableUniforms::handleData(const dataForUniform &data)
 	pWi->setLayout(pLayout);
 	table->setCellWidget(row, column::type, pWi);
 
-
+	QIcon icon(":/img/Resources/img/delete.png");
 	QWidget* pWidget = new QWidget();
 	QPushButton* btn_edit = new QPushButton();
-	btn_edit->setText("Remove");
+	btn_edit->setIcon(icon);
+	btn_edit->setStyleSheet("QPushButton{background: transparent;}");
 
 	connect(btn_edit, SIGNAL(clicked()), this, SLOT(cell_onClicked()));
 

@@ -9,6 +9,7 @@
 #ifndef UI_ADDDIALOG_H
 #define UI_ADDDIALOG_H
 
+#include <QtCore/QLocale>
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
@@ -138,6 +139,7 @@ public:
 
         buttonBox = new QDialogButtonBox(addDialog);
         buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
+        buttonBox->setLocale(QLocale(QLocale::English, QLocale::UnitedKingdom));
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Save);
         buttonBox->setCenterButtons(true);
 

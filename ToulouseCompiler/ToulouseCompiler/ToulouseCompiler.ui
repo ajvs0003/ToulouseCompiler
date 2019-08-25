@@ -376,6 +376,9 @@
    <property name="text">
     <string>Peon</string>
    </property>
+   <property name="toolTip">
+    <string>this change the object to pawn</string>
+   </property>
   </action>
   <action name="actioncopa">
    <property name="checkable">
@@ -389,6 +392,9 @@
    <property name="text">
     <string>copa</string>
    </property>
+   <property name="toolTip">
+    <string>this change the object to cup</string>
+   </property>
   </action>
   <action name="actionjoy">
    <property name="checkable">
@@ -401,6 +407,9 @@
    </property>
    <property name="text">
     <string>joy</string>
+   </property>
+   <property name="toolTip">
+    <string>this change the object to joy</string>
    </property>
   </action>
  </widget>
