@@ -6,6 +6,7 @@
 #include "OpenGLWidget.h"
 #include "Log.h"
 #include "tableUniforms.h"
+#include "Highlighter.h"
 #include <QTableWidget>
 #include <QPoint>
 #include <QComboBox>
@@ -41,7 +42,9 @@ private:
 	CodeEditor* fragmentShader;
 	QString curFile;
 	
-	
+
+	Highlighter *VertexHighlighter;
+	Highlighter *FragmentHighlighter;
 
 	/********************END CODE EDITOR DATA********************/
 

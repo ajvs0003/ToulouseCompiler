@@ -630,7 +630,8 @@ void ToulouseCompiler::configuration_codeEditor()
 	this->vertexShader = new CodeEditor();
 	this->fragmentShader = new CodeEditor();
 
-	
+	VertexHighlighter = new Highlighter(vertexShader->document());
+	FragmentHighlighter = new Highlighter(fragmentShader->document());
 	//Para que funcionara el resize hay que tener en cuenta que los valores de maximumSize en qt designer esten en el "maximo" (16777215) 
 
 	

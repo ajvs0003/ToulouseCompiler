@@ -153,6 +153,9 @@
     <ClCompile Include="tableUniforms.cpp">
       <Filter>Source Files\QTConfiguration</Filter>
     </ClCompile>
+    <ClCompile Include="Highlighter.cpp">
+      <Filter>Source Files\CodeEditor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="OpenGLWidget.h">
@@ -169,6 +172,9 @@
     </QtMoc>
     <QtMoc Include="tableUniforms.h">
       <Filter>Header Files\QTConfiguration</Filter>
+    </QtMoc>
+    <QtMoc Include="Highlighter.h">
+      <Filter>Header Files\CodeEditor</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

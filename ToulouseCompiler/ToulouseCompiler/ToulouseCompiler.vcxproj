@@ -119,6 +119,7 @@
     <ClCompile Include="AmbientLight.cpp" />
     <ClCompile Include="CodeEditor.cpp" />
     <ClCompile Include="DirectionalLight.cpp" />
+    <ClCompile Include="Highlighter.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
@@ -153,6 +154,10 @@
   <ItemGroup>
     <ClInclude Include="AmbientLight.h" />
     <ClInclude Include="DirectionalLight.h" />
+    <QtMoc Include="Highlighter.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets;.\glwrappers\glm-0.9.9.0\glm\glm</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets;.\glwrappers\glm-0.9.9.0\glm\glm</IncludePath>
+    </QtMoc>
     <ClInclude Include="lodepng.h" />
     <ClInclude Include="MaterialLibrary.h" />
     <ClInclude Include="PagMaterial.h" />
