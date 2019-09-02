@@ -1,26 +1,8 @@
-Toulouse Compiler LogFile (execution time:( 01:20:25).
+Toulouse Compiler LogFile (execution time:( 09:56:03).
 ---------------------------------- 
-01:20:26 Initializing OpenGL
-01:20:26 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-01:20:26 Manufacturer	: NVIDIA Corporation
-01:20:26 OpenGL Version	: 4.5.0 NVIDIA 430.86
-01:20:26 GLSL Version	: 4.50 NVIDIA
-01:20:26 -----------OpenGL Initialized Correctly------------
-01:23:04 Initializing OpenGL
-01:23:04 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-01:23:04 Manufacturer	: NVIDIA Corporation
-01:23:04 OpenGL Version	: 4.5.0 NVIDIA 430.86
-01:23:04 GLSL Version	: 4.50 NVIDIA
-01:23:04 -----------OpenGL Initialized Correctly------------
-01:23:13 Initializing OpenGL
-01:23:13 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-01:23:13 Manufacturer	: NVIDIA Corporation
-01:23:13 OpenGL Version	: 4.5.0 NVIDIA 430.86
-01:23:13 GLSL Version	: 4.50 NVIDIA
-01:23:13 -----------OpenGL Initialized Correctly------------
-01:23:19 Initializing OpenGL
-01:23:19 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-01:23:19 Manufacturer	: NVIDIA Corporation
-01:23:19 OpenGL Version	: 4.5.0 NVIDIA 430.86
-01:23:19 GLSL Version	: 4.50 NVIDIA
-01:23:19 -----------OpenGL Initialized Correctly------------
+09:56:05 Initializing OpenGL
+09:56:05 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+09:56:05 Manufacturer	: NVIDIA Corporation
+09:56:05 OpenGL Version	: 4.5.0 NVIDIA 430.86
+09:56:05 GLSL Version	: 4.50 NVIDIA
+09:56:05 -----------OpenGL Initialized Correctly------------

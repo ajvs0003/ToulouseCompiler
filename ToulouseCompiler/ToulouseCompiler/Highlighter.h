@@ -27,11 +27,15 @@ private:
 	QRegularExpression commentStartExpression;
 	QRegularExpression commentEndExpression;
 
-	QTextCharFormat keywordFormat;//formato para las variables
+	QTextCharFormat keywordFormat;//formato para system varibles
+	QTextCharFormat reservedKeywordFormat;//formato para system varibles
+	QTextCharFormat variableFormat;//formato para las variables
 	QTextCharFormat classFormat;// formato para la clase
 	QTextCharFormat singleLineCommentFormat;//formato para coemntario de linea
+
 	QTextCharFormat multiLineCommentFormat;//formato para comentario de varias lineas
-	QTextCharFormat quotationFormat; //formato para comillas 
+
+	//QTextCharFormat quotationFormat; //formato para comillas 
 	QTextCharFormat functionFormat;//formato de funcion
 };
 

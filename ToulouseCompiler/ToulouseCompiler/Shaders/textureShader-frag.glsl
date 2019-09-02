@@ -44,8 +44,8 @@ vec3 ads(vec4 texColor){
 
 void main() {
 
-	vec4 texColor = texture(TexSamplerColor, texCoord);
+	vec4 texColor = texture (TexSamplerColor, texCoord);
 
-	FragColor = vec4(ads(texColor), 1.0);
+	FragColor = vec4 (ads(texColor), 1.0);
 }
 

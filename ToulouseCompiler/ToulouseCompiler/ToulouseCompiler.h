@@ -1,17 +1,20 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include <QTableWidget>
+#include <QPoint>
+#include <QComboBox>
+#include <vector>
+#include <QDebug>
+
+
 #include "ui_ToulouseCompiler.h"
 #include "CodeEditor.h"
 #include "OpenGLWidget.h"
 #include "Log.h"
 #include "tableUniforms.h"
 #include "Highlighter.h"
-#include <QTableWidget>
-#include <QPoint>
-#include <QComboBox>
-#include <vector>
-#include <QDebug>
+
 
 
 /*******************/

@@ -1,6 +1,6 @@
 #version 400
-layout(location = 0) in vec3 vPosition;
-layout(location = 1) in vec3 vNormal;
+layout (location = 0) in vec3 vPosition;
+layout (location = 1) in vec3 vNormal;
 
 
 uniform mat4 mvpMatrix;
@@ -12,9 +12,9 @@ out vec3 normal;
 
 void main(){
 
-normal = vec3(mModelView * vec4(vNormal,0.0));
-position = vec3(mModelView * vec4(vPosition,1.0));
-gl_Position = mvpMatrix * vec4(vPosition,1.0);
+normal = vec3 (mModelView * vec4 (vNormal,0.0));
+position = vec3 (mModelView * vec4 (vPosition,1.0));
+gl_Position = mvpMatrix * vec4 (vPosition,1.0);
 
 
 }
