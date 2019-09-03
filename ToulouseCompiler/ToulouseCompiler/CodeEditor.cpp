@@ -56,6 +56,17 @@
 
 CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
 {
+	QFont font;
+	
+	
+	font.setFamily("monospace [Consolas]");
+	font.setFixedPitch(true);
+	font.setStyleHint(QFont::TypeWriter);
+	
+	this->setFont(font);
+
+
+
 
 	lineNumberArea = new LineNumberArea(this);
 

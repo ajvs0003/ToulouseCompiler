@@ -87,6 +87,7 @@ public:
 	void leaveEvent(QMouseEvent *);
 	void mouseReleaseEvent(QMouseEvent *e);
 
+	void wheelEvent(QWheelEvent *e);
 	
 
 	
@@ -175,7 +176,7 @@ private:
 
 	int typeTrial = 0;
 
-	bool firstCompile = false;
+	bool pushCompile = false;
 
 	int TypeObject = 0;
 

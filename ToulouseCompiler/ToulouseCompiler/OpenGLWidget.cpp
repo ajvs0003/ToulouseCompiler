@@ -8,7 +8,7 @@
 
 #include <QWidget>
 #include <QDebug>
-
+#include <QWheelEvent>
 #include <gtc/matrix_transform.hpp>
 
 #include "PagEnumerations.h"
@@ -32,7 +32,7 @@ void OpenGLWidget::refreshCallback()
 	/*qDebug() << "Refresh callback called by Renderer";*/
 
 
-	if (firstCompile)this->Paint();
+	this->Paint();
 
 }
 
@@ -123,7 +123,7 @@ void OpenGLWidget::setUniforms(QVector<dataForUniform> _uniforms)
 
 void OpenGLWidget::compile()
 {
-	firstCompile = true;
+	pushCompile = true;
 
 	//checkOpenGLVersion();//check the version for OpenGl
 
@@ -135,10 +135,11 @@ void OpenGLWidget::compile()
 
 
 	chargeShader();
-	renderNow();
+	this->Paint();
 
+
+	renderNow();
 	
-	if (firstCompile)this->Paint();
 }
 
 void OpenGLWidget::chargeUniforms()
@@ -277,7 +278,30 @@ void OpenGLWidget::mouseReleaseEvent(QMouseEvent *e)
 	}
 }
 
+void OpenGLWidget::wheelEvent(QWheelEvent *e)
+{
+	if (e->type() == QEvent::Wheel) {
+		
+		
+			if (e->orientation() == Qt::Vertical) {
+				
+				if (e->delta() < 0)
+					{
+						/*Log::getInstancia()->escribir("zoom -");*/
+						camera->zoom(0.1);
+					}
+					else {
+						/*Log::getInstancia()->escribir("zoom +");*/
+						camera->zoom(-0.1);
+					}
+				this->renderNow();
+			}
+		
 
+
+	}
+
+}
 
 void OpenGLWidget::chargeShader()
 {
@@ -439,77 +463,77 @@ void OpenGLWidget::Paint()
 
 	//activate the shader and chargue the user uniforms
 
+	if (pushCompile) {
+
+		switch (typeTrial) {
+		case typePaint::points:
+
+			glDisable(GL_BLEND);
+			shaderProgram->use();
+			chargeUniforms();
+			paintObjects(*shaderProgram, 0);
+			break;
+
+		case typePaint::wire:
+
+			glDisable(GL_BLEND);
+			shaderProgram->use();
+			chargeUniforms();
+			paintObjects(*shaderProgram, 1);
+
+			break;
+		case typePaint::triangle:
+
+			glDisable(GL_BLEND);
+			shaderProgram->use();
+			chargeUniforms();
+			paintObjects(*shaderProgram, 2);
+			break;
+		case typePaint::material:
+			glEnable(GL_BLEND);
+			shaderProgram->use();
+			chargeUniforms();
+
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			ambiental->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+			paintObjects(*shaderProgram, 3);
 
 
-	switch (typeTrial) {
-	case typePaint::points:
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+			puntual->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+			paintObjects(*shaderProgram, 3);
 
-		glDisable(GL_BLEND);
-		shaderProgram->use();
-		chargeUniforms();
-		paintObjects(*shaderProgram, 0);
-		break;
-
-	case typePaint::wire:
-
-		glDisable(GL_BLEND);
-		shaderProgram->use();
-		chargeUniforms();
-		paintObjects(*shaderProgram, 1);
-
-		break;
-	case typePaint::triangle:
-
-		glDisable(GL_BLEND);
-		shaderProgram->use();
-		chargeUniforms();
-		paintObjects(*shaderProgram, 2);
-		break;
-	case typePaint::material:
-		glEnable(GL_BLEND);
-		shaderProgram->use();
-		chargeUniforms();
-
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		ambiental->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
-		paintObjects(*shaderProgram, 3);
-		
-
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-		puntual->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
-		paintObjects(*shaderProgram, 3);
-		
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-		puntual2->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
-		paintObjects(*shaderProgram, 3);
-		
-		
-
-		break;
-	case typePaint::textures:
-		glEnable(GL_BLEND);
-		shaderProgram->use();
-		chargeUniforms();
-
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		ambiental->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
-		paintObjects(*shaderProgram, 4);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+			puntual2->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+			paintObjects(*shaderProgram, 3);
 
 
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-		puntual->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
-		paintObjects(*shaderProgram, 4);
+
+			break;
+		case typePaint::textures:
+			glEnable(GL_BLEND);
+			shaderProgram->use();
+			chargeUniforms();
+
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			ambiental->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+			paintObjects(*shaderProgram, 4);
 
 
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-		puntual2->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
-		paintObjects(*shaderProgram, 4);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+			puntual->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+			paintObjects(*shaderProgram, 4);
 
 
-		break;
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+			puntual2->aplicateShader(shaderProgram, camera->getWorldToViewMatrix());
+			paintObjects(*shaderProgram, 4);
+
+
+			break;
+		}
+
 	}
-
-
 }
 
 

@@ -857,7 +857,7 @@ void PagRevolutionObject::DrawAsPoints(PagShaderProgram &shader, glm::mat4 model
 
 	glm::mat4 matriz = this->modelMatrix * model;
 
-	shader.setUniform("mModelViewProj", projection*view*matriz);
+	shader.setUniform("mvpMatrix", projection*view*matriz);
 
 	/*cout << "Ha llegado a la parte de pintar en revolution para puntos" << endl;*/
 
@@ -877,7 +877,7 @@ void PagRevolutionObject::DrawAsLines(PagShaderProgram &shader, glm::mat4 model,
 	// Cada shader program tiene su propio conjunto de parámetros.
 	/*shader.setUniform("vColor", glm::vec3(0.0f, 0.0f, 1.0f));*/
 	glm::mat4 matriz = modelMatrix * model;
-	shader.setUniform("mModelViewProj", projection*view*matriz);
+	shader.setUniform("mvpMatrix", projection*view*matriz);
 
 	/*cout << "Ha llegado a la parte de pintar en revolution para lineas" << endl;*/
 
