@@ -1,14 +1,382 @@
-Toulouse Compiler LogFile (execution time:( 11:06:56).
+Toulouse Compiler LogFile (execution time:( 11:53:15).
 ---------------------------------- 
-11:06:57 Initializing OpenGL
-11:06:57 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-11:06:57 Manufacturer	: NVIDIA Corporation
-11:06:57 OpenGL Version	: 4.5.0 NVIDIA 430.86
-11:06:57 GLSL Version	: 4.50 NVIDIA
-11:06:57 -----------OpenGL Initialized Correctly------------
-11:07:03 Initializing OpenGL
-11:07:03 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-11:07:03 Manufacturer	: NVIDIA Corporation
-11:07:03 OpenGL Version	: 4.5.0 NVIDIA 430.86
-11:07:03 GLSL Version	: 4.50 NVIDIA
-11:07:03 -----------OpenGL Initialized Correctly------------
+11:53:16 Initializing OpenGL
+11:53:16 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:16 Manufacturer	: NVIDIA Corporation
+11:53:16 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:16 GLSL Version	: 4.50 NVIDIA
+11:53:16 -----------OpenGL Initialized Correctly------------
+11:53:38 Initializing OpenGL
+11:53:38 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:39 Manufacturer	: NVIDIA Corporation
+11:53:39 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:39 GLSL Version	: 4.50 NVIDIA
+11:53:39 -----------OpenGL Initialized Correctly------------
+11:53:40 Initializing OpenGL
+11:53:40 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:40 Manufacturer	: NVIDIA Corporation
+11:53:40 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:40 GLSL Version	: 4.50 NVIDIA
+11:53:40 -----------OpenGL Initialized Correctly------------
+11:53:40 Initializing OpenGL
+11:53:40 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:40 Manufacturer	: NVIDIA Corporation
+11:53:40 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:40 GLSL Version	: 4.50 NVIDIA
+11:53:40 -----------OpenGL Initialized Correctly------------
+11:53:40 Initializing OpenGL
+11:53:40 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:40 Manufacturer	: NVIDIA Corporation
+11:53:40 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:40 GLSL Version	: 4.50 NVIDIA
+11:53:40 -----------OpenGL Initialized Correctly------------
+11:53:40 Initializing OpenGL
+11:53:40 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:40 Manufacturer	: NVIDIA Corporation
+11:53:40 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:40 GLSL Version	: 4.50 NVIDIA
+11:53:40 -----------OpenGL Initialized Correctly------------
+11:53:41 Initializing OpenGL
+11:53:41 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:41 Manufacturer	: NVIDIA Corporation
+11:53:41 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:41 GLSL Version	: 4.50 NVIDIA
+11:53:41 -----------OpenGL Initialized Correctly------------
+11:53:41 Initializing OpenGL
+11:53:41 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:41 Manufacturer	: NVIDIA Corporation
+11:53:41 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:41 GLSL Version	: 4.50 NVIDIA
+11:53:41 -----------OpenGL Initialized Correctly------------
+11:53:41 Initializing OpenGL
+11:53:41 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:41 Manufacturer	: NVIDIA Corporation
+11:53:41 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:41 GLSL Version	: 4.50 NVIDIA
+11:53:41 -----------OpenGL Initialized Correctly------------
+11:53:41 Initializing OpenGL
+11:53:41 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:41 Manufacturer	: NVIDIA Corporation
+11:53:41 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:41 GLSL Version	: 4.50 NVIDIA
+11:53:42 -----------OpenGL Initialized Correctly------------
+11:53:42 Initializing OpenGL
+11:53:42 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:42 Manufacturer	: NVIDIA Corporation
+11:53:42 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:42 GLSL Version	: 4.50 NVIDIA
+11:53:42 -----------OpenGL Initialized Correctly------------
+11:53:42 Initializing OpenGL
+11:53:42 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:42 Manufacturer	: NVIDIA Corporation
+11:53:42 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:42 GLSL Version	: 4.50 NVIDIA
+11:53:42 -----------OpenGL Initialized Correctly------------
+11:53:42 Initializing OpenGL
+11:53:42 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:42 Manufacturer	: NVIDIA Corporation
+11:53:42 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:42 GLSL Version	: 4.50 NVIDIA
+11:53:42 -----------OpenGL Initialized Correctly------------
+11:53:43 Initializing OpenGL
+11:53:43 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:43 Manufacturer	: NVIDIA Corporation
+11:53:43 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:43 GLSL Version	: 4.50 NVIDIA
+11:53:43 -----------OpenGL Initialized Correctly------------
+11:53:43 Initializing OpenGL
+11:53:43 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:43 Manufacturer	: NVIDIA Corporation
+11:53:43 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:43 GLSL Version	: 4.50 NVIDIA
+11:53:43 -----------OpenGL Initialized Correctly------------
+11:53:55 Initializing OpenGL
+11:53:55 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:55 Manufacturer	: NVIDIA Corporation
+11:53:55 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:55 GLSL Version	: 4.50 NVIDIA
+11:53:55 -----------OpenGL Initialized Correctly------------
+11:53:57 Initializing OpenGL
+11:53:57 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:53:57 Manufacturer	: NVIDIA Corporation
+11:53:57 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:53:57 GLSL Version	: 4.50 NVIDIA
+11:53:57 -----------OpenGL Initialized Correctly------------
+11:54:06 Initializing OpenGL
+11:54:06 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:06 Manufacturer	: NVIDIA Corporation
+11:54:06 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:06 GLSL Version	: 4.50 NVIDIA
+11:54:06 -----------OpenGL Initialized Correctly------------
+11:54:06 Initializing OpenGL
+11:54:06 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:06 Manufacturer	: NVIDIA Corporation
+11:54:06 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:06 GLSL Version	: 4.50 NVIDIA
+11:54:06 -----------OpenGL Initialized Correctly------------
+11:54:06 Initializing OpenGL
+11:54:06 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:06 Manufacturer	: NVIDIA Corporation
+11:54:06 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:06 GLSL Version	: 4.50 NVIDIA
+11:54:06 -----------OpenGL Initialized Correctly------------
+11:54:07 Initializing OpenGL
+11:54:07 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:07 Manufacturer	: NVIDIA Corporation
+11:54:07 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:07 GLSL Version	: 4.50 NVIDIA
+11:54:07 -----------OpenGL Initialized Correctly------------
+11:54:07 Initializing OpenGL
+11:54:07 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:07 Manufacturer	: NVIDIA Corporation
+11:54:07 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:07 GLSL Version	: 4.50 NVIDIA
+11:54:07 -----------OpenGL Initialized Correctly------------
+11:54:07 Initializing OpenGL
+11:54:07 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:07 Manufacturer	: NVIDIA Corporation
+11:54:07 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:07 GLSL Version	: 4.50 NVIDIA
+11:54:07 -----------OpenGL Initialized Correctly------------
+11:54:07 Initializing OpenGL
+11:54:07 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:07 Manufacturer	: NVIDIA Corporation
+11:54:07 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:07 GLSL Version	: 4.50 NVIDIA
+11:54:07 -----------OpenGL Initialized Correctly------------
+11:54:07 Initializing OpenGL
+11:54:07 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:07 Manufacturer	: NVIDIA Corporation
+11:54:07 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:07 GLSL Version	: 4.50 NVIDIA
+11:54:07 -----------OpenGL Initialized Correctly------------
+11:54:07 Initializing OpenGL
+11:54:07 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:07 Manufacturer	: NVIDIA Corporation
+11:54:07 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:07 GLSL Version	: 4.50 NVIDIA
+11:54:07 -----------OpenGL Initialized Correctly------------
+11:54:08 Initializing OpenGL
+11:54:08 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:08 Manufacturer	: NVIDIA Corporation
+11:54:08 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:08 GLSL Version	: 4.50 NVIDIA
+11:54:08 -----------OpenGL Initialized Correctly------------
+11:54:08 Initializing OpenGL
+11:54:08 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:08 Manufacturer	: NVIDIA Corporation
+11:54:08 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:08 GLSL Version	: 4.50 NVIDIA
+11:54:08 -----------OpenGL Initialized Correctly------------
+11:54:08 Initializing OpenGL
+11:54:08 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:08 Manufacturer	: NVIDIA Corporation
+11:54:08 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:08 GLSL Version	: 4.50 NVIDIA
+11:54:08 -----------OpenGL Initialized Correctly------------
+11:54:08 Initializing OpenGL
+11:54:08 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:08 Manufacturer	: NVIDIA Corporation
+11:54:08 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:08 GLSL Version	: 4.50 NVIDIA
+11:54:08 -----------OpenGL Initialized Correctly------------
+11:54:08 Initializing OpenGL
+11:54:08 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:08 Manufacturer	: NVIDIA Corporation
+11:54:08 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:08 GLSL Version	: 4.50 NVIDIA
+11:54:08 -----------OpenGL Initialized Correctly------------
+11:54:09 Initializing OpenGL
+11:54:09 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:09 Manufacturer	: NVIDIA Corporation
+11:54:09 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:09 GLSL Version	: 4.50 NVIDIA
+11:54:09 -----------OpenGL Initialized Correctly------------
+11:54:21 Initializing OpenGL
+11:54:21 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:21 Manufacturer	: NVIDIA Corporation
+11:54:21 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:21 GLSL Version	: 4.50 NVIDIA
+11:54:21 -----------OpenGL Initialized Correctly------------
+11:54:22 Initializing OpenGL
+11:54:22 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:22 Manufacturer	: NVIDIA Corporation
+11:54:22 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:22 GLSL Version	: 4.50 NVIDIA
+11:54:22 -----------OpenGL Initialized Correctly------------
+11:54:22 Initializing OpenGL
+11:54:22 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:22 Manufacturer	: NVIDIA Corporation
+11:54:22 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:22 GLSL Version	: 4.50 NVIDIA
+11:54:22 -----------OpenGL Initialized Correctly------------
+11:54:23 Initializing OpenGL
+11:54:23 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:23 Manufacturer	: NVIDIA Corporation
+11:54:23 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:23 GLSL Version	: 4.50 NVIDIA
+11:54:23 -----------OpenGL Initialized Correctly------------
+11:54:23 Initializing OpenGL
+11:54:23 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:23 Manufacturer	: NVIDIA Corporation
+11:54:23 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:23 GLSL Version	: 4.50 NVIDIA
+11:54:23 -----------OpenGL Initialized Correctly------------
+11:54:24 Initializing OpenGL
+11:54:24 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:24 Manufacturer	: NVIDIA Corporation
+11:54:24 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:24 GLSL Version	: 4.50 NVIDIA
+11:54:24 -----------OpenGL Initialized Correctly------------
+11:54:24 Initializing OpenGL
+11:54:24 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:24 Manufacturer	: NVIDIA Corporation
+11:54:24 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:24 GLSL Version	: 4.50 NVIDIA
+11:54:24 -----------OpenGL Initialized Correctly------------
+11:54:33 Initializing OpenGL
+11:54:33 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:33 Manufacturer	: NVIDIA Corporation
+11:54:33 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:33 GLSL Version	: 4.50 NVIDIA
+11:54:33 -----------OpenGL Initialized Correctly------------
+11:54:38 Initializing OpenGL
+11:54:38 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:38 Manufacturer	: NVIDIA Corporation
+11:54:38 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:38 GLSL Version	: 4.50 NVIDIA
+11:54:38 -----------OpenGL Initialized Correctly------------
+11:54:41 Initializing OpenGL
+11:54:41 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:41 Manufacturer	: NVIDIA Corporation
+11:54:41 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:41 GLSL Version	: 4.50 NVIDIA
+11:54:41 -----------OpenGL Initialized Correctly------------
+11:54:46 Initializing OpenGL
+11:54:46 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:46 Manufacturer	: NVIDIA Corporation
+11:54:47 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:47 GLSL Version	: 4.50 NVIDIA
+11:54:47 -----------OpenGL Initialized Correctly------------
+11:54:51 Initializing OpenGL
+11:54:51 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:51 Manufacturer	: NVIDIA Corporation
+11:54:51 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:51 GLSL Version	: 4.50 NVIDIA
+11:54:51 -----------OpenGL Initialized Correctly------------
+11:54:55 Initializing OpenGL
+11:54:55 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:54:55 Manufacturer	: NVIDIA Corporation
+11:54:55 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:54:55 GLSL Version	: 4.50 NVIDIA
+11:54:55 -----------OpenGL Initialized Correctly------------
+11:55:01 Initializing OpenGL
+11:55:01 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:55:01 Manufacturer	: NVIDIA Corporation
+11:55:01 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:55:01 GLSL Version	: 4.50 NVIDIA
+11:55:01 -----------OpenGL Initialized Correctly------------
+11:55:01 [ERROR [ 0]Cannot find localization for: Ia
+11:55:01 [ERROR [ 1]Cannot find localization for: mModelView
+11:55:01 [ERROR [ 2]Cannot find localization for: Ka
+11:55:01 [ERROR [ 3]Cannot find localization for: Kd
+11:55:01 [ERROR [ 4]Cannot find localization for: Ks
+11:55:01 [ERROR [ 5]Cannot find localization for: shininess
+11:55:01 [ERROR [ 6]Cannot find localization for: Ka
+11:55:01 [ERROR [ 7]Cannot find localization for: Kd
+11:55:01 [ERROR [ 8]Cannot find localization for: Ks
+11:55:01 [ERROR [ 9]Cannot find localization for: shininess
+11:55:01 [ERROR [ 10]Cannot find localization for: Ka
+11:55:01 [ERROR [ 11]Cannot find localization for: Kd
+11:55:01 [ERROR [ 12]Cannot find localization for: Ks
+11:55:01 [ERROR [ 13]Cannot find localization for: shininess
+11:55:01 [ERROR [ 14]Cannot find localization for: Id
+11:55:01 [ERROR [ 15]Cannot find localization for: Is
+11:55:01 [ERROR [ 16]Cannot find localization for: lightPosition
+11:55:01 [ERROR [ 17]Cannot find localization for: mModelView
+11:55:01 [ERROR [ 18]Cannot find localization for: Ka
+11:55:01 [ERROR [ 19]Cannot find localization for: Kd
+11:55:01 [ERROR [ 20]Cannot find localization for: Ks
+11:55:01 [ERROR [ 21]Cannot find localization for: shininess
+11:55:01 [ERROR [ 22]Cannot find localization for: Ka
+11:55:01 [ERROR [ 23]Cannot find localization for: Kd
+11:55:01 [ERROR [ 24]Cannot find localization for: Ks
+11:55:01 [ERROR [ 25]Cannot find localization for: shininess
+11:55:01 [ERROR [ 26]Cannot find localization for: Ka
+11:55:01 [ERROR [ 27]Cannot find localization for: Kd
+11:55:01 [ERROR [ 28]Cannot find localization for: Ks
+11:55:01 [ERROR [ 29]Cannot find localization for: shininess
+11:55:01 [ERROR [ 30]Cannot find localization for: Id
+11:55:01 [ERROR [ 31]Cannot find localization for: Is
+11:55:01 [ERROR [ 32]Cannot find localization for: lightPosition
+11:55:01 [ERROR [ 33]Cannot find localization for: mModelView
+11:55:01 [ERROR [ 34]Cannot find localization for: Ka
+11:55:01 [ERROR [ 35]Cannot find localization for: Kd
+11:55:01 [ERROR [ 36]Cannot find localization for: Ks
+11:55:01 [ERROR [ 37]Cannot find localization for: shininess
+11:55:01 [ERROR [ 38]Cannot find localization for: Ka
+11:55:01 [ERROR [ 39]Cannot find localization for: Kd
+11:55:01 [ERROR [ 40]Cannot find localization for: Ks
+11:55:01 [ERROR [ 41]Cannot find localization for: shininess
+11:55:02 [ERROR [ 42]Cannot find localization for: Ka
+11:55:02 [ERROR [ 43]Cannot find localization for: Kd
+11:55:02 [ERROR [ 44]Cannot find localization for: Ks
+11:55:02 [ERROR [ 45]Cannot find localization for: shininess
+11:55:02 [ERROR [ 46]Cannot find localization for: Ia
+11:55:02 [ERROR [ 47]Cannot find localization for: mModelView
+11:55:02 [ERROR [ 48]Cannot find localization for: Ka
+11:55:02 [ERROR [ 49]Cannot find localization for: Kd
+11:55:02 [ERROR [ 50]Cannot find localization for: Ks
+11:55:02 [ERROR [ 51]Cannot find localization for: shininess
+11:55:02 [ERROR [ 52]Cannot find localization for: Ka
+11:55:02 [ERROR [ 53]Cannot find localization for: Kd
+11:55:02 [ERROR [ 54]Cannot find localization for: Ks
+11:55:02 [ERROR [ 55]Cannot find localization for: shininess
+11:55:02 [ERROR [ 56]Cannot find localization for: Ka
+11:55:02 [ERROR [ 57]Cannot find localization for: Kd
+11:55:02 [ERROR [ 58]Cannot find localization for: Ks
+11:55:02 [ERROR [ 59]Cannot find localization for: shininess
+11:55:02 [ERROR [ 60]Cannot find localization for: Id
+11:55:02 [ERROR [ 61]Cannot find localization for: Is
+11:55:02 [ERROR [ 62]Cannot find localization for: lightPosition
+11:55:02 [ERROR [ 63]Cannot find localization for: mModelView
+11:55:02 [ERROR [ 64]Cannot find localization for: Ka
+11:55:02 [ERROR [ 65]Cannot find localization for: Kd
+11:55:02 [ERROR [ 66]Cannot find localization for: Ks
+11:55:02 [ERROR [ 67]Cannot find localization for: shininess
+11:55:02 [ERROR [ 68]Cannot find localization for: Ka
+11:55:02 [ERROR [ 69]Cannot find localization for: Kd
+11:55:02 [ERROR [ 70]Cannot find localization for: Ks
+11:55:02 [ERROR [ 71]Cannot find localization for: shininess
+11:55:02 [ERROR [ 72]Cannot find localization for: Ka
+11:55:02 [ERROR [ 73]Cannot find localization for: Kd
+11:55:02 [ERROR [ 74]Cannot find localization for: Ks
+11:55:02 [ERROR [ 75]Cannot find localization for: shininess
+11:55:02 [ERROR [ 76]Cannot find localization for: Id
+11:55:02 [ERROR [ 77]Cannot find localization for: Is
+11:55:02 [ERROR [ 78]Cannot find localization for: lightPosition
+11:55:02 [ERROR [ 79]Cannot find localization for: mModelView
+11:55:02 [ERROR [ 80]Cannot find localization for: Ka
+11:55:02 [ERROR [ 81]Cannot find localization for: Kd
+11:55:02 [ERROR [ 82]Cannot find localization for: Ks
+11:55:02 [ERROR [ 83]Cannot find localization for: shininess
+11:55:02 [ERROR [ 84]Cannot find localization for: Ka
+11:55:02 [ERROR [ 85]Cannot find localization for: Kd
+11:55:02 [ERROR [ 86]Cannot find localization for: Ks
+11:55:02 [ERROR [ 87]Cannot find localization for: shininess
+11:55:02 [ERROR [ 88]Cannot find localization for: Ka
+11:55:02 [ERROR [ 89]Cannot find localization for: Kd
+11:55:02 [ERROR [ 90]Cannot find localization for: Ks
+11:55:02 [ERROR [ 91]Cannot find localization for: shininess
+11:55:11 Initializing OpenGL
+11:55:11 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:55:11 Manufacturer	: NVIDIA Corporation
+11:55:11 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:55:11 GLSL Version	: 4.50 NVIDIA
+11:55:11 -----------OpenGL Initialized Correctly------------
+11:55:16 Initializing OpenGL
+11:55:16 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+11:55:16 Manufacturer	: NVIDIA Corporation
+11:55:16 OpenGL Version	: 4.5.0 NVIDIA 430.86
+11:55:16 GLSL Version	: 4.50 NVIDIA
+11:55:16 -----------OpenGL Initialized Correctly------------
