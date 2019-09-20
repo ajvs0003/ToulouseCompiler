@@ -70,7 +70,7 @@ void ToulouseCompiler::handleToolActionPoints() {
 	if (modePoints->isChecked()) {
 
 		openGLWindow->changeTrial(0);
-
+		openGLWindow->deleteUniforms();
 		/*Log::getInstancia()->warning("activado el modo puntos");*/
 	}
 	else {
@@ -103,7 +103,7 @@ void ToulouseCompiler::handleToolActionLines()
 	if (modeLines->isChecked()) {
 
 		openGLWindow->changeTrial(1);
-
+		openGLWindow->deleteUniforms();
 		/*Log::getInstancia()->warning("activado el modo lineas");*/
 	}
 	else {
@@ -142,7 +142,7 @@ void ToulouseCompiler::handleToolActionTriangles()
 	if (modeTriangles->isChecked()) {
 
 		openGLWindow->changeTrial(2);
-
+		openGLWindow->deleteUniforms();
 		/*Log::getInstancia()->warning("activado el modo triangulos");*/
 	}
 	else {
@@ -176,7 +176,7 @@ void ToulouseCompiler::handleToolActionMaterial()
 	if (modeMaterial->isChecked()) {
 
 		openGLWindow->changeTrial(3);
-
+		openGLWindow->deleteUniforms();
 		//Log::getInstancia()->warning("activado el modo material");
 	}
 	else {
@@ -213,7 +213,7 @@ void ToulouseCompiler::handleToolActionTextures()
 	if (modeTextures->isChecked()) {
 
 		openGLWindow->changeTrial(4);
-
+		openGLWindow->deleteUniforms();
 		/*Log::getInstancia()->warning("activado el modo modeTextures");*/
 	}
 	else {
