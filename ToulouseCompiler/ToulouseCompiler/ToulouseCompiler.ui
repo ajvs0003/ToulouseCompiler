@@ -240,6 +240,9 @@
    <property name="text">
     <string>New</string>
    </property>
+   <property name="toolTip">
+    <string>This create two new shader program</string>
+   </property>
   </action>
   <action name="actionOpen">
    <property name="icon">
@@ -249,6 +252,9 @@
    <property name="text">
     <string>Open</string>
    </property>
+   <property name="toolTip">
+    <string>This is for open a shader program</string>
+   </property>
   </action>
   <action name="actionSave">
    <property name="icon">
@@ -257,6 +263,9 @@
    </property>
    <property name="text">
     <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>FOr save the actual shader program</string>
    </property>
   </action>
   <action name="actionSave_As">
@@ -280,6 +289,9 @@
    <property name="text">
     <string>Mode Points</string>
    </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This activate the&lt;span style=&quot; font-weight:600;&quot;&gt; IBO&lt;/span&gt; in mode points&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
   </action>
   <action name="actionLines">
    <property name="checkable">
@@ -292,6 +304,9 @@
    </property>
    <property name="text">
     <string>Mode Lines</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This activate the&lt;span style=&quot; font-weight:600;&quot;&gt; IBO&lt;/span&gt; in mode lines&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
   <action name="actiontriangles">
@@ -306,6 +321,9 @@
    <property name="text">
     <string>Mode triangles</string>
    </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This activate the&lt;span style=&quot; font-weight:600;&quot;&gt; IBO&lt;/span&gt; in mode triangles&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
   </action>
   <action name="actionRender">
    <property name="icon">
@@ -316,7 +334,7 @@
     <string>Render</string>
    </property>
    <property name="toolTip">
-    <string>for render the shader programs</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this is for&lt;span style=&quot; font-weight:600;&quot;&gt; execute&lt;/span&gt; the shader program&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
   <action name="actionModeMarterial">
@@ -332,7 +350,7 @@
     <string>ModeMarterial</string>
    </property>
    <property name="toolTip">
-    <string>this activate the uniforms for material</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this activate the &lt;span style=&quot; font-weight:600;&quot;&gt;uniforms&lt;/span&gt; for material&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
   <action name="actionModeTexture">
@@ -348,12 +366,15 @@
     <string>ModeTexture</string>
    </property>
    <property name="toolTip">
-    <string>this activate the uniforms for textures</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this activate the &lt;span style=&quot; font-weight:600;&quot;&gt;uniforms&lt;/span&gt; for textures&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
   <action name="actionUniform_Table">
    <property name="text">
     <string>Uniform Table</string>
+   </property>
+   <property name="toolTip">
+    <string>this show the table for the uniforms</string>
    </property>
    <property name="font">
     <font>
@@ -377,7 +398,7 @@
     <string>Peon</string>
    </property>
    <property name="toolTip">
-    <string>this change the object to pawn</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this change the &lt;span style=&quot; font-weight:600;&quot;&gt;object&lt;/span&gt; to pawn&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
   <action name="actioncopa">
@@ -393,7 +414,7 @@
     <string>copa</string>
    </property>
    <property name="toolTip">
-    <string>this change the object to cup</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this change the&lt;span style=&quot; font-weight:600;&quot;&gt; object&lt;/span&gt; to cup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
   <action name="actionjoy">
@@ -409,7 +430,7 @@
     <string>joy</string>
    </property>
    <property name="toolTip">
-    <string>this change the object to joy</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this change the&lt;span style=&quot; font-weight:600;&quot;&gt; object&lt;/span&gt; to joy&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
  </widget>

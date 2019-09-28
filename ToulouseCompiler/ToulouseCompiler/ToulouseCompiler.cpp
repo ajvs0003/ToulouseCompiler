@@ -328,7 +328,14 @@ void ToulouseCompiler::handleToolActionOpen()
 	
 	if (maybeSave()) {
 		
-		QString fileName = QFileDialog::getOpenFileName(this);
+		QString fileName = QFileDialog::getOpenFileName(this,tr("Open File"),
+			QDir::homePath(),
+			tr("All files (*.*)"));
+
+		
+
+		
+
 		if (!fileName.isEmpty())
 			loadFile(fileName);
 	}
@@ -374,11 +381,17 @@ bool ToulouseCompiler::handleToolActionSave()
 bool ToulouseCompiler::handleToolActionSaveAs()
 {
 	QFileDialog dialog(this);
+
+	/*dialog.setDirectory(QDir());*/
+
 	dialog.setWindowModality(Qt::WindowModal);
+
 	dialog.setAcceptMode(QFileDialog::AcceptSave);
+
 	if (dialog.exec() != QDialog::Accepted)
 		return false;
-	return saveFile(dialog.selectedFiles().first());
+
+	return saveFile(dialog.selectedFiles().first());//coge el primer archivo que seleccionas
 
 
 

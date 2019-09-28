@@ -1,20 +1,26 @@
-Toulouse Compiler LogFile (execution time:( 21:15:32).
+Toulouse Compiler LogFile (execution time:( 10:43:08).
 ---------------------------------- 
-21:15:33 Initializing OpenGL
-21:15:33 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-21:15:33 Manufacturer	: NVIDIA Corporation
-21:15:33 OpenGL Version	: 4.5.0 NVIDIA 436.15
-21:15:33 GLSL Version	: 4.50 NVIDIA
-21:15:33 -----------OpenGL Initialized Correctly------------
-21:16:02 Initializing OpenGL
-21:16:02 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-21:16:02 Manufacturer	: NVIDIA Corporation
-21:16:02 OpenGL Version	: 4.5.0 NVIDIA 436.15
-21:16:02 GLSL Version	: 4.50 NVIDIA
-21:16:02 -----------OpenGL Initialized Correctly------------
-21:16:10 Initializing OpenGL
-21:16:10 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-21:16:10 Manufacturer	: NVIDIA Corporation
-21:16:10 OpenGL Version	: 4.5.0 NVIDIA 436.15
-21:16:10 GLSL Version	: 4.50 NVIDIA
-21:16:10 -----------OpenGL Initialized Correctly------------
+10:43:09 Initializing OpenGL
+10:43:09 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+10:43:09 Manufacturer	: NVIDIA Corporation
+10:43:09 OpenGL Version	: 4.5.0 NVIDIA 436.15
+10:43:09 GLSL Version	: 4.50 NVIDIA
+10:43:09 -----------OpenGL Initialized Correctly------------
+10:44:00 Initializing OpenGL
+10:44:00 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+10:44:00 Manufacturer	: NVIDIA Corporation
+10:44:00 OpenGL Version	: 4.5.0 NVIDIA 436.15
+10:44:00 GLSL Version	: 4.50 NVIDIA
+10:44:00 -----------OpenGL Initialized Correctly------------
+10:44:23 Initializing OpenGL
+10:44:23 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+10:44:23 Manufacturer	: NVIDIA Corporation
+10:44:23 OpenGL Version	: 4.5.0 NVIDIA 436.15
+10:44:23 GLSL Version	: 4.50 NVIDIA
+10:44:23 -----------OpenGL Initialized Correctly------------
+10:44:30 Initializing OpenGL
+10:44:30 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
+10:44:30 Manufacturer	: NVIDIA Corporation
+10:44:30 OpenGL Version	: 4.5.0 NVIDIA 436.15
+10:44:30 GLSL Version	: 4.50 NVIDIA
+10:44:30 -----------OpenGL Initialized Correctly------------

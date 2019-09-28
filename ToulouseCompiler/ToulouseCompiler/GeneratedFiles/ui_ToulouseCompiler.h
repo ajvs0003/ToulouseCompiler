@@ -330,36 +330,57 @@ public:
     {
         MainWindowClass->setWindowTitle(QApplication::translate("MainWindowClass", "ToulouseCompiler", nullptr));
         actionNew->setText(QApplication::translate("MainWindowClass", "New", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionNew->setToolTip(QApplication::translate("MainWindowClass", "This create two new shader program", nullptr));
+#endif // QT_NO_TOOLTIP
         actionOpen->setText(QApplication::translate("MainWindowClass", "Open", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionOpen->setToolTip(QApplication::translate("MainWindowClass", "This is for open a shader program", nullptr));
+#endif // QT_NO_TOOLTIP
         actionSave->setText(QApplication::translate("MainWindowClass", "Save", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionSave->setToolTip(QApplication::translate("MainWindowClass", "FOr save the actual shader program", nullptr));
+#endif // QT_NO_TOOLTIP
         actionSave_As->setText(QApplication::translate("MainWindowClass", "Save As", nullptr));
         actionPoints->setText(QApplication::translate("MainWindowClass", "Mode Points", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionPoints->setToolTip(QApplication::translate("MainWindowClass", "<html><head/><body><p>This activate the<span style=\" font-weight:600;\"> IBO</span> in mode points</p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
         actionLines->setText(QApplication::translate("MainWindowClass", "Mode Lines", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionLines->setToolTip(QApplication::translate("MainWindowClass", "<html><head/><body><p>This activate the<span style=\" font-weight:600;\"> IBO</span> in mode lines</p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
         actiontriangles->setText(QApplication::translate("MainWindowClass", "Mode triangles", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actiontriangles->setToolTip(QApplication::translate("MainWindowClass", "<html><head/><body><p>This activate the<span style=\" font-weight:600;\"> IBO</span> in mode triangles</p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
         actionRender->setText(QApplication::translate("MainWindowClass", "Render", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionRender->setToolTip(QApplication::translate("MainWindowClass", "for render the shader programs", nullptr));
+        actionRender->setToolTip(QApplication::translate("MainWindowClass", "<html><head/><body><p>this is for<span style=\" font-weight:600;\"> execute</span> the shader program</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         actionModeMarterial->setText(QApplication::translate("MainWindowClass", "ModeMarterial", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionModeMarterial->setToolTip(QApplication::translate("MainWindowClass", "this activate the uniforms for material", nullptr));
+        actionModeMarterial->setToolTip(QApplication::translate("MainWindowClass", "<html><head/><body><p>this activate the <span style=\" font-weight:600;\">uniforms</span> for material</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         actionModeTexture->setText(QApplication::translate("MainWindowClass", "ModeTexture", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionModeTexture->setToolTip(QApplication::translate("MainWindowClass", "this activate the uniforms for textures", nullptr));
+        actionModeTexture->setToolTip(QApplication::translate("MainWindowClass", "<html><head/><body><p>this activate the <span style=\" font-weight:600;\">uniforms</span> for textures</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         actionUniform_Table->setText(QApplication::translate("MainWindowClass", "Uniform Table", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionUniform_Table->setToolTip(QApplication::translate("MainWindowClass", "this show the table for the uniforms", nullptr));
+#endif // QT_NO_TOOLTIP
         actionPeon->setText(QApplication::translate("MainWindowClass", "Peon", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionPeon->setToolTip(QApplication::translate("MainWindowClass", "this change the object to pawn", nullptr));
+        actionPeon->setToolTip(QApplication::translate("MainWindowClass", "<html><head/><body><p>this change the <span style=\" font-weight:600;\">object</span> to pawn</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         actioncopa->setText(QApplication::translate("MainWindowClass", "copa", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actioncopa->setToolTip(QApplication::translate("MainWindowClass", "this change the object to cup", nullptr));
+        actioncopa->setToolTip(QApplication::translate("MainWindowClass", "<html><head/><body><p>this change the<span style=\" font-weight:600;\"> object</span> to cup</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         actionjoy->setText(QApplication::translate("MainWindowClass", "joy", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionjoy->setToolTip(QApplication::translate("MainWindowClass", "this change the object to joy", nullptr));
+        actionjoy->setToolTip(QApplication::translate("MainWindowClass", "<html><head/><body><p>this change the<span style=\" font-weight:600;\"> object</span> to joy</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         tabWidget->setTabText(tabWidget->indexOf(VertexS), QApplication::translate("MainWindowClass", "Vertex Shader", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(FragmentS), QApplication::translate("MainWindowClass", "Fragment Shader", nullptr));
