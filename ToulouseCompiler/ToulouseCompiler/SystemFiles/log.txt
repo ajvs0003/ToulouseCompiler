@@ -1,26 +1,14 @@
-Toulouse Compiler LogFile (execution time:( 10:43:08).
+Toulouse Compiler LogFile (execution time:( 08:53:16).
 ---------------------------------- 
-10:43:09 Initializing OpenGL
-10:43:09 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-10:43:09 Manufacturer	: NVIDIA Corporation
-10:43:09 OpenGL Version	: 4.5.0 NVIDIA 436.15
-10:43:09 GLSL Version	: 4.50 NVIDIA
-10:43:09 -----------OpenGL Initialized Correctly------------
-10:44:00 Initializing OpenGL
-10:44:00 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-10:44:00 Manufacturer	: NVIDIA Corporation
-10:44:00 OpenGL Version	: 4.5.0 NVIDIA 436.15
-10:44:00 GLSL Version	: 4.50 NVIDIA
-10:44:00 -----------OpenGL Initialized Correctly------------
-10:44:23 Initializing OpenGL
-10:44:23 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-10:44:23 Manufacturer	: NVIDIA Corporation
-10:44:23 OpenGL Version	: 4.5.0 NVIDIA 436.15
-10:44:23 GLSL Version	: 4.50 NVIDIA
-10:44:23 -----------OpenGL Initialized Correctly------------
-10:44:30 Initializing OpenGL
-10:44:30 GPU Name		: GeForce GTX 1050 Ti/PCIe/SSE2
-10:44:30 Manufacturer	: NVIDIA Corporation
-10:44:30 OpenGL Version	: 4.5.0 NVIDIA 436.15
-10:44:30 GLSL Version	: 4.50 NVIDIA
-10:44:30 -----------OpenGL Initialized Correctly------------
+08:53:18 Initializing OpenGL
+08:53:18 GPU Name		: GeForce RTX 2060/PCIe/SSE2
+08:53:18 Manufacturer	: NVIDIA Corporation
+08:53:18 OpenGL Version	: 4.5.0 NVIDIA 436.48
+08:53:18 GLSL Version	: 4.50 NVIDIA
+08:53:18 -----------OpenGL Initialized Correctly------------
+08:53:45 Initializing OpenGL
+08:53:45 GPU Name		: GeForce RTX 2060/PCIe/SSE2
+08:53:45 Manufacturer	: NVIDIA Corporation
+08:53:45 OpenGL Version	: 4.5.0 NVIDIA 436.48
+08:53:45 GLSL Version	: 4.50 NVIDIA
+08:53:45 -----------OpenGL Initialized Correctly------------

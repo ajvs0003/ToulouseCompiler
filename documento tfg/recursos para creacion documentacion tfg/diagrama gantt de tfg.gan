@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2019-07-16" view-index="0" gantt-divider-location="398" resource-divider-location="300" version="2.8.10" locale="es_ES">
+    <description/>
+    <view zooming-state="default:2" id="gantt-chart">
+        <field id="tpd3" name="Nombre" width="248" order="0"/>
+        <field id="tpd4" name="Fecha de inicio" width="56" order="1"/>
+        <field id="tpd5" name="Fecha de fin" width="90" order="2"/>
+        <option id="color.recent"><![CDATA[#ffff00 #6666ff #66ffff #ffff33 #3333ff #99ff99]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nombre" width="210" order="0"/>
+        <field id="1" name="Función" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="8" name="Busqueda Bibliográfica" color="#8cb6ce" meeting="false" start="2019-07-01" duration="4" complete="0" thirdDate="2019-06-20" thirdDate-constraint="0" expand="true"/>
+        <task id="0" name="Estudio del entorno de desarrollo QT" color="#6666ff" meeting="false" start="2019-07-05" duration="4" complete="0" thirdDate="2019-07-01" thirdDate-constraint="0" expand="true">
+            <notes><![CDATA[hay que investigar como funciona QT y empezar a buscar lo necesario para funcionar con openGL]]></notes>
+            <task id="12" name="Creación programa simple funcional con openGL" color="#99ff99" meeting="false" start="2019-07-05" duration="1" complete="0" thirdDate="2019-06-20" thirdDate-constraint="0" expand="true"/>
+            <task id="21" name="Creación más compleja de aplicacion openGl" color="#8cb6ce" meeting="false" start="2019-07-08" duration="3" complete="0" thirdDate="2019-06-20" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="23" name="Creación primer prototipo" color="#8cb6ce" meeting="false" start="2019-07-18" duration="15" complete="0" thirdDate="2019-06-20" thirdDate-constraint="0" expand="true">
+            <task id="26" name="Integración de shader program al prototipo" color="#3333ff" meeting="false" start="2019-07-18" duration="2" complete="0" thirdDate="2019-06-20" thirdDate-constraint="0" expand="true"/>
+            <task id="29" name="Integración de la aplicacion base" color="#ffff33" meeting="false" start="2019-07-22" duration="8" complete="0" thirdDate="2019-07-01" thirdDate-constraint="0" expand="true"/>
+            <task id="77" name="Implementación de Code editor" color="#8cb6ce" meeting="false" start="2019-08-01" duration="5" complete="0" thirdDate="2019-07-01" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="67" name="Diseño de la interfaz" color="#8cb6ce" meeting="false" start="2019-08-08" duration="6" complete="0" thirdDate="2019-08-08" thirdDate-constraint="1" expand="true">
+            <task id="72" name="Diseño e Implementación de Tabla Uniforms" color="#6666ff" meeting="false" start="2019-08-08" duration="3" complete="0" thirdDate="2019-07-19" thirdDate-constraint="0" expand="true"/>
+            <task id="74" name="Diseño e Implementación  del Log" color="#8cb6ce" meeting="false" start="2019-08-12" duration="2" complete="0" thirdDate="2019-07-16" thirdDate-constraint="0" expand="true"/>
+            <task id="76" name="Integración code Editor a la interfaz" color="#8cb6ce" meeting="false" start="2019-08-14" duration="2" complete="0" thirdDate="2019-07-16" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="85" name="Implementación de Utilidades del programa" color="#8cb6ce" meeting="false" start="2019-08-16" duration="5" complete="0" thirdDate="2019-07-16" thirdDate-constraint="0" expand="true">
+            <task id="88" name="Controles de cámara para openGL" color="#8cb6ce" meeting="false" start="2019-08-16" duration="2" complete="0" thirdDate="2019-07-16" thirdDate-constraint="0" expand="true"/>
+            <task id="110" name="Opciones selección distintos objetos" color="#8cb6ce" meeting="false" start="2019-08-20" duration="3" complete="0" thirdDate="2019-07-16" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="49" name="Extensión de utilidades" meeting="false" start="2019-08-28" duration="5" complete="0" expand="true">
+            <task id="52" name="Subrayado del código" color="#8cb6ce" meeting="false" start="2019-08-28" duration="1" complete="0" thirdDate="2019-07-25" thirdDate-constraint="0" expand="true"/>
+            <task id="54" name="Cargar y guardar shaders" color="#8cb6ce" meeting="false" start="2019-08-29" duration="1" complete="0" thirdDate="2019-07-25" thirdDate-constraint="0" expand="true"/>
+            <task id="125" name="Seleccion idioma" color="#8cb6ce" meeting="false" start="2019-08-30" duration="3" complete="0" thirdDate="2019-07-16" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="47" name="Refinamiento de la aplicación" color="#8cb6ce" meeting="false" start="2019-09-04" duration="2" complete="0" thirdDate="2019-07-24" thirdDate-constraint="0" expand="true"/>
+        <task id="60" name="Documentación" color="#ffff00" meeting="false" start="2019-07-01" duration="50" complete="0" thirdDate="2019-07-25" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
