@@ -11,10 +11,11 @@ class Highlighter : public QSyntaxHighlighter
 	Q_OBJECT
 
 public:
-	Highlighter(QTextDocument *parent = 0);
+
+	Highlighter(QTextDocument* parent = 0);
 
 protected:
-	void highlightBlock(const QString &text) override;
+	void highlightBlock(const QString& text) override;
 
 private:
 	struct HighlightingRule

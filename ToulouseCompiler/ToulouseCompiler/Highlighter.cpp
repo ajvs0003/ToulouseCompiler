@@ -2,7 +2,7 @@
 
 
 
-Highlighter::Highlighter(QTextDocument *parent)
+Highlighter::Highlighter(QTextDocument* parent)
 	: QSyntaxHighlighter(parent)
 {
 	HighlightingRule rule;
@@ -28,12 +28,12 @@ Highlighter::Highlighter(QTextDocument *parent)
 		QStringLiteral("\\bcross\\b"),QStringLiteral("\\bftransform\\b"),QStringLiteral("\\bfaceforward\\b"),
 		QStringLiteral("\\blessThan\\b"),QStringLiteral("\\blessThanEqual\\b"),QStringLiteral("\\bgreaterThan\\b"),
 		QStringLiteral("\\bgreaterThanEqual\\b"),QStringLiteral("\\bequal\\b"),QStringLiteral("\\bnotEqual\\b"),
-		QStringLiteral("\\bany\\b"),QStringLiteral("\\ball\\b"),QStringLiteral("\\bnot\\b"), 
+		QStringLiteral("\\bany\\b"),QStringLiteral("\\ball\\b"),QStringLiteral("\\bnot\\b"),
 		QStringLiteral("\\bMatrixCompMult\\b"),QStringLiteral("\\btexture\\b"),QStringLiteral("\\bdiscard\\b"),
 		QStringLiteral("\\bgl_PointCoord\\b"),QStringLiteral("\\breflect\\b")
 	};
-	
-	for (const QString &pattern : reservedKeywordPatterns) {
+
+	for (const QString& pattern : reservedKeywordPatterns) {
 		rule.pattern = QRegularExpression(pattern);
 		rule.format = reservedKeywordFormat;
 		//añade la regla al vector de reglas
@@ -41,12 +41,12 @@ Highlighter::Highlighter(QTextDocument *parent)
 	}
 
 	const QString keywordPatterns[] = {
-		QStringLiteral("\\buniform\\b"), QStringLiteral("\\blocation\\b"),QStringLiteral("\\bout\\b"), 
+		QStringLiteral("\\buniform\\b"), QStringLiteral("\\blocation\\b"),QStringLiteral("\\bout\\b"),
 		QStringLiteral("\\bin\\b"),QStringLiteral("\\breturn\\b"),QStringLiteral("\\bstruct\\b"),
 		QStringLiteral("\\bvoid\\b"),QStringLiteral("\\bconst\\b"),QStringLiteral("\\binout\\b"),
 		QStringLiteral("\\bif\\b"),QStringLiteral("\\belse\\b"),QStringLiteral("\\bfor\\b")
 	};
-	for (const QString &pattern : keywordPatterns) {
+	for (const QString& pattern : keywordPatterns) {
 		rule.pattern = QRegularExpression(pattern);
 		rule.format = keywordFormat;
 		//añade la regla al vector de reglas
@@ -54,33 +54,23 @@ Highlighter::Highlighter(QTextDocument *parent)
 	}
 
 
-	
-
 	variableFormat.setForeground(Qt::darkGreen);
 	variableFormat.setFontWeight(QFont::Bold);
 
 	const QString variablePatterns[] = {
-		QStringLiteral("\\bvec2\\b"),QStringLiteral("\\bvec3\\b"), QStringLiteral("\\bvec4\\b"), 
-		QStringLiteral("\\bfloat\\b"),QStringLiteral("\\buint\\b"), QStringLiteral("\\bint\\b"), 
+		QStringLiteral("\\bvec2\\b"),QStringLiteral("\\bvec3\\b"), QStringLiteral("\\bvec4\\b"),
+		QStringLiteral("\\bfloat\\b"),QStringLiteral("\\buint\\b"), QStringLiteral("\\bint\\b"),
 		QStringLiteral("\\bbool\\b"),QStringLiteral("\\bmat4\\b"),QStringLiteral("\\bmat3\\b"),
 		QStringLiteral("\\bmat2\\b"),QStringLiteral("\\bsampler2D\\b"),QStringLiteral("\\bsampler1D\\b"),
 		QStringLiteral("\\bsampler3D\\b"),QStringLiteral("\\bsamplerCube\\b"),QStringLiteral("\\bsampler1DShadow\\b"),
 		QStringLiteral("\\bsampler2DShadow\\b")
 	};
-	for (const QString &pattern : variablePatterns) {
+	for (const QString& pattern : variablePatterns) {
 		rule.pattern = QRegularExpression(pattern);
 		rule.format = variableFormat;
 		//añade la regla al vector de reglas
 		highlightingRules.append(rule);
 	}
-
-
-
-
-
-
-
-
 
 
 	classFormat.setFontWeight(QFont::Bold);
@@ -99,12 +89,9 @@ Highlighter::Highlighter(QTextDocument *parent)
 	multiLineCommentFormat.setForeground(Qt::darkGreen);
 
 
-	
-	/*quotationFormat.setForeground(Qt::darkGreen);
-	rule.pattern = QRegularExpression("\".*\"");
-	rule.format = quotationFormat;
-	highlightingRules.append(rule);*/
-	
+
+
+
 	functionFormat.setFontItalic(true);
 	functionFormat.setForeground(Qt::blue);
 	rule.pattern = QRegularExpression("\\b[A-Za-z0-9_]+(?=\\()");
@@ -118,27 +105,27 @@ Highlighter::Highlighter(QTextDocument *parent)
 
 
 
-void Highlighter::highlightBlock(const QString & text)
+void Highlighter::highlightBlock(const QString& text)
 {
-	foreach(const HighlightingRule &rule, highlightingRules) {
+	foreach(const HighlightingRule & rule, highlightingRules) {
 		QRegularExpressionMatchIterator matchIterator = rule.pattern.globalMatch(text);
 		while (matchIterator.hasNext()) {
 			QRegularExpressionMatch match = matchIterator.next();
 			setFormat(match.capturedStart(), match.capturedLength(), rule.format);
 		}
 	}
-	
-	setCurrentBlockState(0);
-	
 
-	
+	setCurrentBlockState(0);
+
+
+
 	int startIndex = 0;
 	if (previousBlockState() != 1)
 		startIndex = text.indexOf(commentStartExpression);
 
-	
+
 	while (startIndex >= 0) {
-		
+
 		QRegularExpressionMatch match = commentEndExpression.match(text, startIndex);
 		int endIndex = match.capturedStart();
 		int commentLength = 0;
