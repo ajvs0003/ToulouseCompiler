@@ -4,7 +4,7 @@
 #include <QSizePolicy>
 
 
-ToulouseCompiler::ToulouseCompiler(QWidget *parent)
+ToulouseCompiler::ToulouseCompiler(QWidget* parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
@@ -33,8 +33,8 @@ ToulouseCompiler::~ToulouseCompiler()
 	delete OutPut;
 	delete openglwidget;
 	delete table;
-	
-	
+
+
 }
 
 
@@ -189,7 +189,7 @@ void ToulouseCompiler::handleToolActionMaterial()
 
 
 
-	
+
 }
 
 void ToulouseCompiler::handleToolActionTextures()
@@ -231,7 +231,7 @@ void ToulouseCompiler::handleToolActionPeon()
 	if (joy->isChecked()) {
 		joy->setChecked(false);
 	}
-	
+
 
 	if (peon->isChecked()) {
 
@@ -245,7 +245,7 @@ void ToulouseCompiler::handleToolActionPeon()
 
 	}
 
-	
+
 }
 
 void ToulouseCompiler::handleToolActionCopa()
@@ -303,17 +303,17 @@ void ToulouseCompiler::handleToolActionJoy()
 
 void ToulouseCompiler::handleToolActionNew()
 {
-	
+
 	configuration_tableWindow();
 
 
-	
+
 	if (maybeSave()) {
 		vertexShader->clear();
 		fragmentShader->clear();
 
-        setCurrentFile(QString());
-    }
+		setCurrentFile(QString());
+	}
 
 
 
@@ -321,20 +321,20 @@ void ToulouseCompiler::handleToolActionNew()
 
 void ToulouseCompiler::handleToolActionOpen()
 {
-	
+
 	configuration_tableWindow();
 
 
-	
+
 	if (maybeSave()) {
-		
-		QString fileName = QFileDialog::getOpenFileName(this,tr("Open File"),
+
+		QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
 			QDir::homePath(),
 			tr("All files (*.*)"));
 
-		
 
-		
+
+
 
 		if (!fileName.isEmpty())
 			loadFile(fileName);
@@ -395,13 +395,13 @@ bool ToulouseCompiler::handleToolActionSaveAs()
 
 
 
-	
+
 }
 
 void ToulouseCompiler::handleToolActionTableUniforms()
 {
 
-	
+
 
 
 	table->show();
@@ -421,11 +421,11 @@ void ToulouseCompiler::handleToolActionRender()
 	if (maybeSave()) {
 		//resetear log
 		OutPut->clear();
-		
-		
+
+
 		openGLWindow->setPathShader(curFile.toStdString());
 		openGLWindow->compile();
-		
+
 	}
 }
 
@@ -468,7 +468,7 @@ void ToulouseCompiler::Mouse_currentPos() {
 			}
 
 		}
-		
+
 		openGLWindow->renderNow();
 	}
 
@@ -476,7 +476,7 @@ void ToulouseCompiler::Mouse_currentPos() {
 	oldMousePosition = newMousePosition;
 
 
-	
+
 
 }
 
@@ -490,7 +490,7 @@ void ToulouseCompiler::Mouse_Pressed()
 
 void ToulouseCompiler::Mouse_Realeased()
 {
-	
+
 	isHold = false;
 }
 
@@ -507,11 +507,11 @@ void ToulouseCompiler::configurate()
 
 	this->configuration_OutPut();
 
-	
+
 	this->configuration_codeEditor();
 	this->configuration_opengl();
 	this->configuration_ToolBar();
-	
+
 
 	this->configuration_tableWindow();
 
@@ -526,6 +526,8 @@ void ToulouseCompiler::configuration_ToolBar()
 {
 
 	//signals for manage the action in the toolbar
+
+	ui.mainToolBar->setIconSize(QSize(24, 24));
 
 	modePoints = ui.actionPoints;
 
@@ -587,14 +589,14 @@ void ToulouseCompiler::configuration_ToolBar()
 }
 
 
-void ToulouseCompiler::handleData(const QVector<dataForUniform> &data)
+void ToulouseCompiler::handleData(const QVector<dataForUniform>& data)
 {
 
 
 	openGLWindow->setUniforms(data);
 
 
-	
+
 }
 
 
@@ -604,10 +606,10 @@ void ToulouseCompiler::configuration_tableWindow()
 
 	table = new tableUniforms(this);
 	table->setWindowTitle("Uniforms Table");
-	
-	connect(table, SIGNAL(addUniforms(const QVector<dataForUniform> &)), this, SLOT(handleData(const QVector<dataForUniform> &)));
 
-	
+	connect(table, SIGNAL(addUniforms(const QVector<dataForUniform>&)), this, SLOT(handleData(const QVector<dataForUniform>&)));
+
+
 }
 
 
@@ -619,25 +621,25 @@ void ToulouseCompiler::configuration_tableWindow()
 void ToulouseCompiler::configuration_OutPut()
 {
 	OutPut = ui.OutPut;
-	
+
 	OutPut->setReadOnly(true);// lo pongo en solo modo lectura
 
 	//Gestiono que el log reciba el output para que otras clases puedan trabajar con el
 	Log::getInstancia()->setOutPut(OutPut);
 
 	statusBar = ui.statusBar;
-	
+
 
 }
 
 void ToulouseCompiler::configuration_codeEditor()
 {
 	//I take the qtabWidget and assign to a pointer for can manage later all the stuff that i will need
-	
+
 
 	tabView = ui.tabWidget;
 	tabView->setCurrentIndex(0);
-	
+
 	tabView->setStyleSheet("QTabBar { font:bold 10pt; font-family: Arial; }");
 
 	this->vertexShader = new CodeEditor();
@@ -647,7 +649,7 @@ void ToulouseCompiler::configuration_codeEditor()
 	FragmentHighlighter = new Highlighter(fragmentShader->document());
 	//Para que funcionara el resize hay que tener en cuenta que los valores de maximumSize en qt designer esten en el "maximo" (16777215) 
 
-	
+
 	tabView->removeTab(0);
 	tabView->insertTab(0, vertexShader, QString("Vertex Shader"));
 
@@ -694,7 +696,7 @@ void ToulouseCompiler::configuration_opengl()
 
 
 
-void ToulouseCompiler::loadFile(const QString &fileName)
+void ToulouseCompiler::loadFile(const QString& fileName)
 
 {
 
@@ -741,51 +743,51 @@ void ToulouseCompiler::loadFile(const QString &fileName)
 	statusBar->showMessage(tr("File loaded"), 2000);
 }
 
-bool ToulouseCompiler::saveFile(const QString &fileName)
-		
-	{
-		QFile file(fileName + "-vert.glsl");
-		if (!file.open(QFile::WriteOnly | QFile::Text)) {
-			QMessageBox::warning(this, tr("Application"),
-				tr("Cannot write file %1:\n%2.")
-				.arg(QDir::toNativeSeparators(fileName),
-					file.errorString()));
-			return false;
-		}
-		QFile file2(fileName+"-frag.glsl");
-		if (!file2.open(QFile::WriteOnly | QFile::Text)) {
-			QMessageBox::warning(this, tr("Application"),
-				tr("Cannot write file %1:\n%2.")
-				.arg(QDir::toNativeSeparators(fileName),
-					file2.errorString()));
-			return false;
-		}
+bool ToulouseCompiler::saveFile(const QString& fileName)
 
-
-
-		QTextStream vertex(&file);
-		QTextStream fragment(&file2);
-
-
-#ifndef QT_NO_CURSOR
-		QApplication::setOverrideCursor(Qt::WaitCursor);
-#endif
-
-		vertex << vertexShader->toPlainText();
-		fragment << fragmentShader->toPlainText();
-
-
-#ifndef QT_NO_CURSOR
-		QApplication::restoreOverrideCursor();
-#endif
-		file.close();
-		file2.close();
-		setCurrentFile(fileName);
-		statusBar->showMessage(tr("File saved"), 2000);
-		return true;
+{
+	QFile file(fileName + "-vert.glsl");
+	if (!file.open(QFile::WriteOnly | QFile::Text)) {
+		QMessageBox::warning(this, tr("Application"),
+			tr("Cannot write file %1:\n%2.")
+			.arg(QDir::toNativeSeparators(fileName),
+				file.errorString()));
+		return false;
+	}
+	QFile file2(fileName + "-frag.glsl");
+	if (!file2.open(QFile::WriteOnly | QFile::Text)) {
+		QMessageBox::warning(this, tr("Application"),
+			tr("Cannot write file %1:\n%2.")
+			.arg(QDir::toNativeSeparators(fileName),
+				file2.errorString()));
+		return false;
 	}
 
-void ToulouseCompiler::setCurrentFile(const QString &fileName)
+
+
+	QTextStream vertex(&file);
+	QTextStream fragment(&file2);
+
+
+#ifndef QT_NO_CURSOR
+	QApplication::setOverrideCursor(Qt::WaitCursor);
+#endif
+
+	vertex << vertexShader->toPlainText();
+	fragment << fragmentShader->toPlainText();
+
+
+#ifndef QT_NO_CURSOR
+	QApplication::restoreOverrideCursor();
+#endif
+	file.close();
+	file2.close();
+	setCurrentFile(fileName);
+	statusBar->showMessage(tr("File saved"), 2000);
+	return true;
+}
+
+void ToulouseCompiler::setCurrentFile(const QString& fileName)
 {
 	curFile = fileName;
 
