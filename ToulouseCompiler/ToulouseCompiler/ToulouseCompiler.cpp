@@ -421,6 +421,7 @@ void ToulouseCompiler::on_Spanish_clicked()
 	qApp->installTranslator(&spanishTranslator);
 	spanishButton->setChecked(true);
 	englishButton->setChecked(false);
+	this->configuration_tableWindow();
 }
 
 void ToulouseCompiler::on_English_clicked()
@@ -430,6 +431,7 @@ void ToulouseCompiler::on_English_clicked()
 	qApp->installTranslator(&englishTranslator);
 	englishButton->setChecked(true);
 	spanishButton->setChecked(false);
+	this->configuration_tableWindow();
 }
 
 void ToulouseCompiler::handleToolActionRender()

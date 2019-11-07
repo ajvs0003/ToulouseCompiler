@@ -23,6 +23,8 @@ public:
 	tableUniforms(QWidget* parent = Q_NULLPTR);
 	~tableUniforms();
 
+
+
 private:
 	Ui::tableUniforms* ui;
 
