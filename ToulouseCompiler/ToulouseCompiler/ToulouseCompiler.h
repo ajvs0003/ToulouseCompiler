@@ -23,31 +23,34 @@ class ToulouseCompiler : public QMainWindow
 	Q_OBJECT
 
 public:
-	ToulouseCompiler(QWidget *parent = Q_NULLPTR);
+	ToulouseCompiler(QWidget* parent = Q_NULLPTR);
 	~ToulouseCompiler();
-	
 
+
+
+protected:
+	void changeEvent(QEvent*);
 
 private:
 
 
 	Ui::MainWindowClass ui;//MAIN WINDOW
-	
-	
+
+
 
 
 	/********************CODE EDITOR DATA********************/
 
-	
+
 	//Pointer to the widget for code editor
 	QTabWidget* tabView;
 	CodeEditor* vertexShader;
 	CodeEditor* fragmentShader;
 	QString curFile;
-	
 
-	Highlighter *VertexHighlighter;
-	Highlighter *FragmentHighlighter;
+
+	Highlighter* VertexHighlighter;
+	Highlighter* FragmentHighlighter;
 
 	/********************END CODE EDITOR DATA********************/
 
@@ -96,13 +99,25 @@ private:
 
 	/********************UNIFORMS TABLE DATA********************/
 
-	
+
 	tableUniforms* table;
 
-	
-
-	
 	/********************END UNIFORMS TABLE DATA********************/
+
+
+
+
+	/********************LANGUAGE DATA********************/
+
+
+
+	QTranslator spanishTranslator;
+	QTranslator englishTranslator;
+
+	QAction* spanishButton;
+	QAction* englishButton;
+
+	/********************END LANGUAGE DATA********************/
 
 
 
@@ -120,17 +135,20 @@ private:
 	void configuration_OutPut();
 	void configuration_codeEditor();
 	void configuration_opengl();
+	void configuration_translators();
+
+	void loadFile(const QString& fileName);
+	bool saveFile(const QString& fileName);
+	void setCurrentFile(const QString& fileName);
 
 
-	void loadFile(const QString &fileName);
-	bool saveFile(const QString &fileName);
-	void setCurrentFile(const QString &fileName);
-
-	
 
 	bool maybeSave();
 
-private slots:
+
+
+
+protected slots:
 
 	//Camera Inputs
 
@@ -139,12 +157,12 @@ private slots:
 	void Mouse_Realeased();
 	void Mouse_Left();
 
-	void handleData(const QVector<dataForUniform> &data);
-	
-	
+	void handleData(const QVector<dataForUniform>& data);
+
+
 
 	//BUTTONS
-	
+
 	void handleToolActionPoints();
 	void handleToolActionLines();
 	void handleToolActionTriangles();
@@ -154,16 +172,21 @@ private slots:
 	void handleToolActionPeon();
 	void handleToolActionCopa();
 	void handleToolActionJoy();
-	
+	void handleToolActionRender();
 
+	//FILE 
 	void handleToolActionNew();
 	void handleToolActionOpen();
 	bool handleToolActionSave();
 	bool handleToolActionSaveAs();
 
+	//TOOLS
 	void handleToolActionTableUniforms();
 
 
-	void handleToolActionRender();
-	
+
+	//Language
+	void on_Spanish_clicked();
+	void on_English_clicked();
+
 };

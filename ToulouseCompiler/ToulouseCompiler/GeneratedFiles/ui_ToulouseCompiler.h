@@ -44,6 +44,8 @@ public:
     QAction *actionPeon;
     QAction *actioncopa;
     QAction *actionjoy;
+    QAction *actionEnglish;
+    QAction *actionEspanol;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *separador;
@@ -65,6 +67,7 @@ public:
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuTools;
+    QMenu *menuLanguage;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -166,6 +169,18 @@ public:
         icon12.addFile(QString::fromUtf8(":/img/Resources/img/circle.png"), QSize(), QIcon::Normal, QIcon::Off);
         icon12.addFile(QString::fromUtf8(":/img/Resources/img/circle_activate.png"), QSize(), QIcon::Normal, QIcon::On);
         actionjoy->setIcon(icon12);
+        actionEnglish = new QAction(MainWindowClass);
+        actionEnglish->setObjectName(QString::fromUtf8("actionEnglish"));
+        actionEnglish->setCheckable(true);
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/translattions/Languages/en.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionEnglish->setIcon(icon13);
+        actionEspanol = new QAction(MainWindowClass);
+        actionEspanol->setObjectName(QString::fromUtf8("actionEspanol"));
+        actionEspanol->setCheckable(true);
+        QIcon icon14;
+        icon14.addFile(QString::fromUtf8(":/translattions/Languages/es.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionEspanol->setIcon(icon14);
         centralWidget = new QWidget(MainWindowClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout_5 = new QVBoxLayout(centralWidget);
@@ -289,6 +304,8 @@ public:
         menuTools = new QMenu(menuBar);
         menuTools->setObjectName(QString::fromUtf8("menuTools"));
         menuTools->setFont(font);
+        menuLanguage = new QMenu(menuBar);
+        menuLanguage->setObjectName(QString::fromUtf8("menuLanguage"));
         MainWindowClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindowClass);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -299,11 +316,14 @@ public:
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuTools->menuAction());
+        menuBar->addAction(menuLanguage->menuAction());
         menuFile->addAction(actionOpen);
         menuFile->addAction(actionNew);
         menuFile->addAction(actionSave);
         menuFile->addAction(actionSave_As);
         menuTools->addAction(actionUniform_Table);
+        menuLanguage->addAction(actionEspanol);
+        menuLanguage->addAction(actionEnglish);
         mainToolBar->addAction(actionSave);
         mainToolBar->addSeparator();
         mainToolBar->addAction(actionPoints);
@@ -339,7 +359,7 @@ public:
 #endif // QT_NO_TOOLTIP
         actionSave->setText(QApplication::translate("MainWindowClass", "Save", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionSave->setToolTip(QApplication::translate("MainWindowClass", "FOr save the actual shader program", nullptr));
+        actionSave->setToolTip(QApplication::translate("MainWindowClass", "For save the actual shader program", nullptr));
 #endif // QT_NO_TOOLTIP
         actionSave_As->setText(QApplication::translate("MainWindowClass", "Save As", nullptr));
         actionPoints->setText(QApplication::translate("MainWindowClass", "Mode Points", nullptr));
@@ -382,11 +402,14 @@ public:
 #ifndef QT_NO_TOOLTIP
         actionjoy->setToolTip(QApplication::translate("MainWindowClass", "<html><head/><body><p>this change the<span style=\" font-weight:600;\"> object</span> to joy</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
+        actionEnglish->setText(QApplication::translate("MainWindowClass", "English", nullptr));
+        actionEspanol->setText(QApplication::translate("MainWindowClass", "Spanish", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(VertexS), QApplication::translate("MainWindowClass", "Vertex Shader", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(FragmentS), QApplication::translate("MainWindowClass", "Fragment Shader", nullptr));
         OutPut->setPlainText(QString());
         menuFile->setTitle(QApplication::translate("MainWindowClass", "File", nullptr));
         menuTools->setTitle(QApplication::translate("MainWindowClass", "Tools", nullptr));
+        menuLanguage->setTitle(QApplication::translate("MainWindowClass", "Language", nullptr));
     } // retranslateUi
 
 };

@@ -9,25 +9,28 @@
 #include <QDebug>
 #include <QEvent>
 #include <QVector>
+#include <QTranslator>
 
 namespace Ui { class tableUniforms; };
 
-class tableUniforms :  public QDialog
+class tableUniforms : public QDialog
 {
 	Q_OBJECT
 
 public:
-	tableUniforms(QWidget *parent = Q_NULLPTR);
+
+
+	tableUniforms(QWidget* parent = Q_NULLPTR);
 	~tableUniforms();
 
 private:
-	Ui::tableUniforms *ui;
+	Ui::tableUniforms* ui;
 
 
 	/********************UNIFORMS TABLE DATA********************/
 
 	QTableWidget* table;
-	QPushButton *addUniform;//Pointer to the button for add uniforms
+	QPushButton* addUniform;//Pointer to the button for add uniforms
 	addDialog* addForm;
 
 	std::vector<dataForUniform> uniforms;
@@ -39,9 +42,9 @@ private:
 
 	/********************END UNIFORMS TABLE DATA********************/
 
-	QPushButton *help;
-	QPushButton *accept;
-	
+	QPushButton* help;
+	QPushButton* accept;
+
 
 	bool checkUniform(dataForUniform data);
 	void wrongUniform();
@@ -49,22 +52,22 @@ private:
 
 private slots:
 
-	
+
 	void handleButtonAboutUniform();
 	void handleButtonAccept();
 	void handleButtonAddUniform();
 
 	//Manage the data send for the ui that add uniforms
-	void handleData(const dataForUniform &data);
+	void handleData(const dataForUniform& data);
 
 	//Manage the data that is edit
 	void editSlot(int row, int col);
 	void cell_onClicked();
-	void cell_comboBoxChanged(const QString &newValue);
+	void cell_comboBoxChanged(const QString& newValue);
 
 
 signals:
-	void addUniforms(const QVector<dataForUniform> &data);
-	
-	
+	void addUniforms(const QVector<dataForUniform>& data);
+
+
 };

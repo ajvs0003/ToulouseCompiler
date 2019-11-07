@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>Antonio Jesús Viso Sánchez</author>
  <class>MainWindowClass</class>
  <widget class="QMainWindow" name="MainWindowClass">
   <property name="geometry">
@@ -207,8 +208,16 @@
     </property>
     <addaction name="actionUniform_Table"/>
    </widget>
+   <widget class="QMenu" name="menuLanguage">
+    <property name="title">
+     <string>Language</string>
+    </property>
+    <addaction name="actionEspanol"/>
+    <addaction name="actionEnglish"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuTools"/>
+   <addaction name="menuLanguage"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -265,7 +274,7 @@
     <string>Save</string>
    </property>
    <property name="toolTip">
-    <string>FOr save the actual shader program</string>
+    <string>For save the actual shader program</string>
    </property>
   </action>
   <action name="actionSave_As">
@@ -431,6 +440,30 @@
    </property>
    <property name="toolTip">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this change the&lt;span style=&quot; font-weight:600;&quot;&gt; object&lt;/span&gt; to joy&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionEnglish">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/translattions/Languages/en.png</normaloff>:/translattions/Languages/en.png</iconset>
+   </property>
+   <property name="text">
+    <string>English</string>
+   </property>
+  </action>
+  <action name="actionEspanol">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/translattions/Languages/es.png</normaloff>:/translattions/Languages/es.png</iconset>
+   </property>
+   <property name="text">
+    <string>Spanish</string>
    </property>
   </action>
  </widget>

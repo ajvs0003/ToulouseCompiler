@@ -82,6 +82,11 @@
     <Filter Include="Source Files\CodeEditor">
       <UniqueIdentifier>{72081066-d0a9-4412-a46c-8824f3f18521}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -260,5 +265,13 @@
     <ClInclude Include="lodepng.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Languages\toulousecompiler_en.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="Languages\toulousecompiler_es.ts">
+      <Filter>Translation Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

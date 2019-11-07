@@ -2,7 +2,7 @@
 #include "ui_tableUniforms.h"
 #include <sstream>
 #include <glm.hpp>
-tableUniforms::tableUniforms(QWidget *parent)
+tableUniforms::tableUniforms(QWidget* parent)
 	: QDialog(parent)
 {
 	ui = new Ui::tableUniforms();
@@ -112,19 +112,19 @@ bool tableUniforms::checkUniform(dataForUniform  data)
 
 			}
 
-			catch (const std::invalid_argument& ia) {
-				
+			catch (const std::invalid_argument & ia) {
+
 				return false;
 			}
 
-			catch (const std::out_of_range& oor) {
-				
+			catch (const std::out_of_range & oor) {
+
 				return false;
 			}
 
-			catch (const std::exception& e)
+			catch (const std::exception & e)
 			{
-				
+
 				return false;
 			}
 
@@ -149,19 +149,19 @@ bool tableUniforms::checkUniform(dataForUniform  data)
 
 			}
 
-			catch (const std::invalid_argument& ia) {
-				
+			catch (const std::invalid_argument & ia) {
+
 				return false;
 			}
 
-			catch (const std::out_of_range& oor) {
-				
+			catch (const std::out_of_range & oor) {
+
 				return false;
 			}
 
-			catch (const std::exception& e)
+			catch (const std::exception & e)
 			{
-				
+
 				return false;
 			}
 		}
@@ -179,20 +179,20 @@ bool tableUniforms::checkUniform(dataForUniform  data)
 			return true;
 		}
 
-		catch (const std::invalid_argument& ia) {
-			
-			return false;
-		}
-
-		catch (const std::out_of_range& oor) {
-			
+		catch (const std::invalid_argument & ia) {
 
 			return false;
 		}
 
-		catch (const std::exception& e)
+		catch (const std::out_of_range & oor) {
+
+
+			return false;
+		}
+
+		catch (const std::exception & e)
 		{
-			
+
 
 			return false;
 		}
@@ -205,21 +205,21 @@ bool tableUniforms::checkUniform(dataForUniform  data)
 			return true;
 		}
 
-		catch (const std::invalid_argument& ia) {
-			
+		catch (const std::invalid_argument & ia) {
+
 
 			return false;
 		}
 
-		catch (const std::out_of_range& oor) {
-			
+		catch (const std::out_of_range & oor) {
+
 
 			return false;
 		}
 
-		catch (const std::exception& e)
+		catch (const std::exception & e)
 		{
-			
+
 
 			return false;
 		}
@@ -259,7 +259,7 @@ void tableUniforms::handleButtonAccept()
 		if (!checkUniform(uniforms.at(i)))send = false;
 	}
 
-	if(send)emit addUniforms(aux);
+	if (send)emit addUniforms(aux);
 	else wrongUniform();
 	this->hide();
 
@@ -278,9 +278,9 @@ void tableUniforms::handleButtonAddUniform()
 
 	addForm = new addDialog(this);
 	// connect your signal to the mainwindow slot
-	connect(addForm, SIGNAL(dataChanged(const dataForUniform &)), this, SLOT(handleData(const dataForUniform &)));
+	connect(addForm, SIGNAL(dataChanged(const dataForUniform&)), this, SLOT(handleData(const dataForUniform&)));
 
-	addForm->setWindowTitle("Uniform Data");
+	addForm->setWindowTitle(tr("Uniform Data"));
 
 	//if is true dont let change the window until close
 
@@ -306,12 +306,12 @@ void tableUniforms::editSlot(int row, int col) {
 		switch (col) {
 		case column::name:
 			uniforms.at(row).name = table->item(row, col)->text().toStdString();
-			
+
 			break;
 		case column::value:
 			aux = uniforms.at(row);
-			aux.value= table->item(row, col)->text().toStdString();
-			
+			aux.value = table->item(row, col)->text().toStdString();
+
 			if (checkUniform(aux)) {
 				uniforms.at(row).value = table->item(row, col)->text().toStdString();
 			}
@@ -319,9 +319,9 @@ void tableUniforms::editSlot(int row, int col) {
 				wrongUniform();
 				table->item(row, col)->setText(QString::fromStdString(uniforms.at(row).value));
 			}
-			
+
 			break;
-		
+
 		default:
 			break;
 
@@ -330,18 +330,18 @@ void tableUniforms::editSlot(int row, int col) {
 
 }
 //Method that manage the signal for edit type of the uniform
-void tableUniforms::cell_comboBoxChanged(const QString & newValue)
+void tableUniforms::cell_comboBoxChanged(const QString& newValue)
 {
 
 	int row = sender()->property("row").toInt();
-	
+
 	dataForUniform aux;
 	aux = uniforms.at(row);
 
 	string lastType = aux.type;
 
-	
-	
+
+
 	aux.type = newValue.toStdString();
 
 	if (checkUniform(aux)) {
@@ -351,26 +351,26 @@ void tableUniforms::cell_comboBoxChanged(const QString & newValue)
 		changeUniform();
 		uniforms.at(row).type = newValue.toStdString();
 	}
-	
+
 
 }
 //Method that manage the signal for remove the uniform
 void tableUniforms::cell_onClicked() {
-	
 
-	QWidget *w = qobject_cast<QWidget *>(sender()->parent());
+
+	QWidget* w = qobject_cast<QWidget*>(sender()->parent());
 	if (w) {
 		int row = table->indexAt(w->pos()).row();
 
 		int id = uniforms.at(row).id;
 		dataForUniform aux = uniforms.at(row);
 		uniforms.erase(
-			std::remove_if(uniforms.begin(), uniforms.end(), [&](dataForUniform const & data) {
-			return data.id == id;
-		}),
+			std::remove_if(uniforms.begin(), uniforms.end(), [&](dataForUniform const& data) {
+				return data.id == id;
+				}),
 			uniforms.end());
 
-		
+
 		table->removeRow(row);
 		table->setCurrentCell(0, 0);
 	}
@@ -380,7 +380,7 @@ void tableUniforms::cell_onClicked() {
 
 
 //this slot handle the data that for the uniforms that the widget send
-void tableUniforms::handleData(const dataForUniform &data)
+void tableUniforms::handleData(const dataForUniform& data)
 {
 
 	dataForUniform aux;
@@ -388,79 +388,79 @@ void tableUniforms::handleData(const dataForUniform &data)
 
 	//check that the uniform is correct
 	if (checkUniform(aux)) {
-	table->setEditTriggers(QAbstractItemView::DoubleClicked);
-	
-	//**************table widget data***************//
-	int row = table->rowCount();
-	table->insertRow(table->rowCount());
+		table->setEditTriggers(QAbstractItemView::DoubleClicked);
+
+		//**************table widget data***************//
+		int row = table->rowCount();
+		table->insertRow(table->rowCount());
 
 
-	dataForUniform nuevo = data;
-	uniforms.push_back(nuevo);
+		dataForUniform nuevo = data;
+		uniforms.push_back(nuevo);
 
 
-	//create qt elements for the table
-	QTableWidgetItem *name = new QTableWidgetItem(QString::fromStdString(data.name));
-	name->setTextAlignment(Qt::AlignCenter);
-	
-	QTableWidgetItem *value = new QTableWidgetItem(QString::fromStdString(data.value));
-	value->setTextAlignment(Qt::AlignCenter);
+		//create qt elements for the table
+		QTableWidgetItem* name = new QTableWidgetItem(QString::fromStdString(data.name));
+		name->setTextAlignment(Qt::AlignCenter);
 
-	//insert values to the table
-	table->setItem(row, column::name, name);
-	table->setItem(row, column::value, value);
+		QTableWidgetItem* value = new QTableWidgetItem(QString::fromStdString(data.value));
+		value->setTextAlignment(Qt::AlignCenter);
 
-
-
-	//comboBox for type
-	QWidget* pWi = new QWidget();
-	QComboBox* combo = new QComboBox();
-
-	combo->setProperty("row", (int)row); // row represents the row number in qtablewidget
-
-	combo->addItems(QStringList() << tr("boolean") << tr("vec3") << tr("vec4") << tr("float") << tr("int")); //add the types for the uniforms
-
-	if (nuevo.type == "boolean")combo->setCurrentIndex(0);
-	else if (nuevo.type == "vec3")combo->setCurrentIndex(1);
-	else if (nuevo.type == "vec4")combo->setCurrentIndex(2);
-	else if (nuevo.type == "float")combo->setCurrentIndex(3);
-	else if (nuevo.type == "int")combo->setCurrentIndex(4);
+		//insert values to the table
+		table->setItem(row, column::name, name);
+		table->setItem(row, column::value, value);
 
 
 
+		//comboBox for type
+		QWidget* pWi = new QWidget();
+		QComboBox* combo = new QComboBox();
 
+		combo->setProperty("row", (int)row); // row represents the row number in qtablewidget
 
-	connect(combo, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(cell_comboBoxChanged(const QString&)));//conect signalk if something change
+		combo->addItems(QStringList() << tr("boolean") << tr("vec3") << tr("vec4") << tr("float") << tr("int")); //add the types for the uniforms
 
-//# layout for the comboBox
-	QHBoxLayout* pLayout = new QHBoxLayout(pWi);
-	pLayout->addWidget(combo);
-	pLayout->setAlignment(Qt::AlignCenter);
-	pLayout->setContentsMargins(0, 0, 0, 0);
-	pWi->setLayout(pLayout);
-	table->setCellWidget(row, column::type, pWi);
-
-	QIcon icon(":/img/Resources/img/delete.png");
-	QWidget* pWidget = new QWidget();
-	QPushButton* btn_edit = new QPushButton();
-	btn_edit->setIcon(icon);
-	btn_edit->setStyleSheet("QPushButton{background: transparent;}");
-
-	connect(btn_edit, SIGNAL(clicked()), this, SLOT(cell_onClicked()));
-
-	//# layout for the qPushButton
-	QHBoxLayout* Layout = new QHBoxLayout(pWidget);
-	Layout->addWidget(btn_edit);
-	Layout->setAlignment(Qt::AlignCenter);
-	Layout->setContentsMargins(0, 0, 0, 0);
-	pWidget->setLayout(Layout);
-	table->setCellWidget(row, column::deleteRow, pWidget);
+		if (nuevo.type == "boolean")combo->setCurrentIndex(0);
+		else if (nuevo.type == "vec3")combo->setCurrentIndex(1);
+		else if (nuevo.type == "vec4")combo->setCurrentIndex(2);
+		else if (nuevo.type == "float")combo->setCurrentIndex(3);
+		else if (nuevo.type == "int")combo->setCurrentIndex(4);
 
 
 
 
 
-	//**************end table widget data***************//
+		connect(combo, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(cell_comboBoxChanged(const QString&)));//conect signalk if something change
+
+	//# layout for the comboBox
+		QHBoxLayout* pLayout = new QHBoxLayout(pWi);
+		pLayout->addWidget(combo);
+		pLayout->setAlignment(Qt::AlignCenter);
+		pLayout->setContentsMargins(0, 0, 0, 0);
+		pWi->setLayout(pLayout);
+		table->setCellWidget(row, column::type, pWi);
+
+		QIcon icon(":/img/Resources/img/delete.png");
+		QWidget* pWidget = new QWidget();
+		QPushButton* btn_edit = new QPushButton();
+		btn_edit->setIcon(icon);
+		btn_edit->setStyleSheet("QPushButton{background: transparent;}");
+
+		connect(btn_edit, SIGNAL(clicked()), this, SLOT(cell_onClicked()));
+
+		//# layout for the qPushButton
+		QHBoxLayout* Layout = new QHBoxLayout(pWidget);
+		Layout->addWidget(btn_edit);
+		Layout->setAlignment(Qt::AlignCenter);
+		Layout->setContentsMargins(0, 0, 0, 0);
+		pWidget->setLayout(Layout);
+		table->setCellWidget(row, column::deleteRow, pWidget);
+
+
+
+
+
+		//**************end table widget data***************//
 	}
 	else {
 		wrongUniform();

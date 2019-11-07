@@ -7,6 +7,9 @@
 ToulouseCompiler::ToulouseCompiler(QWidget* parent)
 	: QMainWindow(parent)
 {
+
+
+
 	ui.setupUi(this);
 
 
@@ -16,7 +19,15 @@ ToulouseCompiler::ToulouseCompiler(QWidget* parent)
 
 
 }
+void ToulouseCompiler::changeEvent(QEvent* event)
+{
+	if (event->type() == QEvent::LanguageChange)
+	{
+		ui.retranslateUi(this);
+	}
 
+	QWidget::changeEvent(event);
+}
 
 
 
@@ -400,18 +411,25 @@ bool ToulouseCompiler::handleToolActionSaveAs()
 
 void ToulouseCompiler::handleToolActionTableUniforms()
 {
-
-
-
-
 	table->show();
+}
 
+void ToulouseCompiler::on_Spanish_clicked()
+{
+	qApp->removeTranslator(&englishTranslator);
+	// change language to spanish language
+	qApp->installTranslator(&spanishTranslator);
+	spanishButton->setChecked(true);
+	englishButton->setChecked(false);
+}
 
-
-
-
-
-
+void ToulouseCompiler::on_English_clicked()
+{
+	qApp->removeTranslator(&spanishTranslator);
+	// change language to english language
+	qApp->installTranslator(&englishTranslator);
+	englishButton->setChecked(true);
+	spanishButton->setChecked(false);
 }
 
 void ToulouseCompiler::handleToolActionRender()
@@ -515,10 +533,14 @@ void ToulouseCompiler::configurate()
 
 	this->configuration_tableWindow();
 
+
+	this->configuration_translators();
+
 	statusBar->showMessage("Ready to start");
 
 
 }
+
 
 
 
@@ -586,8 +608,61 @@ void ToulouseCompiler::configuration_ToolBar()
 
 	render = ui.actionRender;
 	connect(render, SIGNAL(triggered()), this, SLOT(handleToolActionRender()));
+
+
+
+
 }
 
+
+void ToulouseCompiler::configuration_translators() {
+
+
+	spanishButton = ui.actionEspanol;
+	connect(spanishButton, SIGNAL(triggered()), this, SLOT(on_Spanish_clicked()));
+
+	englishButton = ui.actionEnglish;
+	connect(englishButton, SIGNAL(triggered()), this, SLOT(on_English_clicked()));
+
+	if (spanishTranslator.load(":/translattions/Languages/toulousecompiler_es.qm"))
+		qDebug() << "successfully load toulousecompiler_es.qm file.";
+	else
+		qDebug() << "problem in load toulousecompiler_es.qm file.";
+
+	if (englishTranslator.load(":/translattions/Languages/toulousecompiler_en.qm"))
+		qDebug() << "successfully load toulousecompiler_es.qm file.";
+	else
+		qDebug() << "problem in load toulousecompiler_en.qm file.";
+
+	// format systems language
+	QString defaultLocale = QLocale::system().name();
+	defaultLocale.truncate(defaultLocale.lastIndexOf('_'));
+
+	if (defaultLocale == "es")
+	{
+
+		qApp->removeTranslator(&englishTranslator);
+		// change language to spanish language
+		qApp->installTranslator(&spanishTranslator);
+
+
+		spanishButton->setChecked(true);
+		englishButton->setChecked(false);
+	}
+	else {
+		qApp->removeTranslator(&spanishTranslator);
+		// change language to english language
+		qApp->installTranslator(&englishTranslator);
+
+		englishButton->setChecked(true);
+		spanishButton->setChecked(false);
+	}
+
+
+
+
+
+}
 
 void ToulouseCompiler::handleData(const QVector<dataForUniform>& data)
 {
@@ -693,6 +768,10 @@ void ToulouseCompiler::configuration_opengl()
 	connect(openGLWindow, SIGNAL(Mouse_Released()), this, SLOT(Mouse_Realeased()));
 	connect(openGLWindow, SIGNAL(Mouse_Left()), this, SLOT(Mouse_Left()));
 }
+
+
+
+
 
 
 
