@@ -4,10 +4,10 @@
 #include <QTableWidget>
 #include <QPoint>
 #include <QComboBox>
-#include <vector>
+#include <map>
 #include <QDebug>
 
-
+#include "ToulouseConstants.h"
 #include "ui_ToulouseCompiler.h"
 #include "CodeEditor.h"
 #include "OpenGLWidget.h"
@@ -22,71 +22,31 @@ class ToulouseCompiler : public QMainWindow
 {
 	Q_OBJECT
 
-public:
-	ToulouseCompiler(QWidget* parent = Q_NULLPTR);
-	~ToulouseCompiler();
-
-
-
-protected:
-	void changeEvent(QEvent*);
-
 private:
-
-
-	Ui::MainWindowClass ui;//MAIN WINDOW
-
-
-
+	/******************** MAIN WINDOW ********************/
+	Ui::MainWindowClass ui;
 
 	/********************CODE EDITOR DATA********************/
-
-
-	//Pointer to the widget for code editor
-	QTabWidget* tabView;
+	
+	QTabWidget* tabView;//Pointer to the widget for code editor
 	CodeEditor* vertexShader;
 	CodeEditor* fragmentShader;
-	QString curFile;
 
+	QString curFile;//actual address for save location
 
+	//Highlight of words
 	Highlighter* VertexHighlighter;
 	Highlighter* FragmentHighlighter;
 
-	/********************END CODE EDITOR DATA********************/
-
-
-
 	/********************TOOL BAR DATA********************/
 
-
-	QAction* modePoints;
-	QAction* modeLines;
-	QAction* modeTriangles;
-	QAction* modeMaterial;
-	QAction* modeTextures;
-
-
-	QAction* peon;
-	QAction* copa;
-	QAction* joy;
-
-	QAction* UniformTable;
-	QAction* newFile;
-	QAction* load;
-	QAction* save;
-	QAction* saveAs;
-	QAction* render;
-
-	/********************END TOOL BAR DATA********************/
+	map<int,QAction*> actionsButtons;
 
 
 
 	/********************OUTPUT DATA********************/
-
-	QPlainTextEdit* OutPut;
+	QPlainTextEdit* Debug;
 	QStatusBar* statusBar;
-
-	/********************END OUTPUT DATA********************/
 
 	/********************OPENGL DATA********************/
 	QWidget* openglwidget;
@@ -94,59 +54,43 @@ private:
 	glm::vec2 oldMousePosition;
 	bool isHold = false;
 
-	/********************END OPENGL DATA********************/
-
-
 	/********************UNIFORMS TABLE DATA********************/
-
-
 	tableUniforms* table;
 
-	/********************END UNIFORMS TABLE DATA********************/
-
-
-
-
 	/********************LANGUAGE DATA********************/
-
-
-
 	QTranslator spanishTranslator;
 	QTranslator englishTranslator;
-
 	QAction* spanishButton;
 	QAction* englishButton;
-
-	/********************END LANGUAGE DATA********************/
-
-
-
-
+	
 
 	//metodo que hara que se llamen a todos los configurate de la aplicacion
 	//que se encargan de enlazar la ui con las clases cpp que gestionan el funcionamiento
 	void configurate();
-
-
 	void configuration_ToolBar();
-
 	void configuration_tableWindow();
-
-	void configuration_OutPut();
+	void configuration_Debug();
 	void configuration_codeEditor();
 	void configuration_opengl();
 	void configuration_translators();
 
+
+	void checkModeOpenGL();
+	void checkObject();
+
+	//Metodos para la gestion de guardar los shader program o abrir alguno existente
 	void loadFile(const QString& fileName);
 	bool saveFile(const QString& fileName);
 	void setCurrentFile(const QString& fileName);
-
-
-
 	bool maybeSave();
 
 
+public:
+	ToulouseCompiler(QWidget* parent = Q_NULLPTR);
+	~ToulouseCompiler();
 
+protected:
+	void changeEvent(QEvent*);
 
 protected slots:
 
@@ -156,9 +100,7 @@ protected slots:
 	void Mouse_Pressed();
 	void Mouse_Realeased();
 	void Mouse_Left();
-
 	void handleData(const QVector<dataForUniform>& data);
-
 
 
 	//BUTTONS
@@ -168,7 +110,6 @@ protected slots:
 	void handleToolActionTriangles();
 	void handleToolActionMaterial();
 	void handleToolActionTextures();
-
 	void handleToolActionPeon();
 	void handleToolActionCopa();
 	void handleToolActionJoy();
@@ -184,9 +125,8 @@ protected slots:
 	void handleToolActionTableUniforms();
 
 
-
 	//Language
-	void on_Spanish_clicked();
-	void on_English_clicked();
+	void Spanish_clicked();
+	void English_clicked();
 
 };

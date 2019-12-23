@@ -7,7 +7,7 @@ tableUniforms::tableUniforms(QWidget* parent)
 {
 	ui = new Ui::tableUniforms();
 	ui->setupUi(this);
-
+	
 
 	table = ui->table;
 
@@ -40,7 +40,6 @@ tableUniforms::tableUniforms(QWidget* parent)
 
 
 	addUniform = ui->addUniform;
-
 	addUniform->setStyleSheet("QPushButton{background: transparent;}");
 	//gestiona los conect del boton
 	connect(addUniform, SIGNAL(released()), this, SLOT(handleButtonAddUniform()));

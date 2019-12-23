@@ -5,8 +5,8 @@ int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 	BOOL WINAPI FreeConsole(void);
-	ToulouseCompiler w;
-	w.show();
+	ToulouseCompiler app;
+	app.show();
 
 
 	

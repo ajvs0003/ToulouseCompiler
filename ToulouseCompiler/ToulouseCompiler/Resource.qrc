@@ -40,8 +40,8 @@
     <qresource prefix="/system"/>
     <qresource prefix="/translattions">
         <file>Languages/toulousecompiler_en.qm</file>
-        <file>Languages/toulousecompiler_es.qm</file>
         <file>Languages/en.png</file>
         <file>Languages/es.png</file>
+        <file>Languages/toulousecompiler_es.qm</file>
     </qresource>
 </RCC>

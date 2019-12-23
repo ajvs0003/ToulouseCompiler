@@ -2,19 +2,13 @@
 #include <QSurfaceFormat>
 
 #include <QSizePolicy>
-
+#include <algorithm>
 
 ToulouseCompiler::ToulouseCompiler(QWidget* parent)
 	: QMainWindow(parent)
 {
-
-
-
 	ui.setupUi(this);
-
-
 	this->setWindowIcon(QIcon(":/img/Resources/img/icono.png"));
-
 	this->configurate();
 
 
@@ -34,14 +28,7 @@ void ToulouseCompiler::changeEvent(QEvent* event)
 ToulouseCompiler::~ToulouseCompiler()
 {
 	delete tabView;
-	delete modePoints;
-	delete modeLines;
-	delete modeMaterial;
-	delete modeTextures;
-	delete modeTriangles;
-	delete save;
-	delete render;
-	delete OutPut;
+	delete Debug;
 	delete openglwidget;
 	delete table;
 
@@ -50,9 +37,23 @@ ToulouseCompiler::~ToulouseCompiler()
 
 
 
+void ToulouseCompiler::checkModeOpenGL()
+{
+	if (actionsButtons.at(Toulouse::MODE_POINTS)->isChecked())actionsButtons.at(Toulouse::MODE_POINTS)->setChecked(false);
+	if (actionsButtons.at(Toulouse::MODE_LINES)->isChecked())actionsButtons.at(Toulouse::MODE_LINES)->setChecked(false);
+	if (actionsButtons.at(Toulouse::MODE_TRIANGLES)->isChecked())actionsButtons.at(Toulouse::MODE_TRIANGLES)->setChecked(false);
+	if (actionsButtons.at(Toulouse::MODE_MATERIALS)->isChecked())actionsButtons.at(Toulouse::MODE_MATERIALS)->setChecked(false);
+	if (actionsButtons.at(Toulouse::MODE_TEXTURES)->isChecked())actionsButtons.at(Toulouse::MODE_TEXTURES)->setChecked(false);
 
 
+}
 
+void ToulouseCompiler::checkObject()
+{
+	if (actionsButtons.at(Toulouse::CUP)->isChecked())actionsButtons.at(Toulouse::CUP)->setChecked(false);
+	if (actionsButtons.at(Toulouse::JOY)->isChecked())actionsButtons.at(Toulouse::JOY)->setChecked(false);
+	if (actionsButtons.at(Toulouse::PAWN)->isChecked())actionsButtons.at(Toulouse::PAWN)->setChecked(false);
+}
 
 
 
@@ -60,107 +61,35 @@ ToulouseCompiler::~ToulouseCompiler()
 void ToulouseCompiler::handleToolActionPoints() {
 
 
-
-	if (modeLines->isChecked()) {
-		modeLines->setChecked(false);
-	}
-	if (modeTriangles->isChecked()) {
-		modeTriangles->setChecked(false);
-	}
-
-	if (modeMaterial->isChecked()) {
-		modeMaterial->setChecked(false);
-	}
-
-	if (modeTextures->isChecked()) {
-		modeTextures->setChecked(false);
-	}
+	checkModeOpenGL();
+	actionsButtons.at(Toulouse::MODE_POINTS)->setChecked(true);
+	openGLWindow->changeTrial(0);
+	openGLWindow->deleteUniforms();
+	/*Log::getInstancia()->warning("activado el modo puntos");*/
 
 
-
-	if (modePoints->isChecked()) {
-
-		openGLWindow->changeTrial(0);
-		openGLWindow->deleteUniforms();
-		/*Log::getInstancia()->warning("activado el modo puntos");*/
-	}
-	else {
-
-		modePoints->setChecked(false);
-
-	}
 
 }
 void ToulouseCompiler::handleToolActionLines()
 {
 
-
-	if (modePoints->isChecked()) {
-		modePoints->setChecked(false);
-	}
-	if (modeTriangles->isChecked()) {
-		modeTriangles->setChecked(false);
-	}
-
-	if (modeMaterial->isChecked()) {
-		modeMaterial->setChecked(false);
-	}
-
-	if (modeTextures->isChecked()) {
-		modeTextures->setChecked(false);
-	}
-
-
-	if (modeLines->isChecked()) {
-
-		openGLWindow->changeTrial(1);
-		openGLWindow->deleteUniforms();
-		/*Log::getInstancia()->warning("activado el modo lineas");*/
-	}
-	else {
-
-		modeLines->setChecked(false);
-
-	}
-
-
-
-
-
+	checkModeOpenGL();
+	actionsButtons.at(Toulouse::MODE_LINES)->setChecked(true);
+	openGLWindow->changeTrial(1);
+	openGLWindow->deleteUniforms();
 
 
 }
 
 void ToulouseCompiler::handleToolActionTriangles()
 {
-
-	if (modeLines->isChecked()) {
-		modeLines->setChecked(false);
-	}
-	if (modePoints->isChecked()) {
-		modePoints->setChecked(false);
-	}
-
-	if (modeMaterial->isChecked()) {
-		modeMaterial->setChecked(false);
-	}
-
-	if (modeTextures->isChecked()) {
-		modeTextures->setChecked(false);
-	}
+	checkModeOpenGL();
+	actionsButtons.at(Toulouse::MODE_TRIANGLES)->setChecked(true);
+	openGLWindow->changeTrial(2);
+	openGLWindow->deleteUniforms();
+	/*Log::getInstancia()->warning("activado el modo triangulos");*/
 
 
-	if (modeTriangles->isChecked()) {
-
-		openGLWindow->changeTrial(2);
-		openGLWindow->deleteUniforms();
-		/*Log::getInstancia()->warning("activado el modo triangulos");*/
-	}
-	else {
-
-		modeTriangles->setChecked(false);
-
-	}
 
 
 
@@ -169,155 +98,53 @@ void ToulouseCompiler::handleToolActionTriangles()
 
 void ToulouseCompiler::handleToolActionMaterial()
 {
-	if (modeLines->isChecked()) {
-		modeLines->setChecked(false);
-	}
-	if (modePoints->isChecked()) {
-		modePoints->setChecked(false);
-	}
-	if (modeTriangles->isChecked()) {
-		modeTriangles->setChecked(false);
-	}
 
-	if (modeTextures->isChecked()) {
-		modeTextures->setChecked(false);
-	}
-
-
-	if (modeMaterial->isChecked()) {
-
-		openGLWindow->changeTrial(3);
-		openGLWindow->deleteUniforms();
-		//Log::getInstancia()->warning("activado el modo material");
-	}
-	else {
-
-		modeMaterial->setChecked(false);
-
-	}
-
-
-
-
-
+	checkModeOpenGL();
+	actionsButtons.at(Toulouse::MODE_MATERIALS)->setChecked(true);
+	openGLWindow->changeTrial(3);
+	openGLWindow->deleteUniforms();
 
 }
 
 void ToulouseCompiler::handleToolActionTextures()
 {
-	if (modeLines->isChecked()) {
-		modeLines->setChecked(false);
-	}
-	if (modePoints->isChecked()) {
-		modePoints->setChecked(false);
-	}
+	checkModeOpenGL();
+	actionsButtons.at(Toulouse::MODE_TEXTURES)->setChecked(true);
+	openGLWindow->changeTrial(4);
+	openGLWindow->deleteUniforms();
 
-	if (modeMaterial->isChecked()) {
-		modeMaterial->setChecked(false);
-	}
-
-	if (modeTriangles->isChecked()) {
-		modeTriangles->setChecked(false);
-	}
-
-
-	if (modeTextures->isChecked()) {
-
-		openGLWindow->changeTrial(4);
-		openGLWindow->deleteUniforms();
-		/*Log::getInstancia()->warning("activado el modo modeTextures");*/
-	}
-	else {
-
-		modeTextures->setChecked(false);
-
-	}
 }
 
 void ToulouseCompiler::handleToolActionPeon()
 {
-	if (copa->isChecked()) {
-		copa->setChecked(false);
-	}
-	if (joy->isChecked()) {
-		joy->setChecked(false);
-	}
-
-
-	if (peon->isChecked()) {
-
-		openGLWindow->changeObject(0);
-
-		//Log::getInstancia()->warning("activado el modo material");
-	}
-	else {
-
-		peon->setChecked(false);
-
-	}
-
+	checkObject();
+	actionsButtons.at(Toulouse::PAWN)->setChecked(true);
+	openGLWindow->changeObject(0);
 
 }
 
 void ToulouseCompiler::handleToolActionCopa()
 {
-	if (peon->isChecked()) {
-		peon->setChecked(false);
-	}
-	if (joy->isChecked()) {
-		joy->setChecked(false);
-	}
 
 
+	checkObject();
+	actionsButtons.at(Toulouse::CUP)->setChecked(true);
+	openGLWindow->changeObject(1);
 
 
-
-	if (copa->isChecked()) {
-
-		openGLWindow->changeObject(1);
-
-		//Log::getInstancia()->warning("activado el modo material");
-	}
-	else {
-
-		copa->setChecked(false);
-
-	}
 }
 
 void ToulouseCompiler::handleToolActionJoy()
 {
-	if (copa->isChecked()) {
-		copa->setChecked(false);
-	}
-	if (peon->isChecked()) {
-		peon->setChecked(false);
-	}
-
-
-
-
-
-	if (joy->isChecked()) {
-
-		openGLWindow->changeObject(2);
-
-		//Log::getInstancia()->warning("activado el modo material");
-	}
-	else {
-
-		joy->setChecked(false);
-
-	}
+	checkObject();
+	actionsButtons.at(Toulouse::JOY)->setChecked(true);
+	openGLWindow->changeObject(2);
 }
 
 
 void ToulouseCompiler::handleToolActionNew()
 {
-
 	configuration_tableWindow();
-
-
 
 	if (maybeSave()) {
 		vertexShader->clear();
@@ -326,15 +153,11 @@ void ToulouseCompiler::handleToolActionNew()
 		setCurrentFile(QString());
 	}
 
-
-
 }
 
 void ToulouseCompiler::handleToolActionOpen()
 {
-
 	configuration_tableWindow();
-
 
 
 	if (maybeSave()) {
@@ -342,10 +165,6 @@ void ToulouseCompiler::handleToolActionOpen()
 		QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
 			QDir::homePath(),
 			tr("All files (*.*)"));
-
-
-
-
 
 		if (!fileName.isEmpty())
 			loadFile(fileName);
@@ -414,7 +233,7 @@ void ToulouseCompiler::handleToolActionTableUniforms()
 	table->show();
 }
 
-void ToulouseCompiler::on_Spanish_clicked()
+void ToulouseCompiler::Spanish_clicked()
 {
 	qApp->removeTranslator(&englishTranslator);
 	// change language to spanish language
@@ -424,7 +243,7 @@ void ToulouseCompiler::on_Spanish_clicked()
 	this->configuration_tableWindow();
 }
 
-void ToulouseCompiler::on_English_clicked()
+void ToulouseCompiler::English_clicked()
 {
 	qApp->removeTranslator(&spanishTranslator);
 	// change language to english language
@@ -440,17 +259,14 @@ void ToulouseCompiler::handleToolActionRender()
 
 	if (maybeSave()) {
 		//resetear log
-		OutPut->clear();
-
+		Debug->clear();
+		statusBar->showMessage("Compiling....");
 
 		openGLWindow->setPathShader(curFile.toStdString());
 		openGLWindow->compile();
 
 	}
 }
-
-
-
 
 void ToulouseCompiler::Mouse_currentPos() {
 	float width = openGLWindow->w;
@@ -500,7 +316,6 @@ void ToulouseCompiler::Mouse_currentPos() {
 
 }
 
-
 void ToulouseCompiler::Mouse_Pressed()
 {
 
@@ -520,31 +335,21 @@ void ToulouseCompiler::Mouse_Left()
 }
 
 
-
-
 void ToulouseCompiler::configurate()
 {
 
-	this->configuration_OutPut();
+	this->configuration_Debug();
 
 
 	this->configuration_codeEditor();
 	this->configuration_opengl();
 	this->configuration_ToolBar();
-
-
 	this->configuration_tableWindow();
-
-
 	this->configuration_translators();
 
+
 	statusBar->showMessage("Ready to start");
-
-
 }
-
-
-
 
 void ToulouseCompiler::configuration_ToolBar()
 {
@@ -552,66 +357,38 @@ void ToulouseCompiler::configuration_ToolBar()
 	//signals for manage the action in the toolbar
 
 	ui.mainToolBar->setIconSize(QSize(24, 24));
+	ui.actionPoints->setChecked(true);
+	ui.actionPeon->setChecked(true);
 
-	modePoints = ui.actionPoints;
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::MODE_POINTS, ui.actionPoints));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::MODE_LINES, ui.actionLines));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::MODE_TRIANGLES, ui.actiontriangles));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::MODE_MATERIALS, ui.actionModeMarterial));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::MODE_TEXTURES, ui.actionModeTexture));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::PAWN, ui.actionPeon));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::CUP, ui.actioncopa));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::JOY, ui.actionjoy));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::UNIFORM_TABLE, ui.actionUniform_Table));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::NEW_FILE, ui.actionNew));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::LOAD, ui.actionOpen));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::SAVE, ui.actionSave));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::SAVE_AS, ui.actionSave_As));
+	actionsButtons.insert(pair<int, QAction*>(Toulouse::RENDER, ui.actionRender));
 
-	modePoints->setChecked(true);
-	connect(modePoints, SIGNAL(triggered()), this, SLOT(handleToolActionPoints()));
-
-
-	modeLines = ui.actionLines;
-	connect(modeLines, SIGNAL(triggered()), this, SLOT(handleToolActionLines()));
-
-
-	modeTriangles = ui.actiontriangles;
-	connect(modeTriangles, SIGNAL(triggered()), this, SLOT(handleToolActionTriangles()));
-
-
-	modeMaterial = ui.actionModeMarterial;
-	connect(modeMaterial, SIGNAL(triggered()), this, SLOT(handleToolActionMaterial()));
-
-	modeTextures = ui.actionModeTexture;
-	connect(modeTextures, SIGNAL(triggered()), this, SLOT(handleToolActionTextures()));
-
-
-	peon = ui.actionPeon;
-	peon->setChecked(true);
-	connect(peon, SIGNAL(triggered()), this, SLOT(handleToolActionPeon()));
-
-
-	copa = ui.actioncopa;
-	connect(copa, SIGNAL(triggered()), this, SLOT(handleToolActionCopa()));
-
-
-	joy = ui.actionjoy;
-	connect(joy, SIGNAL(triggered()), this, SLOT(handleToolActionJoy()));
-
-
-
-
-
-	newFile = ui.actionNew;
-	connect(newFile, SIGNAL(triggered()), this, SLOT(handleToolActionNew()));
-
-
-	load = ui.actionOpen;
-	connect(load, SIGNAL(triggered()), this, SLOT(handleToolActionOpen()));
-
-
-	save = ui.actionSave;
-	connect(save, SIGNAL(triggered()), this, SLOT(handleToolActionSave()));
-
-	saveAs = ui.actionSave_As;
-	connect(saveAs, SIGNAL(triggered()), this, SLOT(handleToolActionSaveAs()));
-
-
-	UniformTable = ui.actionUniform_Table;
-	connect(UniformTable, SIGNAL(triggered()), this, SLOT(handleToolActionTableUniforms()));
-
-	render = ui.actionRender;
-	connect(render, SIGNAL(triggered()), this, SLOT(handleToolActionRender()));
-
-
+	connect(ui.actionLines, SIGNAL(triggered()), this, SLOT(handleToolActionLines()));
+	connect(ui.actionPoints, SIGNAL(triggered()), this, SLOT(handleToolActionPoints()));
+	connect(ui.actiontriangles, SIGNAL(triggered()), this, SLOT(handleToolActionTriangles()));
+	connect(ui.actionModeMarterial, SIGNAL(triggered()), this, SLOT(handleToolActionMaterial()));
+	connect(ui.actionModeTexture, SIGNAL(triggered()), this, SLOT(handleToolActionTextures()));
+	connect(ui.actionPeon, SIGNAL(triggered()), this, SLOT(handleToolActionPeon()));
+	connect(ui.actioncopa, SIGNAL(triggered()), this, SLOT(handleToolActionCopa()));
+	connect(ui.actionjoy, SIGNAL(triggered()), this, SLOT(handleToolActionJoy()));
+	connect(ui.actionUniform_Table, SIGNAL(triggered()), this, SLOT(handleToolActionTableUniforms()));
+	connect(ui.actionNew, SIGNAL(triggered()), this, SLOT(handleToolActionNew()));
+	connect(ui.actionOpen, SIGNAL(triggered()), this, SLOT(handleToolActionOpen()));
+	connect(ui.actionSave, SIGNAL(triggered()), this, SLOT(handleToolActionSave()));
+	connect(ui.actionSave_As, SIGNAL(triggered()), this, SLOT(handleToolActionSaveAs()));
+	connect(ui.actionRender, SIGNAL(triggered()), this, SLOT(handleToolActionRender()));
 
 
 }
@@ -621,10 +398,10 @@ void ToulouseCompiler::configuration_translators() {
 
 
 	spanishButton = ui.actionEspanol;
-	connect(spanishButton, SIGNAL(triggered()), this, SLOT(on_Spanish_clicked()));
+	connect(spanishButton, SIGNAL(triggered()), this, SLOT(Spanish_clicked()));
 
 	englishButton = ui.actionEnglish;
-	connect(englishButton, SIGNAL(triggered()), this, SLOT(on_English_clicked()));
+	connect(englishButton, SIGNAL(triggered()), this, SLOT(English_clicked()));
 
 	if (spanishTranslator.load(":/translattions/Languages/toulousecompiler_es.qm"))
 		qDebug() << "successfully load toulousecompiler_es.qm file.";
@@ -642,29 +419,20 @@ void ToulouseCompiler::configuration_translators() {
 
 	if (defaultLocale == "es")
 	{
-
-		qApp->removeTranslator(&englishTranslator);
-		// change language to spanish language
 		qApp->installTranslator(&spanishTranslator);
-
-
 		spanishButton->setChecked(true);
 		englishButton->setChecked(false);
 	}
 	else {
-		qApp->removeTranslator(&spanishTranslator);
-		// change language to english language
 		qApp->installTranslator(&englishTranslator);
-
 		englishButton->setChecked(true);
 		spanishButton->setChecked(false);
 	}
 
-
-
-
-
+	this->configuration_tableWindow();
 }
+
+
 
 void ToulouseCompiler::handleData(const QVector<dataForUniform>& data)
 {
@@ -682,7 +450,7 @@ void ToulouseCompiler::configuration_tableWindow()
 	//**************widget add uniforms data***************//
 
 	table = new tableUniforms(this);
-	table->setWindowTitle("Uniforms Table");
+	table->setWindowTitle(tr("Uniforms Table"));
 
 	connect(table, SIGNAL(addUniforms(const QVector<dataForUniform>&)), this, SLOT(handleData(const QVector<dataForUniform>&)));
 
@@ -690,19 +458,14 @@ void ToulouseCompiler::configuration_tableWindow()
 }
 
 
-
-
-
-
-
-void ToulouseCompiler::configuration_OutPut()
+void ToulouseCompiler::configuration_Debug()
 {
-	OutPut = ui.OutPut;
+	Debug = ui.OutPut;
 
-	OutPut->setReadOnly(true);// lo pongo en solo modo lectura
+	Debug->setReadOnly(true);// lo pongo en solo modo lectura
 
 	//Gestiono que el log reciba el output para que otras clases puedan trabajar con el
-	Log::getInstancia()->setOutPut(OutPut);
+	Log::getInstancia()->setOutPut(Debug);
 
 	statusBar = ui.statusBar;
 
@@ -755,27 +518,18 @@ void ToulouseCompiler::configuration_opengl()
 	openGLWindow->setFormat(format);
 
 
-	// Let's do the magic my dear TFG students :)
+	// Se le pasa al widget el objeto OpenGLWidget(Renderer)
 	openglwidget = QWidget::createWindowContainer(openGLWindow);
-
-
 	ui.opengl_layout->addWidget(openglwidget);
-
 	openglwidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
 
-	//Configuration for camera inputs
+	//Para la configuracion de los movimientos de la camara
 	connect(openGLWindow, SIGNAL(Mouse_Pos()), this, SLOT(Mouse_currentPos()));
 	connect(openGLWindow, SIGNAL(Mouse_Pressed()), this, SLOT(Mouse_Pressed()));
 	connect(openGLWindow, SIGNAL(Mouse_Released()), this, SLOT(Mouse_Realeased()));
 	connect(openGLWindow, SIGNAL(Mouse_Left()), this, SLOT(Mouse_Left()));
 }
-
-
-
-
-
-
 
 void ToulouseCompiler::loadFile(const QString& fileName)
 

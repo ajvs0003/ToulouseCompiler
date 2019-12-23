@@ -81,11 +81,68 @@ public:
 
 	//EVENTS for mouse
 
+	/**********************************************************************************************//**
+	 * @fn	void OpenGLWidget::mouseMoveEvent(QMouseEvent *ev);
+	 *
+	 * @brief	Mouse move event
+	 *
+	 * @author	Marxpark
+	 * @date	21/12/2019
+	 *
+	 * @param [in,out]	ev	If non-null, the ev.
+	 **************************************************************************************************/
 
 	void mouseMoveEvent(QMouseEvent *ev);
+
+	/**********************************************************************************************//**
+	 * @fn	void OpenGLWidget::mousePressEvent(QMouseEvent *ev);
+	 *
+	 * @brief	Mouse press event
+	 *
+	 * @author	Marxpark
+	 * @date	21/12/2019
+	 *
+	 * @param [in,out]	ev	If non-null, the ev.
+	 **************************************************************************************************/
+
 	void mousePressEvent(QMouseEvent *ev);
+
+	/**********************************************************************************************//**
+	 * @fn	void OpenGLWidget::leaveEvent(QMouseEvent *);
+	 *
+	 * @brief	Leave event
+	 *
+	 * @author	Marxpark
+	 * @date	21/12/2019
+	 *
+	 * @param [in,out]	parameter1	If non-null, the first parameter.
+	 **************************************************************************************************/
+
 	void leaveEvent(QMouseEvent *);
+
+	/**********************************************************************************************//**
+	 * @fn	void OpenGLWidget::mouseReleaseEvent(QMouseEvent *e);
+	 *
+	 * @brief	Mouse release event
+	 *
+	 * @author	Marxpark
+	 * @date	21/12/2019
+	 *
+	 * @param [in,out]	e	If non-null, a QMouseEvent to process.
+	 **************************************************************************************************/
+
 	void mouseReleaseEvent(QMouseEvent *e);
+
+	/**********************************************************************************************//**
+	 * @fn	void OpenGLWidget::wheelEvent(QWheelEvent *e);
+	 *
+	 * @brief	Wheel event
+	 *
+	 * @author	Marxpark
+	 * @date	21/12/2019
+	 *
+	 * @param [in,out]	e	If non-null, a QWheelEvent to process.
+	 **************************************************************************************************/
 
 	void wheelEvent(QWheelEvent *e);
 	
