@@ -53,6 +53,8 @@ private:
 	QLineEdit* nameVar;
 	QLineEdit* inputValue;
 
+	
+
 	bool textNameCheck = false;
 	bool textCheck = false;
 	bool typeCheck = false;

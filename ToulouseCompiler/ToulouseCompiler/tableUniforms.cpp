@@ -382,8 +382,7 @@ void tableUniforms::cell_onClicked() {
 void tableUniforms::handleData(const dataForUniform& data)
 {
 
-	dataForUniform aux;
-	aux = data;
+	dataForUniform aux = data;
 
 	//check that the uniform is correct
 	if (checkUniform(aux)) {

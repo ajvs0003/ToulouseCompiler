@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 	ToulouseCompiler app;
 	app.show();
 
-
+	
 	
 	return a.exec();
 }

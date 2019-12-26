@@ -17,17 +17,26 @@ addDialog::addDialog(QWidget *parent)
 
 	//take the pointer to the comBox 
 	options = ui->comboBox;
+	options->setEditable(true);
+	options->lineEdit()->setReadOnly(true);
+	options->lineEdit()->setAlignment(Qt::AlignCenter);
+	
 	options->addItems(QStringList() << tr("boolean") << tr("vec3") << tr("vec4") << tr("float") << tr("int")); //add the types for the uniforms
+	
 	//for manage when is changed the value
 	connect(options, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(switchcall(const QString&)));
 
 
 	inputValue = ui->lineEdit;
+	
+	inputValue->setStyleSheet("border-image:  url(:/img/Resources/img/lineEdit.png) 5 5 5 5 stretch stretch;border-width: 5px 5px 5px 5px;");
+	/*inputValue->hide();*/
 	//for manage when is changed the value
 	connect(inputValue, SIGNAL(textChanged(const QString&)), this, SLOT(text_changed(const QString &)));
 
 
 	nameVar = ui->nameVar;
+	nameVar->setStyleSheet("border-image:  url(:/img/Resources/img/lineEdit.png) 5 5 5 5 stretch stretch;border-width: 5px 5px 5px 5px;");
 	//for manage when is changed the value
 	connect(inputValue, SIGNAL(textChanged(const QString&)), this, SLOT(textName_changed(const QString &)));
 

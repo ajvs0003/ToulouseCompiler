@@ -172,6 +172,30 @@
       </item>
      </layout>
     </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Author:&lt;/span&gt;  Antonio Jesús Viso Sánchez&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -180,7 +204,7 @@
      <x>0</x>
      <y>0</y>
      <width>1113</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
@@ -379,6 +403,10 @@
    </property>
   </action>
   <action name="actionUniform_Table">
+   <property name="icon">
+    <iconset resource="Resource.qrc">
+     <normaloff>:/img/Resources/img/loupe.png</normaloff>:/img/Resources/img/loupe.png</iconset>
+   </property>
    <property name="text">
     <string>Uniform Table</string>
    </property>

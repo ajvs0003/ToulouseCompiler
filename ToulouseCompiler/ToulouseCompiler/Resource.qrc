@@ -26,6 +26,8 @@
         <file>Resources/img/wine.png</file>
         <file>Resources/img/wine_activate.png</file>
         <file>Resources/img/delete.png</file>
+        <file>Resources/img/lineEdit.png</file>
+        <file>Resources/img/loupe.png</file>
     </qresource>
     <qresource prefix="/obj">
         <file>Resources/Objects/peon.txt</file>
@@ -44,4 +46,5 @@
         <file>Languages/es.png</file>
         <file>Languages/toulousecompiler_es.qm</file>
     </qresource>
+    <qresource prefix="/new/prefix1"/>
 </RCC>

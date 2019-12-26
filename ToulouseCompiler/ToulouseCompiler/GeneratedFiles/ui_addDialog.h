@@ -29,18 +29,22 @@ class Ui_addDialog
 public:
     QHBoxLayout *horizontalLayout_4;
     QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *horizontalLayout_6;
     QCheckBox *checkBox;
+    QSpacerItem *horizontalSpacer_4;
     QSpacerItem *verticalSpacer_2;
     QHBoxLayout *horizontalLayout_3;
     QHBoxLayout *horizontalLayout_5;
+    QSpacerItem *horizontalSpacer_2;
     QLabel *label_3;
     QLineEdit *nameVar;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label;
     QComboBox *comboBox;
-    QHBoxLayout *horizontalLayout;
+    QHBoxLayout *layoutValueUniform;
     QLabel *label_2;
     QLineEdit *lineEdit;
+    QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer;
     QDialogButtonBox *buttonBox;
@@ -49,7 +53,7 @@ public:
     {
         if (addDialog->objectName().isEmpty())
             addDialog->setObjectName(QString::fromUtf8("addDialog"));
-        addDialog->resize(648, 123);
+        addDialog->resize(671, 162);
         QFont font;
         font.setFamily(QString::fromUtf8("Arial"));
         font.setPointSize(10);
@@ -61,10 +65,20 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
         checkBox = new QCheckBox(addDialog);
         checkBox->setObjectName(QString::fromUtf8("checkBox"));
 
-        verticalLayout_2->addWidget(checkBox);
+        horizontalLayout_6->addWidget(checkBox);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_4);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_6);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -76,6 +90,10 @@ public:
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_2);
+
         label_3 = new QLabel(addDialog);
         label_3->setObjectName(QString::fromUtf8("label_3"));
 
@@ -105,27 +123,33 @@ public:
         comboBox = new QComboBox(addDialog);
         comboBox->addItem(QString());
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setFont(font);
+        comboBox->setStyleSheet(QString::fromUtf8(""));
 
         horizontalLayout_2->addWidget(comboBox);
 
 
         horizontalLayout_3->addLayout(horizontalLayout_2);
 
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        layoutValueUniform = new QHBoxLayout();
+        layoutValueUniform->setSpacing(6);
+        layoutValueUniform->setObjectName(QString::fromUtf8("layoutValueUniform"));
         label_2 = new QLabel(addDialog);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
-        horizontalLayout->addWidget(label_2);
+        layoutValueUniform->addWidget(label_2);
 
         lineEdit = new QLineEdit(addDialog);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
 
-        horizontalLayout->addWidget(lineEdit);
+        layoutValueUniform->addWidget(lineEdit);
 
 
-        horizontalLayout_3->addLayout(horizontalLayout);
+        horizontalLayout_3->addLayout(layoutValueUniform);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer);
 
 
         verticalLayout_2->addLayout(horizontalLayout_3);

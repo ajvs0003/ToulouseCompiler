@@ -97,6 +97,7 @@ public:
         table = new QTableWidget(tableUniforms);
         table->setObjectName(QString::fromUtf8("table"));
         table->setFont(font);
+        table->setStyleSheet(QString::fromUtf8(""));
 
         horizontalLayout->addWidget(table);
 

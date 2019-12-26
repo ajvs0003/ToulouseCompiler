@@ -20,161 +20,166 @@
     </message>
     <message>
         <location filename="../ToulouseCompiler.ui" line="193"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Author:&lt;/span&gt;  Antonio Jesús Viso Sánchez&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ToulouseCompiler.ui" line="217"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="207"/>
+        <location filename="../ToulouseCompiler.ui" line="231"/>
         <source>Tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="213"/>
+        <location filename="../ToulouseCompiler.ui" line="237"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="250"/>
+        <location filename="../ToulouseCompiler.ui" line="274"/>
         <source>New</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="253"/>
+        <location filename="../ToulouseCompiler.ui" line="277"/>
         <source>This create two new shader program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="262"/>
+        <location filename="../ToulouseCompiler.ui" line="286"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="265"/>
+        <location filename="../ToulouseCompiler.ui" line="289"/>
         <source>This is for open a shader program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="274"/>
+        <location filename="../ToulouseCompiler.ui" line="298"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="277"/>
+        <location filename="../ToulouseCompiler.ui" line="301"/>
         <source>For save the actual shader program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="286"/>
+        <location filename="../ToulouseCompiler.ui" line="310"/>
         <source>Save As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="299"/>
+        <location filename="../ToulouseCompiler.ui" line="323"/>
         <source>Mode Points</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="302"/>
+        <location filename="../ToulouseCompiler.ui" line="326"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This activate the&lt;span style=&quot; font-weight:600;&quot;&gt; IBO&lt;/span&gt; in mode points&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="315"/>
+        <location filename="../ToulouseCompiler.ui" line="339"/>
         <source>Mode Lines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="318"/>
+        <location filename="../ToulouseCompiler.ui" line="342"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This activate the&lt;span style=&quot; font-weight:600;&quot;&gt; IBO&lt;/span&gt; in mode lines&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="331"/>
+        <location filename="../ToulouseCompiler.ui" line="355"/>
         <source>Mode triangles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="334"/>
+        <location filename="../ToulouseCompiler.ui" line="358"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This activate the&lt;span style=&quot; font-weight:600;&quot;&gt; IBO&lt;/span&gt; in mode triangles&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="343"/>
+        <location filename="../ToulouseCompiler.ui" line="367"/>
         <source>Render</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="346"/>
+        <location filename="../ToulouseCompiler.ui" line="370"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this is for&lt;span style=&quot; font-weight:600;&quot;&gt; execute&lt;/span&gt; the shader program&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="359"/>
+        <location filename="../ToulouseCompiler.ui" line="383"/>
         <source>ModeMarterial</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="362"/>
+        <location filename="../ToulouseCompiler.ui" line="386"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this activate the &lt;span style=&quot; font-weight:600;&quot;&gt;uniforms&lt;/span&gt; for material&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="375"/>
+        <location filename="../ToulouseCompiler.ui" line="399"/>
         <source>ModeTexture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="378"/>
+        <location filename="../ToulouseCompiler.ui" line="402"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this activate the &lt;span style=&quot; font-weight:600;&quot;&gt;uniforms&lt;/span&gt; for textures&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="383"/>
+        <location filename="../ToulouseCompiler.ui" line="411"/>
         <source>Uniform Table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="386"/>
+        <location filename="../ToulouseCompiler.ui" line="414"/>
         <source>this show the table for the uniforms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="407"/>
+        <location filename="../ToulouseCompiler.ui" line="435"/>
         <source>Peon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="410"/>
+        <location filename="../ToulouseCompiler.ui" line="438"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this change the &lt;span style=&quot; font-weight:600;&quot;&gt;object&lt;/span&gt; to pawn&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="423"/>
+        <location filename="../ToulouseCompiler.ui" line="451"/>
         <source>copa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="426"/>
+        <location filename="../ToulouseCompiler.ui" line="454"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this change the&lt;span style=&quot; font-weight:600;&quot;&gt; object&lt;/span&gt; to cup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="439"/>
+        <location filename="../ToulouseCompiler.ui" line="467"/>
         <source>joy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="442"/>
+        <location filename="../ToulouseCompiler.ui" line="470"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;this change the&lt;span style=&quot; font-weight:600;&quot;&gt; object&lt;/span&gt; to joy&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="466"/>
+        <location filename="../ToulouseCompiler.ui" line="494"/>
         <source>Spanish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.ui" line="454"/>
+        <location filename="../ToulouseCompiler.ui" line="482"/>
         <source>English</source>
         <translation type="unfinished"></translation>
     </message>
@@ -193,10 +198,10 @@
     </message>
     <message>
         <location filename="../ToulouseCompiler.cpp" line="184"/>
-        <location filename="../ToulouseCompiler.cpp" line="556"/>
-        <location filename="../ToulouseCompiler.cpp" line="566"/>
-        <location filename="../ToulouseCompiler.cpp" line="597"/>
-        <location filename="../ToulouseCompiler.cpp" line="605"/>
+        <location filename="../ToulouseCompiler.cpp" line="545"/>
+        <location filename="../ToulouseCompiler.cpp" line="555"/>
+        <location filename="../ToulouseCompiler.cpp" line="586"/>
+        <location filename="../ToulouseCompiler.cpp" line="594"/>
         <source>Application</source>
         <translation type="unfinished"></translation>
     </message>
@@ -207,31 +212,31 @@ Do you want to save your changes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.cpp" line="464"/>
+        <location filename="../ToulouseCompiler.cpp" line="453"/>
         <source>Uniforms Table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.cpp" line="557"/>
-        <location filename="../ToulouseCompiler.cpp" line="567"/>
+        <location filename="../ToulouseCompiler.cpp" line="546"/>
+        <location filename="../ToulouseCompiler.cpp" line="556"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.cpp" line="589"/>
+        <location filename="../ToulouseCompiler.cpp" line="578"/>
         <source>File loaded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.cpp" line="598"/>
-        <location filename="../ToulouseCompiler.cpp" line="606"/>
+        <location filename="../ToulouseCompiler.cpp" line="587"/>
+        <location filename="../ToulouseCompiler.cpp" line="595"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.cpp" line="632"/>
+        <location filename="../ToulouseCompiler.cpp" line="621"/>
         <source>File saved</source>
         <translation type="unfinished"></translation>
     </message>
@@ -244,57 +249,57 @@ Do you want to save your changes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../addDialog.ui" line="28"/>
+        <location filename="../addDialog.ui" line="30"/>
         <source>Multiple adds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../addDialog.ui" line="52"/>
+        <location filename="../addDialog.ui" line="82"/>
         <source>Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../addDialog.ui" line="73"/>
+        <location filename="../addDialog.ui" line="103"/>
         <source>Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../addDialog.ui" line="93"/>
+        <location filename="../addDialog.ui" line="135"/>
         <source>Value:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../addDialog.cpp" line="20"/>
+        <location filename="../addDialog.cpp" line="24"/>
         <source>boolean</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../addDialog.cpp" line="20"/>
+        <location filename="../addDialog.cpp" line="24"/>
         <source>vec3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../addDialog.cpp" line="20"/>
+        <location filename="../addDialog.cpp" line="24"/>
         <source>vec4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../addDialog.cpp" line="20"/>
+        <location filename="../addDialog.cpp" line="24"/>
         <source>float</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../addDialog.cpp" line="20"/>
+        <location filename="../addDialog.cpp" line="24"/>
         <source>int</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../addDialog.cpp" line="132"/>
+        <location filename="../addDialog.cpp" line="141"/>
         <source>About Uniform form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../addDialog.cpp" line="133"/>
+        <location filename="../addDialog.cpp" line="142"/>
         <source>The &lt;b&gt;Form below&lt;/b&gt; show data that the user can fill for an uniform. &lt;b&gt; Important: &lt;/b&gt;if you use vec3 or vec4 enter the data separated by &lt;b&gt;comma&lt;/b&gt;. Ex:(1.0,0.0,0.0)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -307,7 +312,7 @@ Do you want to save your changes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tableUniforms.ui" line="100"/>
+        <location filename="../tableUniforms.ui" line="103"/>
         <source>Accept</source>
         <translation type="unfinished"></translation>
     </message>
@@ -362,27 +367,27 @@ Do you want to save your changes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tableUniforms.cpp" line="420"/>
+        <location filename="../tableUniforms.cpp" line="419"/>
         <source>boolean</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tableUniforms.cpp" line="420"/>
+        <location filename="../tableUniforms.cpp" line="419"/>
         <source>vec3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tableUniforms.cpp" line="420"/>
+        <location filename="../tableUniforms.cpp" line="419"/>
         <source>vec4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tableUniforms.cpp" line="420"/>
+        <location filename="../tableUniforms.cpp" line="419"/>
         <source>float</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tableUniforms.cpp" line="420"/>
+        <location filename="../tableUniforms.cpp" line="419"/>
         <source>int</source>
         <translation type="unfinished"></translation>
     </message>

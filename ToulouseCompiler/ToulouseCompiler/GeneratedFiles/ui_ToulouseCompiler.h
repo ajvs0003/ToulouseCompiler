@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -64,6 +65,9 @@ public:
     QSpacerItem *verticalSpacer_2;
     QVBoxLayout *OutPutLayout;
     QPlainTextEdit *OutPut;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer;
+    QLabel *label;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuTools;
@@ -146,41 +150,44 @@ public:
         actionModeTexture->setIcon(icon9);
         actionUniform_Table = new QAction(MainWindowClass);
         actionUniform_Table->setObjectName(QString::fromUtf8("actionUniform_Table"));
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8(":/img/Resources/img/loupe.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionUniform_Table->setIcon(icon10);
         actionUniform_Table->setFont(font);
         actionUniform_Table->setIconVisibleInMenu(true);
         actionPeon = new QAction(MainWindowClass);
         actionPeon->setObjectName(QString::fromUtf8("actionPeon"));
         actionPeon->setCheckable(true);
-        QIcon icon10;
-        icon10.addFile(QString::fromUtf8(":/img/Resources/img/pawn.png"), QSize(), QIcon::Normal, QIcon::Off);
-        icon10.addFile(QString::fromUtf8(":/img/Resources/img/Active pawn.png"), QSize(), QIcon::Normal, QIcon::On);
-        actionPeon->setIcon(icon10);
+        QIcon icon11;
+        icon11.addFile(QString::fromUtf8(":/img/Resources/img/pawn.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon11.addFile(QString::fromUtf8(":/img/Resources/img/Active pawn.png"), QSize(), QIcon::Normal, QIcon::On);
+        actionPeon->setIcon(icon11);
         actioncopa = new QAction(MainWindowClass);
         actioncopa->setObjectName(QString::fromUtf8("actioncopa"));
         actioncopa->setCheckable(true);
-        QIcon icon11;
-        icon11.addFile(QString::fromUtf8(":/img/Resources/img/wine.png"), QSize(), QIcon::Normal, QIcon::Off);
-        icon11.addFile(QString::fromUtf8(":/img/Resources/img/wine_activate.png"), QSize(), QIcon::Normal, QIcon::On);
-        actioncopa->setIcon(icon11);
+        QIcon icon12;
+        icon12.addFile(QString::fromUtf8(":/img/Resources/img/wine.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon12.addFile(QString::fromUtf8(":/img/Resources/img/wine_activate.png"), QSize(), QIcon::Normal, QIcon::On);
+        actioncopa->setIcon(icon12);
         actionjoy = new QAction(MainWindowClass);
         actionjoy->setObjectName(QString::fromUtf8("actionjoy"));
         actionjoy->setCheckable(true);
-        QIcon icon12;
-        icon12.addFile(QString::fromUtf8(":/img/Resources/img/circle.png"), QSize(), QIcon::Normal, QIcon::Off);
-        icon12.addFile(QString::fromUtf8(":/img/Resources/img/circle_activate.png"), QSize(), QIcon::Normal, QIcon::On);
-        actionjoy->setIcon(icon12);
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/img/Resources/img/circle.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon13.addFile(QString::fromUtf8(":/img/Resources/img/circle_activate.png"), QSize(), QIcon::Normal, QIcon::On);
+        actionjoy->setIcon(icon13);
         actionEnglish = new QAction(MainWindowClass);
         actionEnglish->setObjectName(QString::fromUtf8("actionEnglish"));
         actionEnglish->setCheckable(true);
-        QIcon icon13;
-        icon13.addFile(QString::fromUtf8(":/translattions/Languages/en.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionEnglish->setIcon(icon13);
+        QIcon icon14;
+        icon14.addFile(QString::fromUtf8(":/translattions/Languages/en.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionEnglish->setIcon(icon14);
         actionEspanol = new QAction(MainWindowClass);
         actionEspanol->setObjectName(QString::fromUtf8("actionEspanol"));
         actionEspanol->setCheckable(true);
-        QIcon icon14;
-        icon14.addFile(QString::fromUtf8(":/translattions/Languages/es.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionEspanol->setIcon(icon14);
+        QIcon icon15;
+        icon15.addFile(QString::fromUtf8(":/translattions/Languages/es.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionEspanol->setIcon(icon15);
         centralWidget = new QWidget(MainWindowClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         verticalLayout_5 = new QVBoxLayout(centralWidget);
@@ -294,10 +301,25 @@ public:
 
         verticalLayout_5->addLayout(OutPutLayout);
 
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+        label = new QLabel(centralWidget);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        horizontalLayout_2->addWidget(label);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_2);
+
         MainWindowClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindowClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1113, 23));
+        menuBar->setGeometry(QRect(0, 0, 1113, 21));
         menuBar->setFont(font);
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
@@ -407,6 +429,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(VertexS), QApplication::translate("MainWindowClass", "Vertex Shader", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(FragmentS), QApplication::translate("MainWindowClass", "Fragment Shader", nullptr));
         OutPut->setPlainText(QString());
+        label->setText(QApplication::translate("MainWindowClass", "<html><head/><body><p><span style=\" font-weight:600;\">Author:</span>  Antonio Jes\303\272s Viso S\303\241nchez</p></body></html>", nullptr));
         menuFile->setTitle(QApplication::translate("MainWindowClass", "File", nullptr));
         menuTools->setTitle(QApplication::translate("MainWindowClass", "Tools", nullptr));
         menuLanguage->setTitle(QApplication::translate("MainWindowClass", "Language", nullptr));
