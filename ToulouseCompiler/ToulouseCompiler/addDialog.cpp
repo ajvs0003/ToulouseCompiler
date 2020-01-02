@@ -13,6 +13,7 @@ addDialog::addDialog(QWidget *parent)
 
 	//Set to don allow to push the save button
 	guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(false);
+	
 
 
 	//take the pointer to the comBox 
@@ -28,7 +29,10 @@ addDialog::addDialog(QWidget *parent)
 
 
 	inputValue = ui->lineEdit;
-	
+
+	/*QLineEdit *lineedit = new QLineEdit;
+	ui->layoutValueUniform->addWidget(lineedit);*/
+
 	inputValue->setStyleSheet("border-image:  url(:/img/Resources/img/lineEdit.png) 5 5 5 5 stretch stretch;border-width: 5px 5px 5px 5px;");
 	/*inputValue->hide();*/
 	//for manage when is changed the value
