@@ -27,7 +27,7 @@ private:
 	Ui::MainWindowClass ui;
 
 	/********************CODE EDITOR DATA********************/
-	
+
 	QTabWidget* tabView;//Pointer to the widget for code editor
 	CodeEditor* vertexShader;
 	CodeEditor* fragmentShader;
@@ -40,7 +40,7 @@ private:
 
 	/********************TOOL BAR DATA********************/
 
-	map<int,QAction*> actionsButtons;
+	map<int, QAction*> actionsButtons;
 
 
 
@@ -55,14 +55,14 @@ private:
 	bool isHold = false;
 
 	/********************UNIFORMS TABLE DATA********************/
-	tableUniforms* table;
+	TableUniforms* table;
 
 	/********************LANGUAGE DATA********************/
 	QTranslator spanishTranslator;
 	QTranslator englishTranslator;
 	QAction* spanishButton;
 	QAction* englishButton;
-	
+
 
 	//metodo que hara que se llamen a todos los configurate de la aplicacion
 	//que se encargan de enlazar la ui con las clases cpp que gestionan el funcionamiento
@@ -100,7 +100,7 @@ protected slots:
 	void Mouse_Pressed();
 	void Mouse_Realeased();
 	void Mouse_Left();
-	void handleData(const QVector<dataForUniform>& data);
+	void manageUniformsFromTable(const QVector<dataForUniform>& data);
 
 
 	//BUTTONS

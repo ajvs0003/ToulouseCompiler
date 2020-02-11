@@ -63,7 +63,7 @@ void ToulouseCompiler::handleToolActionPoints() {
 
 	checkModeOpenGL();
 	actionsButtons.at(Toulouse::MODE_POINTS)->setChecked(true);
-	openGLWindow->changeTrial(0);
+	openGLWindow->changeMode(0);
 	openGLWindow->deleteUniforms();
 	/*Log::getInstancia()->warning("activado el modo puntos");*/
 
@@ -75,7 +75,7 @@ void ToulouseCompiler::handleToolActionLines()
 
 	checkModeOpenGL();
 	actionsButtons.at(Toulouse::MODE_LINES)->setChecked(true);
-	openGLWindow->changeTrial(1);
+	openGLWindow->changeMode(1);
 	openGLWindow->deleteUniforms();
 
 
@@ -85,7 +85,7 @@ void ToulouseCompiler::handleToolActionTriangles()
 {
 	checkModeOpenGL();
 	actionsButtons.at(Toulouse::MODE_TRIANGLES)->setChecked(true);
-	openGLWindow->changeTrial(2);
+	openGLWindow->changeMode(2);
 	openGLWindow->deleteUniforms();
 	/*Log::getInstancia()->warning("activado el modo triangulos");*/
 
@@ -101,7 +101,7 @@ void ToulouseCompiler::handleToolActionMaterial()
 
 	checkModeOpenGL();
 	actionsButtons.at(Toulouse::MODE_MATERIALS)->setChecked(true);
-	openGLWindow->changeTrial(3);
+	openGLWindow->changeMode(3);
 	openGLWindow->deleteUniforms();
 
 }
@@ -110,7 +110,7 @@ void ToulouseCompiler::handleToolActionTextures()
 {
 	checkModeOpenGL();
 	actionsButtons.at(Toulouse::MODE_TEXTURES)->setChecked(true);
-	openGLWindow->changeTrial(4);
+	openGLWindow->changeMode(4);
 	openGLWindow->deleteUniforms();
 
 }
@@ -264,6 +264,7 @@ void ToulouseCompiler::handleToolActionRender()
 
 		openGLWindow->setPathShader(curFile.toStdString());
 		openGLWindow->compile();
+		statusBar->showMessage("Completed");
 
 	}
 }
@@ -337,17 +338,17 @@ void ToulouseCompiler::Mouse_Left()
 
 void ToulouseCompiler::configurate()
 {
-
+	this->configuration_translators();
 	this->configuration_Debug();
 
 
 	this->configuration_codeEditor();
 	this->configuration_opengl();
 	this->configuration_ToolBar();
+
+
+
 	this->configuration_tableWindow();
-	this->configuration_translators();
-
-
 	statusBar->showMessage("Ready to start");
 }
 
@@ -429,12 +430,12 @@ void ToulouseCompiler::configuration_translators() {
 		spanishButton->setChecked(false);
 	}
 
-	this->configuration_tableWindow();
+
 }
 
 
 
-void ToulouseCompiler::handleData(const QVector<dataForUniform>& data)
+void ToulouseCompiler::manageUniformsFromTable(const QVector<dataForUniform>& data)
 {
 
 
@@ -449,10 +450,11 @@ void ToulouseCompiler::configuration_tableWindow()
 {
 	//**************widget add uniforms data***************//
 
-	table = new tableUniforms(this);
+
+	table = new TableUniforms(this);
 	table->setWindowTitle(tr("Uniforms Table"));
 
-	connect(table, SIGNAL(addUniforms(const QVector<dataForUniform>&)), this, SLOT(handleData(const QVector<dataForUniform>&)));
+	connect(table, SIGNAL(addUniforms(const QVector<dataForUniform>&)), this, SLOT(manageUniformsFromTable(const QVector<dataForUniform>&)));
 
 
 }

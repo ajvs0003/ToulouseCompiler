@@ -25,7 +25,7 @@ class QOpenGLContext;
 class QOpenGLPaintDevice;
 
 /**
- * Clase OpenGLWidget. Es un QWindow, no un QWidget que contiene un canvas OpenGL. 
+ * Clase OpenGLWidget. Es un QWindow, no un QWidget que contiene un canvas OpenGL.
  * Para poder incrustarla en otra ventana, se recomienda usar el método QWidget::createWindowContainer(...)
  * Esta clase está sacada del tutorial https://doc.qt.io/qt-5/qtgui-openglwindow-example.html
  */
@@ -34,14 +34,14 @@ class OpenGLWidget : public QWindow, protected OpenGLFunctions
 	Q_OBJECT
 public:
 	//CAMERA SETTINGS
-	PagCamera *camera;
+	PagCamera* camera;
 	int w, h;
 	int posX, posY;
 
-	explicit OpenGLWidget(QWindow *parent = 0);
+	explicit OpenGLWidget(QWindow* parent = 0);
 	~OpenGLWidget();
 
-	virtual void render(QPainter *painter);
+	virtual void render(QPainter* painter);
 
 	virtual void render();
 
@@ -51,7 +51,7 @@ public:
 
 	void setAnimating(bool animating);
 
-	static OpenGLWidget *getInstance();
+	static OpenGLWidget* getInstance();
 
 	/**
 		* @brief  Esta función callback será llamada cada vez que el área de dibujo OpenGL deba ser redibujada.
@@ -62,10 +62,10 @@ public:
 	void prepareOpenGL();
 
 
-	void changeTrial(int nuevo);
+	void changeMode(int nuevo);
 
 	void changeObject(int nuevo);
-	
+
 	void setPathShader(string path);
 
 	void setUniforms(QVector<dataForUniform> _uniforms);
@@ -92,7 +92,7 @@ public:
 	 * @param [in,out]	ev	If non-null, the ev.
 	 **************************************************************************************************/
 
-	void mouseMoveEvent(QMouseEvent *ev);
+	void mouseMoveEvent(QMouseEvent* ev);
 
 	/**********************************************************************************************//**
 	 * @fn	void OpenGLWidget::mousePressEvent(QMouseEvent *ev);
@@ -105,7 +105,7 @@ public:
 	 * @param [in,out]	ev	If non-null, the ev.
 	 **************************************************************************************************/
 
-	void mousePressEvent(QMouseEvent *ev);
+	void mousePressEvent(QMouseEvent* ev);
 
 	/**********************************************************************************************//**
 	 * @fn	void OpenGLWidget::leaveEvent(QMouseEvent *);
@@ -118,7 +118,7 @@ public:
 	 * @param [in,out]	parameter1	If non-null, the first parameter.
 	 **************************************************************************************************/
 
-	void leaveEvent(QMouseEvent *);
+	void leaveEvent(QMouseEvent*);
 
 	/**********************************************************************************************//**
 	 * @fn	void OpenGLWidget::mouseReleaseEvent(QMouseEvent *e);
@@ -131,7 +131,7 @@ public:
 	 * @param [in,out]	e	If non-null, a QMouseEvent to process.
 	 **************************************************************************************************/
 
-	void mouseReleaseEvent(QMouseEvent *e);
+	void mouseReleaseEvent(QMouseEvent* e);
 
 	/**********************************************************************************************//**
 	 * @fn	void OpenGLWidget::wheelEvent(QWheelEvent *e);
@@ -144,10 +144,10 @@ public:
 	 * @param [in,out]	e	If non-null, a QWheelEvent to process.
 	 **************************************************************************************************/
 
-	void wheelEvent(QWheelEvent *e);
-	
+	void wheelEvent(QWheelEvent* e);
 
-	
+
+
 
 signals:
 	void Mouse_Pressed();
@@ -159,13 +159,13 @@ public slots:
 	void renderLater();
 	void renderNow();
 
-	
+
 
 
 protected:
-	bool event(QEvent *event) override;
+	bool event(QEvent* event) override;
 
-	void exposeEvent(QExposeEvent *event) override;
+	void exposeEvent(QExposeEvent* event) override;
 
 private:
 
@@ -173,22 +173,22 @@ private:
 	//QT DATA
 
 	bool needsInitialize = false;
-	static OpenGLWidget *instance;
+	static OpenGLWidget* instance;
 
 	bool m_animating;
-	QOpenGLContext *m_context;
-	QOpenGLPaintDevice *m_device;
+	QOpenGLContext* m_context;
+	QOpenGLPaintDevice* m_device;
 
 
 
 
 
 	//OpenGL DATA
-	
-	
+
+
 	glm::mat4 viewMatrix, projMatrix;
 
-	
+
 	float aspect;
 
 	//LIGHTS
@@ -200,19 +200,19 @@ private:
 
 	//REVOLUTION OBJECTS(GRAPH SCENE)
 	vector< Pag3DGroup> objetos;
-	
+
 
 
 
 	//SHADERS
 	// - Shaders program that we will use for paint the geometry
 
-	PagShaderProgram* shaderProgram ;
+	PagShaderProgram* shaderProgram;
 	std::vector<dataForUniform> uniforms;
 
 
 	//CAMERA SETTINGS
-	
+
 	glm::mat4 view;
 	glm::mat4 mvp;
 
@@ -222,7 +222,7 @@ private:
 
 
 	enum typePaint {
-		points, wire, triangle, material,textures
+		points, wire, triangle, material, textures
 	};
 
 
@@ -239,13 +239,13 @@ private:
 
 	//PRIVATE METHODS
 
-	
+
 	void Paint();
-	
+
 	void chargeShader();
 
 	void checkOpenGLVersion();
-	
+
 	void configurateCamera();
 
 	/**
@@ -259,5 +259,5 @@ private:
 	* @param  shader a usar
 	* @param mode ,para diferenciar los shaders
 */
-	void paintObjects(PagShaderProgram &shader, int mode);
+	void paintObjects(PagShaderProgram& shader, int mode);
 };

@@ -2,6 +2,54 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_GB" sourcelanguage="en_GB">
 <context>
+    <name>AddDialog</name>
+    <message>
+        <location filename="../addDialog.cpp" line="16"/>
+        <source>Accept</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../addDialog.cpp" line="17"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../addDialog.cpp" line="25"/>
+        <source>boolean</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../addDialog.cpp" line="25"/>
+        <source>vec3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../addDialog.cpp" line="25"/>
+        <source>vec4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../addDialog.cpp" line="25"/>
+        <source>float</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../addDialog.cpp" line="25"/>
+        <source>int</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../addDialog.cpp" line="152"/>
+        <source>About Uniform form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../addDialog.cpp" line="153"/>
+        <source>The &lt;b&gt;Form below&lt;/b&gt; show data that the user can fill for an uniform. &lt;b&gt; Important: &lt;/b&gt;if you use vec3 or vec4 enter the data separated by &lt;b&gt;comma&lt;/b&gt;. Ex:(1.0,0.0,0.0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindowClass</name>
     <message>
         <location filename="../ToulouseCompiler.ui" line="26"/>
@@ -185,6 +233,84 @@
     </message>
 </context>
 <context>
+    <name>TableUniforms</name>
+    <message>
+        <location filename="../tableUniforms.cpp" line="19"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="19"/>
+        <source>Uniform Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="19"/>
+        <source>Value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="77"/>
+        <source>About Uniforms Table </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="78"/>
+        <source>The &lt;b&gt;Table&lt;/b&gt; show the uniforms that the user added for this shader. &lt;b&gt; Important: &lt;/b&gt;you must read the manual for know what uniforms are included by configuration. Ex:(material mode &amp; lights mode)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="238"/>
+        <source>Wrong uniform data </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="239"/>
+        <source>The uniform that you added is &lt;b&gt;wrong&lt;/b&gt;. &lt;b&gt; Important: &lt;/b&gt;you must read the manual for know how create a correct one. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="246"/>
+        <source>Wrong uniform value </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="247"/>
+        <source>The uniform that you edit has a  &lt;b&gt;wrong&lt;/b&gt; value. &lt;b&gt; Important: &lt;/b&gt;Please change it. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="286"/>
+        <source>Uniform Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="423"/>
+        <source>boolean</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="423"/>
+        <source>vec3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="423"/>
+        <source>vec4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="423"/>
+        <source>float</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tableUniforms.cpp" line="423"/>
+        <source>int</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ToulouseCompiler</name>
     <message>
         <location filename="../ToulouseCompiler.cpp" line="165"/>
@@ -198,10 +324,10 @@
     </message>
     <message>
         <location filename="../ToulouseCompiler.cpp" line="184"/>
-        <location filename="../ToulouseCompiler.cpp" line="545"/>
-        <location filename="../ToulouseCompiler.cpp" line="555"/>
-        <location filename="../ToulouseCompiler.cpp" line="586"/>
-        <location filename="../ToulouseCompiler.cpp" line="594"/>
+        <location filename="../ToulouseCompiler.cpp" line="547"/>
+        <location filename="../ToulouseCompiler.cpp" line="557"/>
+        <location filename="../ToulouseCompiler.cpp" line="588"/>
+        <location filename="../ToulouseCompiler.cpp" line="596"/>
         <source>Application</source>
         <translation type="unfinished"></translation>
     </message>
@@ -212,31 +338,31 @@ Do you want to save your changes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.cpp" line="453"/>
+        <location filename="../ToulouseCompiler.cpp" line="455"/>
         <source>Uniforms Table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.cpp" line="546"/>
-        <location filename="../ToulouseCompiler.cpp" line="556"/>
+        <location filename="../ToulouseCompiler.cpp" line="548"/>
+        <location filename="../ToulouseCompiler.cpp" line="558"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.cpp" line="578"/>
+        <location filename="../ToulouseCompiler.cpp" line="580"/>
         <source>File loaded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.cpp" line="587"/>
-        <location filename="../ToulouseCompiler.cpp" line="595"/>
+        <location filename="../ToulouseCompiler.cpp" line="589"/>
+        <location filename="../ToulouseCompiler.cpp" line="597"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ToulouseCompiler.cpp" line="621"/>
+        <location filename="../ToulouseCompiler.cpp" line="623"/>
         <source>File saved</source>
         <translation type="unfinished"></translation>
     </message>
@@ -268,41 +394,6 @@ Do you want to save your changes?</source>
         <source>Value:</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../addDialog.cpp" line="24"/>
-        <source>boolean</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../addDialog.cpp" line="24"/>
-        <source>vec3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../addDialog.cpp" line="24"/>
-        <source>vec4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../addDialog.cpp" line="24"/>
-        <source>float</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../addDialog.cpp" line="24"/>
-        <source>int</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../addDialog.cpp" line="141"/>
-        <source>About Uniform form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../addDialog.cpp" line="142"/>
-        <source>The &lt;b&gt;Form below&lt;/b&gt; show data that the user can fill for an uniform. &lt;b&gt; Important: &lt;/b&gt;if you use vec3 or vec4 enter the data separated by &lt;b&gt;comma&lt;/b&gt;. Ex:(1.0,0.0,0.0)</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>tableUniforms</name>
@@ -314,81 +405,6 @@ Do you want to save your changes?</source>
     <message>
         <location filename="../tableUniforms.ui" line="103"/>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="16"/>
-        <source>Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="16"/>
-        <source>Uniform Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="16"/>
-        <source>Value</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="74"/>
-        <source>About Uniforms Table </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="75"/>
-        <source>The &lt;b&gt;Table&lt;/b&gt; show the uniforms that the user added for this shader. &lt;b&gt; Important: &lt;/b&gt;you must read the manual for know what uniforms are included by configuration. Ex:(material mode &amp; lights mode)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="235"/>
-        <source>Wrong uniform data </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="236"/>
-        <source>The uniform that you added is &lt;b&gt;wrong&lt;/b&gt;. &lt;b&gt; Important: &lt;/b&gt;you must read the manual for know how create a correct one. </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="243"/>
-        <source>Wrong uniform value </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="244"/>
-        <source>The uniform that you edit has a  &lt;b&gt;wrong&lt;/b&gt; value. &lt;b&gt; Important: &lt;/b&gt;Please change it. </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="282"/>
-        <source>Uniform Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="419"/>
-        <source>boolean</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="419"/>
-        <source>vec3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="419"/>
-        <source>vec4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="419"/>
-        <source>float</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tableUniforms.cpp" line="419"/>
-        <source>int</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -1,7 +1,7 @@
 #include "addDialog.h"
 #include "ui_addDialog.h"
 
-addDialog::addDialog(QWidget *parent)
+AddDialog::AddDialog(QWidget* parent)
 	: QDialog(parent)
 {
 	ui = new Ui::addDialog();
@@ -13,36 +13,42 @@ addDialog::addDialog(QWidget *parent)
 
 	//Set to don allow to push the save button
 	guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(false);
-	
-
+	guardar_cancelar->button(QDialogButtonBox::Save)->setText(tr("Accept"));
+	guardar_cancelar->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
 
 	//take the pointer to the comBox 
 	options = ui->comboBox;
 	options->setEditable(true);
 	options->lineEdit()->setReadOnly(true);
 	options->lineEdit()->setAlignment(Qt::AlignCenter);
-	
+
 	options->addItems(QStringList() << tr("boolean") << tr("vec3") << tr("vec4") << tr("float") << tr("int")); //add the types for the uniforms
-	
+
 	//for manage when is changed the value
 	connect(options, SIGNAL(currentIndexChanged(const QString&)), this, SLOT(switchcall(const QString&)));
 
 
 	inputValue = ui->lineEdit;
 
+
+	/********Se pueden añadir lineEdit y ocultar  */
+
 	/*QLineEdit *lineedit = new QLineEdit;
 	ui->layoutValueUniform->addWidget(lineedit);*/
+	/*inputValue->hide();*/
+
+
 
 	inputValue->setStyleSheet("border-image:  url(:/img/Resources/img/lineEdit.png) 5 5 5 5 stretch stretch;border-width: 5px 5px 5px 5px;");
-	/*inputValue->hide();*/
+
 	//for manage when is changed the value
-	connect(inputValue, SIGNAL(textChanged(const QString&)), this, SLOT(text_changed(const QString &)));
+	connect(inputValue, SIGNAL(textChanged(const QString&)), this, SLOT(text_changed(const QString&)));
 
 
 	nameVar = ui->nameVar;
 	nameVar->setStyleSheet("border-image:  url(:/img/Resources/img/lineEdit.png) 5 5 5 5 stretch stretch;border-width: 5px 5px 5px 5px;");
 	//for manage when is changed the value
-	connect(inputValue, SIGNAL(textChanged(const QString&)), this, SLOT(textName_changed(const QString &)));
+	connect(inputValue, SIGNAL(textChanged(const QString&)), this, SLOT(textName_changed(const QString&)));
 
 
 	//checkBox
@@ -54,14 +60,14 @@ addDialog::addDialog(QWidget *parent)
 	connect(guardar_cancelar, SIGNAL(rejected()), this, SLOT(push_reject()));
 }
 
-addDialog::~addDialog()
+AddDialog::~AddDialog()
 {
 	delete ui;
 }
 
 
 
-void addDialog::push_reject()
+void AddDialog::push_reject()
 {
 
 	this->close();
@@ -69,7 +75,7 @@ void addDialog::push_reject()
 
 
 
-void addDialog::push_save()
+void AddDialog::push_save()
 {
 	/*Log::getInstancia()->warning("Pulsado guardar");*/
 
@@ -78,15 +84,16 @@ void addDialog::push_save()
 	nuevo.name = nameVar->text().toStdString();
 	nuevo.type = options->currentText().toStdString();
 	nuevo.value = inputValue->text().toStdString();
-	
+
 	idCont++;
-	
-	
+
+
 	//Send the data to the mainWindow
-	emit dataChanged(nuevo);
+	emit sendUniformToTable(nuevo);
 	if (!multipleAddings->isChecked())this->close();
 
 	guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(false);
+
 	nameVar->setText("");
 	inputValue->setText("");
 
@@ -95,14 +102,14 @@ void addDialog::push_save()
 
 }
 
-void addDialog::textName_changed(const QString &newValue) {
+void AddDialog::textName_changed(const QString& newValue) {
 
 	//Manage that all fields aren't empty
 
 
 	if (newValue != "") {
 		textNameCheck = true;
-		if (typeCheck  && textCheck)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
+		if (typeCheck && textCheck)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
 	}
 	else {
 		textNameCheck = false;
@@ -111,25 +118,25 @@ void addDialog::textName_changed(const QString &newValue) {
 }
 
 
-void addDialog::text_changed(const QString &newValue) {
+void AddDialog::text_changed(const QString& newValue) {
 
 	//Manage that all fields aren't empty
 
 
 	if (newValue != "") {
 		textCheck = true;
-		if (typeCheck  && textNameCheck)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
+		if (typeCheck && textNameCheck)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
 	}
 	else {
 		textCheck = false;
 		guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(false);
 	}
 }
-void addDialog::switchcall(const QString&  value) {
+void AddDialog::switchcall(const QString& value) {
 
 	if (value != "") {
 		typeCheck = true;
-		if (textCheck  && textNameCheck)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
+		if (textCheck && textNameCheck)guardar_cancelar->button(QDialogButtonBox::Save)->setEnabled(true);
 	}
 	else {
 		typeCheck = false;
@@ -138,7 +145,7 @@ void addDialog::switchcall(const QString&  value) {
 
 }
 
-void addDialog::about()
+void AddDialog::about()
 
 {
 
@@ -149,7 +156,7 @@ void addDialog::about()
 }
 
 
-bool addDialog::event(QEvent *event)
+bool AddDialog::event(QEvent* event)
 {
 	if (event->type() == QEvent::EnterWhatsThisMode) {
 

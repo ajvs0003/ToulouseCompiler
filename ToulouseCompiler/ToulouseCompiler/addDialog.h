@@ -23,25 +23,25 @@ Q_DECLARE_METATYPE(dataForUniform);
 
 namespace Ui { class addDialog; };
 
-class addDialog : public QDialog
+class AddDialog : public QDialog
 {
 	Q_OBJECT
 
 public:
-	
-
-
-	addDialog(QWidget *parent = Q_NULLPTR);
-	~addDialog();
 
 
 
+	AddDialog(QWidget* parent = Q_NULLPTR);
+	~AddDialog();
 
-	
+
+
+
+
 
 
 private:
-	Ui::addDialog *ui;
+	Ui::addDialog* ui;
 
 
 	QDialogButtonBox* guardar_cancelar;
@@ -53,7 +53,7 @@ private:
 	QLineEdit* nameVar;
 	QLineEdit* inputValue;
 
-	
+
 
 	bool textNameCheck = false;
 	bool textCheck = false;
@@ -61,20 +61,20 @@ private:
 
 	int idCont = 0;
 
-	bool event(QEvent *event);
+	bool event(QEvent* event);
 
 	void about();
 
 private slots:
-	
+
 	void push_save();
 	void push_reject();
 
-	void text_changed(const QString &newValue);
-	void switchcall(const QString&value);
-	void textName_changed(const QString &newValue);
+	void text_changed(const QString& newValue);
+	void switchcall(const QString& value);
+	void textName_changed(const QString& newValue);
 signals:
-	void dataChanged(const dataForUniform &data);
-	
-	
+	void sendUniformToTable(const dataForUniform& data);
+
+
 };

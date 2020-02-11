@@ -13,10 +13,10 @@
 
 #include "PagEnumerations.h"
 
-OpenGLWidget * OpenGLWidget::instance = nullptr;
+OpenGLWidget* OpenGLWidget::instance = nullptr;
 
 
-OpenGLWidget * OpenGLWidget::getInstance()
+OpenGLWidget* OpenGLWidget::getInstance()
 {
 	if (!instance) {
 		instance = new OpenGLWidget();
@@ -37,7 +37,7 @@ void OpenGLWidget::refreshCallback()
 }
 
 
-OpenGLWidget::OpenGLWidget(QWindow *parent)
+OpenGLWidget::OpenGLWidget(QWindow* parent)
 	: QWindow(parent)
 	, m_animating(false)
 	, m_context(0)
@@ -60,7 +60,7 @@ OpenGLWidget::~OpenGLWidget()
 	delete m_device;
 }
 
-void OpenGLWidget::render(QPainter *painter)
+void OpenGLWidget::render(QPainter* painter)
 {
 	Q_UNUSED(painter);
 }
@@ -95,7 +95,7 @@ void  OpenGLWidget::prepareOpenGL()
 
 
 
-void OpenGLWidget::changeTrial(int nuevo)
+void OpenGLWidget::changeMode(int nuevo)
 {
 	typeTrial = nuevo;
 
@@ -139,14 +139,14 @@ void OpenGLWidget::compile()
 
 
 	renderNow();
-	
+
 }
 
 void OpenGLWidget::chargeUniforms()
 {
 	for (int i = 0; i < uniforms.size(); i++) {
 
-		
+
 		if (uniforms.at(i).type == "boolean") {
 
 			//shader.setUniform("pointSize", 7.0f);
@@ -241,7 +241,7 @@ void OpenGLWidget::chargeUniforms()
 
 }
 
-void OpenGLWidget::mouseMoveEvent(QMouseEvent * ev)
+void OpenGLWidget::mouseMoveEvent(QMouseEvent* ev)
 {
 	this->posX = ev->x();
 	this->posY = ev->y();
@@ -249,7 +249,7 @@ void OpenGLWidget::mouseMoveEvent(QMouseEvent * ev)
 
 }
 
-void OpenGLWidget::mousePressEvent(QMouseEvent * ev)
+void OpenGLWidget::mousePressEvent(QMouseEvent* ev)
 {
 
 	if (ev->button() == Qt::MidButton)   // Middle button...
@@ -261,7 +261,7 @@ void OpenGLWidget::mousePressEvent(QMouseEvent * ev)
 
 }
 
-void OpenGLWidget::leaveEvent(QMouseEvent *)
+void OpenGLWidget::leaveEvent(QMouseEvent*)
 {
 
 	emit Mouse_Left();
@@ -269,7 +269,7 @@ void OpenGLWidget::leaveEvent(QMouseEvent *)
 
 
 
-void OpenGLWidget::mouseReleaseEvent(QMouseEvent *e)
+void OpenGLWidget::mouseReleaseEvent(QMouseEvent* e)
 {
 	if (e->button() == Qt::MidButton)   // Middle button...
 	{
@@ -278,25 +278,25 @@ void OpenGLWidget::mouseReleaseEvent(QMouseEvent *e)
 	}
 }
 
-void OpenGLWidget::wheelEvent(QWheelEvent *e)
+void OpenGLWidget::wheelEvent(QWheelEvent* e)
 {
 	if (e->type() == QEvent::Wheel) {
-		
-		
-			if (e->orientation() == Qt::Vertical) {
-				
-				if (e->delta() < 0)
-					{
-						/*Log::getInstancia()->escribir("zoom -");*/
-						camera->zoom(0.1);
-					}
-					else {
-						/*Log::getInstancia()->escribir("zoom +");*/
-						camera->zoom(-0.1);
-					}
-				this->renderNow();
+
+
+		if (e->orientation() == Qt::Vertical) {
+
+			if (e->delta() < 0)
+			{
+				/*Log::getInstancia()->escribir("zoom -");*/
+				camera->zoom(0.1);
 			}
-		
+			else {
+				/*Log::getInstancia()->escribir("zoom +");*/
+				camera->zoom(-0.1);
+			}
+			this->renderNow();
+		}
+
 
 
 	}
@@ -433,7 +433,7 @@ void OpenGLWidget::renderLater()
 	requestUpdate();
 }
 
-bool OpenGLWidget::event(QEvent *event)
+bool OpenGLWidget::event(QEvent* event)
 {
 	switch (event->type()) {
 	case QEvent::Resize:
@@ -447,7 +447,7 @@ bool OpenGLWidget::event(QEvent *event)
 	}
 }
 
-void OpenGLWidget::exposeEvent(QExposeEvent *event)
+void OpenGLWidget::exposeEvent(QExposeEvent* event)
 {
 	Q_UNUSED(event);
 
@@ -552,7 +552,7 @@ void OpenGLWidget::createObjects()
 	if (TypeObject == 0) {
 		objetos.clear();
 		dataTxt = Metodos_especiales::lecturaFichero(dataTxt, ":/obj/Resources/Objects/peon.txt");
-		
+
 
 		object = new PagRevolutionObject(this, dataTxt, 2, 60);
 		object->scale(1.5f);
@@ -616,7 +616,7 @@ void OpenGLWidget::createLights()
 
 
 
-void OpenGLWidget::paintObjects(PagShaderProgram &shader, int mode) {
+void OpenGLWidget::paintObjects(PagShaderProgram& shader, int mode) {
 	switch (mode)
 	{
 	case 0://Modo puntos

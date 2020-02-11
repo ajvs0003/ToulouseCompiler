@@ -13,15 +13,15 @@
 
 namespace Ui { class tableUniforms; };
 
-class tableUniforms : public QDialog
+class TableUniforms : public QDialog
 {
 	Q_OBJECT
 
 public:
 
 
-	tableUniforms(QWidget* parent = Q_NULLPTR);
-	~tableUniforms();
+	TableUniforms(QWidget* parent = Q_NULLPTR);
+	~TableUniforms();
 
 
 
@@ -33,7 +33,7 @@ private:
 
 	QTableWidget* table;
 	QPushButton* addUniform;//Pointer to the button for add uniforms
-	addDialog* addForm;
+	AddDialog* addForm;
 
 	std::vector<dataForUniform> uniforms;
 
@@ -59,8 +59,8 @@ private slots:
 	void handleButtonAccept();
 	void handleButtonAddUniform();
 
-	//Manage the data send for the ui that add uniforms
-	void handleData(const dataForUniform& data);
+	//Manage the data that addDialog send 
+	void manageUniformFromDialog(const dataForUniform& data);
 
 	//Manage the data that is edit
 	void editSlot(int row, int col);

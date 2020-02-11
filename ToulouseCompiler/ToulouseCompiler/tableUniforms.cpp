@@ -2,14 +2,17 @@
 #include "ui_tableUniforms.h"
 #include <sstream>
 #include <glm.hpp>
-tableUniforms::tableUniforms(QWidget* parent)
+TableUniforms::TableUniforms(QWidget* parent)
 	: QDialog(parent)
 {
 	ui = new Ui::tableUniforms();
 	ui->setupUi(this);
-	
+
 
 	table = ui->table;
+
+	//ui->retranslateUi(this);
+
 
 	table->setColumnCount(4);
 
@@ -62,14 +65,14 @@ tableUniforms::tableUniforms(QWidget* parent)
 	setWindowFlags(flags);
 }
 
-tableUniforms::~tableUniforms()
+TableUniforms::~TableUniforms()
 {
 	delete ui;
 }
 
 
 
-void tableUniforms::handleButtonAboutUniform()
+void TableUniforms::handleButtonAboutUniform()
 {
 	QMessageBox::about(this, tr("About Uniforms Table "),
 		tr("The <b>Table</b> show the uniforms that the user added for this shader. "
@@ -81,7 +84,7 @@ void tableUniforms::handleButtonAboutUniform()
 
 
 }
-bool tableUniforms::checkUniform(dataForUniform  data)
+bool TableUniforms::checkUniform(dataForUniform  data)
 {
 
 
@@ -230,7 +233,7 @@ bool tableUniforms::checkUniform(dataForUniform  data)
 
 }
 
-void tableUniforms::wrongUniform()
+void TableUniforms::wrongUniform()
 {
 	QMessageBox::warning(this, tr("Wrong uniform data "),
 		tr("The uniform that you added is <b>wrong</b>. "
@@ -238,7 +241,7 @@ void tableUniforms::wrongUniform()
 		));
 }
 
-void tableUniforms::changeUniform()
+void TableUniforms::changeUniform()
 {
 	QMessageBox::warning(this, tr("Wrong uniform value "),
 		tr("The uniform that you edit has a  <b>wrong</b> value. "
@@ -248,7 +251,7 @@ void tableUniforms::changeUniform()
 
 
 
-void tableUniforms::handleButtonAccept()
+void TableUniforms::handleButtonAccept()
 {
 	QVector<dataForUniform> aux;
 	bool send = true;
@@ -267,7 +270,7 @@ void tableUniforms::handleButtonAccept()
 
 }
 
-void tableUniforms::handleButtonAddUniform()
+void TableUniforms::handleButtonAddUniform()
 {
 	/*Log::getInstancia()->warning("Pulsado add");*/
 
@@ -275,9 +278,10 @@ void tableUniforms::handleButtonAddUniform()
 
 	//**************widget add uniforms data***************//
 
-	addForm = new addDialog(this);
-	// connect your signal to the mainwindow slot
-	connect(addForm, SIGNAL(dataChanged(const dataForUniform&)), this, SLOT(handleData(const dataForUniform&)));
+	addForm = new AddDialog(this);
+
+	// connect your signal to the this window slot
+	connect(addForm, SIGNAL(sendUniformToTable(const dataForUniform&)), this, SLOT(manageUniformFromDialog(const dataForUniform&)));
 
 	addForm->setWindowTitle(tr("Uniform Data"));
 
@@ -297,7 +301,7 @@ void tableUniforms::handleButtonAddUniform()
 
 }
 
-void tableUniforms::editSlot(int row, int col) {
+void TableUniforms::editSlot(int row, int col) {
 
 	dataForUniform aux;
 	if (row >= 0) {
@@ -329,7 +333,7 @@ void tableUniforms::editSlot(int row, int col) {
 
 }
 //Method that manage the signal for edit type of the uniform
-void tableUniforms::cell_comboBoxChanged(const QString& newValue)
+void TableUniforms::cell_comboBoxChanged(const QString& newValue)
 {
 
 	int row = sender()->property("row").toInt();
@@ -354,7 +358,7 @@ void tableUniforms::cell_comboBoxChanged(const QString& newValue)
 
 }
 //Method that manage the signal for remove the uniform
-void tableUniforms::cell_onClicked() {
+void TableUniforms::cell_onClicked() {
 
 
 	QWidget* w = qobject_cast<QWidget*>(sender()->parent());
@@ -378,8 +382,8 @@ void tableUniforms::cell_onClicked() {
 
 
 
-//this slot handle the data that for the uniforms that the widget send
-void tableUniforms::handleData(const dataForUniform& data)
+//Sirve para recoger los datos qque nos envia addDialog
+void TableUniforms::manageUniformFromDialog(const dataForUniform& data)
 {
 
 	dataForUniform aux = data;
