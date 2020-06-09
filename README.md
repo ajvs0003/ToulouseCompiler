@@ -8,3 +8,5 @@ material mode,point mode,wire mode and triangle mode.
 You can add uniforms,change the language and learn how to use a shader.
 
 ![alt text](https://github.com/ajvs0003/ToulouseCompiler/blob/ToulouseCompiler_v1.0/ToulouseCompiler/GUI/UniformsGUI.png)
+
+icons from https://www.flaticon.com
