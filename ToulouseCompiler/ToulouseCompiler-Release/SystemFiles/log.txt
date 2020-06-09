@@ -1,0 +1,8 @@
+Toulouse Compiler LogFile (execution time:( 21:55:20).
+---------------------------------- 
+21:55:21 Initializing OpenGL
+21:55:21 GPU Name		: GeForce RTX 2060/PCIe/SSE2
+21:55:21 Manufacturer	: NVIDIA Corporation
+21:55:21 OpenGL Version	: 4.5.0 NVIDIA 442.19
+21:55:21 GLSL Version	: 4.50 NVIDIA
+21:55:21 -----------OpenGL Initialized Correctly------------
